@@ -1,8 +1,20 @@
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.admin;
+import org.example.login;
+
 
 public class loginstep {
+    login user;
+    admin a;
+public loginstep(){
+    user = new login();
+    a=new admin("naseraker4@gmail.com","nasser","1234");
+    user.getQ().put("naseraker4@gmail.com","1234");
+    user.setY(0);
+
+}
 
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
@@ -14,7 +26,7 @@ public class loginstep {
 
     }
 
-    @Then("the login operation succeeds")
+    @Then("the org.example.login operation succeeds")
     public void the_login_operation_succeeds() {
 
     }
@@ -24,7 +36,7 @@ public class loginstep {
 
     }
 
-    @Then("the login operation fails")
+    @Then("the org.example.login operation fails")
     public void the_login_operation_fails() {
 
     }
@@ -40,7 +52,8 @@ public class loginstep {
     }
 
     @Given("that the admin  name {string} is logged in")
-    public void that_the_admin_name_is_logged_in(String string) {
+    public void that_the_admin_name_is_logged_in() {
+        user.setlogin(true);
 
     }
 
