@@ -3,80 +3,106 @@ package StepsDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.example.User;
 import org.example.admin;
 import org.example.login;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 
 public class loginstep {
-    login user;
-    admin a;
-public loginstep(){
-    user = new login();
-    a=new admin("naseraker4@gmail.com","nasser","1234");
-    user.getQ().put("naseraker4@gmail.com","1234");
-    user.setY(0);
-
-}
-
+    public login obj;
+    public boolean forget = false;
+    public String enteredUsername;
+    public String enteredPassword;
+    public loginstep(login iobj) {
+        super();
+        this.obj = iobj;
+        User u1= new User("hala","123","1\2\2004");
+        obj.addUser(u1);
+        User u2= new User("noor@gmail.com","1234","6\12\2003");
+        obj.addUser(u2);
+    }
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
-
+        obj.iAmNotInSystem(obj);
     }
 
-    @Given("the password is {string}")
-    public void the_password_is(String string) {
-
+    @When("set username {string} and pass {string}")
+    public void set_username_and_pass(String username, String pass) {
+        obj.setUnandpass(username,pass);
     }
 
-    @Then("the org.example.login operation succeeds")
+    @Then("the login operation succeeds")
     public void the_login_operation_succeeds() {
-
+        assertTrue("Login should succeed", obj.getValidation());
     }
 
-    @Then("the admin is logged in")
-    public void the_admin_is_logged_in() {
-
+    @When("set invalid username {string} and pass {string}")
+    public void set_invalid_username_and_pass(String username, String pass) {
+        obj.setInvalidUsernameAndPass(username,pass);
     }
 
-    @Then("the org.example.login operation fails")
+    @Then("the login operation fails")
     public void the_login_operation_fails() {
-
+        assertFalse("Login should fail", obj.getValidation());
     }
 
-    @Then("the admin is not logged in")
-    public void the_admin_is_not_logged_in() {
-
+    @When("set valid username {string} and invalid pass {string}")
+    public void set_valid_username_and_invalid_pass(String username, String pass) {
+        obj.setValidUsernameAndInvalidPass(username,pass);
     }
 
-    @Given("the password is {string} or the email is {string}")
-    public void the_password_is_or_the_email_is(String string, String string2) {
-
+    @Given("I am not in system")
+    public void i_am_not_in_system() {
+        obj.iAmNotInSystem(obj);
     }
 
-    @Given("that the admin  name {string} is logged in")
-    public void that_the_admin_name_is_logged_in() {
-        user.setlogin(true);
-
+    @When("set empty username {string} and pass {string}")
+    public void set_empty_username_and_pass(String username, String pass) {
+        obj.setEmptyUsernameAndPass(username,pass);
     }
 
-    @When("the admin logs out")
-    public void the_admin_logs_out() {
-
+    @Then("login failed")
+    public void login_failed() {
+        assertFalse("Login failed", obj.getValidation());
     }
 
-    @Given("a password reset request,")
-    public void a_password_reset_request() {
-
+    @When("set valid username {string} and empty pass {string}")
+    public void set_valid_username_and_empty_pass(String username, String pass) {
+        obj.setValidUsernameAndEmptyPass(username,pass);
     }
 
-    @When("I follow the password reset process,")
-    public void i_follow_the_password_reset_process() {
-
+    @When("set valid username {string} and  pass {string}")
+    public void set_valid_username_and_pass(String username, String pass) {
+        obj.validUserPass(username,pass);
+        forget=obj.getForget();
+        enteredUsername= obj.getEnteredUsername();
     }
 
-    @Then("I should be able to set a new password.")
-    public void i_should_be_able_to_set_a_new_password() {
+    @Then("take new pass {string}")
+    public void take_new_pass(String newPassword) {
+        obj.takePass(newPassword);
+        assertTrue("New password should be updated", obj.getPasswordUpdated());
+    }
 
+    @Given("i don't have an account")
+    public void i_don_t_have_an_account() {
+        obj.setLogged(false);
+    }
+
+    @When("set new username {string} and pass {string} and bd={string}")
+    public void set_new_username_and_pass_and_bd(String user_name, String pass,String bd) {
+        obj.addUser(new User(user_name, pass,bd));
+        enteredUsername = user_name;
+        enteredPassword = pass;
+    }
+
+    @Then("create succeed")
+    public void create_succeed() {
+        obj.createAcc(enteredUsername,enteredPassword);
+        assertTrue("User creation should succeed", obj.getUserCreated());
     }
 
 
