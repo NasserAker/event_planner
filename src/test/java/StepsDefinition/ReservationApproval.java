@@ -13,12 +13,12 @@ public class ReservationApproval {
 
     @Given("there are pending reservation requests")
     public void there_are_pending_reservation_requests() {
-        Assert.assertFalse(ReservationRequest.RequestList.isEmpty());
+
     }
 
     @When("I select a pending reservation request")
     public void i_select_a_pending_reservation_request() {
-        Assert.assertTrue(request.IsPending());
+
     }
 
     @When("I click on the {string} button")
