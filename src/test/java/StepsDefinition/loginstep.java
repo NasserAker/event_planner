@@ -21,7 +21,7 @@ public class loginstep {
         this.obj = iobj;
         User u1= new User("hala","123","1\2\2004");
         obj.addUser(u1);
-        User u2= new User("noor@gmail.com","1234","6\12\2003");
+        User u2= new User("magichala.koni@gmail.com","1234","6\12\2003");
         obj.addUser(u2);
     }
     @Given("that the admin is not logged in")

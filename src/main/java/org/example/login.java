@@ -6,6 +6,9 @@ import java.util.logging.Logger;
 public class login {
     private boolean isLogged;
     private boolean validation;
+    public List<User> getUp() {
+        return up;
+    }
     private List<User> up=new ArrayList<>();
     public void addUser(User user) {
         up.add(user);
@@ -23,6 +26,16 @@ public class login {
     }
     public boolean getValidation(){
         return validation;
+    }
+    public login()
+    {
+        User u1= new User("hala","123","7\3\2004");
+        up.add(u1);
+        User u2= new User("magichala.koni@gmail.com","1234","7\3\2004");
+        up.add(u2);
+        this.isLogged = false;
+        this.validation = false;
+
     }
     public void setUnandpass(String name, String pass) {
 
