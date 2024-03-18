@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/cucumber/wikipedia.html"},
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        glue = {"StepsDefinition"}
+        glue = {"com.example.StepsDefinition"}
 )
 
 public final class TestRunner {

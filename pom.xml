@@ -29,14 +29,6 @@
         </dependency>
 
         <dependency>
-            <groupId>info.cukes</groupId>
-            <artifactId>cucumber-junit</artifactId>
-            <version>1.2.6</version>
-<!--            <type>pom</type>-->
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-picocontainer</artifactId>
             <version>7.15.0</version>
@@ -54,6 +46,14 @@
             <artifactId>cucumber-junit</artifactId>
             <version>7.3.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.15.0</version>
+            <scope>test</scope>
+        </dependency>
+
 
     </dependencies>
 
