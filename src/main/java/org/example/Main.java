@@ -72,8 +72,55 @@ public class Main {
     }
     private static void userLoggedIn(Scanner input) {
         logger.info("You have logged in successfully");
+        logger.info("Enter user ID ");
+        int userId = input.nextInt();
 
+        switch (userId) {
+            case 1 -> handleAdminActions(input);
+            case 2 -> logger.info("Admins ID :-");
+           // case 3 -> handleCustomerActions(input);
+            default -> logger.info("Invalid user ID.");
+        }
     }
+    private static void handleAdminActions(Scanner input) {
+        boolean continueManaging = true;
+        while (continueManaging) {
+            logger.info("You are the ADMIN. Please select an action:");
+            logger.info("1: Manage user accounts");
+            logger.info("2: Manage events");
+            logger.info("3: Manage Availability Date");
+            logger.info("4: Log out");
+            int choice = input.nextInt();
+            switch (choice) {
+                case 1 -> adminManageUsers(input);
+                case 2 -> adminManageProducts(input);
+                case 3 -> addAvailabilityDate(input);
+                case 4 -> {
+                    continueManaging = false;
+                    logger.info("Logging out as admin.");
+                }
+                default -> printing();
+            }
+        }
+    }
+    private static void adminManageUsers(Scanner input) {
+        boolean continueManaging = true;
+        while (continueManaging) {
+            logger.info("Select an action for user management:");
+            logger.info("1: Change user information");
+            logger.info("2: Add new user");
+            logger.info("3: See all user accounts");
+            logger.info("4: Return to admin menu");
 
+            int action = input.nextInt();
+            switch (action) {
+                case 1 -> changeUserInformation(input);
+                case 2 -> addUser(input);
+                case 3 -> seeAllUsers();
+                case 4 -> continueManaging = false;
+                default -> printing();
+            }
+        }
+    }
 
 }
