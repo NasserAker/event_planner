@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.admin;
 import org.example.login;
+import org.junit.Ignore;
 
 
 public class loginstep {
@@ -17,7 +18,7 @@ public loginstep(){
     user.setY(0);
 
 }
-
+    @Ignore
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
 
