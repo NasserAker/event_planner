@@ -8,7 +8,7 @@ public class ReservationApproval {
     ReservationRequest request;
 
     public ReservationApproval(ReservationRequest req){
-        this.request = req;
+        this.request = new ReservationRequest();
     }
 
     @Given("there are pending reservation requests")
