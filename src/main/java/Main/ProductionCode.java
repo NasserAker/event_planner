@@ -232,26 +232,72 @@ public class ProductionCode {
 
 
     public static void adminActivities() {
+        logger.info("Welcome, Admin!");
 
+        boolean loggedIn = true;
+        while (loggedIn) {
+            logger.info("\nAdmin Menu:");
+            logger.info("1. View/Edit Wedding Listings");
+            logger.info("2. Manage User Accounts");
+            logger.info("3. View Reservation Details");
+            logger.info("4. Send Notifications");
+            logger.info("5. Log Out");
+            logger.info(ENTER_CHOICE);
 
-        logger.info("welcome admin");
-        //add menu
+            int choice = scanner(); // Get user input
 
-
+            switch (choice) {
+                case 1:
+                    viewEditWeddingListings();
+                    break;
+                case 2:
+                    manageUserAccounts();
+                    break;
+                case 3:
+                    viewReservationDetails();
+                    break;
+                case 4:
+                    sendNotifications();
+                    break;
+                case 5:
+                    loggedIn = false; // Exit the loop and log out
+                    break;
+                default:
+                    logger.info("Invalid choice. Please enter a valid option.");
+            }
+        }
     }
 
-    public static void userActivities(){
 
-        logger.info("welcome user");
+    public static void userActivities() {
+        logger.info("Welcome, User!");
 
-        //add menu
+        boolean loggedIn = true;
+        while (loggedIn) {
+            logger.info("\nMenu:");
+            logger.info("1. My Profile");
+            logger.info("2. Reserve a Wedding");
+            logger.info("3. Log Out");
+            logger.info(ENTER_CHOICE);
 
+            int choice = scanner(); // Get user input
+
+            switch (choice) {
+                case 1:
+                    viewUserProfile();
+                    break;
+                case 2:
+                    reserveWedding();
+                    break;
+                case 3:
+                    loggedIn = false; // Exit the loop and log out
+                    break;
+                default:
+                    logger.info("Invalid choice. Please enter a valid option.");
+            }
+        }
     }
-    public static void serviceProviderActivities(){
 
-        logger.info("welcome provider");
 
-        //add menu
-    }
 
 }
