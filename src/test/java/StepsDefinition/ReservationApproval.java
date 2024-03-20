@@ -26,7 +26,7 @@ public class ReservationApproval {
         }
         selectedRequest = request.SelectRequest(requestCount);
     }
-
+    
     @When("I click on the {string} button")
     public void i_click_on_the_button(String string) {
 //        Assert.assertNotEquals(0, (int) selectedRequest);
