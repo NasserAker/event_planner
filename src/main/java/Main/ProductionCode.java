@@ -70,6 +70,16 @@ public class ProductionCode {
 
         s1.getReservaeddates().put(r2, "24/10/2024");//service provider is reserved at 24/10/2024
 
+
+
+
+        Venue venue1 = new Venue("Moon", "Address 1", 100);
+        Venue venue2 = new Venue("Sun", "Address 2", 150);
+        Venue venue3 = new Venue("Star", "Address 3", 200);
+        Venue venue4 = new Venue("Sky", "Address 4", 120);
+        Venue venue5 = new Venue("Cloud", "Address 5", 180);
+
+
         Logging.getQ().put(s1.getEmail(), s1.getPass());
         Logging.getQ().put(s3.getEmail(), s3.getPass());
         Logging.getQ().put(s2.getEmail(), s3.getPass());
