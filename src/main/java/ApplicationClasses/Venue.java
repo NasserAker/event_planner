@@ -42,6 +42,21 @@ public class Venue {
 
     }
 
+
+
+    public static void initializeAvailableVenues() {
+        // Add available dates to the Date class
+
+        availableVenues.add(new Venue("Moon", "Address 1", 100));
+
+        availableVenues.add(new Venue("Sun", "Address 2", 150));
+        availableVenues.add(new Venue("Star", "Address 3", 200));
+        availableVenues.add(new Venue("Sky", "Address 4", 120));
+        availableVenues.add(new Venue("Sky", "Address 4", 120));
+
+        // Add more dates as needed...
+    }
+
     public static List<Venue> getAvailableVenues() {
         return availableVenues;
     }
