@@ -3,7 +3,7 @@ package ApplicationClasses;
 import java.util.ArrayList;
 
 public class ReservationRequest {
-    int requestId;
+    private int requestId;
     int customerId;
 
     public static final ArrayList<Integer> RequestList = new ArrayList<Integer>();
@@ -12,6 +12,17 @@ public class ReservationRequest {
 
     public boolean IsPending(){
         return RequestList.contains(requestId);
+    }
+
+
+    public int RequestCount(){
+        return RequestList.size();
+    }
+
+    public Integer SelectRequest(int index){
+        Integer item ;
+        item = RequestList.get(index);
+        return item;
     }
 
     public void ApproveRequest(){
@@ -24,12 +35,12 @@ public class ReservationRequest {
         RequestList.remove(this.requestId);
     }
 
-    public void sendConfirmation(){
-
+    public boolean Confirmation(){
+        return ApprovedRequests.contains(this.requestId);
     }
 
-    public void sendDenial(){
-
+    public boolean Denial(){
+        return DeniedRequests.contains(this.requestId);
     }
 
     public int GetRequestId(){

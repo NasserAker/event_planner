@@ -9,9 +9,10 @@ import org.junit.runner.RunWith;
         features = "features",
         plugin = {"html:target/cucumber/wikipedia.html"},
         monochrome = true,
-        snippets = CucumberOptions.SnippetType.CAMELCASE,
-        glue = {"com.example.StepsDefinition"},
+        snippets = CucumberOptions.SnippetType.UNDERSCORE,
+        glue = {"StepsDefinition"},
         tags = "@nasser"
+
 )
 
 public final class TestRunner {
