@@ -8,6 +8,7 @@ import java.util.logging.*;
 import com.sun.tools.javac.Main;
 import ApplicationClasses.*;
 
+import static ApplicationClasses.Date.initializeAvailableDates;
 
 
 public class ProductionCode {
@@ -95,6 +96,7 @@ public class ProductionCode {
         Venue.getAvailableVenues().add(venue4);
         Venue.getAvailableVenues().add(venue5);
 
+        initializeAvailableDates();
 
         homePage();
 
