@@ -43,8 +43,17 @@ public class Date {
     }
 
 
-    public static List<Date> getAvailableDates() {
-        return availableDates;
+
+
+
+    public static void initializeAvailableDates() {
+        // Add available dates to the Date class
+        availableDates.add(new Date(1, 4, 2024));
+        availableDates.add(new Date(5, 4, 2024));
+        availableDates.add(new Date(10, 4, 2024));
+        availableDates.add(new Date(15, 4, 2024));
+        availableDates.add(new Date(20, 4, 2024));
+        // Add more dates as needed...
     }
 
     // toString method to print date details
