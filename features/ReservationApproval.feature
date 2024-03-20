@@ -10,12 +10,17 @@ Feature: the service provider approve or deny the request to reserve a venue
       | request_count | button   |
       | 1             | Approve  |
       | 2             | Deny     |
+      | 1             |          |
+      | 1             |          |
+      | 2             |          |
+      | 7             |          |
 
 
 
 
 
-@nasser
+
+  @nasser
   Scenario: Denying a Reservation
     Given there are pending reservation requests
     When I select a pending reservation request

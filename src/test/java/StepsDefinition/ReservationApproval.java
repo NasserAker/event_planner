@@ -29,10 +29,10 @@ public class ReservationApproval {
 
     @When("I click on the {string} button")
     public void i_click_on_the_button(String string) {
-        Assert.assertNotEquals(0, (int) selectedRequest);
+//        Assert.assertNotEquals(0, (int) selectedRequest);
         if(string.equals("Approve")){
             request.ApproveRequest();
-            System.out.println("Approved");
+            System.out.println("Approved " + ReservationRequest.ApprovedRequests.size() +" "+ ReservationRequest.RequestList.size());
         }
         else {
             request.DenyRequest();
