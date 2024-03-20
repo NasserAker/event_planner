@@ -1,9 +1,15 @@
 package ApplicationClasses;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Date {
     private int day;
     private int month;
     private int year;
+
+    private static final List<Date> availableDates = new ArrayList<>();
+
 
     public Date(int day, int month, int year) {
         this.day = day;
@@ -34,6 +40,11 @@ public class Date {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+
+    public static List<Date> getAvailableDates() {
+        return availableDates;
     }
 
     // toString method to print date details

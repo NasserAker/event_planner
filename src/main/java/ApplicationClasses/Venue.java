@@ -1,5 +1,8 @@
 package ApplicationClasses;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Venue {
     private String name;
     private String location;
@@ -12,6 +15,8 @@ public class Venue {
         this.capacity = capacity;
     }
 
+    // ArrayList to store available venues
+    private static final List<Venue> availableVenues = new ArrayList<>();
     // Getters and setters
     public String getName() {
         return name;
@@ -28,7 +33,18 @@ public class Venue {
     public void setLocation(String location) {
         this.location = location;
     }
+    public void setCapacity(int capacity){
+        this.capacity=capacity;
+    }
 
+    public int getCapacity(){
+        return capacity;
+
+    }
+
+    public static List<Venue> getAvailableVenues() {
+        return availableVenues;
+    }
     // toString method to print venue details
     @Override
     public String toString() {

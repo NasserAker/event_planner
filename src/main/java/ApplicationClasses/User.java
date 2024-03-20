@@ -4,7 +4,6 @@ package ApplicationClasses;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 import java.util.logging.*;
 
@@ -32,7 +31,7 @@ public class User {
 
 
 
-    protected static final List<User> C = new ArrayList<>() ;//the used list that contains all customers,getC
+    protected static final List<User> allUsers = new ArrayList<>() ;//the used list that contains all customers,getC
 
 
     protected static Scanner input = new Scanner (System.in);
@@ -87,7 +86,7 @@ public class User {
 
     //lists functions , must be static or not?
     public static List<User> getUserList() {
-        return C;
+        return allUsers;
     }
 
 

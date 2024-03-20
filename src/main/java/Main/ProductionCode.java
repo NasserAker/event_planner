@@ -73,11 +73,7 @@ public class ProductionCode {
 
 
 
-        Venue venue1 = new Venue("Moon", "Address 1", 100);
-        Venue venue2 = new Venue("Sun", "Address 2", 150);
-        Venue venue3 = new Venue("Star", "Address 3", 200);
-        Venue venue4 = new Venue("Sky", "Address 4", 120);
-        Venue venue5 = new Venue("Cloud", "Address 5", 180);
+
 
 
         Logging.getQ().put(s1.getEmail(), s1.getPass());
@@ -87,6 +83,17 @@ public class ProductionCode {
 
         //all users including service providers and admins must be added to the arraylist q
 
+        Venue venue1 = new Venue("Moon", "Address 1", 100);
+        Venue venue2 = new Venue("Sun", "Address 2", 150);
+        Venue venue3 = new Venue("Star", "Address 3", 200);
+        Venue venue4 = new Venue("Sky", "Address 4", 120);
+        Venue venue5 = new Venue("Cloud", "Address 5", 180);
+
+        Venue.getAvailableVenues().add(venue1);
+        Venue.getAvailableVenues().add(venue2);
+        Venue.getAvailableVenues().add(venue3);
+        Venue.getAvailableVenues().add(venue4);
+        Venue.getAvailableVenues().add(venue5);
 
 
         homePage();
