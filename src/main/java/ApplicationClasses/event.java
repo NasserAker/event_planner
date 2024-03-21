@@ -1,4 +1,4 @@
-package org.example;
+package ApplicationClasses;
 
 public class event {
     private String eventName;

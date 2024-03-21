@@ -1,4 +1,4 @@
-package org.example;
+package ApplicationClasses;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -186,4 +186,19 @@ public class login {
             }
         }
     }
+    public void searchbyname(String name) {
+        for(event c: ev ){
+            if(name.equals(c.geteventName())){
+                String k=String.valueOf(c.getPrice());
+                String f=String.valueOf(c.getAvailable());
+
+                logger.info("Price:- ");
+                logger.info(k);
+                logger.info("The num of available halls:- ");
+                logger.info(f);
+                logger.info("Discribtion about it:- "+c.getDescrtion());
+            }
+        }
+    }
+
 }

@@ -1,10 +1,17 @@
 package org.example;
 
+import ApplicationClasses.User;
+import ApplicationClasses.event;
+import ApplicationClasses.login;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.*;
 
 public class Main {
+
+    private static final Logger logger =  Logger.getLogger(Main.class.getName());
+
     public static void main(String[] args) {
 
         // Remove the default formatter
@@ -33,7 +40,7 @@ public class Main {
             default -> logger.info("Invalid option selected.");
         }
     }
-    private static final Logger logger =  Logger.getLogger(Main.class.getName());
+
     private static void displayMainMenu() {
         logger.info("1: Sign up to make a new account");
         logger.info("2: Login to your account");
@@ -101,9 +108,30 @@ public class Main {
     }
         switch (choice) {
             case 1 -> handleAdminActions(input);
-            case 2 -> logger.info("Admins ID :-");
-           // case 3 -> handleCustomerActions(input);
+          //  case 2 -> logger.info("Admins ID :-");
+            case 2 -> handleCustomerActions(input);
           //  default -> logger.info("Invalid user ID.");
+        }
+    }
+    private static void handleCustomerActions(Scanner input) {
+        boolean continueShopping = true;
+        while (continueShopping) {
+            logger.info("You are the CUSTOMER. Please select an action:");
+            logger.info("1: reserve an event");
+            logger.info("2: Change password");
+            logger.info("3: View order history");
+            logger.info("4: Log out");
+            int choice = input.nextInt();
+            switch (choice) {
+               // case 1 -> customerBuyProduct(input);
+               // case 2 -> customerChangePassword(input);
+               // case 3 -> customerViewOrderHistory(input);
+                case 4 -> {
+                    continueShopping = false;
+                    logger.info("Logging out as customer.");
+                }
+                default -> printing();
+            }
         }
     }
     private static void handleAdminActions(Scanner input) {
@@ -118,7 +146,7 @@ public class Main {
             switch (choice) {
                 case 1 -> adminManageUsers(input);
                 case 2 -> adminManageProducts(input);
-               // case 3 -> addAvailabilityDate(input);
+                case 3 -> addAvailabilityDate(input);
                 case 4 -> {
                     continueManaging = false;
                     logger.info("Admin is logged out.");
@@ -127,6 +155,12 @@ public class Main {
             }
         }
     }
+    private static void addAvailabilityDate(Scanner input) {
+        logger.info("Write the date that you want to make it available for reserving:");
+        String date = input.next();
+        o.addDate(date);
+        logger.info("Date added successfully.");
+    }
     private static void adminManageProducts(Scanner input) {
         boolean continueManaging=true;
         while (continueManaging) {
@@ -134,8 +168,7 @@ public class Main {
             logger.info("1: Add a new event");
             logger.info("2: List all events");
             logger.info("3: Search for a event by name");
-//            logger.info("4: Search for a product by category");
-//            logger.info("4: Search for a product by price");
+            logger.info("4: Search for a event by price");
             logger.info("5: Return to admin menu");
 
             int action;
@@ -150,13 +183,38 @@ public class Main {
             switch (action) {
                 case 1 -> addevent(input);
                 case 2 -> listAllevents();
-                case 3 -> searcheventByName(input);
-               // case 4 -> searchProductByCategory(input);
-               // case 4 -> searchProductByPrice(input);
+                case 3 -> searcheventbyname(input);
+                case 4 -> searcheventbyprice(input);
                 case 5 -> continueManaging = false;
                 default -> printing();
             }
         }
+    }
+    private static void searcheventbyprice(Scanner input) {
+        logger.info("Enter the price of the product to search:");
+        int price = input.nextInt();
+        serchbyprice(price);
+    }
+    public static void serchbyprice(int p) {
+        int l=0;
+        for(event c: o.getev() ){
+            if(p==c.getPrice() ){
+                String f=String.valueOf(c.getAvailable());
+                logger.info(Names);
+                logger.info(c.geteventName());
+                logger.info(Avalable);
+                logger.info(f);
+                logger.info(Description+c.getDescrtion());
+                l=1;
+            }
+            if(l==0)
+                logger.info("There is No event with this price.");
+        }
+    }
+    private static void searcheventbyname(Scanner input) {
+        logger.info("Enter the name of the event for search:");
+        String name = input.next();
+        o.searchbyname(name);
     }
     public static final  String Description = "Description :- ";
     public static final  String Names = "Name:- ";
@@ -187,6 +245,7 @@ public class Main {
         o.event(name, price, availability, description);
         logger.info("event added successfully.");
     }
+
     private static void adminManageUsers(Scanner input) {
         boolean continueManaging = true;
         while (continueManaging) {
@@ -195,8 +254,14 @@ public class Main {
             logger.info("2: Add new user");
             logger.info("3: See all user accounts");
             logger.info("4: Return to admin menu");
-
-            int action = input.nextInt();
+            int action;
+           try{
+            action = input.nextInt();}
+           catch (InputMismatchException e) {
+               logger.info("Invalid input. Please enter a valid integer.");
+               input.next(); // consume invalid input
+               continue; // restart the loop
+           }
             switch (action) {
                 case 1 -> changeUserInformation(input);
                 case 2 -> addUser(input);

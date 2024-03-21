@@ -1,10 +1,9 @@
 package StepsDefinition;
 
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.example.event;
-import org.example.login;
+import ApplicationClasses.event;
+import ApplicationClasses.login;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
