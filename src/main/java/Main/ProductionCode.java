@@ -1,18 +1,17 @@
 package Main;
 
 
+import ApplicationClasses.Logging;
+import ApplicationClasses.ServiceProvider;
+import com.sun.tools.javac.Main;
 
 import java.util.Scanner;
 import java.util.logging.*;
 
-import com.sun.tools.javac.Main;
-import ApplicationClasses.*;
-
 import static ApplicationClasses.Admin.initializeAdmin;
+import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.User.initializeUsers;
-
-import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 
 
@@ -150,7 +149,7 @@ public class ProductionCode {
 
                         case 0: {
 
-                            adminActivities();
+                            //adminActivities();
                             break;
 
                         }
@@ -190,7 +189,7 @@ public class ProductionCode {
 
 
 
-    public static void adminActivities() {
+    /*public static void adminActivities() {
         logger.info("Welcome, Admin!");
 
         boolean loggedIn = true;
@@ -227,7 +226,7 @@ public class ProductionCode {
         }
     }
 
-
+*/
     public static void userActivities() {
         logger.info("Welcome, User!");
 
