@@ -1,6 +1,7 @@
 package StepsDefinition;
 
 import ApplicationClasses.ReservationRequest;
+import ApplicationClasses.User;
 import ApplicationClasses.Venue;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
@@ -9,9 +10,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
+import java.util.Scanner;
 
 public class ReserveVenue {
     Venue venue ;
+    User user;
 
     ReservationRequest request;
     String date;
@@ -65,37 +68,32 @@ public class ReserveVenue {
     }
     @Then("I should receive a response with details")
     public void i_should_receive_a_response_with_details() {
-
             Assert.assertTrue(ReservationRequest.ApprovedRequests.contains(request.GetRequestId()));
-
     }
 
     @When("I attempt to submit a reservation request without specifying the date and time")
     public void i_attempt_to_submit_a_reservation_request_without_specifying_the_date_and_time() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        date = null;
     }
     @Then("the reservation should not be submitted")
     public void the_reservation_should_not_be_submitted() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertNotNull(date);
     }
     @Then("I should be prompted to specify the date and time")
     public void i_should_be_prompted_to_specify_the_date_and_time() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter a Date (dd-MM-yyyy): ");
+        date = scanner.nextLine();
     }
 
 
     @Given("I have successfully reserved a venue")
     public void i_have_successfully_reserved_a_venue() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @When("I choose to cancel my reservation")
     public void i_choose_to_cancel_my_reservation() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("the reservation should be canceled")
     public void the_reservation_should_be_canceled() {
