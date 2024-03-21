@@ -13,6 +13,7 @@ public class login {
     public void addUser(User user) {
         up.add(user);
     }
+
     public void iAmNotInSystem(login obj)
     {
         obj.isLogged=false;
@@ -26,6 +27,20 @@ public class login {
     }
     public boolean getValidation(){
         return validation;
+    }
+    private  List<event> ev = new  ArrayList<>();
+    public List<event> getev() {
+        return ev;
+    }
+    private  List<String>date = new  ArrayList<>();
+    public List<String> getDate() {
+        return date;
+    }
+    public void addDate(String dates) {
+        date.add(dates);
+    }
+    public void addevent(event event) {
+        ev.add(event);
     }
     public login()
     {
@@ -120,6 +135,54 @@ public class login {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(enteredPassword)) {
                 userCreated = true;
                 break;
+            }
+        }
+    }
+    public void seeUser()
+    {
+        for(User c:up)
+        {
+
+            logger.info("Gmail:- "+c.getUserName() +"\t"+"Password:- "+c.getPass()+"\t"+"BirthDate:- "+c.getB());
+        }
+    }
+    public void event(String name, int price, int ava, String desc) {
+        ev.add(new event(name, price, ava, desc));
+
+        logger.info("You have added the event successfully ");
+    }
+    private int exist=0;
+    public void setE(){exist=1;}
+    public int getE(){return exist;}
+    public void addeve(String name){
+        for(event c:ev)
+        {
+            if ((c.geteventName()).equals(name)) {
+                setE();
+                break;
+            }
+        }
+    }
+    int y=0;
+    public int update(String name,String pass) {
+        for (User u : getUp()) {
+            if (name.equals(u.getUserName())) {
+                u.setPass(pass);
+                y=1;
+                break;
+            }
+        }
+        return y;
+    }
+    private int checkPrice =0;
+    public int getCheck(){return checkPrice;}
+    public void setCheck(){checkPrice=1;}
+    public void newPrice(String name, int newprice){
+        for(event c:ev)
+        {
+            if((c.geteventName()).equals(name)) {
+                c.setPrice(newprice);
+                setCheck();
             }
         }
     }

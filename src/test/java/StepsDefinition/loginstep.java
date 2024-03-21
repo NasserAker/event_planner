@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.example.User;
-import org.example.admin;
 import org.example.login;
 
 import static org.junit.Assert.assertFalse;
