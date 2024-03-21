@@ -4,29 +4,39 @@ Feature: Admin logging
 
   Scenario: successful login to the program
     Given that the admin is not logged in
-    And the password is "1234"
+    When set username "hala" and pass "123"
     Then the login operation succeeds
-    And the admin is logged in
 
-  Scenario: unsuccessful login to the program
+
+  Scenario: invalid username
     Given that the admin is not logged in
-    And the password is "Wrong_password"
+    When set invalid username "halaw" and pass "123"
     Then the login operation fails
-    And the admin is not logged in
 
-  Scenario: forget password
+
+  Scenario: invalid password
     Given that the admin is not logged in
-    And the password is "Wrong_password" or the email is "wrong_email"
+    When set valid username "hala" and invalid pass "1234"
     Then the login operation fails
-    And the admin is not logged in
+
+  Scenario: blank username
+    Given I am not in system
+    When set empty username "" and pass "1234"
+    Then login failed
+
+  Scenario: blank password
+    Given I am not in system
+    When set valid username "hala" and empty pass ""
+    Then login failed
 
 
-  Scenario: Admin logs out
-    Given that the admin  name "hala" is logged in
-    When the admin logs out
-    Then the admin is not logged in
+  Scenario: forgot password
+    Given that the admin is not logged in
+    When set valid username "hala" and  pass "Forget"
+    Then take new pass "12345"
 
-  Scenario: reset password
-    Given a password reset request,
-    When I follow the password reset process,
-    Then I should be able to set a new password.
+  Scenario: User needs to Create Account
+    Given I am not in system
+    And i don't have an account
+    When set new username "noor" and pass "4321" and bd="12\6\2003"
+    Then create succeed
