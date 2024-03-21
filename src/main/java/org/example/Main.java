@@ -109,7 +109,7 @@ public class Main {
         switch (choice) {
             case 1 -> handleAdminActions(input);
           //  case 2 -> logger.info("Admins ID :-");
-            case 2 -> handleCustomerActions(input);
+           // case 2 -> handleCustomerActions(input);
           //  default -> logger.info("Invalid user ID.");
         }
     }
