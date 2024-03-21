@@ -34,7 +34,21 @@ public class User {
         allUsers.add(r1);
         Logging.getQ().put(r1.getEmail(), r1.getPassword());
 
-        // Add more users as needed
+        User r2 = new User("john", "222", "ABC", "01234567", "john@gmail.com", "Male", 0.0);
+        allUsers.add(r2);
+        Logging.getQ().put(r2.getEmail(), r2.getPassword());
+
+        User r3 = new User("emma", "333", "XYZ", "98765432", "emma@gmail.com", "Female", 0.0);
+        allUsers.add(r3);
+        Logging.getQ().put(r3.getEmail(), r3.getPassword());
+
+        User r4 = new User("mike", "444", "LMN", "55555555", "mike@gmail.com", "Male", 0.0);
+        allUsers.add(r4);
+        Logging.getQ().put(r4.getEmail(), r4.getPassword());
+
+        User r5 = new User("lisa", "555", "PQR", "66666666", "lisa@gmail.com", "Female", 0.0);
+        allUsers.add(r5);
+        Logging.getQ().put(r5.getEmail(), r5.getPassword());
     }
 
 

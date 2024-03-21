@@ -9,6 +9,8 @@ import com.sun.tools.javac.Main;
 import ApplicationClasses.*;
 
 import static ApplicationClasses.Admin.initializeAdmin;
+import static ApplicationClasses.User.initializeUsers;
+
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 
@@ -46,8 +48,8 @@ public class ProductionCode {
 
 
 
-        initializeAdmin("rayabreak02@gmail.com", "raya", "12345");
-        initializeUser
+        initializeAdmin("rayabreak02@gmail.com", "raya", "12345"); //one admin
+        initializeUsers(); // multiple users
 
 
 
