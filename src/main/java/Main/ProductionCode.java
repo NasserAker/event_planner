@@ -168,7 +168,7 @@ public class ProductionCode {
 
                         case 2:
 
-                            serviceProviderActivities();
+//                            serviceProviderActivities();
                             break;
                         default:
                             // Handle unexpected value, log an error, or take appropriate action
@@ -257,21 +257,21 @@ public class ProductionCode {
             int choice = scanner(); // Get user input
 
             switch (choice) {
-                case 1:
-                    viewEditWeddingListings();
-                    break;
-                case 2:
-                    manageUserAccounts();
-                    break;
-                case 3:
-                    viewReservationDetails();
-                    break;
-                case 4:
-                    sendNotifications();
-                    break;
-                case 5:
-                    loggedIn = false; // Exit the loop and log out
-                    break;
+//                case 1:
+//                    viewEditWeddingListings();
+//                    break;
+//                case 2:
+//                    manageUserAccounts();
+//                    break;
+//                case 3:
+//                    viewReservationDetails();
+//                    break;
+//                case 4:
+//                    sendNotifications();
+//                    break;
+//                case 5:
+//                    loggedIn = false; // Exit the loop and log out
+//                    break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
             }
@@ -293,12 +293,12 @@ public class ProductionCode {
             int choice = scanner(); // Get user input
 
             switch (choice) {
-                case 1:
-                    viewUserProfile();
-                    break;
-                case 2:
-                    reserveWedding();
-                    break;
+//                case 1:
+//                    viewUserProfile();
+//                    break;
+//                case 2:
+//                    reserveWedding();
+//                    break;
                 case 3:
                     loggedIn = false; // Exit the loop and log out
                     break;

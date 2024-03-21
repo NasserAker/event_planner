@@ -1,22 +1,27 @@
 package ApplicationClasses;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Venue {
     private String name;
     private String location;
-
     private int capacity;
+    private static final List<Venue> availableVenues = new ArrayList<>();
+
+    private boolean available = true;
+    private static List<String> reservedDates = new ArrayList<>();
+
+
+
 
     public Venue(String name, String location, int capacity) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
     }
-
     // ArrayList to store available venues
-    private static final List<Venue> availableVenues = new ArrayList<>();
     // Getters and setters
     public String getName() {
         return name;
@@ -69,5 +74,23 @@ public class Venue {
                 '}';
     }
 
+    public boolean isAvailable(){
+        return available;
+    }
+    public void setAvailability(boolean condition){
+        available = condition;
+    }
+
+
+
+    public static boolean reserveVenue (String date){
+        if (!reservedDates.contains(date) ){
+            reservedDates.add(date);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
 }

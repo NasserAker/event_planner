@@ -1,10 +1,17 @@
 package ApplicationClasses;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ReservationRequest {
     private int requestId;
     int customerId;
+    private final UUID uniqueId;
+
+    public ReservationRequest() {
+        this.uniqueId = UUID.randomUUID();
+    }
+
 
     public static final ArrayList<Integer> RequestList = new ArrayList<Integer>();
     public static final ArrayList<Integer> ApprovedRequests = new ArrayList<Integer>();
