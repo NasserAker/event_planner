@@ -51,7 +51,7 @@ public class Logging {
 
     public int searchEmail(String email1){
 
-        boolean flag = true;
+        boolean flag = true; // the email has not been found yet
 
         email = email1;
 

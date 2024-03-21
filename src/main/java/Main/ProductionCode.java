@@ -94,7 +94,21 @@ public class ProductionCode {
     }
 
 
+    public static int scanner() {
+        int c;
 
+        while (true) {
+            try {
+                c = input.nextInt();
+                break; // Exit the loop if integer input is successfully read
+            } catch (java.util.NoSuchElementException e) {
+                logger.log(Level.SEVERE, "Invalid input. Please enter a valid integer.", e);
+                input.nextLine();
+            }
+        }
+        input.nextLine();// Clear the input buffer
+        return c;
+    }
 
 
 
@@ -131,7 +145,7 @@ public class ProductionCode {
                     String email = input.nextLine();
                     utype = user.searchEmail(email);
 
-                    while (utype < 0) {
+                    while (utype < 0) {  // the email does not match with anything
 
                         logger.info("Please enter your email again : ");
                         email = input.nextLine();
@@ -142,7 +156,7 @@ public class ProductionCode {
                     String password = input.nextLine();
                     y = user.searchPassword(password);
 
-                    while (y == -33) {
+                    while (y == -33) { // the password does not match with anything
 
                         logger.info("Please enter your password again : ");
                         password = input.nextLine();
@@ -195,21 +209,7 @@ public class ProductionCode {
 
 
 
-    public static int scanner() {
-        int c;
 
-        while (true) {
-            try {
-                c = input.nextInt();
-                break; // Exit the loop if integer input is successfully read
-            } catch (java.util.NoSuchElementException e) {
-                logger.log(Level.SEVERE, "Invalid input. Please enter a valid integer.", e);
-                input.nextLine();
-            }
-        }
-        input.nextLine();// Clear the input buffer
-        return c;
-    }
 
     public static void createAccountPage()
     {
@@ -308,6 +308,14 @@ public class ProductionCode {
         }
     }
 
+
+    public static void serviceProviderActivities(){
+
+
+
+
+
+    }
 
 
 }
