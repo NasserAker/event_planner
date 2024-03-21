@@ -9,6 +9,7 @@ import com.sun.tools.javac.Main;
 import ApplicationClasses.*;
 
 import static ApplicationClasses.Admin.initializeAdmin;
+import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.User.initializeUsers;
 
 import static ApplicationClasses.Date.initializeAvailableDates;
@@ -19,7 +20,7 @@ public class ProductionCode {
 
 
     public static final String ENTER_CHOICE= "Enter your choice : ";
-    protected static Scanner input = new Scanner(System.in);
+    public static Scanner input = new Scanner(System.in);
 
     protected static Logger logger;
 
@@ -38,55 +39,6 @@ public class ProductionCode {
     }
 
 
-
-
-
-    public static void main(String[] args) {
-
-
-        logger = Logger.getLogger(Main.class.getName());
-
-
-
-        initializeAdmin("rayabreak02@gmail.com", "raya", "12345"); //one admin
-        initializeUsers(); // multiple users
-
-
-
-
-        ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
-        ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
-        ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
-
-        ServiceProvider.getServiceProvList().add(s1);
-        ServiceProvider.getServiceProvList().add(s2);
-        ServiceProvider.getServiceProvList().add(s3);
-
-
-        s1.getReservaeddates().put(r2, "24/10/2024");//service provider is reserved at 24/10/2024
-
-
-
-
-
-
-
-        Logging.getQ().put(s1.getEmail(), s1.getPass());
-        Logging.getQ().put(s3.getEmail(), s3.getPass());
-        Logging.getQ().put(s2.getEmail(), s3.getPass());
-
-
-        //all users including service providers and admins must be added to the arraylist q
-
-        initializeAvailableVenues();
-
-        initializeAvailableDates();
-
-        homePage();
-
-    }
-
-
     public static int scanner() {
         int c;
 
@@ -102,6 +54,41 @@ public class ProductionCode {
         input.nextLine();// Clear the input buffer
         return c;
     }
+
+
+    public static void main(String[] args) {
+
+
+        logger = Logger.getLogger(Main.class.getName());
+
+
+
+        initializeAdmin("rayabreak02@gmail.com", "raya", "12345"); //one admin
+        initializeUsers(); // multiple users
+
+
+
+// initialize servis provider
+        ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
+        ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
+        ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
+        ServiceProvider.getServiceProvList().add(s1);
+        ServiceProvider.getServiceProvList().add(s2);
+        ServiceProvider.getServiceProvList().add(s3);
+        Logging.getQ().put(s1.getEmail(), s1.getPass());
+        Logging.getQ().put(s3.getEmail(), s3.getPass());
+        Logging.getQ().put(s2.getEmail(), s3.getPass());
+
+        initializeAvailableVenues();
+
+        initializeAvailableDates();
+
+        homePage();
+
+    }
+
+
+
 
 
 
@@ -125,7 +112,7 @@ public class ProductionCode {
 
             switch (accountChoice) {
                 case 1: {
-                    createAccountPage();
+                    createAccountPage(); // declared in the Operations Class
                     break;
                 }
 
@@ -200,37 +187,6 @@ public class ProductionCode {
 
     }
 
-
-
-
-
-    public static void createAccountPage()
-    {
-
-        logger.info("Enter your Email:");
-        String email = input.nextLine();
-        logger.info("Enter your username:");
-        String username = input.nextLine();
-        logger.info("Enter your Gender : ");
-        String gen = input.nextLine();
-        logger.info("Enter your Phone number:");
-        String phnum = input.nextLine();
-        logger.info("Enter your Address:");
-        String address = input.nextLine();
-        logger.info("Enter your Password:");
-        String password = input.nextLine();
-
-        User r = new User(username, password, address, phnum, email, gen,0.0);
-        boolean create = Operations.addUser(r);
-        if (create) {
-            logger.info("A new account was created successfully");
-            Logging.getQ().put(email, password);
-        }
-        else
-            logger.info("This account already exists");
-
-        homePage();
-    }
 
 
 
