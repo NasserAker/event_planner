@@ -24,6 +24,13 @@ public class Admin {
     }
 
     public static List<Admin> getAdminList() {return adminList;}
+
+
+    public static void initializeAdmin(String email, String username, String password) {
+        Admin admin = new Admin(email, username, password);
+        Admin.getAdminList().add(admin);
+        Logging.getQ().put(admin.getEmail(), admin.getPassword());
+    }
     public String getPassword() {return password;}
     public void logging(boolean t) { logState=t; }
     public String getName() {return username;}

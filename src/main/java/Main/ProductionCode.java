@@ -8,6 +8,7 @@ import java.util.logging.*;
 import com.sun.tools.javac.Main;
 import ApplicationClasses.*;
 
+import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 
@@ -44,19 +45,9 @@ public class ProductionCode {
         logger = Logger.getLogger(Main.class.getName());
 
 
-        Admin a = new Admin("rayabreak02@gmail.com", "raya", "12345");
-        Admin.getAdminList().add(a);
-        Logging.getQ().put(a.getEmail(), a.getPassword());
 
-        User r1 = new User("sara", "111", "QAM", "02872228", "sara@gmail.com", "Female", 0.0);
-        User r2 = new User("dana", "222", "DAM", "02872532", "danabutterfly4@gmail.com", "Female", 0.0);
-
-        User.getUserList().add(r1);
-        User.getUserList().add(r2);
-
-        Logging.getQ().put(r1.getEmail(), r1.getPassword());
-        Logging.getQ().put(r2.getEmail(), r2.getPassword());
-
+        initializeAdmin("rayabreak02@gmail.com", "raya", "12345");
+        initializeUser
 
 
 
