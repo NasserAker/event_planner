@@ -1,5 +1,6 @@
 package StepsDefinition;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import ApplicationClasses.event;
@@ -18,18 +19,21 @@ public class adminstep {
     {
         super();
         this.obj=iobj;
-        event c1 = new event("wedding",5000,1,"big hall");
+        event c1 = new event("wedding",5000,1,"bighall");
         obj.addevent(c1);
 
     }
 
-
-    @When("the name is {string} and the price is {int} and the num of av p is {int}")
-    public void the_name_is_and_the_price_is_and_the_num_of_av_p_is(String nam, int price, int ava, String desc) {
-        obj.event(nam,price,ava,desc);
-        name =nam;
+    @Given("I'm the admin")
+    public void iMTheAdmin() {
+        obj.iMTheAdmin(obj);
     }
 
+@When("the name is {string} and the price is {int} and the num of av p is {int} and the description {string}")
+public void theNameIsAndThePriceIsAndTheNumOfAvPIsAndTheDescription(String nam, int price, int ava, String desc) {
+    obj.event(nam,price,ava,desc);
+    name =nam;
+}
     @Then("the event add successfully")
     public void the_event_add_successfully() {
             obj.addeve(name);

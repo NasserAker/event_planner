@@ -18,6 +18,10 @@ public class login {
     {
         obj.isLogged=false;
     }
+    public void iMTheAdmin(login obj)
+    {
+        obj.isLogged=true;
+    }
     private static final Logger logger = Logger.getLogger(login.class.getName());
     public boolean getIsLogged(){
         return  isLogged;
