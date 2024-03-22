@@ -64,9 +64,9 @@ public class Logging {
                 break;
             }}
 
-        if (flag) {
-            flag = isUser(flag);
-        }
+//        if (flag) {
+//            flag = isUser(flag);
+//        }
 
         if (flag) {
             isServiceProv(flag);
@@ -91,18 +91,18 @@ public class Logging {
         return flag;
     }
 
-    public boolean isUser(boolean flag) {
-        for (int j = 0; j < User.getUserList().size(); j++) {
-            if (email.equals(User.getUserList().get(j).getEmail())) {
-                flag = false;
-                successfulusername=true;
-                type = 1;
-                y=j;
-                break;
-            }
-        }
-        return flag;
-    }
+//    public boolean isUser(boolean flag) {
+//        for (int j = 0; j < User.getUserList().size(); j++) {
+//            if (email.equals(User.getUserList().get(j).getEmail())) {
+//                flag = false;
+//                successfulusername=true;
+//                type = 1;
+//                y=j;
+//                break;
+//            }
+//        }
+//        return flag;
+//    }
 
 
     public int searchPassword(String password2){
