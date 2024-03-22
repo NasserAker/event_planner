@@ -6,12 +6,13 @@ import java.util.List;
 public class User {
     private static String username;
     private static String address;
+
     private static String phone;
     private static String email;
     private static String gender;
 
     private static String password;
- 
+
 
     private static final List<User> allUsers = new ArrayList<>();
 
@@ -22,7 +23,7 @@ public class User {
         this.phone = phone;
         this.email = email;
         this.gender = gender;
-       
+
     }
 
     public static List<User> getUserList() {
@@ -95,7 +96,7 @@ public class User {
         this.gender = gender;
     }
 
-    
+
     public static String getPassword() {
         return password;
     }
@@ -104,5 +105,5 @@ public class User {
         this.password = password;
     }
 
-    
+
 }
