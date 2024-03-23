@@ -8,11 +8,20 @@ public class Venue {
     private String location;
 
     private int capacity;
+    private double cost; // New field for the cost
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
 
-    public Venue(String name, String location, int capacity) {
+    public double getCost() {
+        return cost;
+    }
+
+    public Venue(String name, String location, int capacity , double cost) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
+        this.cost = cost;
     }
 
     // ArrayList to store available venues
@@ -47,17 +56,18 @@ public class Venue {
     public static void initializeAvailableVenues() {
         // Add available dates to the Date class
 
-        availableVenues.add(new Venue("Moon", "Address 1", 100));
+        availableVenues.add(new Venue("Moon", "Address 1", 100, 1500.0));
 
-        availableVenues.add(new Venue("Sun", "Address 2", 150));
-        availableVenues.add(new Venue("Star", "Address 3", 200));
-        availableVenues.add(new Venue("Sky", "Address 4", 120));
-        availableVenues.add(new Venue("Sky", "Address 4", 120));
+        availableVenues.add(new Venue("Sun", "Address 2", 150, 2000.0));
+        availableVenues.add(new Venue("Star", "Address 3", 200 , 2500.0));
+        availableVenues.add(new Venue("Sky", "Address 4", 120, 1800.0));
+        availableVenues.add(new Venue("Sky", "Address 4", 120 , 1800.0));
 
         // Add more dates as needed...
     }
 
     public static List<Venue> getAvailableVenues() {
+
         return availableVenues;
     }
     // toString method to print venue details
@@ -66,6 +76,7 @@ public class Venue {
         return "Venue{" +
                 "name='" + name + '\'' +
                 ", location='" + location + '\'' +
+                ", cost=" + cost +
                 '}';
     }
 

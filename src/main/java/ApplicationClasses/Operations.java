@@ -1,9 +1,13 @@
 package ApplicationClasses;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static ApplicationClasses.Date.*;
 import static ApplicationClasses.ServiceProvider.logger;
-import static Main.ProductionCode.homePage;
-import static Main.ProductionCode.input;
 import static ApplicationClasses.User.*;
+import static Main.ProductionCode.*;
+
 
 public class Operations {
 
@@ -11,7 +15,7 @@ public class Operations {
     public static boolean addUser(User c) {
         boolean add=true;
         for(int i = 0; i< User.getUserList().size() ; i++) {
-            if((User.getUserList().get(i).getEmail().equals(c.getEmail()))||((User.getUserList().get(i).getEmail().equals(c.getEmail())) && (User.getUserList().get(i).getUsername().equals(c.getUsername())) && (User.getUserList().get(i).getAddress().equals(c.getAddress()))&& (User.getUserList().get(i).getPhone().equals(c.getPhone()))))
+            if((getEmail().equals(getEmail()))||((getEmail().equals(getEmail())) && (getUsername().equals(getUsername())) && (getAddress().equals(getAddress()))&& (getPhone().equals(getPhone()))))
             {
                 add = false;
                 break;
@@ -61,14 +65,78 @@ public class Operations {
     }
 
 
-    public static void reserveWedding(){
 
 
 
+    public static void reserveWedding() {
+        logger.info("\nReserve Wedding:");
 
+        // Display available venues
+        logger.info("Available Venues:");
+        List<Venue> availableVenues = Venue.getAvailableVenues();
+        for (int i = 0; i < availableVenues.size(); i++) {
+            logger.info((i + 1) + ". " + availableVenues.get(i).getName());
+        }
 
+        // Prompt user to choose a venue
+        logger.info("Choose a venue by entering the corresponding number:");
+        int venueChoice = scanner();
 
+        // Validate the venue choice
+        if (venueChoice < 1 || venueChoice > availableVenues.size()) {
+            logger.info("Invalid choice. Please enter a valid venue number.");
+            return;
+        }
+
+        // Get the selected venue
+        Venue selectedVenue = availableVenues.get(venueChoice - 1);
+
+        // Display available dates for the selected venue
+        logger.info("Available Dates for " + selectedVenue.getName() + ":");
+        List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
+        for (int i = 0; i < availableDates.size(); i++) {
+            logger.info((i + 1) + ". " + availableDates.get(i));
+        }
+
+        // Prompt user to choose a date
+        logger.info("Choose a date by entering the corresponding number:");
+        int dateChoice = scanner();
+
+        // Validate the date choice
+        if (dateChoice < 1 || dateChoice > availableDates.size()) {
+            logger.info("Invalid choice. Please enter a valid date number.");
+            return;
+        }
+
+        // Get the selected date
+        Date selectedDate = availableDates.get(dateChoice - 1);
+
+        // Proceed with the reservation process for the selected date and venue
+        // Add your reservation logic here...
     }
+
+    // Helper method to get available dates for the selected venue
+    private static List<Date> getAvailableDatesForVenue(int venueChoice) {
+        switch (venueChoice) {
+            case 1:
+                return availableDatesV1;
+            case 2:
+                return availableDatesV2;
+
+            case 3:
+                return availableDatesV3;
+            case 4:
+                return availableDatesV4;
+            case 5:
+                return availableDatesV5;
+
+
+
+            default:
+                return new ArrayList<>(); // Return an empty list if venue choice is invalid
+        }
+    }
+
 
 
 }

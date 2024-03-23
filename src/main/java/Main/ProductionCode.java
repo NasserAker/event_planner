@@ -2,23 +2,19 @@ package Main;
 
 
 import ApplicationClasses.Logging;
-import ApplicationClasses.ServiceProvider;
+import ApplicationClasses.Operations;
+import ApplicationClasses.User;
 import com.sun.tools.javac.Main;
 
 import java.util.Scanner;
 import java.util.logging.*;
 
-import com.sun.tools.javac.Main;
-import ApplicationClasses.*;
-
 import static ApplicationClasses.Admin.initializeAdmin;
-import static ApplicationClasses.Operations.*;
-import static ApplicationClasses.User.initializeUsers;
-
 import static ApplicationClasses.Date.initializeAvailableDates;
-import static ApplicationClasses.Operations.*;
+import static ApplicationClasses.Operations.viewUserProfile;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
+import static ApplicationClasses.AdditionalService.initializeAdditionalService;
 
 
 public class ProductionCode {
@@ -60,26 +56,26 @@ public class ProductionCode {
 
 
 
-        ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
-        ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
-        ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
+        //ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
+        //ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
+        //ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
 
-        ServiceProvider.getServiceProvList().add(s1);
-        ServiceProvider.getServiceProvList().add(s2);
-        ServiceProvider.getServiceProvList().add(s3);
-
-
-        s1.getReservaeddates().put(r2, "24/10/2024");//service provider is reserved at 24/10/2024
+        //ServiceProvider.getServiceProvList().add(s1);
+        //ServiceProvider.getServiceProvList().add(s2);
+        //ServiceProvider.getServiceProvList().add(s3);
 
 
+       // s1.getReservaeddates().put(r2, "24/10/2024");//service provider is reserved at 24/10/2024
 
 
 
 
 
-        Logging.getQ().put(s1.getEmail(), s1.getPass());
-        Logging.getQ().put(s3.getEmail(), s3.getPass());
-        Logging.getQ().put(s2.getEmail(), s3.getPass());
+
+
+        //Logging.getQ().put(s1.getEmail(), s1.getPass());
+        //Logging.getQ().put(s3.getEmail(), s3.getPass());
+        //Logging.getQ().put(s2.getEmail(), s3.getPass());
 
 
         //all users including service providers and admins must be added to the arraylist q
@@ -88,6 +84,7 @@ public class ProductionCode {
 
         initializeAvailableDates();
 
+        initializeAdditionalService();
         homePage();
 
     }
@@ -169,7 +166,7 @@ public class ProductionCode {
 
                         case 0: {
 
-                            adminActivities();
+                            //adminActivities();
                             break;
 
                         }
@@ -239,7 +236,7 @@ public class ProductionCode {
     }
 
 
-
+/*
     public static void adminActivities() {
         logger.info("Welcome, Admin!");
 
@@ -277,7 +274,7 @@ public class ProductionCode {
         }
     }
 
-
+*/
     public static void userActivities() {
         logger.info("Welcome, User!");
 
@@ -296,7 +293,7 @@ public class ProductionCode {
                     viewUserProfile();
                     break;
                 case 2:
-                    reserveWedding();
+                    Operations.reserveWedding();
                     break;
                 case 3:
                     loggedIn = false; // Exit the loop and log out
@@ -308,7 +305,7 @@ public class ProductionCode {
     }
 
 
-    public static void serviceProviderActivities(){
+   public static void serviceProviderActivities(){
 
 
 
