@@ -1,5 +1,7 @@
 package ApplicationClasses;
 
+import io.cucumber.java.tr.Ve;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -8,10 +10,13 @@ public class ReservationRequest {
     int customerId;
     String customer_name = "";
 
-    public ReservationRequest(int id , int csut_id , String cust_name){
+    Venue venue;
+
+    public ReservationRequest(int id , int csut_id , String cust_name , Venue venue){
         this.requestId = id ;
         this.customer_name = cust_name;
         this.customerId = csut_id;
+        this.venue = venue;
     }
     public ReservationRequest(){
         this.requestId = -1 ;
@@ -68,5 +73,8 @@ public class ReservationRequest {
     }
     public int GetcustId(){
         return customerId;
+    }
+    public String getusername() {
+        return this
     }
 }

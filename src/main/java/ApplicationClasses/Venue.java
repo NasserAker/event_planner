@@ -8,6 +8,10 @@ public class Venue {
     private String name;
     private String location;
     private int capacity;
+    ServiceProvider provider;
+
+
+    Venue venue ;
 
 
     private static final List<Venue> availableVenues = new ArrayList<>();
@@ -18,10 +22,12 @@ public class Venue {
 
 
 
-    public Venue(String name, String location, int capacity) {
+    public Venue(String name, String location, int capacity ) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
+        this.provider = new ServiceProvider();
+
     }
     // ArrayList to store available venues
     // Getters and setters
@@ -97,6 +103,10 @@ public class Venue {
 
     public static void addVenueToTheList(Venue venue){
         availableVenues.add(venue);
+    }
+
+    public String get_service_provider(){
+        return this.provider.getEmail();
     }
 
 }
