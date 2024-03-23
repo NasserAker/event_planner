@@ -93,4 +93,8 @@ public class Venue {
         }
     }
 
+    public static void addVenueToTheList(Venue venue){
+        availableVenues.add(venue);
+    }
+
 }

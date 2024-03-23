@@ -64,11 +64,11 @@ public class ReserveVenue {
     }
     @Then("the a reservation request should be sent to the service provider")
     public void the_a_reservation_request_should_be_sent_to_the_service_provider() {
-        ReservationRequest.RequestList.add(request.GetRequestId());
+        ReservationRequest.RequestList.add(request);
     }
     @Then("I should receive a response with details")
     public void i_should_receive_a_response_with_details() {
-            Assert.assertTrue(ReservationRequest.ApprovedRequests.contains(request.GetRequestId()));
+            Assert.assertTrue(ReservationRequest.ApprovedRequests.contains(request));
     }
 
     @When("I attempt to submit a reservation request without specifying the date and time")

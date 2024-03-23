@@ -8,17 +8,19 @@ public class ReservationRequest {
     int customerId;
     private final UUID uniqueId;
 
+    
+
     public ReservationRequest() {
         this.uniqueId = UUID.randomUUID();
     }
 
 
-    public static final ArrayList<Integer> RequestList = new ArrayList<Integer>();
-    public static final ArrayList<Integer> ApprovedRequests = new ArrayList<Integer>();
-    public static final ArrayList<Integer> DeniedRequests = new ArrayList<Integer>();
+    public static final ArrayList<ReservationRequest> RequestList = new ArrayList<ReservationRequest>();
+    public static final ArrayList<ReservationRequest> ApprovedRequests = new ArrayList<ReservationRequest>();
+    public static final ArrayList<ReservationRequest> DeniedRequests = new ArrayList<ReservationRequest>();
 
     public boolean IsPending(){
-        return RequestList.contains(requestId);
+        return RequestList.contains(this);
     }
 
 
@@ -27,19 +29,23 @@ public class ReservationRequest {
     }
 
     public Integer SelectRequest(int index){
-        Integer item ;
-        item = RequestList.get(index);
+        Integer item  =-1  ;
+        for(ReservationRequest request : RequestList ){
+            if(request.requestId == index){
+                item = RequestList.get(index).requestId;
+            }
+        }
         return item;
     }
 
     public void ApproveRequest(){
-        ApprovedRequests.add(this.requestId);
-        RequestList.remove(this.requestId);
+        ApprovedRequests.add(this);
+        RequestList.remove(this);
     }
 
     public void DenyRequest( ){
-        DeniedRequests.add(this.requestId);
-        RequestList.remove(this.requestId);
+        DeniedRequests.add(this);
+        RequestList.remove(this);
     }
 
     public boolean Confirmation(){
