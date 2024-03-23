@@ -27,18 +27,46 @@ public class ServiceProvider {
         logger.addHandler(handler);
 
 
-        // Log different types of messages
-        logger.info("Choose what action you want to do :");
-        logger.info("1- Add a new venue.");
-        logger.info("2- Add a new additional service for events.");
-        logger.info("3- See requests to reserve a venue.");
-        logger.info("4- change your personal information");
+        boolean cont = false;
+        Scanner scanner = new Scanner(System.in);
+
+        while (!cont){
 
 
+            // Log different types of messages
+            logger.info("Choose what action you want to do :");
+            logger.info("1- Add a new venue.");
+            logger.info("2- Add a new additional service for events.");
+            logger.info("3- change your personal information");
+    //        logger.info("4- Delete a venue.");
+    //        logger.info("5- Delete an additional service for events.");
+
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    ServiceProvider.addVenue();
+                    cont = true;
+                    break;
+                case "2":
+                    ServiceProvider.addService();
+                    cont = true;
+                    break;
+                case "3":
+                    ServiceProvider.edit_info();
+                    cont = true;
+                    break;
+                default:
+                    logger.info("Please Enter A number.");
+            }
+
+
+       }
 
     }
 
-    private void addVenue(){
+    private static void addVenue(){
         String name ="" ;
         String location="" ;
         int capacity =0;
@@ -71,8 +99,7 @@ public class ServiceProvider {
         logger.info("venue added successfully.");
 
     }
-
-    private void addService(){
+    private static void addService(){
         String name ="" ;
         String provider_name="" ;
         double price =0.0;
@@ -106,19 +133,41 @@ public class ServiceProvider {
 
 
     }
+    private static void edit_info() {
+        boolean cont = false;
 
-    private void approveRequests(){
-        logger.info("You Have the following Requests :");
-        for(ReservationRequest request : ReservationRequest.RequestList){
-            if(){
+        while (!cont){
 
-            logger.info("1- ID : " + request.GetRequestId() + "  customer name : " + request.Getname() + "  customer ID : " + request.GetcustId());
+            logger.info("choose what you want to edit :");
+            logger.info("1- Name");
+            logger.info("2- E-Mail");
+            logger.info("3- Address");
+            logger.info("4- Phone");
+
+            Scanner scanner = new Scanner(System.in);
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    cont = true;
+                    break;
+                case "2":
+                    cont = true;
+                    break;
+                case "3":
+                    cont = true;
+                    break;
+                case "4":
+                    cont = true;
+                    break;
+                default:
+                    logger.info("Please Enter A number.");
             }
+
+
         }
 
-
-
     }
-
 
 }
