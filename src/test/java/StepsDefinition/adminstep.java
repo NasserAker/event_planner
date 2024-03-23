@@ -19,7 +19,7 @@ public class adminstep {
     {
         super();
         this.obj=iobj;
-        event c1 = new event("wedding",5000,1,"bighall");
+        event c1 = new event("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c1);
 
     }
@@ -30,8 +30,8 @@ public class adminstep {
     }
 
 @When("the name is {string} and the price is {int} and the num of av p is {int} and the description {string}")
-public void theNameIsAndThePriceIsAndTheNumOfAvPIsAndTheDescription(String nam, int price, int ava, String desc) {
-    obj.event(nam,price,ava,desc);
+public void theNameIsAndThePriceIsAndTheNumOfAvPIsAndTheDescription(String nam, int price, int ava, String desc,String loc,int time,String theme) {
+    obj.event(nam,price,ava,desc,loc,time,theme);
     name =nam;
 }
     @Then("the event add successfully")

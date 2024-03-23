@@ -169,7 +169,9 @@ public class Main {
             logger.info("2: List all events");
             logger.info("3: Search for a event by name");
             logger.info("4: Search for a event by price");
-            logger.info("5: Return to admin menu");
+            logger.info("5: delete an event by name");
+            logger.info("6: Edit the event information ");
+            logger.info("7: Return to admin menu");
 
             int action;
             try {
@@ -185,9 +187,53 @@ public class Main {
                 case 2 -> listAllevents();
                 case 3 -> searcheventbyname(input);
                 case 4 -> searcheventbyprice(input);
-                case 5 -> continueManaging = false;
+                case 5 -> deleteevent(input);
+                case 6 -> editevent(input);
+                case 7 -> continueManaging = false;
                 default -> printing();
             }
+        }
+    }
+    private static void editevent(Scanner input) {
+        logger.info("Enter the name of the event you want to edit:");
+        String eventNameToEdit = input.next();
+
+        int index = o.findEventIndexByName(eventNameToEdit);
+        if (index != -1) {
+            logger.info("Event found. Enter the new information for the event:");
+            logger.info("Enter the new name of the event:");
+            String newName = input.next();
+            logger.info("Enter the new price of the event:");
+            int newPrice = input.nextInt();
+            logger.info("Enter the new number of available venue:");
+            int newAvailability = input.nextInt();
+            logger.info("Enter the new description for the event:");
+            String newDescription = input.next();
+            logger.info("Enter the new location for the event:");
+            String newLocation = input.next();
+            logger.info("Enter the new time the event will happen at:");
+            int newTime = input.nextInt();
+            logger.info("Enter the new theme for the event:");
+            String newTheme = input.next();
+
+            // Update the event with the new information
+            o.editEvent(index, newName, newPrice, newAvailability, newDescription, newLocation, newTime, newTheme);
+
+            logger.info("Event edited successfully.");
+        } else {
+            logger.info("No event with the name '" + eventNameToEdit + "' found.");
+        }
+    }
+    private static void deleteevent(Scanner input) {
+        logger.info("Enter the name of the event you want to delete:");
+        String eventNameToDelete = input.next();
+
+        int deleted = o.deleteEventByName(eventNameToDelete);
+
+        if (deleted == 1) {
+            logger.info("Event '" + eventNameToDelete + "' deleted successfully.");
+        } else {
+            logger.info("No event with the name '" + eventNameToDelete + "' found.");
         }
     }
     private static void searcheventbyprice(Scanner input) {
@@ -205,6 +251,9 @@ public class Main {
                 logger.info(Avalable);
                 logger.info(f);
                 logger.info(Description+c.getDescrtion());
+                logger.info("location:- "+c.getlocation());
+                logger.info("time:- "+c.gettime());
+                logger.info("theme:- "+c.gettheme());
                 l=1;
             }
             if(l==0)
@@ -227,6 +276,10 @@ public class Main {
             logger.info("Price:- "+c.getPrice());
             logger.info(Avalable+c.getAvailable());
             logger.info(Description+c.getDescrtion());
+            logger.info("location:- "+c.getlocation());
+            logger.info("time:- "+c.gettime());
+            logger.info("theme:- "+c.gettheme());
+
         }
     }
     private static void listAllevents() {
@@ -241,8 +294,13 @@ public class Main {
         int availability = input.nextInt();
         logger.info("Enter a description for the hall:");
         String description = input.next();
-
-        o.event(name, price, availability, description);
+        logger.info("Enter a location for the event:");
+        String location = input.next();
+        logger.info("Enter the time the event will happen at :");
+        int time = input.nextInt();
+        logger.info("Enter a theme for the event:");
+        String theme = input.next();
+        o.event(name, price, availability, description,location,time,theme);
         logger.info("event added successfully.");
     }
 
@@ -253,7 +311,8 @@ public class Main {
             logger.info("1: Change user information");
             logger.info("2: Add new user");
             logger.info("3: See all user accounts");
-            logger.info("4: Return to admin menu");
+            logger.info("4: delete an accounts");
+            logger.info("5: Return to admin menu");
             int action;
            try{
             action = input.nextInt();}
@@ -266,11 +325,26 @@ public class Main {
                 case 1 -> changeUserInformation(input);
                 case 2 -> addUser(input);
                 case 3 -> seeAllUsers();
-                case 4 -> continueManaging = false;
+                case 4 -> deleteaccounts();
+                case 5 -> continueManaging = false;
                 default -> printing();
             }
         }
     }
+    private static void deleteaccounts() {
+        Scanner input = new Scanner(System.in);
+        logger.info("Enter the username of the account you want to delete:");
+        String usernameToDelete = input.next();
+
+        int deleted = o.deleteUserByUsername(usernameToDelete);
+
+        if (deleted == 1) {
+            logger.info("User account '" + usernameToDelete + "' deleted successfully.");
+        } else {
+            logger.info("No user account with the username '" + usernameToDelete + "' found.");
+        }
+    }
+
     private static void seeAllUsers() {
         o.seeUser();
     }

@@ -150,8 +150,8 @@ public class login {
             logger.info("Gmail:- "+c.getUserName() +"\t"+"Password:- "+c.getPass()+"\t"+"BirthDate:- "+c.getB());
         }
     }
-    public void event(String name, int price, int ava, String desc) {
-        ev.add(new event(name, price, ava, desc));
+    public void event(String name, int price, int ava, String desc,String location, int time,String theme) {
+        ev.add(new event(name, price, ava, desc,location,time,theme));
 
         logger.info("You have added the event successfully ");
     }
@@ -201,8 +201,49 @@ public class login {
                 logger.info("The num of available halls:- ");
                 logger.info(f);
                 logger.info("Discribtion about it:- "+c.getDescrtion());
+                logger.info("location:- "+c.getlocation());
+                logger.info("time:- "+c.gettime());
+                logger.info("theme:- "+c.gettheme());
             }
         }
     }
+    public int deleteUserByUsername(String username) {
+        for (Iterator<User> iterator = up.iterator(); iterator.hasNext();) {
+            User user = iterator.next();
+            if (user.getUserName().equals(username)) {
+                iterator.remove();
+                return 1;
+            }
+        }
+        return 0;
+    }
+    public int deleteEventByName(String eventName) {
+        for (Iterator<event> iterator = ev.iterator(); iterator.hasNext();) {
+            event e = iterator.next();
+            if (e.geteventName().equals(eventName)) {
+                iterator.remove();
+                return 1; // Indicates successful deletion
+            }
+        }
+        return 0; // Indicates event not found
+    }
+    public int findEventIndexByName(String eventName) {
+        for (int i = 0; i < ev.size(); i++) {
+            if (ev.get(i).geteventName().equals(eventName)) {
+                return i; // Return the index of the event if found
+            }
+        }
+        return -1; // Return -1 if the event is not found
+    }
 
+    public void editEvent(int index, String newName, int newPrice, int newAvailability, String newDescription, String newLocation, int newTime, String newTheme) {
+        event e = ev.get(index);
+        e.seteventName(newName);
+        e.setPrice(newPrice);
+        e.setAvailable(newAvailability);
+        e.setDescrtion(newDescription);
+        e.setlocation(newLocation);
+        e.settime(newTime);
+        e.settheme(newTheme);
+    }
 }
