@@ -110,7 +110,8 @@ public class ServiceProvider {
     private void approveRequests(){
         logger.info("You Have the following Requests :");
         for(ReservationRequest request : ReservationRequest.RequestList){
-            logger.info("1- ID :" + request.GetRequestId() + " customer name : ");
+
+            logger.info("1- ID : " + request.GetRequestId() + "  customer name : " + request.Getname() + "  customer ID : " + request.GetcustId());
         }
 
     }

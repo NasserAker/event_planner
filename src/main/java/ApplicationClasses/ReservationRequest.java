@@ -6,16 +6,20 @@ import java.util.UUID;
 public class ReservationRequest {
     private int requestId;
     int customerId;
-    private final UUID uniqueId;
+    String customer_name = "";
 
-    
-
-    public ReservationRequest() {
-        this.uniqueId = UUID.randomUUID();
+    public ReservationRequest(int id , int csut_id , String cust_name){
+        this.requestId = id ;
+        this.customer_name = cust_name;
+        this.customerId = csut_id;
+    }
+    public ReservationRequest(){
+        this.requestId = -1 ;
+        this.customer_name = "No Name";
+        this.customerId = -1;
     }
 
-
-    public static final ArrayList<ReservationRequest> RequestList = new ArrayList<ReservationRequest>();
+     public static final ArrayList<ReservationRequest> RequestList = new ArrayList<ReservationRequest>();
     public static final ArrayList<ReservationRequest> ApprovedRequests = new ArrayList<ReservationRequest>();
     public static final ArrayList<ReservationRequest> DeniedRequests = new ArrayList<ReservationRequest>();
 
@@ -58,5 +62,11 @@ public class ReservationRequest {
 
     public int GetRequestId(){
         return requestId;
+    }
+    public String Getname(){
+        return customer_name;
+    }
+    public int GetcustId(){
+        return customerId;
     }
 }

@@ -8,6 +8,8 @@ public class Venue {
     private String name;
     private String location;
     private int capacity;
+
+
     private static final List<Venue> availableVenues = new ArrayList<>();
 
     private boolean available = true;
