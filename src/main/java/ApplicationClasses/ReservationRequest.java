@@ -75,6 +75,6 @@ public class ReservationRequest {
         return customerId;
     }
     public String getusername() {
-        return this
+        return this.customer_name;
     }
 }

@@ -30,20 +30,25 @@ public class Main {
         });
         logger.addHandler(handler);
 
-        displayMainMenu();
-        Scanner input = new Scanner(System.in);
-        int choice = input.nextInt();
+        while (true){
 
-        switch (choice) {
-            case 1 -> signUpProcedure(input);
-            case 2 -> loginProcedure(input);
-            default -> logger.info("Invalid option selected.");
+            displayMainMenu();
+            Scanner input = new Scanner(System.in);
+            int choice = input.nextInt();
+
+            switch (choice) {
+                case 1 -> signUpProcedure(input);
+                case 2 -> loginProcedure(input);
+                case 3 -> {return;}
+                default -> logger.info("Invalid option selected.");
+            }
         }
     }
 
     private static void displayMainMenu() {
         logger.info("1: Sign up to make a new account");
         logger.info("2: Login to your account");
+        logger.info("3: Exit");
     }
     static login o = new login();
     public static void adding(String u,String p,String bd)
@@ -106,9 +111,10 @@ public class Main {
         input.next(); // consume invalid input
         return; // exit the method
     }
+///////////////////////////////////////////////////////////////////////////////////////////
         switch (choice) {
             case 1 -> handleAdminActions(input);
-//            case 2 ->
+            case 2 -> ServiceProvider.main(new String[]{"0"});
            // case 2 -> handleCustomerActions(input);
           //  default -> logger.info("Invalid user ID.");
         }
@@ -123,7 +129,7 @@ public class Main {
             logger.info("4: Log out");
             int choice = input.nextInt();
             switch (choice) {
-               // case 1 -> customerBuyProduct(input);
+//                case 1 -> customerBuyProduct(input);
                // case 2 -> customerChangePassword(input);
               //  case 3 -> customerViewOrderHistory(input);
                 case 4 -> {
