@@ -123,9 +123,9 @@ public class Main {
             logger.info("4: Log out");
             int choice = input.nextInt();
             switch (choice) {
-               ///// case 1 -> customerBuyProduct(input);
-               // ///case 2 -> customerChangePassword(input);
-            ///   // case 3 -> customerViewOrderHistory(input);
+               // case 1 -> customerBuyProduct(input);
+               // case 2 -> customerChangePassword(input);
+              //  case 3 -> customerViewOrderHistory(input);
                 case 4 -> {
                     continueShopping = false;
                     logger.info("Logging out as customer.");
