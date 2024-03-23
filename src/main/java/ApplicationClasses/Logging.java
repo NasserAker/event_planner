@@ -55,7 +55,7 @@ public class Logging {
 
         email = email1;
 
-        for (int i = 0; i < Admin.getAdminList().size(); i++) {
+        for (int i = 0; i < User.getUserList().size(); i++) {
             if (email.equals(Admin.getAdminList().get(i).getEmail())) {
                 flag = false;
                 successfulusername=true;

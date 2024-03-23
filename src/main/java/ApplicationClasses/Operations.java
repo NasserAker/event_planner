@@ -3,10 +3,12 @@ package ApplicationClasses;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
 import static ApplicationClasses.ServiceProvider.logger;
 import static ApplicationClasses.User.*;
 import static Main.ProductionCode.*;
+
 
 
 public class Operations {
@@ -113,7 +115,45 @@ public class Operations {
 
         // Proceed with the reservation process for the selected date and venue
         // Add your reservation logic here...
+
+
+
+        logger.info("Available Additional Services:");
+        AdditionalService.initializeAdditionalService();
+        for (int i = 0; i < availableServices.size(); i++) {
+            AdditionalService service = availableServices.get(i);
+            logger.info((i + 1) + ". " + service.getServiceName() + " - Cost: $" + service.getCost());
+        }
+        logger.info("0. None");
+
+        // Prompt user to choose additional service
+        logger.info("Choose an additional service by entering the corresponding number:");
+        int additionalServiceChoice = scanner();
+
+        // Validate the additional service choice
+        if (additionalServiceChoice < 0 || additionalServiceChoice > availableServices.size()) {
+            logger.info("Invalid choice. Please enter a valid number.");
+            return;
+        }
+
+        // Process the selected additional service
+        AdditionalService selectedService = null;
+        if (additionalServiceChoice != 0) {
+            selectedService = availableServices.get(additionalServiceChoice - 1);
+        }
     }
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Helper method to get available dates for the selected venue
     private static List<Date> getAvailableDatesForVenue(int venueChoice) {
