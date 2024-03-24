@@ -303,13 +303,31 @@ public class ProductionCode {
        boolean loggedIn = true;
        while (loggedIn) {
            logger.info("\nService Provider Menu:");
-           logger.info("1. View/Edit Wedding Listings");
-           logger.info("2. Manage User Accounts");
-
-           logger.info("5. Log Out");
+           logger.info("1. Add a new Venue");
+           logger.info("2. Add a new additional service for events.");
+           logger.info("3. change your personal information");
+           logger.info("4. Delete a venue.");
+           logger.info("5. Delete an additional service for events.");
+           logger.info("6. Log Out");
            logger.info(ENTER_CHOICE);
 
            int choice = scanner(); // Get user input
+           switch (choice) {
+               case "1":
+                   ServiceProvider.addVenue();
+                   cont = true;
+                   break;
+               case "2":
+                   ServiceProvider.addService();
+                   cont = true;
+                   break;
+               case "3":
+                   ServiceProvider.edit_info();
+                   cont = true;
+                   break;
+               default:
+                   logger.info("Please Enter A number.");
+           }
 
 
     }

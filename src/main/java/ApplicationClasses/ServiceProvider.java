@@ -1,9 +1,6 @@
 package ApplicationClasses;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
@@ -33,8 +30,8 @@ public class ServiceProvider {
     String pass;
 
 
-    protected static final List<ServiceProvider> ServiceProv_LIST = new ArrayList<>() ;
-    private final Map<User,String> reservaedDates= new HashMap<>();
+    protected static final List<ServiceProvider> ServiceProv_LIST = new ArrayList<>();
+    private final Map<User, String> reservaedDates = new HashMap<>();
 
 
     static final Logger logger = Logger.getLogger(ServiceProvider.class.getName());
@@ -69,14 +66,6 @@ public class ServiceProvider {
     }
 
 
-    public ServiceProvider() {
-        logState=false;
-        pass="worker123";
-
-    }
-
-
-
     public ServiceProvider(String email, String name, String password, String address, String phone, String iD, boolean available) {
         super();
         this.pass = password;
@@ -86,13 +75,10 @@ public class ServiceProvider {
         this.idd = iD;
         this.available = available;
 
-        this.email=email;
+        this.email = email;
 
     }
 
-
-    public Map<User,String> getReservaeddates() {
-        return reservaedDates;}
 
     public String getPass() {
         return pass;
@@ -101,24 +87,144 @@ public class ServiceProvider {
     public String getEmail() {
         return email;
     }
-    public void logging(boolean t) {logState=t;}
-    public boolean getLogState() {return logState;}
+
+    public void logging(boolean t) {
+        logState = t;
+    }
+
+    public boolean getLogState() {
+        return logState;
+    }
+
     public String getName() {
         return name;
     }
-    public void setName(String name) {this.name = name;}
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getAddress() {
         return address;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public String getPhone() {
         return phone;
     }
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
 
+    private static void addVenue() {
+        String name = "";
+        String location = "";
+        int capacity = 0;
+
+        Scanner scanner = new Scanner(System.in);
+
+        logger.info("Enter Venue Name :");
+        name = scanner.nextLine();
+
+        logger.info("Enter Venue Location :");
+        location = scanner.nextLine();
+
+        logger.info("Enter Venue Reserving Price : ");
+
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                logger.info("PLEASE ENTER A NUMBER :");
+                capacity = Integer.parseInt(scanner.nextLine());
+                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        }
+
+
+        Venue venue = new Venue(name, location, capacity);
+        Venue.addVenueToTheList(venue);
+        logger.info("venue added successfully.");
+
+    }
+
+    private static void addService() {
+        String name = "";
+        String provider_name = "";
+        double price = 0.0;
+
+        Scanner scanner = new Scanner(System.in);
+
+        logger.info("Enter Service Name :");
+        name = scanner.nextLine();
+
+        logger.info("Enter your name :");
+        provider_name = scanner.nextLine();
+
+        logger.info("Enter Service Price : ");
+
+        boolean validInput = false;
+
+        while (!validInput) {
+            try {
+                logger.info("PLEASE ENTER A NUMBER :");
+                price = Integer.parseInt(scanner.nextLine());
+                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid input. Please enter a valid number.");
+            }
+        }
+
+
+        Service service = new Service(name, price, provider_name);
+        Service.add_service(service);
+        logger.info("Service added successfully.");
+
+
+    }
+
+    private static void edit_info() {
+        boolean cont = false;
+
+        while (!cont) {
+
+            logger.info("choose what you want to edit :");
+            logger.info("1- Name");
+            logger.info("2- E-Mail");
+            logger.info("3- Address");
+            logger.info("4- Phone");
+
+            Scanner scanner = new Scanner(System.in);
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    cont = true;
+                    break;
+                case "2":
+                    cont = true;
+                    break;
+                case "3":
+                    cont = true;
+                    break;
+                case "4":
+                    cont = true;
+                    break;
+                default:
+                    logger.info("Please Enter A number.");
+            }
+
+
+        }
+
+
+    }
 }
