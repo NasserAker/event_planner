@@ -121,40 +121,7 @@ public class ServiceProvider {
     }
 
 
-    private static void addService() {
-        String name = "";
-        String provider_name = "";
-        double price = 0.0;
 
-        Scanner scanner = new Scanner(System.in);
-
-        logger.info("Enter Service Name :");
-        name = scanner.nextLine();
-
-        logger.info("Enter your name :");
-        provider_name = scanner.nextLine();
-
-        logger.info("Enter Service Price : ");
-
-        boolean validInput = false;
-
-        while (!validInput) {
-            try {
-                logger.info("PLEASE ENTER A NUMBER :");
-                price = Integer.parseInt(scanner.nextLine());
-                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-            }
-        }
-
-
-        AdditionalService service = new AdditionalService(name, price);
-        AdditionalService.add_service(service);
-        logger.info("Service added successfully.");
-
-
-    }
 
     private static void edit_info() {
         boolean cont = false;

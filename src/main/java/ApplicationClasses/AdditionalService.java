@@ -3,18 +3,15 @@ package ApplicationClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class AdditionalService {
+public class AdditionalService {
     private String serviceName;
     private double cost;
-    public static final List< AdditionalService> availableServices = new ArrayList<>();
-
+    public static final List<AdditionalService> availableServices = new ArrayList<>();
 
     public AdditionalService(String serviceName, double cost) {
         this.serviceName = serviceName;
         this.cost = cost;
     }
-
-
 
     public String getServiceName() {
         return serviceName;
@@ -32,18 +29,15 @@ public  class AdditionalService {
         this.cost = cost;
     }
 
-
-    public static void initializeAdditionalService(){
-
+    public static void initializeAdditionalService() {
         availableServices.add(new AdditionalService("Floral Decoration", 500.0));
         availableServices.add(new AdditionalService("Live Band", 1000.0));
         availableServices.add(new AdditionalService("Photography", 800.0));
-
     }
 
-
-
-
+    public static void addService(AdditionalService service) {
+        availableServices.add(service);
+    }
 
     @Override
     public String toString() {
