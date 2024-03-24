@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-    private static String username;
-    private static String address;
+    private  String username;
+    private  String address;
 
-    private static String phone;
-    private static String email;
-    private static String gender;
+    private  String phone;
+    private  String email;
+    private  String gender;
 
-    private static String password;
+    private  String password;
 
 
-    private static final List<User> allUsers = new ArrayList<>();
+    public static final List<User> allUsers = new ArrayList<>();
 
     public User(String username, String password, String address, String phone, String email, String gender, double cost) {
         this.username = username;
@@ -56,7 +56,7 @@ public class User {
 
     // Getters and setters for all properties
 
-    public static String getUsername() {
+    public  String getUsername() {
         return username;
     }
 
@@ -64,7 +64,7 @@ public class User {
         this.username = username;
     }
 
-    public static String getAddress() {
+    public String getAddress() {
         return address;
     }
 
@@ -72,7 +72,7 @@ public class User {
         this.address = address;
     }
 
-    public static String getPhone() {
+    public String getPhone() {
         return phone;
     }
 
@@ -80,7 +80,7 @@ public class User {
         this.phone = phone;
     }
 
-    public static String getEmail() {
+    public  String getEmail() {
         return email;
     }
 
@@ -88,7 +88,7 @@ public class User {
         this.email = email;
     }
 
-    public static String getGender() {
+    public  String getGender() {
         return gender;
     }
 
@@ -97,7 +97,7 @@ public class User {
     }
 
 
-    public static String getPassword() {
+    public  String getPassword() {
         return password;
     }
 

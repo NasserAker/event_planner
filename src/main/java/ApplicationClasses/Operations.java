@@ -6,7 +6,7 @@ import java.util.List;
 import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
 import static ApplicationClasses.ServiceProvider.logger;
-import static ApplicationClasses.User.*;
+import static ApplicationClasses.User.allUsers;
 import static Main.ProductionCode.*;
 
 
@@ -17,7 +17,7 @@ public class Operations {
     public static boolean addUser(User c) {
         boolean add=true;
         for(int i = 0; i< User.getUserList().size() ; i++) {
-            if((getEmail().equals(getEmail()))||((getEmail().equals(getEmail())) && (getUsername().equals(getUsername())) && (getAddress().equals(getAddress()))&& (getPhone().equals(getPhone()))))
+            if((c.getEmail().equals(c.getEmail()))||((c.getEmail().equals(c.getEmail())) && (c.getUsername().equals(c.getUsername())) && (c.getAddress().equals(c.getAddress()))&& (c.getPhone().equals(c.getPhone()))))
             {
                 add = false;
                 break;
@@ -57,16 +57,32 @@ public class Operations {
         homePage();
     }
 
-    public static void viewUserProfile() {
+    public static void viewUserProfile(User user) {
         logger.info("User Profile:");
-        logger.info("Username: " + getUsername()); // static methods
-        logger.info("Address: " + getAddress());
-        logger.info("Phone: " + getPhone());
-        logger.info("Email: " + getEmail());
-        logger.info("Gender: " + getGender());
+        logger.info("Username: " + user.getUsername());
+        logger.info("Address: " + user.getAddress());
+        logger.info("Phone: " + user.getPhone());
+        logger.info("Email: " + user.getEmail());
+        logger.info("Gender: " + user.getGender());
     }
 
 
+    private int userIndex = -1; // Initialize to -1 to indicate user not found
+
+    public void searchEmailAndUpdateIndex(String email) {
+        for (int i = 0; i < allUsers.size(); i++) {
+            if (email.equals(allUsers.get(i).getEmail())) {
+                userIndex = i; // Update the index variable
+                return; // Exit the loop once the user is found
+            }
+        }
+        // If the email is not found in any list, set the index to -1
+        userIndex = -1;
+    }
+
+    public int getUserIndex() {
+        return userIndex;
+    }
 
 
 

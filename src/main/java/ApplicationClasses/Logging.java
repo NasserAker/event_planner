@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import static ApplicationClasses.Admin.adminList;
 import static ApplicationClasses.ServiceProvider.ServiceProv_LIST;
+import static ApplicationClasses.User.allUsers;
 
 public class Logging {
 
@@ -53,22 +55,22 @@ public class Logging {
 
     public int searchEmail(String email) {
         // Search through the admin list
-        for (int i = 0; i < Admin.getAdminList().size(); i++) {
-            if (email.equals(Admin.getAdminList().get(i).getEmail())) {
+        for (Admin admin : adminList) {
+            if (email.equals(admin.getEmail())) {
                 return 0; // Admin found
             }
         }
 
         // Search through the user list
-        for (int i = 0; i < User.getUserList().size(); i++) {
-            if (email.equals(User.getUserList().get(i).getEmail())) {
+        for (User user : allUsers) {
+            if (email.equals(user.getEmail())) {
                 return 1; // User found
             }
         }
 
         // Search through the service provider list
-        for (int i = 0; i < ServiceProvider.getServiceProviderList().size(); i++) {
-            if (email.equals(ServiceProvider.getServiceProviderList().get(i).getEmail())) {
+        for (ServiceProvider serviceProvider : ServiceProvider.getServiceProviderList()) {
+            if (email.equals(serviceProvider.getEmail())) {
                 return 2; // Service provider found
             }
         }
@@ -76,6 +78,7 @@ public class Logging {
         // If the email is not found in any list, return -1
         return -1;
     }
+
 
 
 
@@ -109,12 +112,10 @@ public class Logging {
 
 
     public int searchPassword(String password2){
-
-        password = password2;
+        password = password2; // Remove leading and trailing whitespaces
 
         String passw = password;
         String value = q.get(email);
-
         if (passw.equals(value)) {
             successfulpassword = true;
 
@@ -126,8 +127,6 @@ public class Logging {
             return -33;
 
         }
-
-
     }
 
 

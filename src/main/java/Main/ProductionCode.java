@@ -13,6 +13,7 @@ import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.viewUserProfile;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
+import static ApplicationClasses.User.allUsers;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 import static ApplicationClasses.AdditionalService.initializeAdditionalService;
@@ -113,9 +114,9 @@ public class ProductionCode {
                     String email = input.nextLine();
                     utype = u.searchEmail(email);
 
-                    while (utype < 0) {  // the email does not match with anything
+                    while (utype < 0) {  // as long as the email does not match with anything
 
-                        logger.info("Please enter your email again : ");
+                        logger.info("The email does not exist.Please enter registered email again : ");
                         email = input.nextLine();
                         utype = u.searchEmail(email);
                     }
@@ -126,7 +127,7 @@ public class ProductionCode {
 
                     while (y == -33) { // the password does not match with anything
 
-                        logger.info("Please enter your password again : ");
+                        logger.info("Invalid password. Please enter your password again : ");
                         password = input.nextLine();
                         y = u.searchPassword(password);
 
@@ -262,8 +263,25 @@ public class ProductionCode {
 
             switch (choice) {
                 case 1:
-                    viewUserProfile();
+
+                    // Retrieve the index of the logged-in user
+                    Operations op = new Operations();
+                    Logging u = new Logging();
+                    logger.info("Please enter your email : ");
+                    String email = input.nextLine();
+                    op.searchEmailAndUpdateIndex(email);
+
+                    // Check if the user exists
+                    if (op.getUserIndex() >= 0) {
+                        // Get the user object using the index
+                        User loggedInUser = allUsers.get(op.getUserIndex());
+                        // Pass the user object to viewUserProfile method
+                    viewUserProfile(loggedInUser);
+                    } else {
+                        logger.info("User not found.");
+                    }
                     break;
+
                 case 2:
                     Operations.reserveWedding();
                     break;
