@@ -121,40 +121,6 @@ public class ServiceProvider {
     }
 
 
-    private static void addVenue() {
-        String name = "";
-        String location = "";
-        int capacity = 0;
-
-        Scanner scanner = new Scanner(System.in);
-
-        logger.info("Enter Venue Name :");
-        name = scanner.nextLine();
-
-        logger.info("Enter Venue Location :");
-        location = scanner.nextLine();
-
-        logger.info("Enter Venue Reserving Price : ");
-
-        boolean validInput = false;
-
-        while (!validInput) {
-            try {
-                logger.info("PLEASE ENTER A NUMBER :");
-                capacity = Integer.parseInt(scanner.nextLine());
-                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
-            }
-        }
-
-
-        Venue venue = new Venue(name, location, capacity);
-        Venue.addVenueToTheList(venue);
-        logger.info("venue added successfully.");
-
-    }
-
     private static void addService() {
         String name = "";
         String provider_name = "";
@@ -183,8 +149,8 @@ public class ServiceProvider {
         }
 
 
-        Service service = new Service(name, price, provider_name);
-        Service.add_service(service);
+        AdditionalService service = new AdditionalService(name, price);
+        AdditionalService.add_service(service);
         logger.info("Service added successfully.");
 
 

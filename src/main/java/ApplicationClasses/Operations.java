@@ -2,6 +2,7 @@ package ApplicationClasses;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
@@ -14,27 +15,22 @@ import static Main.ProductionCode.*;
 public class Operations {
 
 
-
-
-        public static boolean addUser(User c) {
-            for (User user : allUsers) {
-                // Check if email or all other attributes match with any existing user
-                if (c.getEmail().equals(user.getEmail()) ||
-                        (c.getUsername().equals(user.getUsername()) &&
-                                c.getAddress().equals(user.getAddress()) &&
-                                c.getPhone().equals(user.getPhone()))) {
-                    return false; // User already exists
-                }
+    public static boolean addUser(User c) {
+        for (User user : allUsers) {
+            // Check if email or all other attributes match with any existing user
+            if (c.getEmail().equals(user.getEmail()) ||
+                    (c.getUsername().equals(user.getUsername()) &&
+                            c.getAddress().equals(user.getAddress()) &&
+                            c.getPhone().equals(user.getPhone()))) {
+                return false; // User already exists
             }
-            allUsers.add(c); // If no match found, add the user
-            return true; // User added successfully
         }
+        allUsers.add(c); // If no match found, add the user
+        return true; // User added successfully
+    }
 
 
-
-
-    public static void createAccountPage()
-    {
+    public static void createAccountPage() {
 
         logger.info("Enter your Email:");
         String email = input.nextLine();
@@ -49,13 +45,12 @@ public class Operations {
         logger.info("Enter your Password:");
         String password = input.nextLine();
 
-        User r = new User(username, password, address, phnum, email, gen,0.0);
+        User r = new User(username, password, address, phnum, email, gen, 0.0);
         boolean create = Operations.addUser(r);
         if (create) {
             logger.info("A new account was created successfully");
             Logging.getQ().put(email, password);
-        }
-        else
+        } else
             logger.info("This account already exists");
 
         homePage();
@@ -87,7 +82,6 @@ public class Operations {
     public int getUserIndex() {
         return userIndex;
     }
-
 
 
     public static void reserveWedding() {
@@ -137,7 +131,6 @@ public class Operations {
         // Add your reservation logic here...
 
 
-
         logger.info("Available Additional Services:");
         AdditionalService.initializeAdditionalService();
         for (int i = 0; i < availableServices.size(); i++) {
@@ -164,17 +157,6 @@ public class Operations {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     // Helper method to get available dates for the selected venue
     private static List<Date> getAvailableDatesForVenue(int venueChoice) {
         switch (venueChoice) {
@@ -191,11 +173,70 @@ public class Operations {
                 return availableDatesV5;
 
 
-
             default:
                 return new ArrayList<>(); // Return an empty list if venue choice is invalid
         }
     }
+
+    public static void addNewVenue() {
+        String name = "";
+        String location = "";
+        int capacity = 0;
+        double cost = 0.0;
+
+        Scanner scanner = new Scanner(System.in);
+
+        logger.info("Enter Venue Name:");
+        name = scanner.nextLine();
+
+        logger.info("Enter Venue Location:");
+        location = scanner.nextLine();
+
+        logger.info("Enter Venue Capacity:");
+
+        boolean validCapacityInput = false;
+
+        while (!validCapacityInput) {
+            try {
+                logger.info("PLEASE ENTER A NUMBER:");
+                capacity = Integer.parseInt(scanner.nextLine());
+                validCapacityInput = true; // If parsing succeeds, set validCapacityInput to true to exit the loop
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input. Please enter a valid number for capacity.");
+            }
+        }
+
+        logger.info("Enter Venue Reserving Price:");
+
+        boolean validCostInput = false;
+
+        while (!validCostInput) {
+            try {
+                logger.info("PLEASE ENTER A NUMBER:");
+                cost = Double.parseDouble(scanner.nextLine());
+                validCostInput = true; // If parsing succeeds, set validCostInput to true to exit the loop
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input. Please enter a valid number for cost.");
+            }
+        }
+
+        Venue venue = new Venue(name, location, capacity, cost);
+        Venue.addVenueToTheList(venue);
+        logger.info("Venue added successfully.");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

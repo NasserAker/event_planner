@@ -71,6 +71,9 @@ public class Venue {
         return availableVenues;
     }
 
+    public static void addVenueToTheList(Venue venue){
+        availableVenues.add(venue);
+    }
 
     // toString method to print venue details
     @Override

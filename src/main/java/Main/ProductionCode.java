@@ -11,6 +11,7 @@ import java.util.logging.*;
 
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
+import static ApplicationClasses.Operations.addNewVenue;
 import static ApplicationClasses.Operations.viewUserProfile;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.allUsers;
@@ -314,7 +315,7 @@ public class ProductionCode {
            int choice = scanner(); // Get user input
            switch (choice) {
                case "1":
-                   ServiceProvider.addVenue();
+                   addNewVenue();
                    cont = true;
                    break;
                case "2":
