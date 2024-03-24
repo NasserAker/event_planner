@@ -14,20 +14,24 @@ import static Main.ProductionCode.*;
 public class Operations {
 
 
-    public static boolean addUser(User c) {
-        boolean add=true;
-        for(int i = 0; i< User.getUserList().size() ; i++) {
-            if((c.getEmail().equals(c.getEmail()))||((c.getEmail().equals(c.getEmail())) && (c.getUsername().equals(c.getUsername())) && (c.getAddress().equals(c.getAddress()))&& (c.getPhone().equals(c.getPhone()))))
-            {
-                add = false;
-                break;
+
+
+        public static boolean addUser(User c) {
+            for (User user : allUsers) {
+                // Check if email or all other attributes match with any existing user
+                if (c.getEmail().equals(user.getEmail()) ||
+                        (c.getUsername().equals(user.getUsername()) &&
+                                c.getAddress().equals(user.getAddress()) &&
+                                c.getPhone().equals(user.getPhone()))) {
+                    return false; // User already exists
+                }
             }
+            allUsers.add(c); // If no match found, add the user
+            return true; // User added successfully
         }
-        if(add) {
-            User.getUserList().add(c);
-        }
-        return add;
-    }
+
+
+
 
     public static void createAccountPage()
     {

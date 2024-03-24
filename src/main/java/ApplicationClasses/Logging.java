@@ -10,7 +10,7 @@ import static ApplicationClasses.User.allUsers;
 
 public class Logging {
 
-
+    private String emailToCheck;
     public boolean isSuccessfulusername() {
         return successfulusername;
     }
@@ -55,6 +55,7 @@ public class Logging {
 
     public int searchEmail(String email) {
         // Search through the admin list
+        emailToCheck = email;
         for (Admin admin : adminList) {
             if (email.equals(admin.getEmail())) {
                 return 0; // Admin found
@@ -111,23 +112,22 @@ public class Logging {
     }
 
 
-    public int searchPassword(String password2){
-        password = password2; // Remove leading and trailing whitespaces
-
-        String passw = password;
-        String value = q.get(email);
-        if (passw.equals(value)) {
+    public int searchPassword(String password) {
+        // Retrieve the stored password associated with the email being searched
+        String value = q.get(emailToCheck);
+        // Compare the provided password with the stored password
+        if (password.equals(value)) {
             successfulpassword = true;
-
             logState = true;
             return y;
-        }
-        else {
+        } else {
             successfulpassword = false;
             return -33;
-
         }
     }
+
+
+
 
 
 

@@ -275,7 +275,7 @@ public class ProductionCode {
                     if (op.getUserIndex() >= 0) {
                         // Get the user object using the index
                         User loggedInUser = allUsers.get(op.getUserIndex());
-                        // Pass the user object to viewUserProfile method
+                        // Pass the user obje vbghhnmct to viewUserProfile method
                     viewUserProfile(loggedInUser);
                     } else {
                         logger.info("User not found.");
