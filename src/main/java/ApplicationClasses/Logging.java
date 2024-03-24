@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
+import static ApplicationClasses.ServiceProvider.ServiceProv_LIST;
+
 public class Logging {
 
 
@@ -49,38 +51,39 @@ public class Logging {
     final Logger logger = Logger.getLogger(Logging.class.getName());
 
 
-    public int searchEmail(String email1){
-
-        boolean flag = true; // the email has not been found yet
-
-        email = email1;
-
-        for (int i = 0; i < User.getUserList().size(); i++) {
+    public int searchEmail(String email) {
+        // Search through the admin list
+        for (int i = 0; i < Admin.getAdminList().size(); i++) {
             if (email.equals(Admin.getAdminList().get(i).getEmail())) {
-                flag = false;
-                successfulusername=true;
-                type = 0;
-                y=i;
-                break;
-            }}
-
-        if (flag) {
-            flag = isUser(flag);
+                return 0; // Admin found
+            }
         }
 
-        if (flag) {
-            isServiceProv(flag);
+        // Search through the user list
+        for (int i = 0; i < User.getUserList().size(); i++) {
+            if (email.equals(User.getUserList().get(i).getEmail())) {
+                return 1; // User found
+            }
         }
 
+        // Search through the service provider list
+        for (int i = 0; i < ServiceProvider.getServiceProviderList().size(); i++) {
+            if (email.equals(ServiceProvider.getServiceProviderList().get(i).getEmail())) {
+                return 2; // Service provider found
+            }
+        }
 
-        return type;
-
+        // If the email is not found in any list, return -1
+        return -1;
     }
+
+
+
 
     public boolean isServiceProv(boolean flag) {
 
-        for (int k = 0; k < ServiceProvider.getServiceProvList().size(); k++) {
-            if (email.equals(ServiceProvider.getServiceProvList().get(k).getEmail())) {
+        for (int k = 0; k < ServiceProv_LIST.size(); k++) {
+            if (email.equals(ServiceProv_LIST.get(k).getEmail())) {
                 flag = false;
                 successfulusername=true;
                 type = 2;

@@ -12,6 +12,7 @@ import java.util.logging.*;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.viewUserProfile;
+import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 import static ApplicationClasses.AdditionalService.initializeAdditionalService;
@@ -50,40 +51,11 @@ public class ProductionCode {
 
 
 
-        initializeAdmin("rayabreak02@gmail.com", "raya", "12345"); //one admin
+        initializeAdmin(); //one admin
         initializeUsers(); // multiple users
-
-
-
-
-        //ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
-        //ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
-        //ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
-
-        //ServiceProvider.getServiceProvList().add(s1);
-        //ServiceProvider.getServiceProvList().add(s2);
-        //ServiceProvider.getServiceProvList().add(s3);
-
-
-       // s1.getReservaeddates().put(r2, "24/10/2024");//service provider is reserved at 24/10/2024
-
-
-
-
-
-
-
-        //Logging.getQ().put(s1.getEmail(), s1.getPass());
-        //Logging.getQ().put(s3.getEmail(), s3.getPass());
-        //Logging.getQ().put(s2.getEmail(), s3.getPass());
-
-
-        //all users including service providers and admins must be added to the arraylist q
-
+        initializeServiceProvider();
         initializeAvailableVenues();
-
         initializeAvailableDates();
-
         initializeAdditionalService();
         homePage();
 
@@ -136,27 +108,27 @@ public class ProductionCode {
                     int utype;
                     int y;
 
-                    Logging user = new Logging();
+                    Logging u = new Logging();
                     logger.info("Please enter your email : ");
                     String email = input.nextLine();
-                    utype = user.searchEmail(email);
+                    utype = u.searchEmail(email);
 
                     while (utype < 0) {  // the email does not match with anything
 
                         logger.info("Please enter your email again : ");
                         email = input.nextLine();
-                        utype = user.searchEmail(email);
+                        utype = u.searchEmail(email);
                     }
 
                     logger.info("Please enter your password : ");
                     String password = input.nextLine();
-                    y = user.searchPassword(password);
+                    y = u.searchPassword(password);
 
                     while (y == -33) { // the password does not match with anything
 
                         logger.info("Please enter your password again : ");
                         password = input.nextLine();
-                        y = user.searchPassword(password);
+                        y = u.searchPassword(password);
 
                     }
 
@@ -166,7 +138,7 @@ public class ProductionCode {
 
                         case 0: {
 
-                            //adminActivities();
+                            adminActivities();
                             break;
 
                         }
@@ -236,7 +208,7 @@ public class ProductionCode {
     }
 
 
-/*
+
     public static void adminActivities() {
         logger.info("Welcome, Admin!");
 
@@ -252,7 +224,7 @@ public class ProductionCode {
 
             int choice = scanner(); // Get user input
 
-            switch (choice) {
+          /*  switch (choice) {
                 case 1:
                     viewEditWeddingListings();
                     break;
@@ -270,11 +242,11 @@ public class ProductionCode {
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
-            }
+            }*/
         }
     }
 
-*/
+
     public static void userActivities() {
         logger.info("Welcome, User!");
 

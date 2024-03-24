@@ -17,6 +17,10 @@ public class ServiceProvider {
     private String address;
     private String phone;
 
+    public static List<ServiceProvider> getServiceProviderList() {
+        return ServiceProv_LIST;
+    }
+
     public String getIdd() {
         return idd;
     }
@@ -35,6 +39,19 @@ public class ServiceProvider {
 
     static final Logger logger = Logger.getLogger(ServiceProvider.class.getName());
 
+    public static void initializeServiceProvider() {
+        ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
+        ServiceProv_LIST.add(s1);
+        Logging.getQ().put(s1.getEmail(), s1.getPass());
+
+        ServiceProvider s2 = new ServiceProvider("ahmad@gmail.com", "ahmad", "123", "nablus", "0595789441", "123", true);
+        ServiceProv_LIST.add(s2);
+        Logging.getQ().put(s2.getEmail(), s2.getPass());
+
+        ServiceProvider s3 = new ServiceProvider("leen@gmail.com", "leen", "123", "SAM", "0595123556", "124", false);
+        ServiceProv_LIST.add(s3);
+        Logging.getQ().put(s3.getEmail(), s3.getPass());
+    }
 
 
     static {
@@ -74,13 +91,8 @@ public class ServiceProvider {
     }
 
 
-
-
-
-
-    public static List<ServiceProvider> getServiceProvList() {return ServiceProv_LIST;}
-
-    public Map<User,String> getReservaeddates() {return reservaedDates;}
+    public Map<User,String> getReservaeddates() {
+        return reservaedDates;}
 
     public String getPass() {
         return pass;

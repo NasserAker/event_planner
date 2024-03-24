@@ -24,14 +24,12 @@ public class Admin {
     }
 
     public static List<Admin> getAdminList() {
+
         return adminList;
     }
 
 
-    public static void initializeAdmin(String email, String username, String password) {
-        //Admin admin = new Admin(email, username, password);
-        //Admin.getAdminList().add(admin);
-        //Logging.getQ().put(admin.getEmail(), admin.getPassword());
+    public static void initializeAdmin() {
             Admin admin1 = new Admin("admin1@example.com", "admin1", "password1");
             Admin admin2 = new Admin("admin2@example.com", "admin2", "password2");
             Admin admin3 = new Admin("admin3@example.com", "admin3", "password3");
