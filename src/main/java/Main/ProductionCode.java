@@ -125,7 +125,7 @@ public class ProductionCode {
                     String password = input.nextLine();
                     y = u.searchPassword(password);
 
-                    while (y == -33) { // the password does not match with anything
+                    while (y == -33) { // as long as the password does not match with anything
 
                         logger.info("Invalid password. Please enter your password again : ");
                         password = input.nextLine();
