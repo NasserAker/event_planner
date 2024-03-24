@@ -298,7 +298,19 @@ public class ProductionCode {
    public static void serviceProviderActivities(){
 
 
+       logger.info("Welcome, Admin!");
 
+       boolean loggedIn = true;
+       while (loggedIn) {
+           logger.info("\nAdmin Menu:");
+           logger.info("1. View/Edit Wedding Listings");
+           logger.info("2. Manage User Accounts");
+           logger.info("3. View Reservation Details");
+           logger.info("4. Send Notifications");
+           logger.info("5. Log Out");
+           logger.info(ENTER_CHOICE);
+
+           int choice = scanner(); // Get user input
 
 
     }
