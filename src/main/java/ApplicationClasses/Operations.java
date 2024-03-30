@@ -302,7 +302,20 @@ public class Operations {
     }
 
 
-
+    public static void viewUserProfile() {
+        User loggedInUser = SessionManager.getLoggedInUser();
+        if (loggedInUser != null) {
+            // Access and display the user's profile information
+            logger.info("User Profile:");
+            logger.info("Username: " + loggedInUser.getUsername());
+            logger.info("Address: " + loggedInUser.getAddress());
+            logger.info("Phone: " + loggedInUser.getPhone());
+            logger.info("Email: " + loggedInUser.getEmail());
+            logger.info("Gender: " + loggedInUser.getGender());
+        } else {
+            logger.info("User not logged in.");
+        }
+    }
 
 
 

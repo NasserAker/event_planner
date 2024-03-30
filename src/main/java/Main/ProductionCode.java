@@ -284,6 +284,9 @@ public class ProductionCode {
                     }
                     break;
 */
+                    // View user profile
+                    viewUserProfile();
+                    break;
 
 
 
