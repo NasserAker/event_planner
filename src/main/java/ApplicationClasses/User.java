@@ -105,5 +105,15 @@ public class User {
         this.password = password;
     }
 
+    public static User getUserByEmail(String email) {
+        for (User user : allUsers) {
+            if (user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        return null; // User not found
+    }
+
+
 
 }

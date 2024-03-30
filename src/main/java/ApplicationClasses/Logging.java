@@ -5,21 +5,14 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import static ApplicationClasses.Admin.adminList;
-import static ApplicationClasses.ServiceProvider.ServiceProv_LIST;
 import static ApplicationClasses.User.allUsers;
 
 public class Logging {
 
     private String emailToCheck;
-    public boolean isSuccessfulusername() {
-        return successfulusername;
-    }
 
-    private boolean successfulusername= false;
 
-    public boolean isSuccessfulpassword() {
-        return successfulpassword;
-    }
+
 
     private boolean successfulpassword= false;
 
@@ -31,20 +24,12 @@ public class Logging {
 
     private String email;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     private String password;
     private boolean logState = false;
 
-    public static int getY() {
-        return y;
-    }
 
-    public static void setY(int y) {
-        Logging.y = y;
-    }
+
 
     private static int y;
     int type = -3;
@@ -84,32 +69,8 @@ public class Logging {
 
 
 
-    public boolean isServiceProv(boolean flag) {
 
-        for (int k = 0; k < ServiceProv_LIST.size(); k++) {
-            if (email.equals(ServiceProv_LIST.get(k).getEmail())) {
-                flag = false;
-                successfulusername=true;
-                type = 2;
-                y=k;
-                break;
-            }
-        }
-        return flag;
-    }
 
-    public boolean isUser(boolean flag) {
-        for (int j = 0; j < User.getUserList().size(); j++) {
-            if (email.equals(User.getUserList().get(j).getEmail())) {
-                flag = false;
-                successfulusername=true;
-                type = 1;
-                y=j;
-                break;
-            }
-        }
-        return flag;
-    }
 
 
     public int searchPassword(String password) {
@@ -166,7 +127,22 @@ public class Logging {
         logState = false;
     }
 
+    public int searchUser(String email, String password) {
+        // Search for the user based on email
+        int userType = searchEmail(email);
 
+        if (userType >= 0) {
+            // User found, now check if the password is correct
+            int passwordCheck = searchPassword(password);
+            if (passwordCheck == -33) {
+                // Password is correct, return the user type
+                return userType;
+            }
+        }
+
+        // Return -1 if user is not found or password is incorrect
+        return -1;
+    }
 }
 
 
