@@ -91,7 +91,7 @@ public class Operations {
         logger.info("Available Venues:");
         List<Venue> availableVenues = Venue.getAvailableVenues();
         for (int i = 0; i < availableVenues.size(); i++) {
-            logger.info((i + 1) + ". " + availableVenues.get(i).getName());
+            logger.info((i + 1) + ". " + availableVenues.get(i).toString());
         }
 
         // Prompt user to choose a venue
@@ -127,9 +127,6 @@ public class Operations {
         // Get the selected date
         Date selectedDate = availableDates.get(dateChoice - 1);
 
-        // Proceed with the reservation process for the selected date and venue
-        // Add your reservation logic here...
-
 
         logger.info("Available Additional Services:");
         AdditionalService.initializeAdditionalService();
@@ -153,6 +150,15 @@ public class Operations {
         AdditionalService selectedService = null;
         if (additionalServiceChoice != 0) {
             selectedService = availableServices.get(additionalServiceChoice - 1);
+
+            logger.info("Reservation Details:");
+            logger.info("Venue: " + selectedVenue.toString());
+            logger.info("Date: " + selectedDate);
+            if (selectedService != null) {
+                logger.info("Additional Service: " + selectedService.getServiceName() + " - Cost: $" + selectedService.getCost());
+            } else {
+                logger.info("Additional Service: None");
+            }
         }
     }
 

@@ -61,7 +61,7 @@ public class Venue {
         availableVenues.add(new Venue("Sun", "Address 2", 150, 2000.0));
         availableVenues.add(new Venue("Star", "Address 3", 200 , 2500.0));
         availableVenues.add(new Venue("Sky", "Address 4", 120, 1800.0));
-        availableVenues.add(new Venue("Sky", "Address 4", 120 , 1800.0));
+        availableVenues.add(new Venue("Space", "Address 4", 120 , 1800.0));
 
         // Add more dates as needed...
     }
@@ -78,11 +78,11 @@ public class Venue {
     // toString method to print venue details
     @Override
     public String toString() {
-        return "Venue{" +
-                "name='" + name + '\'' +
-                ", location='" + location + '\'' +
-                ", cost=" + cost +
-                '}';
+        return
+                "Name:'" + name + '\'' +
+                ", Location:'" + location + '\'' +
+                ", Cost:$" + cost
+                ;
     }
 
 
