@@ -3,7 +3,6 @@ package Main;
 
 import ApplicationClasses.Logging;
 import ApplicationClasses.Operations;
-import ApplicationClasses.SessionManager;
 import ApplicationClasses.User;
 import com.sun.tools.javac.Main;
 
@@ -15,7 +14,6 @@ import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
-import static ApplicationClasses.User.getUserByEmail;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 
@@ -106,12 +104,7 @@ public class ProductionCode {
                     break;
                 }
 
-
-
-
-
                 case 2: {
-
                     int utype;
                     int y;
 
@@ -139,8 +132,6 @@ public class ProductionCode {
 
                     }
 
-                   // User loggedInUser = null; // Initialize the logged-in user object
-
 
                     switch (utype) {
 
@@ -152,9 +143,7 @@ public class ProductionCode {
 
                         }
                         case 1:
-                            // Save the logged-in user in the session
-                            User loggedInUser = getUserByEmail(email);
-                            SessionManager.loginUser(loggedInUser);
+
                             userActivities();
                             break;
 
@@ -170,9 +159,6 @@ public class ProductionCode {
                     }
                     break;
                 }
-
-
-
 
                 case 3:loggedin=false;
                     break;
@@ -265,14 +251,7 @@ public class ProductionCode {
 
 
     public static void userActivities() {
-
-        User loggedInUser = SessionManager.getLoggedInUser();
-        if (loggedInUser == null) {
-            logger.info("User not logged in.");
-            return;
-        }
-
-        logger.info("Welcome, User: " + loggedInUser.getUsername());
+        logger.info("Welcome, User!");
 
         boolean loggedIn = true;
         while (loggedIn) {
@@ -287,9 +266,24 @@ public class ProductionCode {
             switch (choice) {
                 case 1:
 
-                    // View user profile
-                    viewUserProfile();
+                    /*// Retrieve the index of the logged-in user
+                    Operations op = new Operations();
+                    Logging u = new Logging();
+                    logger.info("Please enter your email : ");
+                    String email = input.nextLine();
+                    op.searchEmailAndUpdateIndex(email);
+
+                    // Check if the user exists
+                    if (op.getUserIndex() >= 0) {
+                        // Get the user object using the index
+                        User loggedInUser = allUsers.get(op.getUserIndex());
+                        // Pass the user obje vbghhnmct to viewUserProfile method
+                    viewUserProfile(loggedInUser);
+                    } else {
+                        logger.info("User not found.");
+                    }
                     break;
+*/
 
 
 
