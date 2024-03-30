@@ -35,7 +35,8 @@ public class AdditionalService {
         availableServices.add(new AdditionalService("Photography", 800.0));
     }
 
-    public static void addService(AdditionalService service) {
+
+    public static void add_servicetoTheArray (AdditionalService service){
         availableServices.add(service);
     }
 

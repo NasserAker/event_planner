@@ -227,7 +227,7 @@ public class Operations {
 
 
 
-    private static void addService() {
+    public static void addService() {
         String name = "";
         String provider_name = "";
         double price = 0.0;
@@ -256,14 +256,50 @@ public class Operations {
 
 
         AdditionalService service = new AdditionalService(name, price);
-        AdditionalService.add_service(service);
+        AdditionalService.add_servicetoTheArray(service);
         logger.info("Service added successfully.");
 
 
     }
 
 
+    public static void edit_info() {
+        boolean cont = false;
 
+        while (!cont) {
+
+            logger.info("choose what you want to edit :");
+            logger.info("1- Name");
+            logger.info("2- E-Mail");
+            logger.info("3- Address");
+            logger.info("4- Phone");
+
+            Scanner scanner = new Scanner(System.in);
+
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    cont = true;
+                    break;
+                case "2":
+                    cont = true;
+                    break;
+                case "3":
+                    cont = true;
+                    break;
+                case "4":
+                    cont = true;
+                    break;
+                default:
+                    logger.info("Please Enter A number.");
+            }
+
+
+        }
+
+
+    }
 
 
 

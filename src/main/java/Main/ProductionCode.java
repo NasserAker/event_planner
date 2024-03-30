@@ -9,15 +9,13 @@ import com.sun.tools.javac.Main;
 import java.util.Scanner;
 import java.util.logging.*;
 
+import static ApplicationClasses.AdditionalService.initializeAdditionalService;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
-import static ApplicationClasses.Operations.addNewVenue;
-import static ApplicationClasses.Operations.viewUserProfile;
+import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
-import static ApplicationClasses.User.allUsers;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
-import static ApplicationClasses.AdditionalService.initializeAdditionalService;
 
 
 public class ProductionCode {
@@ -249,6 +247,9 @@ public class ProductionCode {
     }
 
 
+
+
+
     public static void userActivities() {
         logger.info("Welcome, User!");
 
@@ -265,7 +266,7 @@ public class ProductionCode {
             switch (choice) {
                 case 1:
 
-                    // Retrieve the index of the logged-in user
+                    /*// Retrieve the index of the logged-in user
                     Operations op = new Operations();
                     Logging u = new Logging();
                     logger.info("Please enter your email : ");
@@ -282,6 +283,9 @@ public class ProductionCode {
                         logger.info("User not found.");
                     }
                     break;
+*/
+
+
 
                 case 2:
                     Operations.reserveWedding();
@@ -314,24 +318,25 @@ public class ProductionCode {
 
            int choice = scanner(); // Get user input
            switch (choice) {
-               case "1":
+               case 1:
                    addNewVenue();
-                   cont = true;
                    break;
-               case "2":
+
+               case 2:
                    addService();
-                   cont = true;
                    break;
-               case "3":
-                   ServiceProvider.edit_info();
-                   cont = true;
+               case 3:
+                   edit_info();
+                   break;
+               case 6:
+                   loggedIn = false; // Exit the loop and log out
                    break;
                default:
-                   logger.info("Please Enter A number.");
+                   logger.info("Invalid choice. Please enter a valid option.");
            }
 
 
     }
 
 
-}
+}}

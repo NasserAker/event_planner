@@ -123,7 +123,7 @@ public class ServiceProvider {
 
 
 
-    private static void edit_info() {
+    public static void edit_info() {
         boolean cont = false;
 
         while (!cont) {
