@@ -81,7 +81,7 @@ public class Venue {
         return
                 "Name:'" + name + '\'' +
                 ", Location:'" + location + '\'' +
-                ", Cost:$" + cost
+                ", Cost: $" + cost
                 ;
     }
 

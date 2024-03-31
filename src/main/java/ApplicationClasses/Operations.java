@@ -30,32 +30,6 @@ public class Operations {
     }
 
 
-    public static void createAccountPage() {
-
-        logger.info("Enter your Email:");
-        String email = input.nextLine();
-        logger.info("Enter your username:");
-        String username = input.nextLine();
-        logger.info("Enter your Gender : ");
-        String gen = input.nextLine();
-        logger.info("Enter your Phone number:");
-        String phnum = input.nextLine();
-        logger.info("Enter your Address:");
-        String address = input.nextLine();
-        logger.info("Enter your Password:");
-        String password = input.nextLine();
-
-        User r = new User(username, password, address, phnum, email, gen, 0.0);
-        boolean create = Operations.addUser(r);
-        if (create) {
-            logger.info("A new account was created successfully");
-            Logging.getQ().put(email, password);
-        } else
-            logger.info("This account already exists");
-
-        homePage();
-    }
-
     public static void viewUserProfile(User user) {
         logger.info("User Profile:");
         logger.info("Username: " + user.getUsername());
@@ -66,22 +40,6 @@ public class Operations {
     }
 
 
-    private int userIndex = -1; // Initialize to -1 to indicate user not found
-
-    public void searchEmailAndUpdateIndex(String email) {
-        for (int i = 0; i < allUsers.size(); i++) {
-            if (email.equals(allUsers.get(i).getEmail())) {
-                userIndex = i; // Update the index variable
-                return; // Exit the loop once the user is found
-            }
-        }
-        // If the email is not found in any list, set the index to -1
-        userIndex = -1;
-    }
-
-    public int getUserIndex() {
-        return userIndex;
-    }
 
 
     public static void reserveWedding() {
@@ -115,16 +73,20 @@ public class Operations {
         }
 
         // Prompt user to choose a date
-        logger.info("Choose a date by entering the corresponding number:");
+        logger.info("Choose a date by entering the corresponding number, or enter 0 to go back to choosing a venue:");
         int dateChoice = scanner();
 
         // Validate the date choice
-        if (dateChoice < 1 || dateChoice > availableDates.size()) {
+        if (dateChoice == 0) {
+            // Go back to choosing a venue
+            reserveWedding(); // Recursive call to reserveWedding() to start the process again
+            return; // Exit the current invocation of reserveWedding() to avoid executing further code
+        } else if (dateChoice < 1 || dateChoice > availableDates.size()) {
             logger.info("Invalid choice. Please enter a valid date number.");
             return;
         }
 
-        // Get the selected date
+// Get the selected date
         Date selectedDate = availableDates.get(dateChoice - 1);
 
 
@@ -136,31 +98,64 @@ public class Operations {
         }
         logger.info("0. None");
 
-        // Prompt user to choose additional service
-        logger.info("Choose an additional service by entering the corresponding number:");
-        int additionalServiceChoice = scanner();
+        // Prompt user to choose additional services
+        logger.info("Choose additional services (enter numbers separated by commas, or 0 for none):");
+        String additionalServiceChoicesStr = input.nextLine();
+        String[] additionalServiceChoices = additionalServiceChoicesStr.split(",");
 
-        // Validate the additional service choice
-        if (additionalServiceChoice < 0 || additionalServiceChoice > availableServices.size()) {
-            logger.info("Invalid choice. Please enter a valid number.");
-            return;
-        }
-
-        // Process the selected additional service
-        AdditionalService selectedService = null;
-        if (additionalServiceChoice != 0) {
-            selectedService = availableServices.get(additionalServiceChoice - 1);
-
-            logger.info("Reservation Details:");
-            logger.info("Venue: " + selectedVenue.toString());
-            logger.info("Date: " + selectedDate);
-            if (selectedService != null) {
-                logger.info("Additional Service: " + selectedService.getServiceName() + " - Cost: $" + selectedService.getCost());
-            } else {
-                logger.info("Additional Service: None");
+        // Process selected additional services
+        List<AdditionalService> selectedServices = new ArrayList<>();
+        for (String choice : additionalServiceChoices) {
+            int serviceChoice = Integer.parseInt(choice.trim());
+            if (serviceChoice > 0 && serviceChoice <= availableServices.size()) {
+                selectedServices.add(availableServices.get(serviceChoice - 1));
             }
+
+
         }
+        logger.info("Reservation Details:");
+        logger.info("Venue: " + selectedVenue.toString());
+        logger.info("Date: " + selectedDate);
+        if (!selectedServices.isEmpty()) {
+            logger.info("Additional Services:");
+            for (AdditionalService service : selectedServices) {
+                logger.info("- " + service.getServiceName() + " - Cost: $" + service.getCost());
+            }
+        } else {
+            logger.info("Additional Services: None");
+        }
+        // Prompt user to submit or go back to the main menu
+        logger.info("1. Submit Reservation");
+        logger.info("2. Go back to Main Menu");
+        logger.info("Enter your choice:");
+        int choice = scanner();
+        switch (choice) {
+            case 1:
+                // Submit reservation
+                submitReservation(selectedVenue, selectedDate, selectedServices);
+                break;
+            case 2:
+                userActivities();
+                break;
+            default:
+                logger.info("Invalid choice. Returning to the main menu.");
+                break;
+        }
+
+
     }
+
+
+    public static void submitReservation(Venue venue, Date date, List<AdditionalService> services) {
+        // Implement logic to save the reservation to the database or perform other actions
+        // You can also display a success message here
+        logger.info("Reservation submitted successfully!");
+    }
+
+
+
+
+
 
 
     // Helper method to get available dates for the selected venue
@@ -308,20 +303,7 @@ public class Operations {
     }
 
 
-    public static void viewUserProfile() {
-        User loggedInUser = SessionManager.getLoggedInUser();
-        if (loggedInUser != null) {
-            // Access and display the user's profile information
-            logger.info("User Profile:");
-            logger.info("Username: " + loggedInUser.getUsername());
-            logger.info("Address: " + loggedInUser.getAddress());
-            logger.info("Phone: " + loggedInUser.getPhone());
-            logger.info("Email: " + loggedInUser.getEmail());
-            logger.info("Gender: " + loggedInUser.getGender());
-        } else {
-            logger.info("User not logged in.");
-        }
-    }
+
 
 
 
