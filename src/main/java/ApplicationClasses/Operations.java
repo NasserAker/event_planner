@@ -137,7 +137,9 @@ public class Operations {
             case 2:
                 userActivities();
                 break;
-            default:
+
+
+                default:
                 logger.info("Invalid choice. Returning to the main menu.");
                 break;
         }
