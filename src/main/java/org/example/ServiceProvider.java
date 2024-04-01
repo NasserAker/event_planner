@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.logging.*;
 
 public class ServiceProvider {
+    int x ;
     private final static Logger logger = Logger.getLogger(ServiceProvider.class.getName());
     public static void main(String[] args){
         // Remove the default formatter
