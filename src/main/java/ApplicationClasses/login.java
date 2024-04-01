@@ -60,7 +60,7 @@ public class login {
 
         for (User u: up) {
 
-            if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
+            if (name.equals(u.getUsername()) && u.getPassword().equals(pass)) {
                 validation = true;
 
                 logger.info("hi");
@@ -72,14 +72,14 @@ public class login {
     public void setInvalidUsernameAndPass(String name, String pass) {
         // Write code here that turns the phrase above into concrete actions
         for (User u: up) {
-            if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
+            if (name.equals(u.getUsername()) && u.getPassword().equals(pass)) {
                 validation = true; break;
             }
         }
     }
     public void setValidUsernameAndInvalidPass(String name, String pass) {
         for (User u: up) {
-            if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
+            if (name.equals(u.getUsername()) && u.getPassword().equals(pass)) {
                 validation = true; break;
             }
         }
@@ -106,7 +106,7 @@ public class login {
     public void validUserPass(String userName, String pass){
         setForget(false);
         for (User u: up) {
-            if (userName.equals(u.getUserName()) && pass.equals("Forget")) {
+            if (userName.equals(u.getUsername()) && pass.equals("Forget")) {
                 setForget(true);
                 enteredUsername = userName;
                 break;
@@ -120,12 +120,12 @@ public class login {
     }
     public void takePass(String newPass){
         for (User user : up) {
-            if (user.getUserName().equals(enteredUsername)) {
-                user.setPass(newPass);
+            if (user.getUsername().equals(enteredUsername)) {
+                user.setPassword(newPass);
             }
         }
         for (User user : up) {
-            if (user.getUserName().equals(enteredUsername) && user.getPass().equals(newPass)) {
+            if (user.getUsername().equals(enteredUsername) && user.getPassword().equals(newPass)) {
                 passwordUpdated = true;
                 break;
 
@@ -136,7 +136,7 @@ public class login {
     }
     public void createAcc(String enteredUsername,String enteredPassword){
         for (User user : up) {
-            if (user.getUserName().equals(enteredUsername) && user.getPass().equals(enteredPassword)) {
+            if (user.getUsername().equals(enteredUsername) && user.getPassword().equals(enteredPassword)) {
                 userCreated = true;
                 break;
             }
@@ -147,7 +147,7 @@ public class login {
         for(User c:up)
         {
 
-            logger.info("Gmail:- "+c.getUserName() +"\t"+"Password:- "+c.getPass()+"\t"+"BirthDate:- "+c.getB());
+            logger.info("Gmail:- "+c.getUsername() +"\t"+"Password:- "+c.getPassword()+"\t"+"BirthDate:- "+c.getB());
         }
     }
     public void event(String name, int price, int ava, String desc,String location, int time,String theme) {
@@ -170,8 +170,8 @@ public class login {
     int y=0;
     public int update(String name,String pass) {
         for (User u : getUp()) {
-            if (name.equals(u.getUserName())) {
-                u.setPass(pass);
+            if (name.equals(u.getUsername())) {
+                u.setPassword(pass);
                 y=1;
                 break;
             }
@@ -210,7 +210,7 @@ public class login {
     public int deleteUserByUsername(String username) {
         for (Iterator<User> iterator = up.iterator(); iterator.hasNext();) {
             User user = iterator.next();
-            if (user.getUserName().equals(username)) {
+            if (user.getUsername().equals(username)) {
                 iterator.remove();
                 return 1;
             }

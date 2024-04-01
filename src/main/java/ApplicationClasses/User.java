@@ -15,7 +15,7 @@ public class User {
     private  String gender;
 
     private  String password;
-
+    private String birthDate;
 
     public static final List<User> allUsers = new ArrayList<>();
 
@@ -57,7 +57,7 @@ public class User {
     public User(String un, String pa,String bd) {
         this.username =un;
         this.password=pa;
-        this.birthdate =bd;
+        this.birthDate =bd;
     }
 
 
@@ -125,5 +125,7 @@ public class User {
     }
 
 
-
+    public String getB() {
+        return this.birthDate;
+    }
 }
