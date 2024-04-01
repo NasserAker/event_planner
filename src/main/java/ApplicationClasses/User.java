@@ -113,7 +113,9 @@ public class User {
         }
         return null; // User not found
     }
-
+    public void logging(boolean t) {
+        boolean logState = t;
+    }
 
 
 }
