@@ -15,5 +15,5 @@ import org.junit.runner.RunWith;
 
 )
 
-public final class TestRunner {
+public final class Testrunner {
 }
