@@ -2,8 +2,11 @@ package ApplicationClasses;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.*;
+
 
 public class User {
+    boolean logState;
     private  String username;
     private  String address;
 
@@ -112,6 +115,9 @@ public class User {
             }
         }
         return null; // User not found
+    }
+    public void logging(boolean t) {
+        logState=t;
     }
 
 
