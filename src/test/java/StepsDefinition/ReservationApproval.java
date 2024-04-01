@@ -22,7 +22,7 @@ public class ReservationApproval {
     public void i_select_a_pending_reservation_request() {
 
         for (int i = 1; i <= 5; i++) {
-            ReservationRequest.RequestList.add(i);
+            ReservationRequest.RequestList.add(request);
         }
         selectedRequest = request.SelectRequest(requestCount);
     }
