@@ -110,7 +110,7 @@ public class Main {
             case 1 -> handleAdminActions(input);
 //            case 2 ->
            // case 2 -> handleCustomerActions(input);
-          //  default -> logger.info("Invalid user ID.");
+            default -> logger.info("Invalid user ID.");
         }
     }
     private static void handleCustomerActions(Scanner input) {
