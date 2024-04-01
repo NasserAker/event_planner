@@ -1,4 +1,4 @@
-package ApplicationClasses;
+package applicationclasses;
 
 public class event {
     private String eventName;

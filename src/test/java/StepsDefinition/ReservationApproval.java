@@ -1,7 +1,7 @@
 package StepsDefinition;
 
 import io.cucumber.java.en.*;
-import ApplicationClasses.ReservationRequest;
+import applicationclasses.ReservationRequest;
 import org.junit.Assert;
 
 public class ReservationApproval {

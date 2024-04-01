@@ -1,4 +1,4 @@
-package ApplicationClasses;
+package applicationclasses;
 
 public class User {
     private  String userName;

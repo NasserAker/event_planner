@@ -1,8 +1,8 @@
 package StepsDefinition;
 
-import ApplicationClasses.ReservationRequest;
-import ApplicationClasses.User;
-import ApplicationClasses.Venue;
+import applicationclasses.ReservationRequest;
+import applicationclasses.User;
+import applicationclasses.Venue;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 

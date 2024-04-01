@@ -1,8 +1,8 @@
 package org.example;
 
-import ApplicationClasses.User;
-import ApplicationClasses.event;
-import ApplicationClasses.login;
+import applicationclasses.User;
+import applicationclasses.event;
+import applicationclasses.login;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
