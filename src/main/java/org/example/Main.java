@@ -34,11 +34,11 @@ public class Main {
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
 
-        switch (choice) {
-            case 1 -> signUpProcedure(input);
-            case 2 -> loginProcedure(input);
-            default -> logger.info("Invalid option selected.");
-        }
+//        switch (choice) {
+//            case 1 -> signUpProcedure(input);
+//            case 2 -> loginProcedure(input);
+//            default -> logger.info("Invalid option selected.");
+//        }
     }
 
     private static void displayMainMenu() {
@@ -106,12 +106,12 @@ public class Main {
         input.next(); // consume invalid input
         return; // exit the method
     }
-        switch (choice) {
-            case 1 -> handleAdminActions(input);
-          //  case 2 -> logger.info("Admins ID :-");
-           // case 2 -> handleCustomerActions(input);
-          //  default -> logger.info("Invalid user ID.");
-        }
+//        switch (choice) {
+//            case 1 -> handleAdminActions(input);
+//          //  case 2 -> logger.info("Admins ID :-");
+//           // case 2 -> handleCustomerActions(input);
+//          //  default -> logger.info("Invalid user ID.");
+//        }
     }
     private static void handleCustomerActions(Scanner input) {
         boolean continueShopping = true;
@@ -122,16 +122,16 @@ public class Main {
             logger.info("3: View order history");
             logger.info("4: Log out");
             int choice = input.nextInt();
-            switch (choice) {
-               // case 1 -> customerBuyProduct(input);
-               // case 2 -> customerChangePassword(input);
-               // case 3 -> customerViewOrderHistory(input);
-                case 4 -> {
-                    continueShopping = false;
-                    logger.info("Logging out as customer.");
-                }
-                default -> printing();
-            }
+//            switch (choice) {
+//               // case 1 -> customerBuyProduct(input);
+//               // case 2 -> customerChangePassword(input);
+//               // case 3 -> customerViewOrderHistory(input);
+//                case 4 -> {
+//                    continueShopping = false;
+//                    logger.info("Logging out as customer.");
+//                }
+//                default -> printing();
+//            }
         }
     }
     private static void handleAdminActions(Scanner input) {
@@ -143,16 +143,16 @@ public class Main {
             logger.info("3: Manage Availability Date");
             logger.info("4: Log out");
             int choice = input.nextInt();
-            switch (choice) {
-                case 1 -> adminManageUsers(input);
-                case 2 -> adminManageProducts(input);
-                case 3 -> addAvailabilityDate(input);
-                case 4 -> {
-                    continueManaging = false;
-                    logger.info("Admin is logged out.");
-                }
-                default -> printing();
-            }
+//            switch (choice) {
+//                case 1 -> adminManageUsers(input);
+//                case 2 -> adminManageProducts(input);
+//                case 3 -> addAvailabilityDate(input);
+//                case 4 -> {
+//                    continueManaging = false;
+//                    logger.info("Admin is logged out.");
+//                }
+//                default -> printing();
+//            }
         }
     }
     private static void addAvailabilityDate(Scanner input) {
@@ -180,14 +180,14 @@ public class Main {
                 continue; // restart the loop
             }
 
-            switch (action) {
-                case 1 -> addevent(input);
-                case 2 -> listAllevents();
-                case 3 -> searcheventbyname(input);
-                case 4 -> searcheventbyprice(input);
-                case 5 -> continueManaging = false;
-                default -> printing();
-            }
+//            switch (action) {
+//                case 1 -> addevent(input);
+//                case 2 -> listAllevents();
+//                case 3 -> searcheventbyname(input);
+//                case 4 -> searcheventbyprice(input);
+//                case 5 -> continueManaging = false;
+//                default -> printing();
+//            }
         }
     }
     private static void searcheventbyprice(Scanner input) {
@@ -262,13 +262,13 @@ public class Main {
                input.next(); // consume invalid input
                continue; // restart the loop
            }
-            switch (action) {
-                case 1 -> changeUserInformation(input);
-                case 2 -> addUser(input);
-                case 3 -> seeAllUsers();
-                case 4 -> continueManaging = false;
-                default -> printing();
-            }
+//            switch (action) {
+//                case 1 -> changeUserInformation(input);
+//                case 2 -> addUser(input);
+//                case 3 -> seeAllUsers();
+//                case 4 -> continueManaging = false;
+//                default -> printing();
+//            }
         }
     }
     private static void seeAllUsers() {
