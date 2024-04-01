@@ -106,12 +106,12 @@ public class Main {
         input.next(); // consume invalid input
         return; // exit the method
     }
-        switch (choice) {
-            case 1 -> handleAdminActions(input);
-          //  case 2 -> logger.info("Admins ID :-");
-           // case 2 -> handleCustomerActions(input);
-          //  default -> logger.info("Invalid user ID.");
-        }
+//        switch (choice) {
+//            case 1 -> handleAdminActions(input);
+//          //  case 2 -> logger.info("Admins ID :-");
+//           // case 2 -> handleCustomerActions(input);
+//          //  default -> logger.info("Invalid user ID.");
+//        }
     }
     private static void handleCustomerActions(Scanner input) {
         boolean continueShopping = true;
@@ -122,16 +122,16 @@ public class Main {
             logger.info("3: View order history");
             logger.info("4: Log out");
             int choice = input.nextInt();
-            switch (choice) {
-               // case 1 -> customerBuyProduct(input);
-               // case 2 -> customerChangePassword(input);
-               // case 3 -> customerViewOrderHistory(input);
-                case 4 -> {
-                    continueShopping = false;
-                    logger.info("Logging out as customer.");
-                }
-                default -> printing();
-            }
+//            switch (choice) {
+//               // case 1 -> customerBuyProduct(input);
+//               // case 2 -> customerChangePassword(input);
+//               // case 3 -> customerViewOrderHistory(input);
+//                case 4 -> {
+//                    continueShopping = false;
+//                    logger.info("Logging out as customer.");
+//                }
+//                default -> printing();
+//            }
         }
     }
     private static void handleAdminActions(Scanner input) {
