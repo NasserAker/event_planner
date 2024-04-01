@@ -54,7 +54,11 @@ public class User {
         allUsers.add(r5);
         Logging.getQ().put(r5.getEmail(), r5.getPassword());
     }
-
+    public User(String un, String pa,String bd) {
+        this.username =un;
+        this.password=pa;
+        this.birthdate =bd;
+    }
 
 
     // Getters and setters for all properties
