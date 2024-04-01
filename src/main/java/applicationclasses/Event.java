@@ -1,17 +1,17 @@
 package applicationclasses;
 
-public class event {
+public class Event {
     private String eventName;
     private int price;
     private int availablity;
     private String describtion;
-    public event(String name, int price, int aval, String desc){
+    public Event(String name, int price, int aval, String desc){
       eventName =name;
         this.price=price;
         availablity=aval;
         describtion=desc;
     }
-    public event(){
+    public Event(){
         eventName ="";
         price=0;
         availablity=0;

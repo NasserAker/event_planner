@@ -4,18 +4,18 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import applicationclasses.User;
-import applicationclasses.login;
+import applicationclasses.Login;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
 public class loginstep {
-    public login obj;
+    public Login obj;
     public boolean forget = false;
     public String enteredUsername;
     public String enteredPassword;
-    public loginstep(login iobj) {
+    public loginstep(Login iobj) {
         super();
         this.obj = iobj;
         User u1= new User("hala","123","1\2\2004");

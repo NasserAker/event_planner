@@ -1,8 +1,8 @@
 package org.example;
 
 import applicationclasses.User;
-import applicationclasses.event;
-import applicationclasses.login;
+import applicationclasses.Event;
+import applicationclasses.Login;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -45,7 +45,7 @@ public class Main {
         logger.info("1: Sign up to make a new account");
         logger.info("2: Login to your account");
     }
-    static login o = new login();
+    static Login o = new Login();
     public static void adding(String u,String p,String bd)
     {
         if(u.isEmpty())
@@ -197,7 +197,7 @@ public class Main {
     }
     public static void serchbyprice(int p) {
         int l=0;
-        for(event c: o.getev() ){
+        for(Event c: o.getev() ){
             if(p==c.getPrice() ){
                 String f=String.valueOf(c.getAvailable());
                 logger.info(Names);
@@ -221,7 +221,7 @@ public class Main {
     public static final  String Avalable = "The num of available pieces:- ";
     public static void list()
     {
-        for(event c:o.getev())
+        for(Event c:o.getev())
         {
             logger.info(Names+c.geteventName());
             logger.info("Price:- "+c.getPrice());

@@ -3,7 +3,7 @@ package applicationclasses;
 import java.util.*;
 import java.util.logging.Logger;
 
-public class login {
+public class Login {
     private boolean isLogged;
     private boolean validation;
     public List<User> getUp() {
@@ -14,11 +14,11 @@ public class login {
         up.add(user);
     }
 
-    public void iAmNotInSystem(login obj)
+    public void iAmNotInSystem(Login obj)
     {
         obj.isLogged=false;
     }
-    private static final Logger logger = Logger.getLogger(login.class.getName());
+    private static final Logger logger = Logger.getLogger(Login.class.getName());
     public boolean getIsLogged(){
         return  isLogged;
     }
@@ -28,8 +28,8 @@ public class login {
     public boolean getValidation(){
         return validation;
     }
-    private  List<event> ev = new  ArrayList<>();
-    public List<event> getev() {
+    private  List<Event> ev = new  ArrayList<>();
+    public List<Event> getev() {
         return ev;
     }
     private  List<String>date = new  ArrayList<>();
@@ -39,10 +39,10 @@ public class login {
     public void addDate(String dates) {
         date.add(dates);
     }
-    public void addevent(event event) {
+    public void addevent(Event event) {
         ev.add(event);
     }
-    public login()
+    public Login()
     {
         User u1= new User("hala","123","7\3\2004");
         up.add(u1);
@@ -147,7 +147,7 @@ public class login {
         }
     }
     public void event(String name, int price, int ava, String desc) {
-        ev.add(new event(name, price, ava, desc));
+        ev.add(new Event(name, price, ava, desc));
 
         logger.info("You have added the event successfully ");
     }
@@ -155,7 +155,7 @@ public class login {
     public void setE(){exist=1;}
     public int getE(){return exist;}
     public void addeve(String name){
-        for(event c:ev)
+        for(Event c:ev)
         {
             if ((c.geteventName()).equals(name)) {
                 setE();
@@ -178,7 +178,7 @@ public class login {
     public int getCheck(){return checkPrice;}
     public void setCheck(){checkPrice=1;}
     public void newPrice(String name, int newprice){
-        for(event c:ev)
+        for(Event c:ev)
         {
             if((c.geteventName()).equals(name)) {
                 c.setPrice(newprice);
@@ -187,7 +187,7 @@ public class login {
         }
     }
     public void searchbyname(String name) {
-        for(event c: ev ){
+        for(Event c: ev ){
             if(name.equals(c.geteventName())){
                 String k=String.valueOf(c.getPrice());
                 String f=String.valueOf(c.getAvailable());
