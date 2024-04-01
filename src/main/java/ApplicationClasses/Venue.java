@@ -1,12 +1,12 @@
 package ApplicationClasses;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Venue {
     private String name;
     private String location;
-
     private int capacity;
     private double cost; // New field for the cost
     public void setCost(double cost) {
@@ -21,9 +21,9 @@ public class Venue {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
-        this.cost = cost;
     }
 
+    }
     // ArrayList to store available venues
     private static final List<Venue> availableVenues = new ArrayList<>();
     // Getters and setters
