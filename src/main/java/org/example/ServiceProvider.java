@@ -95,7 +95,7 @@ public class ServiceProvider {
         }
 
 
-        Venue venue = new Venue(name , location , capacity);
+        Venue venue = new Venue(name , location , capacity , 1000);
         Venue.addVenueToTheList(venue);
         logger.info("venue added successfully.");
 

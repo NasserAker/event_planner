@@ -75,7 +75,7 @@ public class Main {
             if(ku.equals("-")||p.equals("-"))
                 l=3;
 
-            else if (ku.equals(u.getUserName()) && u.getPass().equals(p)) {
+            else if (ku.equals(u.getUsername()) && u.getPassword().equals(p)) {
                 l=1;
             }
         }
@@ -368,8 +368,8 @@ public class Main {
         int f=0;
         for(User c:o.getUp())
         {
-            if(c.getUserName().equals(g)) {
-                c.setPass(np);
+            if(c.getUsername().equals(g)) {
+                c.setPassword(np);
                 f=1;
             }
         }

@@ -9,6 +9,7 @@ public class Venue {
     private String location;
     private int capacity;
     private double cost; // New field for the cost
+
     public void setCost(double cost) {
         this.cost = cost;
     }
@@ -17,15 +18,16 @@ public class Venue {
         return cost;
     }
 
-    public Venue(String name, String location, int capacity , double cost) {
+    public Venue(String name, String location, int capacity, double cost) {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
     }
 
-    }
+
     // ArrayList to store available venues
     private static final List<Venue> availableVenues = new ArrayList<>();
+
     // Getters and setters
     public String getName() {
         return name;
@@ -42,15 +44,15 @@ public class Venue {
     public void setLocation(String location) {
         this.location = location;
     }
-    public void setCapacity(int capacity){
-        this.capacity=capacity;
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    public int getCapacity(){
+    public int getCapacity() {
         return capacity;
 
     }
-
 
 
     public static void initializeAvailableVenues() {
@@ -59,9 +61,9 @@ public class Venue {
         availableVenues.add(new Venue("Moon", "Address 1", 100, 1500.0));
 
         availableVenues.add(new Venue("Sun", "Address 2", 150, 2000.0));
-        availableVenues.add(new Venue("Star", "Address 3", 200 , 2500.0));
+        availableVenues.add(new Venue("Star", "Address 3", 200, 2500.0));
         availableVenues.add(new Venue("Sky", "Address 4", 120, 1800.0));
-        availableVenues.add(new Venue("Space", "Address 4", 120 , 1800.0));
+        availableVenues.add(new Venue("Space", "Address 4", 120, 1800.0));
 
         // Add more dates as needed...
     }
@@ -71,7 +73,7 @@ public class Venue {
         return availableVenues;
     }
 
-    public static void addVenueToTheList(Venue venue){
+    public static void addVenueToTheList(Venue venue) {
         availableVenues.add(venue);
     }
 
@@ -80,8 +82,8 @@ public class Venue {
     public String toString() {
         return
                 "Name:'" + name + '\'' +
-                ", Location:'" + location + '\'' +
-                ", Cost: $" + cost
+                        ", Location:'" + location + '\'' +
+                        ", Cost: $" + cost
                 ;
     }
 
