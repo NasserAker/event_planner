@@ -12,16 +12,17 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-
         <sonar.organization>softwareorgeventplanner</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
 
     </properties>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -45,8 +46,20 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
+
 
     <dependencies>
         <dependency>
@@ -93,7 +106,11 @@
             <scope>test</scope>
         </dependency>
 
-
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.6</version>
+        </dependency>
 
     </dependencies>
 
