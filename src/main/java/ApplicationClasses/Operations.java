@@ -126,7 +126,7 @@ public class Operations {
         }
         // Prompt user to submit or go back to the main menu
         logger.info("1. Submit Reservation");
-        logger.info("2. Go back to Main Menu");
+        logger.info("2. Go back to Menu");
         logger.info("Enter your choice:");
         int choice = scanner();
         switch (choice) {
