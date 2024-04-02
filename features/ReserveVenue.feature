@@ -15,7 +15,7 @@ Feature: Venue Reservation
 
 
 
-  @nasser
+ # @nasser
   Scenario: Trying to reserve a venue without specifying date and time
     Given I have searched for a venue that meets my requirements
     When I select a venue that is available
@@ -26,7 +26,7 @@ Feature: Venue Reservation
 
 
 
-  @nasser
+  #@nasser
   Scenario: Reserving a venue and then canceling the reservation
     Given I have successfully reserved a venue
     When I choose to cancel my reservation

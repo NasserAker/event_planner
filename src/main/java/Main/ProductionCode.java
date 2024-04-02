@@ -28,7 +28,7 @@ public class ProductionCode {
 
     protected static Logger logger;
 
-    static {
+   /* static {
 
         Logger rootLogger = Logger.getLogger("");
         Handler[] handlers = rootLogger.getHandlers();
@@ -41,9 +41,20 @@ public class ProductionCode {
             });
         }
     }
+*/
 
-
-
+    static {
+        logger = Logger.getLogger(ProductionCode.class.getName()); // Initialize logger
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler : handlers) {
+            handler.setFormatter(new SimpleFormatter() {
+                @Override
+                public String format(LogRecord logRecord) {
+                    return logRecord.getMessage() + "\n";
+                }
+            });
+        }
+    }
 
 
     public static void main(String[] args) {
