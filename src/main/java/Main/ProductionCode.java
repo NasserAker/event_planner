@@ -184,7 +184,7 @@ public class ProductionCode {
 
 
 
-    public static void createAccountPage()
+    public static boolean createAccountPage()
     {
 
         logger.info("Enter your Email:");
@@ -210,6 +210,7 @@ public class ProductionCode {
             logger.info("This account already exists");
 
         homePage();
+        return create;
     }
 
 
