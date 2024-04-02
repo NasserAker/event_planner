@@ -150,7 +150,7 @@ public class Operations {
 
 
 
-                default:
+            default:
                 logger.info("Invalid choice. Returning to the main menu.");
                 break;
         }
