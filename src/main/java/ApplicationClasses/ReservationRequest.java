@@ -46,4 +46,14 @@ public class ReservationRequest {
     public void setUser(User user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Venue: ").append(selectedVenue.getName()).append("\n");
+        sb.append("Date: ").append(selectedDate).append("\n");
+        sb.append("Services: ").append(selectedServices).append("\n");
+        sb.append("Requested by: ").append(user.getUsername()).append("\n");
+        return sb.toString();
+    }
 }

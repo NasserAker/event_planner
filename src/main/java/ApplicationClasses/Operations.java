@@ -131,9 +131,18 @@ public class Operations {
         int choice = scanner();
         switch (choice) {
             case 1:
-                // Submit reservation
-                submitReservation(selectedVenue, selectedDate, selectedServices);
+                // Inside the case where the user chooses to submit a reservation
+                User loggedInUser = SessionManager.getLoggedInUser(); // Get the logged-in user
+                if (loggedInUser != null) {
+                    ReservationRequest request = new ReservationRequest(selectedVenue, selectedDate, selectedServices, loggedInUser);
+                    ReservationManager.addReservationRequest(request);
+                    // Additional logic to handle submission, such as displaying confirmation messages
+                    logger.info("Reservation submitted successfully!");
+                } else {
+                    logger.info("No user logged in."); // Handle the case where no user is logged in
+                }
                 break;
+
             case 2:
                 userActivities();
                 break;
@@ -150,11 +159,6 @@ public class Operations {
     }
 
 
-    public static void submitReservation(Venue venue, Date date, List<AdditionalService> services) {
-        // Implement logic to save the reservation to the database or perform other actions
-        // You can also display a success message here
-        logger.info("Reservation submitted successfully!");
-    }
 
 
 
