@@ -6,6 +6,26 @@ import java.util.logging.Logger;
 public class login {
     private boolean isLogged;
     private boolean validation;
+    private boolean available1 = false;
+    private boolean available2 = false;
+    private   boolean isreserved=false;
+    public boolean getreservation(){
+        return isreserved;
+    }
+    public void setreserve(boolean res){
+        this.isreserved=res;
+    }
+    private boolean submit = false;
+    public boolean getSubmit(){
+        return submit;
+    }
+    public void setSubmit(boolean submit){
+        this.submit=submit;
+    }
+    public boolean getAvailable1(){
+        return available1;
+    }
+    public boolean getAvailable2(){return available2;}
     public List<User> getUp() {
         return up;
     }
@@ -22,6 +42,17 @@ public class login {
     {
         obj.isLogged=true;
     }
+    public void imthecustomer(login obj)
+    {
+        obj.isLogged=true;
+    }
+    public void imtheserverprovider(login obj)
+    {
+        obj.isLogged=true;
+    }
+
+
+
     private static final Logger logger = Logger.getLogger(login.class.getName());
     public boolean getIsLogged(){
         return  isLogged;
@@ -246,4 +277,54 @@ public class login {
         e.settime(newTime);
         e.settheme(newTheme);
     }
+    public void printCatalog(event cc){
+        logger.info(cc.getDescrtion());
+        String k=String.valueOf(cc.getPrice());
+        logger.info(k);
+        String kk=String.valueOf(cc.getAvailable());
+        logger.info(kk);
+    }
+    private List<event> eventArrayList = new ArrayList<>();
+    public List<event> geteventArrayList() {
+        return eventArrayList;
+    }
+    public void requestByPrice(int price){
+        for(event c: getev() ){
+            if(price==c.getPrice()){
+                eventArrayList.add(new event(c.geteventName(),c.getPrice(),c.getAvailable(),c.getDescrtion(),c.getlocation(),c.gettime(),c.gettheme()));
+            }
+        }
+    }
+    private   List<reserve> op = new  ArrayList<>();
+    public List<reserve> getOp() {
+        return op;
+    }
+    public void addres(reserve order) {
+        op.add(order);
+    }
+    private String dateee ;
+    private String cname;
+    public String getDateee(){
+        return dateee;
+    }
+    public String getCname(){
+        return cname;
+    }
+    public void fillModelAndDate(String model,String datee){
+        for(String d: getDate()){
+            if (d.equals(datee)) {
+                available1 = true;
+                dateee = datee;
+                break;
+            }
+        }
+        for(event c : ev){
+            if (model.equals(c.geteventName())){
+                available2 = true;
+                cname = model;
+                break;
+            }
+        }
+    }
+
 }

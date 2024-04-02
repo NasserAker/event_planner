@@ -2,7 +2,7 @@ Feature: Admin
   @hala
   Scenario: adding a events
     Given I'm the admin
-    When the name is "wedding" and the price is 5000 and the num of av p is 1 and the description "big hall"
+    When the name is "wedding" and the price is 5000 and the num of av p is 1 and the description "big hall" and the loction "rafidia" and the time was 12 and the theme was "blackwhite"
     Then the event add successfully
   @hala
   Scenario: view customer account

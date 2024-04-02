@@ -29,11 +29,13 @@ public class adminstep {
         obj.iMTheAdmin(obj);
     }
 
-@When("the name is {string} and the price is {int} and the num of av p is {int} and the description {string}")
-public void theNameIsAndThePriceIsAndTheNumOfAvPIsAndTheDescription(String nam, int price, int ava, String desc,String loc,int time,String theme) {
-    obj.event(nam,price,ava,desc,loc,time,theme);
-    name =nam;
-}
+
+    @When("the name is {string} and the price is {int} and the num of av p is {int} and the description {string} and the loction {string} and the time was {int} and the theme was {string}")
+    public void theNameIsAndThePriceIsAndTheNumOfAvPIsAndTheDescription(String nam, int price, int ava, String desc,String loc,int time,String theme) {
+        obj.event(nam,price,ava,desc,loc,time,theme);
+        name =nam;
+    }
+
     @Then("the event add successfully")
     public void the_event_add_successfully() {
             obj.addeve(name);
