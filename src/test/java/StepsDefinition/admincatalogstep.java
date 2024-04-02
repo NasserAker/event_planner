@@ -22,7 +22,7 @@ public class admincatalogstep {
 
     @Then("the product is added to the reserve section")
     public void the_product_is_added_to_the_reserve_section() {
-        assertTrue("The product is added",added);
+        assertTrue("The reservation is added",added);
     }
 
     @When("I request information about specific reservation by entering its name {string}")

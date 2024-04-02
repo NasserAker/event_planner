@@ -1,5 +1,5 @@
 Feature: reservation Requests
-
+@hala
   Scenario: Customer submits an reservation request
     Given I'm the Customer
     And My name is "hala"
@@ -8,6 +8,7 @@ Feature: reservation Requests
     And submits the form
     Then the request should be successfully submitted if the date available
 
+@hala
   Scenario: Customer submits an invalid reservation request
     Given I'm the Customer
     And My name is "nasser"

@@ -1,6 +1,7 @@
 package StepsDefinition;
 
 import ApplicationClasses.User;
+import ApplicationClasses.event;
 import ApplicationClasses.login;
 import ApplicationClasses.reserve;
 import io.cucumber.java.en.Given;
@@ -18,6 +19,9 @@ public class reservereq {
         this.obj = iobj;
         User u1= new User("hala","123","4\1\2004");
         obj.addUser(u1);
+        event c2 = new event("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        obj.addevent(c2);
+        c2.setAvailable(100);
     }
     @Given("My name is {string}")
     public void my_name_is(String name) {

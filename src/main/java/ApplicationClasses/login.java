@@ -326,5 +326,31 @@ public class login {
             }
         }
     }
+    private boolean updates = false;
+    private boolean appear = true;
+    public boolean getUpdates(){
+        return updates;
+    }
+    public boolean getApear(){
+        return appear;
+    }
+    public void updatesSuccessfully(String name,String pass){
+        for(User u: up){
+            if(name.equals(u.getUserName())){
+                u.setPass(pass);
+                updates = true;
+                break;
+            }
+        }
+    }
+    public void appearInformation(String name){
+        for(reserve o : getOp()){
+            if(name.equals(o.getUname())){
+                logger.info(o.getCname());
+                logger.info(o.getDate());
+                appear = true;
+            }
+        }
+    }
 
 }
