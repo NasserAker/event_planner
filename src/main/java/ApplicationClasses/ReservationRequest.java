@@ -58,11 +58,11 @@ public class ReservationRequest {
     }
 
     public boolean Confirmation(){
-        return ApprovedRequests.contains(this.requestId);
+        return ApprovedRequests.contains(this);
     }
 
     public boolean Denial(){
-        return DeniedRequests.contains(this.requestId);
+        return DeniedRequests.contains(this);
     }
 
     public int GetRequestId(){

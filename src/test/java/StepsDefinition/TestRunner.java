@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
         plugin = {"html:target/cucumber/wikipedia.html"},
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
-        glue = {"StepsDefinition"}
-        //tags = "@nasser"
+        glue = {"StepsDefinition"},
+        tags = "@nasser"
 
 )
 

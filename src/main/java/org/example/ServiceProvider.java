@@ -93,8 +93,6 @@ public class ServiceProvider {
                 System.out.println("Invalid input. Please enter a valid number.");
             }
         }
-
-
         Venue venue = new Venue(name , location , capacity , 1000);
         Venue.addVenueToTheList(venue);
         logger.info("venue added successfully.");
