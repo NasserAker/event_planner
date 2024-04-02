@@ -2,11 +2,10 @@ package Main;
 
 
 import ApplicationClasses.Logging;
-import ApplicationClasses.Operations;
-import ApplicationClasses.SessionManager;
-import ApplicationClasses.User;
+import ApplicationClasses.*;
 import com.sun.tools.javac.Main;
 
+import java.util.List;
 import java.util.Scanner;
 import java.util.logging.*;
 
@@ -28,7 +27,7 @@ public class ProductionCode {
 
     protected static Logger logger;
 
-   /* static {
+    static {
 
         Logger rootLogger = Logger.getLogger("");
         Handler[] handlers = rootLogger.getHandlers();
@@ -41,26 +40,17 @@ public class ProductionCode {
             });
         }
     }
-*/
 
-    static {
-        logger = Logger.getLogger(ProductionCode.class.getName()); // Initialize logger
-        Handler[] handlers = logger.getHandlers();
-        for (Handler handler : handlers) {
-            handler.setFormatter(new SimpleFormatter() {
-                @Override
-                public String format(LogRecord logRecord) {
-                    return logRecord.getMessage() + "\n";
-                }
-            });
-        }
-    }
+
+
 
 
     public static void main(String[] args) {
 
 
         logger = Logger.getLogger(Main.class.getName());
+
+
 
 
 
@@ -195,7 +185,7 @@ public class ProductionCode {
 
 
 
-    public static boolean createAccountPage()
+    public static void createAccountPage()
     {
 
         logger.info("Enter your Email:");
@@ -221,7 +211,6 @@ public class ProductionCode {
             logger.info("This account already exists");
 
         homePage();
-        return create;
     }
 
 
@@ -234,32 +223,45 @@ public class ProductionCode {
             logger.info("\nAdmin Menu:");
             logger.info("1. View/Edit Wedding Listings");
             logger.info("2. Manage User Accounts");
-            logger.info("3. View Reservation Details");
+            logger.info("3. View Reservation Requests"); // New option
             logger.info("4. Send Notifications");
             logger.info("5. Log Out");
             logger.info(ENTER_CHOICE);
 
             int choice = scanner(); // Get user input
 
-          /*  switch (choice) {
+            switch (choice) {
                 case 1:
-                    viewEditWeddingListings();
+                    // Implement view/edit wedding listings
                     break;
                 case 2:
-                    manageUserAccounts();
+                    // Implement manage user accounts
                     break;
                 case 3:
-                    viewReservationDetails();
+                    viewReservationRequests(); // New case for viewing reservation requests
                     break;
                 case 4:
-                    sendNotifications();
+                    // Implement send notifications
                     break;
                 case 5:
                     loggedIn = false; // Exit the loop and log out
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
-            }*/
+            }
+        }
+    }
+
+    public static void viewReservationRequests() {
+        // Logic to display reservation requests to the admin
+        List<ReservationRequest> requests = ReservationManager.getAllReservationRequests();
+        if (requests.isEmpty()) {
+            logger.info("There are no pending reservation requests.");
+        } else {
+            logger.info("Pending Reservation Requests:");
+            for (int i = 0; i < requests.size(); i++) {
+                logger.info((i + 1) + ". " + requests.get(i).toString());
+            }
         }
     }
 
@@ -305,43 +307,43 @@ public class ProductionCode {
     }
 
 
-   public static void serviceProviderActivities(){
+    public static void serviceProviderActivities(){
 
 
-       logger.info("Welcome, Service Provider!");
+        logger.info("Welcome, Service Provider!");
 
-       boolean loggedIn = true;
-       while (loggedIn) {
-           logger.info("\nService Provider Menu:");
-           logger.info("1. Add a new Venue");
-           logger.info("2. Add a new additional service for events.");
-           logger.info("3. change your personal information");
-           logger.info("4. Delete a venue.");
-           logger.info("5. Delete an additional service for events.");
-           logger.info("6. Log Out");
-           logger.info(ENTER_CHOICE);
+        boolean loggedIn = true;
+        while (loggedIn) {
+            logger.info("\nService Provider Menu:");
+            logger.info("1. Add a new Venue");
+            logger.info("2. Add a new additional service for events.");
+            logger.info("3. change your personal information");
+            logger.info("4. Delete a venue.");
+            logger.info("5. Delete an additional service for events.");
+            logger.info("6. Log Out");
+            logger.info(ENTER_CHOICE);
 
-           int choice = scanner(); // Get user input
-           switch (choice) {
-               case 1:
-                   addNewVenue();
-                   break;
+            int choice = scanner(); // Get user input
+            switch (choice) {
+                case 1:
+                    addNewVenue();
+                    break;
 
-               case 2:
-                   addService();
-                   break;
-               case 3:
-                   edit_info();
-                   break;
-               case 6:
-                   loggedIn = false; // Exit the loop and log out
-                   break;
-               default:
-                   logger.info("Invalid choice. Please enter a valid option.");
-           }
-
-
-    }
+                case 2:
+                    addService();
+                    break;
+                case 3:
+                    edit_info();
+                    break;
+                case 6:
+                    loggedIn = false; // Exit the loop and log out
+                    break;
+                default:
+                    logger.info("Invalid choice. Please enter a valid option.");
+            }
 
 
-}}
+        }
+
+
+    }}
