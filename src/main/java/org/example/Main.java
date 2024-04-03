@@ -30,26 +30,30 @@ public class Main {
             }
         });
         logger.addHandler(handler);
-
         displayMainMenu();
+
+    }
+
+    private static void displayMainMenu() {
+
+     boolean cont=true;
+     while (cont){
+        logger.info("1: Sign up to make a new account");
+        logger.info("2: Login to your account");
+        logger.info("3: Exit");
+
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
 
         switch (choice) {
             case 1 -> signUpProcedure(input);
             case 2 -> loginProcedure(input);
+            case 3 -> cont=false;
             default -> logger.info("Invalid option selected.");
         }
+
+
     }
-
-    private static void displayMainMenu() {
-
-
-        logger.info("1: Sign up to make a new account");
-        logger.info("2: Login to your account");
-
-
-
     }
     static login o = new login();
     public static void adding(String u,String p,String bd)
