@@ -51,7 +51,14 @@ public class login {
         obj.isLogged=true;
     }
 
-
+    public void setNamePass(String userName, String pass){
+        for (User u: up) {
+            if (userName.equals(u.getUserName()) && u.getPass().equals(pass)) {
+                validation = true;
+                break;
+            }
+        }
+    }
 
     private static final Logger logger = Logger.getLogger(login.class.getName());
     public boolean getIsLogged(){
@@ -343,6 +350,17 @@ public class login {
             }
         }
     }
+    int yuy=0;
+    public int yourInformationUpdatesSuccessfully(String name,String pass) {
+        for (User u : getUp()) {
+            if (name.equals(u.getUserName())) {
+                u.setPass(pass);
+                yuy=1;
+                break;
+            }
+        }
+        return yuy;
+    }
     public void appearInformation(String name){
         for(reserve o : getOp()){
             if(name.equals(o.getUname())){
@@ -351,6 +369,11 @@ public class login {
                 appear = true;
             }
         }
+    }
+    public void catagoryadd(String name, int price, int ava, String desc,String location ,int time,String theme) {
+        ev.add(new event(name, price, ava, desc,location,time,theme));
+
+        logger.info("You have added this event a successfully way");
     }
 
 }

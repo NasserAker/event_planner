@@ -3,6 +3,7 @@ package org.example;
 import ApplicationClasses.User;
 import ApplicationClasses.event;
 import ApplicationClasses.login;
+import ApplicationClasses.reserve;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -42,8 +43,13 @@ public class Main {
     }
 
     private static void displayMainMenu() {
+
+
         logger.info("1: Sign up to make a new account");
         logger.info("2: Login to your account");
+
+
+
     }
     static login o = new login();
     public static void adding(String u,String p,String bd)
@@ -56,6 +62,8 @@ public class Main {
         logger.info("Your account created successfully");
     }
     private static void signUpProcedure(Scanner input) {
+
+
         logger.info("In order to make a new account you have to enter your information");
         String email = getInput(input, "Please enter your Email");
         String password = getInput(input, "Please enter your password");
@@ -97,7 +105,7 @@ public class Main {
     }
     private static void userLoggedIn(Scanner input) {
         logger.info("You have logged in successfully");
-       // logger.info("Enter user ID ");
+        logger.info("Enter user ID ");
         int choice;
        try{
           choice = input.nextInt();
@@ -108,9 +116,9 @@ public class Main {
     }
         switch (choice) {
             case 1 -> handleAdminActions(input);
-//            case 2 ->
-           // case 2 -> handleCustomerActions(input);
-           /////// default -> logger.info("Invalid user ID.");
+          //  case 2 -> logger.info("This ID means that you are the INSTALLER so your permissions like that:-");
+            case 2 -> handleCustomerActions(input);
+            default -> logger.info("Invalid user ID.");
         }
     }
     private static void handleCustomerActions(Scanner input) {
@@ -123,9 +131,9 @@ public class Main {
             logger.info("4: Log out");
             int choice = input.nextInt();
             switch (choice) {
-               // case 1 -> customerBuyProduct(input);
-               // case 2 -> customerChangePassword(input);
-              //  case 3 -> customerViewOrderHistory(input);
+                case 1 -> customerreserveevent(input);
+                case 2 -> customerChangePassword(input);
+                case 3 -> customerViewOrderHistory(input);
                 case 4 -> {
                     continueShopping = false;
                     logger.info("Logging out as customer.");
@@ -134,6 +142,88 @@ public class Main {
             }
         }
     }
+    private static void customerViewOrderHistory(Scanner input) {
+        logger.info("Enter your email to view order history:");
+        String email = input.next();
+        int result = theInformationShouldAppear(email);
+        if (result == 0) {
+            logger.info("No orders found for this email.");
+        }
+    }
+    public static int theInformationShouldAppear(String name) {
+        int a=0;
+        for(reserve o : o.getOp()){
+            if(name.equals(o.getUname())){
+                logger.info(o.getCname()+"\t"+o.getDate());
+                a=1;
+            }
+        }
+        return a;
+    }
+    private static void customerChangePassword(Scanner input) {
+        logger.info("Enter your current email:");
+        String email = input.next();
+        logger.info("Enter your new password:");
+        String newPassword = input.next();
+        int result = o.yourInformationUpdatesSuccessfully(email, newPassword);
+        if (result == 1) {
+            logger.info("Password changed successfully.");
+        } else {
+            logger.info("Failed to change password. User not found.");
+        }
+    }
+    private static void customerreserveevent(Scanner input) {
+        logger.info("Please enter the name of the event you wish to reserve:");
+        String productName = input.next();
+        logger.info("Enter the desired date for the event:");
+        String purchaseDate = input.next();
+        logger.info("Enter the budget you want :");
+        int quantity = input.nextInt();
+        buying(productName, purchaseDate, quantity);
+    }
+    public static void buying(String cn,String d,int r)
+    {
+        boolean a1=false;
+        boolean a2=false;
+        for(String dd: o.getDate()) {
+            if (dd.equals(d)) {
+                a1 = true;
+                break;
+            }
+        }
+        int indexm=0;
+        int counterte=0;
+        for(event c : o.getev()){
+            if (cn.equals(c.geteventName())){
+                a2=true;
+                indexm=counterte;
+                break;
+            }
+            counterte++;
+        }
+        int fd= o.getev().get(indexm).getAvailable();
+        if(!a1) {
+
+            logger.info("cant reserve this event in this day ");
+        }
+        else if (!a2) {
+
+            logger.info("There is no event with this name in our company ");
+        }
+        else if (fd<r) {
+
+            logger.info("We dont have the amount that you need from this product ");
+        }
+        else {
+
+            int y= o.getev().get(indexm).getAvailable();
+            y-=r;
+            o.getev().get(indexm).setAvailable(y);
+            logger.info("Your reservation is done successfully ");
+        }
+
+    }
+
     private static void handleAdminActions(Scanner input) {
         boolean continueManaging = true;
         while (continueManaging) {
