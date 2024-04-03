@@ -50,6 +50,18 @@ public class Admin {
     }
     public String getPassword() {return password;}
     public void logging(boolean t) { logState=t; }
-    public String getName() {return username;}
+
     public String getEmail(){return email;}
+    public static Admin getAdminByEmail(String email) {
+        for (Admin admin : Admin.getAdminList()) {
+            if (admin.getEmail().equals(email)) {
+                return admin;
+            }
+        }
+        return null; // Admin not found
+    }
+
+    public String getUsername() {
+        return username;
+    }
 }

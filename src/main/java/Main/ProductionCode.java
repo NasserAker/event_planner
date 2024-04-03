@@ -5,15 +5,18 @@ import ApplicationClasses.Logging;
 import ApplicationClasses.*;
 import com.sun.tools.javac.Main;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.*;
 
 import static ApplicationClasses.AdditionalService.initializeAdditionalService;
+import static ApplicationClasses.Admin.getAdminByEmail;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
+import static ApplicationClasses.SessionManager.loggedInAdmin;
 import static ApplicationClasses.User.getUserByEmail;
 import static ApplicationClasses.User.initializeUsers;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
@@ -135,13 +138,15 @@ public class ProductionCode {
 
                     }
 
-                    User loggedInUser = null; // Initialize the logged-in user object
+                    User loggedInUser = null;// Initialize the logged-in user object
+                    Admin loggedInAdmin = null;
 
                     switch (utype) {
 
 
                         case 0: {
-
+                            loggedInAdmin = getAdminByEmail(email);
+                            SessionManager.loginAdmin(loggedInAdmin);
                             adminActivities();
                             break;
 
@@ -218,40 +223,132 @@ public class ProductionCode {
 
 
     public static void adminActivities() {
-        logger.info("Welcome, Admin!");
+
+        // Retrieve the logged-in user from the session
+        Admin loggedInAdmin = SessionManager.getLoggedInAdmin();
+        if (loggedInAdmin == null) {
+            logger.info("User not logged in.");
+            return;
+        }
+        logger.info("Welcome, Admin: " + loggedInAdmin.getUsername());
 
         boolean loggedIn = true;
         while (loggedIn) {
             logger.info("\nAdmin Menu:");
-            logger.info("1. View/Edit Wedding Listings");
-            logger.info("2. Manage User Accounts");
+            logger.info("1. Manage User Accounts");
+            logger.info("2. Manage Events");
             logger.info("3. View Reservation Requests"); // New option
-            logger.info("4. Send Notifications");
-            logger.info("5. Log Out");
+            logger.info("4. Log Out");
             logger.info(ENTER_CHOICE);
 
             int choice = scanner(); // Get user input
 
             switch (choice) {
                 case 1:
-                    // Implement view/edit wedding listings
+                    adminManageUsers(input);
                     break;
                 case 2:
-                    // Implement manage user accounts
                     break;
                 case 3:
                     viewReservationRequests(); // New case for viewing reservation requests
                     break;
                 case 4:
-                    // Implement send notifications
-                    break;
-                case 5:
                     loggedIn = false; // Exit the loop and log out
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
+    }
+
+
+    private static void adminManageUsers(Scanner input) {
+        boolean continueManaging = true;
+        while (continueManaging) {
+            logger.info("Select an action for user management:");
+            logger.info("1. Change user information");
+            logger.info("2. Add new user");
+            logger.info("3. See all user accounts");
+            logger.info("4. delete an accounts");
+            logger.info("5. Return to admin menu");
+            int action;
+            try{
+                action = input.nextInt();}
+            catch (InputMismatchException e) {
+                logger.info("Invalid input. Please enter a valid integer.");
+                input.next(); // consume invalid input
+                continue; // restart the loop
+            }
+            switch (action) {
+                case 1 -> changeUserInformation(input);
+                case 2 -> addUser(input);
+             //   case 3 -> seeAllUsers();
+                case 4 -> deleteaccounts();
+                case 5 -> continueManaging = false;
+                default -> printing();
+            }
+        }
+    }
+
+    private static void changeUserInformation(Scanner input) {
+        logger.info("Enter the email of the user you want to update:");
+        String email = input.next();
+        User user = getUserByEmail(email);
+        if (user != null) {
+            logger.info("User found. Enter new information:");
+            // Prompt user to enter new information and update the user object
+            // For example:
+            logger.info("Enter new username:");
+            String newUsername = input.next();
+            user.setUsername(newUsername);
+            logger.info("Enter new password:");
+            String newPassword = input.next();
+            user.setPassword(newPassword);
+            // Update other user information as needed
+            logger.info("User information updated successfully.");
+        } else {
+            logger.info("User not found.");
+        }
+    }
+
+    private static void addUser(Scanner input) {
+        logger.info("Enter email:");
+        String email = input.next();
+        logger.info("Enter username:");
+        String username = input.next();
+        logger.info("Enter password:");
+        String password = input.next();
+        // Add validation and error handling as needed
+        User newUser = new User(username, password, email);
+        boolean added = Operations.addUser(newUser);
+        if (added) {
+            logger.info("User added successfully.");
+        } else {
+            logger.info("Failed to add user. User already exists.");
+        }
+    }
+
+
+
+    private static void deleteaccounts() {
+        logger.info("Enter the email of the user you want to delete:");
+        String email = input.next();
+        boolean deleted = Operations.deleteUserByEmail(email);
+        if (deleted) {
+            logger.info("User account deleted successfully.");
+        } else {
+            logger.info("User not found.");
+        }
+    }
+
+
+
+
+
+
+
+    private static void printing() {
+        logger.info("Invalid action. Please enter a valid option.");
     }
 
     public static void viewReservationRequests() {
@@ -268,7 +365,7 @@ public class ProductionCode {
     }
 
 
-
+///////////////////////////////////////////////////////////////////////////////
 
 
     public static void userActivities() {

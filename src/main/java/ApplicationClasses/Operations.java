@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
 import static ApplicationClasses.ServiceProvider.logger;
@@ -28,7 +30,17 @@ public class Operations {
         allUsers.add(c); // If no match found, add the user
         return true; // User added successfully
     }
-
+    public static boolean deleteUserByEmail(String email) {
+        User userToDelete = User.getUserByEmail(email);
+        if (userToDelete != null) {
+            // Remove the user from the allUsers list
+            User.getUserList().remove(userToDelete);
+            // Optionally, you might want to update other related data structures or perform additional cleanup
+            return true; // User successfully deleted
+        } else {
+            return false; // User not found
+        }
+    }
 
     public static void viewUserProfile(User user) {
         logger.info("User Profile:");
