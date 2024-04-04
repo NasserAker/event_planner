@@ -16,9 +16,7 @@ import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
-import static ApplicationClasses.SessionManager.loggedInAdmin;
-import static ApplicationClasses.User.getUserByEmail;
-import static ApplicationClasses.User.initializeUsers;
+import static ApplicationClasses.User.*;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
 
 
@@ -206,7 +204,7 @@ public class ProductionCode {
         logger.info("Enter your Password:");
         String password = input.nextLine();
 
-        User r = new User(username, password, address, phnum, email, gen,0.0);
+        User r = new User(username, password, address, phnum, email, gen);
         boolean create = Operations.addUser(r);
         if (create) {
             logger.info("A new account was created successfully");
@@ -245,9 +243,10 @@ public class ProductionCode {
 
             switch (choice) {
                 case 1:
-                    adminManageUsers(input);
+                    adminManageUsers();
                     break;
                 case 2:
+                    adminManageProducts();
                     break;
                 case 3:
                     viewReservationRequests(); // New case for viewing reservation requests
@@ -262,107 +261,97 @@ public class ProductionCode {
     }
 
 
-    private static void adminManageUsers(Scanner input) {
+    private static void adminManageUsers() {
         boolean continueManaging = true;
         while (continueManaging) {
             logger.info("Select an action for user management:");
             logger.info("1. Change user information");
             logger.info("2. Add new user");
             logger.info("3. See all user accounts");
-            logger.info("4. delete an accounts");
+            logger.info("4. Delete an account");
             logger.info("5. Return to admin menu");
             int action;
-            try{
-                action = input.nextInt();}
-            catch (InputMismatchException e) {
+            try {
+                action = input.nextInt();
+            } catch (InputMismatchException e) {
                 logger.info("Invalid input. Please enter a valid integer.");
                 input.next(); // consume invalid input
                 continue; // restart the loop
             }
             switch (action) {
-                case 1 -> changeUserInformation(input);
-                case 2 -> addUser(input);
-             //   case 3 -> seeAllUsers();
-                case 4 -> deleteaccounts();
-                case 5 -> continueManaging = false;
-                default -> printing();
+                case 1:
+                    changeUserInformation();
+                    break;
+                case 2:
+                    addNewUser();
+                    break;
+                case 3:
+                    seeAllUsers();
+                    break;
+                case 4:
+                    deleteAccount();
+                    break;
+                case 5:adminActivities();
+                    break;
+                default:
+                    logger.info("Invalid choice. Please enter a valid option.");
             }
         }
     }
 
-    private static void changeUserInformation(Scanner input) {
-        logger.info("Enter the email of the user you want to update:");
-        String email = input.next();
-        User user = getUserByEmail(email);
-        if (user != null) {
-            logger.info("User found. Enter new information:");
-            // Prompt user to enter new information and update the user object
-            // For example:
-            logger.info("Enter new username:");
-            String newUsername = input.next();
-            user.setUsername(newUsername);
-            logger.info("Enter new password:");
-            String newPassword = input.next();
-            user.setPassword(newPassword);
-            // Update other user information as needed
-            logger.info("User information updated successfully.");
-        } else {
-            logger.info("User not found.");
-        }
-    }
+    private static void adminManageProducts() {
+        boolean continueManaging = true;
+        while (continueManaging) {
+            logger.info("Select an action for event management:");
+            logger.info("1. Add a new event");
+            logger.info("2. List all events");
+            logger.info("3. Search for an event by name");
+            logger.info("4. Search for an event by price");
+            logger.info("5. Delete an event by name");
+            logger.info("6. Edit the event information");
+            logger.info("7. Return to admin menu");
 
-    private static void addUser(Scanner input) {
-        logger.info("Enter email:");
-        String email = input.next();
-        logger.info("Enter username:");
-        String username = input.next();
-        logger.info("Enter password:");
-        String password = input.next();
-        // Add validation and error handling as needed
-        User newUser = new User(username, password, email);
-        boolean added = Operations.addUser(newUser);
-        if (added) {
-            logger.info("User added successfully.");
-        } else {
-            logger.info("Failed to add user. User already exists.");
-        }
-    }
+            int action;
+            try {
+                action = input.nextInt();
+                input.nextLine(); // Consume newline
+            } catch (InputMismatchException e) {
+                logger.info("Invalid input. Please enter a valid integer.");
+                input.nextLine(); // Consume invalid input
+                continue; // Restart the loop
+            }
 
-
-
-    private static void deleteaccounts() {
-        logger.info("Enter the email of the user you want to delete:");
-        String email = input.next();
-        boolean deleted = Operations.deleteUserByEmail(email);
-        if (deleted) {
-            logger.info("User account deleted successfully.");
-        } else {
-            logger.info("User not found.");
-        }
-    }
-
-
-
-
-
-
-
-    private static void printing() {
-        logger.info("Invalid action. Please enter a valid option.");
-    }
-
-    public static void viewReservationRequests() {
-        // Logic to display reservation requests to the admin
-        List<ReservationRequest> requests = ReservationManager.getAllReservationRequests();
-        if (requests.isEmpty()) {
-            logger.info("There are no pending reservation requests.");
-        } else {
-            logger.info("Pending Reservation Requests:");
-            for (int i = 0; i < requests.size(); i++) {
-                logger.info((i + 1) + ". " + requests.get(i).toString());
+            switch (action) {
+                case 1:
+                //    addEvent();
+                    break;
+                case 2:
+                  //  listAllEvents();
+                    break;
+                case 3:
+                    //searchEventByName();
+                    break;
+                case 4:
+                    //searchEventByPrice();
+                    break;
+                case 5:
+                    //deleteEvent();
+                    break;
+                case 6:
+                    //editEvent();
+                    break;
+                case 7:
+                    adminActivities();
+                    break;
+                default:
+                    logger.info("Invalid action. Please select a valid action.");
             }
         }
     }
+
+
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////

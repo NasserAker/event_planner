@@ -10,6 +10,7 @@ import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
 import static ApplicationClasses.ServiceProvider.logger;
 import static ApplicationClasses.User.allUsers;
+import static ApplicationClasses.User.getUserByEmail;
 import static Main.ProductionCode.*;
 
 
@@ -31,7 +32,7 @@ public class Operations {
         return true; // User added successfully
     }
     public static boolean deleteUserByEmail(String email) {
-        User userToDelete = User.getUserByEmail(email);
+        User userToDelete = getUserByEmail(email);
         if (userToDelete != null) {
             // Remove the user from the allUsers list
             User.getUserList().remove(userToDelete);
@@ -39,6 +40,31 @@ public class Operations {
             return true; // User successfully deleted
         } else {
             return false; // User not found
+        }
+    }
+    public static void deleteAccount() {
+        logger.info("Enter the email of the user you want to delete:");
+        String email = input.next();
+        boolean deleted = Operations.deleteUserByEmail(email);
+        if (deleted) {
+            logger.info("User account deleted successfully.");
+        } else {
+            logger.info("User not found.");
+        }
+    }
+
+
+
+    public static void viewReservationRequests() {
+        // Logic to display reservation requests to the admin
+        List<ReservationRequest> requests = ReservationManager.getAllReservationRequests();
+        if (requests.isEmpty()) {
+            logger.info("There are no pending reservation requests.");
+        } else {
+            logger.info("Pending Reservation Requests:");
+            for (int i = 0; i < requests.size(); i++) {
+                logger.info((i + 1) + ". " + requests.get(i).toString());
+            }
         }
     }
 
@@ -315,10 +341,79 @@ public class Operations {
     }
 
 
+    public static void seeAllUsers() {
+        logger.info("All User Accounts:");
+        for (User user : allUsers) {
+            logger.info("Username: " + user.getUsername());
+            logger.info("Email: " + user.getEmail());
+            // Print other user details as needed
+        }
+    }
+    public static boolean addUserCheck(String email) {
+        // Check if a user with the given email already exists
+        if (getUserByEmail(email) != null) {
+            // User with the same email already exists
+            return false;
+        }
+        // User does not exist
+        return true;
+    }
 
 
+    public static void changeUserInformation() {
+        logger.info("Enter the email of the user you want to update:");
+        String email = input.next();
+        User user = getUserByEmail(email);
+        if (user != null) {
+            logger.info("User found. Enter new information:");
+            // Prompt user to enter new information and update the user object
+            // For example:
+            logger.info("Enter new username:");
+            String newUsername = input.next();
+            user.setUsername(newUsername);
+            logger.info("Enter new password:");
+            String newPassword = input.next();
+            user.setPassword(newPassword);
+            // Update other user information as needed
+            logger.info("User information updated successfully.");
+        } else {
+            logger.info("User not found.");
+        }
+    }
 
+    public static void addNewUser() {
+        System.out.println("Enter new user details:");
 
+        System.out.println("Email:");
+        String email = input.next();
+
+        // Check if the user with the given email already exists
+        boolean added = addUserCheck(email);
+        if (added) {
+            // If the user does not exist, proceed to add the user
+            System.out.println("Username:");
+            String username = input.next();
+
+            System.out.println("Password:");
+            String password = input.next();
+
+            System.out.println("Address:");
+            String address = input.next();
+
+            System.out.println("Phone:");
+            String phone = input.next();
+
+            System.out.println("Gender:");
+            String gender = input.next();
+
+            // Create a new User object and add it to the list of all users
+            User newUser = new User(username, password, address, phone, email, gender);
+            User.getUserList().add(newUser);
+            System.out.println("User added successfully.");
+        } else {
+            System.out.println("Failed to add user. User already exists.");
+        }
+    }
 
 
 
