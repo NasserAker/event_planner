@@ -185,6 +185,7 @@ public class ProductionCode {
 
         }
 
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
 
     }
 
@@ -199,18 +200,19 @@ public class ProductionCode {
             logger.info("User not logged in.");
             return;
         }
-        logger.info("Welcome, Admin: " + loggedInAdmin.getUsername());
+        logger.info("\nWelcome, Admin: " + loggedInAdmin.getUsername());
 
         boolean loggedIn = true;
         while (loggedIn) {
-            logger.info("\nAdmin Menu:");
-            logger.info("1. Manage User Accounts");
-            logger.info("2. Manage Events");
+            logger.info("Admin Menu:");
+            logger.info("1. Manage User Accounts"); // Menu
+            logger.info("2. Manage Events"); // Menu
             logger.info("3. View Reservation Requests"); // New option
             logger.info("4. Log Out");
             logger.info(ENTER_CHOICE);
 
             int choice = scanner(); // Get user input
+
 
             switch (choice) {
                 case 1:
@@ -229,13 +231,15 @@ public class ProductionCode {
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+
     }
 
 
     private static void adminManageUsers() {
         boolean continueManaging = true;
         while (continueManaging) {
-            logger.info("Select an action for user management:");
+            logger.info("\nSelect an action for user management:");
             logger.info("1. Change user information");
             logger.info("2. Add new user");
             logger.info("3. See all user accounts");
@@ -268,6 +272,8 @@ public class ProductionCode {
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+
     }
 
     private static void adminManageProducts() {
@@ -318,6 +324,8 @@ public class ProductionCode {
                     logger.info("Invalid action. Please select a valid action.");
             }
         }
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+
     }
 
 
@@ -332,7 +340,7 @@ public class ProductionCode {
             return;
         }
 
-        logger.info("Welcome, User: " + loggedInUser.getUsername());
+        logger.info("\nWelcome, User: " + loggedInUser.getUsername());
 
         boolean loggedIn = true;
         while (loggedIn) {

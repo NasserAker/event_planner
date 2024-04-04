@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 public class viewuserstep {
-    User u = new User ("username", "password", "address", "phone", "email", "gender", 0.0);
+    User u = new User ("username", "password", "address", "phone", "email", "gender");
     @Given("the user is logged in")
 
     public void the_user_is_logged_in() {

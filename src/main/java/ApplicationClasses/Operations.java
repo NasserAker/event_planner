@@ -1,10 +1,6 @@
 package ApplicationClasses;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
-
+import java.util.*;
 
 
 import static ApplicationClasses.AdditionalService.availableServices;
@@ -16,6 +12,7 @@ import static Main.ProductionCode.*;
 
 
 public class Operations {
+    public static final String SEPARATOR = "------------------------------------------------------";
 
 
     public static boolean createAccountPage()
@@ -42,6 +39,9 @@ public class Operations {
         }
         else
             logger.info("This account already exists");
+        logger.info(SEPARATOR);
+
+
 
         homePage();
 
@@ -75,59 +75,90 @@ public class Operations {
 
 
     public static void addNewUser() {
-        System.out.println("Enter new user details:");
+        logger.info("Enter new user details:");
 
-        System.out.println("Email:");
+        logger.info("Email:");
         String email = input.next();
 
         // Check if the user with the given email already exists
         boolean added = addUserCheck(email);
         if (added) {
             // If the user does not exist, proceed to add the user
-            System.out.println("Username:");
+            logger.info("Username:");
             String username = input.next();
 
-            System.out.println("Password:");
+            logger.info("Password:");
             String password = input.next();
 
-            System.out.println("Address:");
+            logger.info("Address:");
             String address = input.next();
 
-            System.out.println("Phone:");
+            logger.info("Phone:");
             String phone = input.next();
 
-            System.out.println("Gender:");
+            logger.info("Gender:");
             String gender = input.next();
 
             // Create a new User object and add it to the list of all users
             User newUser = new User(username, password, address, phone, email, gender);
             User.getUserList().add(newUser);
-            System.out.println("User added successfully.");
+            logger.info("User added successfully.");
         } else {
-            System.out.println("Failed to add user. User already exists.");
+            logger.info("Failed to add user. User already exists.");
         }
     }
 
     public static void seeAllUsers() {
-        logger.info("All User Accounts:");
+        logger.info("\nAll User Accounts:");
+
+        // Sort the users alphabetically by username
+        Collections.sort(allUsers, Comparator.comparing(User::getUsername));
+
         for (User user : allUsers) {
-            logger.info("Username: " + user.getUsername());
-            logger.info("Email: " + user.getEmail());
-            // Print other user details as needed
+            StringBuilder userDetails = new StringBuilder();
+            userDetails.append("Username: ").append(user.getUsername()).append(", ");
+            userDetails.append("Email: ").append(user.getEmail()).append(", ");
+            // Append other user details as needed
+            logger.info(userDetails.toString());
         }
     }
 
 
     public static void deleteAccount() {
-        logger.info("Enter the email of the user you want to delete:");
-        String email = input.next();
-        boolean deleted = deleteUserByEmail(email);
+        logger.info("All User Accounts:");
+        List<User> allUsers = User.getUserList();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = allUsers.get(i);
+            logger.info((i + 1) + ". Username: " + user.getUsername() + ", Email: " + user.getEmail());
+        }
+
+        logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
+        int userNumber = input.nextInt();
+
+        // Check if the entered number is '0'
+        if (userNumber == 0) {
+            logger.info("Returning to the admin menu.");
+            return; // Exit the method
+        }
+
+        // Check if the entered number is valid
+        if (userNumber < 1 || userNumber > allUsers.size()) {
+            logger.info("Invalid user number. Please enter a valid number.");
+            return; // Exit the method
+        }
+
+        // Get the corresponding user based on the entered number
+        User userToDelete = allUsers.get(userNumber - 1);
+
+        // Perform deletion
+        boolean deleted = deleteUserByEmail(userToDelete.getEmail());
         if (deleted) {
             logger.info("User account deleted successfully.");
         } else {
             logger.info("User not found.");
         }
     }
+
 /////////////////////////
 
 
