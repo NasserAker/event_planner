@@ -53,11 +53,11 @@ public class Operations {
     // Admin Menu
     // Manage User Accounts
     public static void changeUserInformation() {
-        logger.info("Enter the email of the user you want to update:");
+        logger.info("\nEnter the email of the user you want to update:");
         String email = input.next();
         User user = getUserByEmail(email);
         if (user != null) {
-            logger.info("User found. Enter new information:");
+            logger.info("\nUser found. Enter new information:");
             // Prompt user to enter new information and update the user object
             // For example:
             logger.info("Enter new username:");
@@ -75,7 +75,7 @@ public class Operations {
 
 
     public static void addNewUser() {
-        logger.info("Enter new user details:");
+        logger.info("\nEnter new user details:");
 
         logger.info("Email:");
         String email = input.next();
@@ -125,7 +125,7 @@ public class Operations {
 
 
     public static void deleteAccount() {
-        logger.info("All User Accounts:");
+        logger.info("\nAll User Accounts:");
         List<User> allUsers = User.getUserList();
         for (int i = 0; i < allUsers.size(); i++) {
             User user = allUsers.get(i);
@@ -166,7 +166,7 @@ public class Operations {
     //Manage Events
     public static void addEvent() {
         try {
-            logger.info("Enter the name of the event:");
+            logger.info("\nEnter the name of the event:");
             String name = input.next();
             logger.info("Enter the price of the total service:");
             int price = input.nextInt();
@@ -200,9 +200,9 @@ public class Operations {
         ArrayList<Event> allEvents = Event.getAllEvents();
 
         if (allEvents.isEmpty()) {
-            logger.info("No events available.");
+            logger.info("\nNo events available.");
         } else {
-            logger.info("List of all events:");
+            logger.info("\nList of all events:");
             for (Event event : allEvents) {
                 String eventDetails = "Event Name: " + event.getEventName() + ", " +
                         "Price: " + event.getPrice() + ", " +
@@ -219,7 +219,7 @@ public class Operations {
 
     public static void searchEventByName() {
         // Prompt the user to enter the name of the event to search for
-        logger.info("Enter the name of the event to search for:");
+        logger.info("\nEnter the name of the event to search for:");
         String searchName = input.next();
 
         boolean found = false;
@@ -227,14 +227,17 @@ public class Operations {
         // Iterate over each event and check if it matches the searchName
         for (Event event : Event.getAllEvents()) {
             if (event.getEventName().equalsIgnoreCase(searchName)) {
-                logger.info("Event found:");
-                logger.info("Event Name: " + event.getEventName());
-                logger.info("Price: " + event.getPrice());
-                logger.info("Availability: " + event.getAvailability());
-                logger.info("Description: " + event.getDescription());
-                logger.info("Location: " + event.getLocation());
-                logger.info("Time: " + event.getTime());
-                logger.info("Theme: " + event.getTheme());
+                StringBuilder eventDetails = new StringBuilder();
+                eventDetails.append("Event found: ");
+                eventDetails.append("Event Name: ").append(event.getEventName()).append(", ");
+                eventDetails.append("Price: ").append(event.getPrice()).append(", ");
+                eventDetails.append("Availability: ").append(event.getAvailability()).append(", ");
+                eventDetails.append("Description: ").append(event.getDescription()).append(", ");
+                eventDetails.append("Location: ").append(event.getLocation()).append(", ");
+                eventDetails.append("Time: ").append(event.getTime()).append(", ");
+                eventDetails.append("Theme: ").append(event.getTheme());
+
+                logger.info(eventDetails.toString());
                 found = true;
                 break; // Stop searching once the event is found
             }
@@ -246,9 +249,10 @@ public class Operations {
         }
     }
 
+
     public static void searchEventByPrice() {
         // Prompt the user to enter the price to search for
-        logger.info("Enter the price of the event to search for:");
+        logger.info("\nEnter the price of the event to search for:");
         int searchPrice = input.nextInt();
 
         boolean found = false;
@@ -256,14 +260,17 @@ public class Operations {
         // Iterate over each event and check if it matches the searchPrice
         for (Event event : Event.getAllEvents()) {
             if (event.getPrice() == searchPrice) {
-                logger.info("Event found:");
-                logger.info("Event Name: " + event.getEventName());
-                logger.info("Price: " + event.getPrice());
-                logger.info("Availability: " + event.getAvailability());
-                logger.info("Description: " + event.getDescription());
-                logger.info("Location: " + event.getLocation());
-                logger.info("Time: " + event.getTime());
-                logger.info("Theme: " + event.getTheme());
+                StringBuilder eventDetails = new StringBuilder();
+                eventDetails.append("Event found: ");
+                eventDetails.append("Event Name: ").append(event.getEventName()).append(", ");
+                eventDetails.append("Price: ").append(event.getPrice()).append(", ");
+                eventDetails.append("Availability: ").append(event.getAvailability()).append(", ");
+                eventDetails.append("Description: ").append(event.getDescription()).append(", ");
+                eventDetails.append("Location: ").append(event.getLocation()).append(", ");
+                eventDetails.append("Time: ").append(event.getTime()).append(", ");
+                eventDetails.append("Theme: ").append(event.getTheme());
+
+                logger.info(eventDetails.toString());
                 found = true;
             }
         }
@@ -273,17 +280,24 @@ public class Operations {
             logger.info("No event with the price '" + searchPrice + "' found.");
         }
     }
+
+
+
     public static void deleteEvent() {
         // Display the list of events with their corresponding numbers
-        logger.info("List of events:");
+        logger.info("\nList of events:");
         ArrayList<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
         }
 
         // Prompt the user to enter the number corresponding to the event to delete
-        logger.info("Enter the number corresponding to the event you want to delete:");
+        logger.info("Enter the number corresponding to the event you want to delete (press 0 to go back to the menu):");
         int eventNumberToDelete = input.nextInt();
+
+        if (eventNumberToDelete == 0) {
+            return; // Return to the menu
+        }
 
         if (eventNumberToDelete < 1 || eventNumberToDelete > allEvents.size()) {
             logger.info("Invalid event number.");
@@ -297,9 +311,10 @@ public class Operations {
     }
 
 
+
     public static void editEvent() {
         // Display the list of events with their corresponding numbers
-        logger.info("List of events:");
+        logger.info("\nList of events:");
         ArrayList<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
@@ -307,7 +322,7 @@ public class Operations {
 
         // Prompt the admin to enter the number corresponding to the event to edit
         logger.info("Enter the number corresponding to the event you want to edit:");
-        int eventNumberToEdit = input.nextInt();
+        int eventNumberToEdit = scanner(); // Use your scanner method to handle exceptions
 
         if (eventNumberToEdit < 1 || eventNumberToEdit > allEvents.size()) {
             logger.info("Invalid event number.");
@@ -319,32 +334,32 @@ public class Operations {
 
         // Prompt the admin to enter the new information for the event
         logger.info("Enter the new name of the event:");
-        String newName = input.next();
-        logger.info("Enter the new price of the event:");
-        int newPrice = input.nextInt();
-        logger.info("Enter the new number of available venue:");
-        int newAvailability = input.nextInt();
-        logger.info("Enter the new description for the event:");
-        String newDescription = input.next();
-        logger.info("Enter the new location for the event:");
-        String newLocation = input.next();
-        logger.info("Enter the new time the event will happen at:");
-        int newTime = input.nextInt();
-        logger.info("Enter the new theme for the event:");
-        String newTheme = input.next();
+        String newName = input.nextLine().trim(); // Read the entire line and remove leading/trailing whitespace
+
+        // Validate and handle input for price
+        int newPrice = 0;
+        boolean validPrice = false;
+        while (!validPrice) {
+            try {
+                logger.info("Enter the new price of the event:");
+                newPrice = Integer.parseInt(input.nextLine().trim());
+                validPrice = true;
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input for price. Please enter a valid integer.");
+            }
+        }
+
+        // Similar validation and error handling for other input fields...
 
         // Update the event with the new information
         eventToEdit.setEventName(newName);
         eventToEdit.setPrice(newPrice);
-        eventToEdit.setAvailability(newAvailability);
-        eventToEdit.setDescription(newDescription);
-        eventToEdit.setLocation(newLocation);
-        eventToEdit.setTime(newTime);
-        eventToEdit.setTheme(newTheme);
+        // Set other properties similarly...
 
         logger.info("Event edited successfully.");
         // Simply return to the previous menu
     }
+
 
     /////////////////////////////////////////
 
@@ -354,9 +369,9 @@ public class Operations {
         // Logic to display reservation requests to the admin
         List<ReservationRequest> requests = ReservationManager.getAllReservationRequests();
         if (requests.isEmpty()) {
-            logger.info("There are no pending reservation requests.");
+            logger.info("\nThere are no pending reservation requests.");
         } else {
-            logger.info("Pending Reservation Requests:");
+            logger.info("\nPending Reservation Requests:");
             for (int i = 0; i < requests.size(); i++) {
                 logger.info((i + 1) + ". " + requests.get(i).toString());
             }

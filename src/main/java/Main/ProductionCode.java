@@ -279,12 +279,12 @@ public class ProductionCode {
     private static void adminManageProducts() {
         boolean continueManaging = true;
         while (continueManaging) {
-            logger.info("Select an action for event management:");
+            logger.info("\nSelect an action for event management:");
             logger.info("1. Add a new event");
             logger.info("2. List all events");
             logger.info("3. Search for an event by name");
             logger.info("4. Search for an event by price");
-            logger.info("5. Delete an event by name");
+            logger.info("5. Delete an event");
             logger.info("6. Edit the event information");
             logger.info("7. Return to admin menu");
 
