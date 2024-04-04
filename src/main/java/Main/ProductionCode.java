@@ -17,6 +17,7 @@ import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Event.initializeEvents;
 import static ApplicationClasses.Operations.addEvent;
+import static ApplicationClasses.Operations.viewReservationRequests;
 import static ApplicationClasses.ServiceProvider.getServiceByEmail;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.*;
@@ -223,7 +224,7 @@ public class ProductionCode {
                     adminManageProducts();
                     break;
                 case 3:
-                    Operations.viewReservationRequests(); // New case for viewing reservation requests
+                    viewReservationRequests(); // New case for viewing reservation requests
                     break;
                 case 4:
                     loggedIn = false; // Exit the loop and log out

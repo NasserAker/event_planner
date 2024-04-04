@@ -47,7 +47,19 @@ public class Operations {
 
         return create;
     }
-
+    public static boolean addUser(User c) {
+        for (User user : allUsers) {
+            // Check if email or all other attributes match with any existing user
+            if (c.getEmail().equals(user.getEmail()) ||
+                    (c.getUsername().equals(user.getUsername()) &&
+                            c.getAddress().equals(user.getAddress()) &&
+                            c.getPhone().equals(user.getPhone()))) {
+                return false; // User already exists
+            }
+        }
+        allUsers.add(c); // If no match found, add the user
+        return true; // User added successfully
+    }
 
 
     // Admin Menu
@@ -137,6 +149,19 @@ public class Operations {
         }
     }
 
+
+    public static boolean addUserCheck(String email) {
+        // Check if a user with the given email already exists
+        if (getUserByEmail(email) != null) {
+            // User with the same email already exists
+            return false;
+        }
+        // User does not exist
+        return true;
+    }
+
+
+
     public static void seeAllUsers() {
         logger.info("\nAll User Accounts:");
 
@@ -185,6 +210,18 @@ public class Operations {
             logger.info("User account deleted successfully.");
         } else {
             logger.info("User not found.");
+        }
+    }
+
+    public static boolean deleteUserByEmail(String email) {
+        User userToDelete = getUserByEmail(email);
+        if (userToDelete != null) {
+            // Remove the user from the allUsers list
+            User.getUserList().remove(userToDelete);
+            // Optionally, you might want to update other related data structures or perform additional cleanup
+            return true; // User successfully deleted
+        } else {
+            return false; // User not found
         }
     }
 
@@ -583,7 +620,7 @@ public class Operations {
     public static void submitReservation(Venue venue, Date date, List<AdditionalService> services) {
         // Implement logic to save the reservation to the database or perform other actions
         // You can also display a success message here
-        logger.info("Reservation submitted successfully!");
+        logger.info("Reservation submitted successfully!, wait for admin's approval and check your email. ");
     }
 
 
@@ -741,46 +778,9 @@ public class Operations {
 
 
     }
-///////////////////////////////////////////////////////////
 
 
 
-
-    // Randoms
-    public static boolean addUserCheck(String email) {
-        // Check if a user with the given email already exists
-        if (getUserByEmail(email) != null) {
-            // User with the same email already exists
-            return false;
-        }
-        // User does not exist
-        return true;
-    }
-
-    public static boolean addUser(User c) {
-        for (User user : allUsers) {
-            // Check if email or all other attributes match with any existing user
-            if (c.getEmail().equals(user.getEmail()) ||
-                    (c.getUsername().equals(user.getUsername()) &&
-                            c.getAddress().equals(user.getAddress()) &&
-                            c.getPhone().equals(user.getPhone()))) {
-                return false; // User already exists
-            }
-        }
-        allUsers.add(c); // If no match found, add the user
-        return true; // User added successfully
-    }
-    public static boolean deleteUserByEmail(String email) {
-        User userToDelete = getUserByEmail(email);
-        if (userToDelete != null) {
-            // Remove the user from the allUsers list
-            User.getUserList().remove(userToDelete);
-            // Optionally, you might want to update other related data structures or perform additional cleanup
-            return true; // User successfully deleted
-        } else {
-            return false; // User not found
-        }
-    }
 
 
 
