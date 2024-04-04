@@ -517,8 +517,15 @@ public class Operations {
         Date selectedDate = availableDates.get(dateChoice - 1);
 
 
+// Initialize additional services if not already initialized
+        if (AdditionalService.getAvailableServices().isEmpty()) {
+            AdditionalService.initializeAdditionalService();
+        }
+
         logger.info("Available Additional Services:");
-        AdditionalService.initializeAdditionalService();
+        List<AdditionalService> availableServices = AdditionalService.getAvailableServices();
+
+
         for (int i = 0; i < availableServices.size(); i++) {
             AdditionalService service = availableServices.get(i);
             logger.info((i + 1) + ". " + service.getServiceName() + " - Cost: $" + service.getCost());

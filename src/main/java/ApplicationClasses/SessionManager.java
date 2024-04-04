@@ -4,7 +4,9 @@ package ApplicationClasses;
 
 public class SessionManager {
     private static User loggedInUser;
-    public static Admin loggedInAdmin;
+    private static Admin loggedInAdmin;
+    private static ServiceProvider loggedInServiceProvider;
+
 
 
     public static void loginUser(User user) {
@@ -13,7 +15,9 @@ public class SessionManager {
     public static void loginAdmin(Admin admin) {
         loggedInAdmin = admin;
     }
-
+    public static void loginServiceProvider(ServiceProvider serviceProvider) {
+        loggedInServiceProvider = serviceProvider;
+    }
 
     public static User getLoggedInUser() {
         return loggedInUser;
@@ -25,5 +29,10 @@ public class SessionManager {
     }
     public static void logoutUser() {
         loggedInUser = null;
+    }
+
+
+    public static ServiceProvider getLoggedInServiceProvider() {
+        return loggedInServiceProvider;
     }
 }

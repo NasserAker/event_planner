@@ -25,6 +25,10 @@ public class AdditionalService {
         return cost;
     }
 
+    public static List<AdditionalService> getAvailableServices() {
+        return new ArrayList<>(availableServices); // Return a copy to prevent modification of the original list
+    }
+
     public void setCost(double cost) {
         this.cost = cost;
     }

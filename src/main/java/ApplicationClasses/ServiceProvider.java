@@ -120,8 +120,14 @@ public class ServiceProvider {
         this.phone = phone;
     }
 
-
-
+    public static ServiceProvider getServiceByEmail(String email) {
+        for (ServiceProvider serviceProvider : ServiceProv_LIST) {
+            if (serviceProvider.getEmail().equals(email)) {
+                return serviceProvider;
+            }
+        }
+        return null; // Return null if no service provider found with the given email
+    }
 
 
 }

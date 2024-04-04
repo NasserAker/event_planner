@@ -17,6 +17,7 @@ import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Event.initializeEvents;
 import static ApplicationClasses.Operations.addEvent;
+import static ApplicationClasses.ServiceProvider.getServiceByEmail;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.*;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
@@ -142,7 +143,7 @@ public class ProductionCode {
 
                     User loggedInUser = null;// Initialize the logged-in user object
                     Admin loggedInAdmin = null;
-
+                    ServiceProvider loggedInServiceProvider = null;
                     switch (utype) {
 
 
@@ -156,13 +157,13 @@ public class ProductionCode {
                         case 1:
                             loggedInUser = getUserByEmail(email);
                             SessionManager.loginUser(loggedInUser);
-
                             userActivities();
                             break;
 
 
                         case 2:
-
+                            loggedInServiceProvider = getServiceByEmail(email);
+                            SessionManager.loginServiceProvider(loggedInServiceProvider);
                             serviceProviderActivities();
                             break;
                         default:
@@ -367,14 +368,20 @@ public class ProductionCode {
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+
     }
 
 
     public static void serviceProviderActivities(){
 
-
-        logger.info("Welcome, Service Provider!");
-
+// Retrieve the logged-in user from the session
+        ServiceProvider loggedInServiceProvider = SessionManager.getLoggedInServiceProvider();
+        if (loggedInServiceProvider == null) {
+            logger.info("Service provider not logged in.");
+            return;
+        }
+        logger.info("\nWelcome, Service Provider: " + loggedInServiceProvider.getName());
         boolean loggedIn = true;
         while (loggedIn) {
             logger.info("\nService Provider Menu:");
@@ -407,6 +414,7 @@ public class ProductionCode {
 
 
         }
+        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
 
 
     }}
