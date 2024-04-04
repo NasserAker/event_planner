@@ -53,58 +53,87 @@ public class Operations {
     // Admin Menu
     // Manage User Accounts
     public static void changeUserInformation() {
-        logger.info("\nEnter the email of the user you want to update:");
-        String email = input.next();
-        User user = getUserByEmail(email);
-        if (user != null) {
-            logger.info("\nUser found. Enter new information:");
-            // Prompt user to enter new information and update the user object
-            // For example:
-            logger.info("Enter new username:");
-            String newUsername = input.nextLine().trim();
-            user.setUsername(newUsername);
-            logger.info("Enter new password:");
-            String newPassword = input.next();
-            user.setPassword(newPassword);
-            // Update other user information as needed
-            logger.info("User information updated successfully.");
-        } else {
-            logger.info("User not found.");
+        logger.info("\nAll User Accounts:");
+        List<User> allUsers = User.getUserList();
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = allUsers.get(i);
+            logger.info((i + 1) + ". Username: " + user.getUsername() + ", Email: " + user.getEmail());
         }
+
+        logger.info("Enter the number corresponding to the user you want to update (enter '0' to go back to the menu):");
+        int userNumberToUpdate = input.nextInt();
+
+        // Consume the newline character
+        input.nextLine();
+
+        // Check if the input is '0' to go back to the menu
+        if (userNumberToUpdate == 0) {
+            return;
+        }
+
+        // Check if the entered number is valid
+        if (userNumberToUpdate < 1 || userNumberToUpdate > allUsers.size()) {
+            logger.info("Invalid user number. Please enter a valid number.");
+            return;
+        }
+
+        // Get the corresponding user based on the entered number
+        User userToUpdate = allUsers.get(userNumberToUpdate - 1);
+
+        logger.info("\nUser found. Update information:");
+        // Prompt user to enter new information and update the user object
+        // For example:
+        logger.info("Enter new username:");
+        String newUsername = input.nextLine().trim();
+        userToUpdate.setUsername(newUsername);
+
+        logger.info("Enter new password:");
+        String newPassword = input.nextLine().trim();
+        userToUpdate.setPassword(newPassword);
+
+        // Update other user information as needed
+        logger.info("User information updated successfully.");
     }
+
+
+
 
 
     public static void addNewUser() {
         logger.info("\nEnter new user details:");
 
-        logger.info("Email:");
-        String email = input.next();
+        try {
+            logger.info("Email:");
+            String email = input.next();
 
-        // Check if the user with the given email already exists
-        boolean added = addUserCheck(email);
-        if (added) {
-            // If the user does not exist, proceed to add the user
-            logger.info("Username:");
-            String username = input.next();
+            // Check if the user with the given email already exists
+            boolean added = addUserCheck(email);
+            if (added) {
+                // If the user does not exist, proceed to add the user
+                logger.info("Username:");
+                String username = input.next();
 
-            logger.info("Password:");
-            String password = input.next();
+                logger.info("Password:");
+                String password = input.next();
 
-            logger.info("Address:");
-            String address = input.next();
+                logger.info("Address:");
+                String address = input.next().trim();
 
-            logger.info("Phone:");
-            String phone = input.next();
+                logger.info("Phone:");
+                String phone = input.next();
 
-            logger.info("Gender:");
-            String gender = input.next();
+                logger.info("Gender:");
+                String gender = input.next();
 
-            // Create a new User object and add it to the list of all users
-            User newUser = new User(username, password, address, phone, email, gender);
-            User.getUserList().add(newUser);
-            logger.info("User added successfully.");
-        } else {
-            logger.info("Failed to add user. User already exists.");
+                // Create a new User object and add it to the list of all users
+                User newUser = new User(username, password, address, phone, email, gender);
+                User.getUserList().add(newUser);
+                logger.info("User added successfully.");
+            } else {
+                logger.info("Failed to add user. User already exists.");
+            }
+        } catch (Exception e) {
+            logger.severe("An error occurred while adding a new user: " + e.getMessage());
         }
     }
 
