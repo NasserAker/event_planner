@@ -606,7 +606,7 @@ public class Operations {
     public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
         ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
         ReservationRequest.addReservationRequest(request);
-        sendReservationConfirmationEmail(request);
+        //sendReservationConfirmationEmail(request);
         logger.info("Reservation submitted successfully! Check your email for confirmation.");
     }
 
