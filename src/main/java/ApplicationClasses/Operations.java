@@ -61,7 +61,7 @@ public class Operations {
             // Prompt user to enter new information and update the user object
             // For example:
             logger.info("Enter new username:");
-            String newUsername = input.next();
+            String newUsername = input.nextLine().trim();
             user.setUsername(newUsername);
             logger.info("Enter new password:");
             String newPassword = input.next();
@@ -165,35 +165,65 @@ public class Operations {
 
     //Manage Events
     public static void addEvent() {
-        try {
-            logger.info("\nEnter the name of the event:");
-            String name = input.next();
-            logger.info("Enter the price of the total service:");
-            int price = input.nextInt();
-            logger.info("Enter the number of available venue:");
-            int availability = input.nextInt();
-            logger.info("Enter a description for the hall:");
-            String description = input.next();
-            logger.info("Enter a location for the event:");
-            String location = input.next();
-            logger.info("Enter the time the event will happen at :");
-            int time = input.nextInt();
-            logger.info("Enter a theme for the event:");
-            String theme = input.next();
+        Scanner scanner = new Scanner(System.in);
 
-            // Create a new Event object
-            Event newEvent = new Event(name, price, availability, description, location, time, theme);
+        logger.info("\nEnter the name of the event:");
+        String name = scanner.nextLine();
 
-            // Add the new event to the ArrayList in the Event class
-            Event.getAllEvents().add(newEvent);
-
-            logger.info("Event added successfully.");
-        } catch (InputMismatchException e) {
-            logger.info("Invalid input. Please enter a valid integer.");
-            input.nextLine(); // Consume invalid input to prevent infinite loop
-            // You can choose to prompt the user to enter the input again or handle it differently
+        int price = 0;
+        boolean validPriceInput = false;
+        while (!validPriceInput) {
+            try {
+                logger.info("Enter the price of the total service:");
+                price = Integer.parseInt(scanner.nextLine());
+                validPriceInput = true;
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input. Please enter a valid integer for price.");
+            }
         }
+
+        int availability = 0;
+        boolean validAvailabilityInput = false;
+        while (!validAvailabilityInput) {
+            try {
+                logger.info("Enter the number of available venue:");
+                availability = Integer.parseInt(scanner.nextLine());
+                validAvailabilityInput = true;
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input. Please enter a valid integer for availability.");
+            }
+        }
+
+        logger.info("Enter a description for the hall:");
+        String description = scanner.nextLine();
+
+        logger.info("Enter a location for the event:");
+        String location = scanner.nextLine();
+
+        int time = 0;
+        boolean validTimeInput = false;
+        while (!validTimeInput) {
+            try {
+                logger.info("Enter the time the event will happen at:");
+                time = Integer.parseInt(scanner.nextLine());
+                validTimeInput = true;
+            } catch (NumberFormatException e) {
+                logger.info("Invalid input. Please enter a valid integer for time.");
+            }
+        }
+
+        logger.info("Enter a theme for the event:");
+        String theme = scanner.nextLine();
+
+        Event newEvent = new Event(name, price, availability, description, location, time, theme);
+        Event.addEvent(newEvent);
+
+        logger.info("Event added successfully.");
     }
+
+
+
+
 
 
     public static void listAllEvents() {

@@ -85,9 +85,6 @@ public class Event {
         this.theme = theme;
     }
     // Static method to retrieve all events
-    public static ArrayList<Event> getAllEvents() {
-        return allEvents;
-    }
 
     public static void initializeEvents() {
         Event event1 = new Event("Event1", 100, 50, "Description 1", "Location 1", 10, "Theme 1");
@@ -97,4 +94,16 @@ public class Event {
         allEvents.add(event2);
 
     }
+
+    public static void addEvent(Event event) {
+        allEvents.add(event);
+    }
+
+    public static ArrayList<Event> getAllEvents() {
+        return allEvents;
+    }
+
+
+    // Method to get all events
+
 }

@@ -16,7 +16,7 @@ import static ApplicationClasses.Admin.getAdminByEmail;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Event.initializeEvents;
-import static ApplicationClasses.Operations.*;
+import static ApplicationClasses.Operations.addEvent;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.*;
 import static ApplicationClasses.Venue.initializeAvailableVenues;
@@ -108,7 +108,7 @@ public class ProductionCode {
 
             switch (accountChoice) {
                 case 1: {
-                    createAccountPage();
+                    Operations.createAccountPage();
                     break;
                 }
 
@@ -222,7 +222,7 @@ public class ProductionCode {
                     adminManageProducts();
                     break;
                 case 3:
-                    viewReservationRequests(); // New case for viewing reservation requests
+                    Operations.viewReservationRequests(); // New case for viewing reservation requests
                     break;
                 case 4:
                     loggedIn = false; // Exit the loop and log out
@@ -255,16 +255,16 @@ public class ProductionCode {
             }
             switch (action) {
                 case 1:
-                    changeUserInformation();
+                    Operations.changeUserInformation();
                     break;
                 case 2:
-                    addNewUser();
+                    Operations.addNewUser();
                     break;
                 case 3:
-                    seeAllUsers();
+                    Operations.seeAllUsers();
                     break;
                 case 4:
-                    deleteAccount();
+                    Operations.deleteAccount();
                     break;
                 case 5:adminActivities();
                     break;
@@ -300,22 +300,22 @@ public class ProductionCode {
 
             switch (action) {
                 case 1:
-                   addEvent();
+                   Operations.addEvent();
                     break;
                 case 2:
-                   listAllEvents();
+                   Operations.listAllEvents();
                     break;
                 case 3:
-                    searchEventByName();
+                    Operations.searchEventByName();
                     break;
                 case 4:
-                   searchEventByPrice();
+                   Operations.searchEventByPrice();
                     break;
                 case 5:
-                   deleteEvent();
+                   Operations.deleteEvent();
                     break;
                 case 6:
-                    editEvent();
+                    Operations.editEvent();
                     break;
                 case 7:
                     adminActivities();
@@ -354,7 +354,7 @@ public class ProductionCode {
 
             switch (choice) {
                 case 1:
-                    viewUserProfile(loggedInUser);
+                    Operations.viewUserProfile(loggedInUser);
                     break;
 
                 case 2:
@@ -389,14 +389,14 @@ public class ProductionCode {
             int choice = scanner(); // Get user input
             switch (choice) {
                 case 1:
-                    addNewVenue();
+                    Operations.addNewVenue();
                     break;
 
                 case 2:
-                    addService();
+                    Operations.addService();
                     break;
                 case 3:
-                    edit_info();
+                    Operations.edit_info();
                     break;
                 case 6:
                     loggedIn = false; // Exit the loop and log out
