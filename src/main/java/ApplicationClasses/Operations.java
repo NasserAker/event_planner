@@ -3,8 +3,8 @@ package ApplicationClasses;
 import java.util.*;
 
 
-import static ApplicationClasses.AdditionalService.availableServices;
 import static ApplicationClasses.Date.*;
+
 import static ApplicationClasses.ServiceProvider.logger;
 import static ApplicationClasses.User.*;
 import static Main.ProductionCode.*;
@@ -460,25 +460,6 @@ public class Operations {
     /////////////////////////////////////////
 
 
-// View Reservation Requests
-    public static void viewReservationRequests() {
-        // Logic to display reservation requests to the admin
-        List<ReservationRequest> requests = ReservationManager.getAllReservationRequests();
-        if (requests.isEmpty()) {
-            logger.info("\nThere are no pending reservation requests.");
-        } else {
-            logger.info("\nPending Reservation Requests:");
-            for (int i = 0; i < requests.size(); i++) {
-                logger.info((i + 1) + ". " + requests.get(i).toString());
-            }
-        }
-    }
-
-
-
-   //////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 
@@ -506,7 +487,7 @@ public class Operations {
 
 
 
-    public static void reserveWedding() {
+    public static void reserveWedding(User loggedInUser) {
         logger.info("\nReserve Wedding:");
 
         // Display available venues
@@ -543,7 +524,7 @@ public class Operations {
         // Validate the date choice
         if (dateChoice == 0) {
             // Go back to choosing a venue
-            reserveWedding(); // Recursive call to reserveWedding() to start the process again
+            reserveWedding(loggedInUser); // Recursive call to reserveWedding() to start the process again
             return; // Exit the current invocation of reserveWedding() to avoid executing further code
         } else if (dateChoice < 1 || dateChoice > availableDates.size()) {
             logger.info("Invalid choice. Please enter a valid date number.");
@@ -603,7 +584,7 @@ public class Operations {
         switch (choice) {
             case 1:
                 // Submit reservation
-                submitReservation(selectedVenue, selectedDate, selectedServices);
+                submitReservation(loggedInUser, selectedVenue, selectedDate, selectedServices);
                 break;
             case 2:
                 userActivities();
@@ -616,16 +597,65 @@ public class Operations {
 
     }
 
+    private static int requestIdCounter = 1;
 
-    public static void submitReservation(Venue venue, Date date, List<AdditionalService> services) {
-        // Implement logic to save the reservation to the database or perform other actions
-        // You can also display a success message here
-        logger.info("Reservation submitted successfully!, wait for admin's approval and check your email. ");
+    private static int generateRequestId() {
+        // Increment the counter and return the new value as the request ID
+        return requestIdCounter++;
+    }
+    public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
+        ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
+        ReservationRequest.addReservationRequest(request);
+        sendReservationConfirmationEmail(request);
+        logger.info("Reservation submitted successfully! Check your email for confirmation.");
+    }
+
+    public static void viewReservationRequests() {
+        List<ReservationRequest> requests = ReservationRequest.getAllReservationRequests();
+
+        if (requests.isEmpty()) {
+            logger.info("There are no pending reservation requests.");
+        } else {
+            logger.info("Pending Reservation Requests:");
+            for (int i = 0; i < requests.size(); i++) {
+                ReservationRequest request = requests.get(i);
+                // Display details of each reservation request
+                logger.info((i + 1) + ". Request ID: " + request.getRequestId());
+                logger.info("   Customer Name: " + request.getUser().getUsername());
+                logger.info("   Venue: " + request.getVenue());
+                logger.info("   Date: " + request.getDate());
+                logger.info("   Additional Services: " + request.getServices());
+                // Add more details as needed
+            }
+        }
     }
 
 
 
+   /* private static void sendReservationConfirmationEmail(ReservationRequest request) {
 
+        String userEmail = request.getUser().getEmail(); // Assuming User class has a method getEmail()
+
+        String subject = "Reservation Confirmation";
+        String message = "Dear " + request.getUser().getUsername() + ",\n\nYour reservation request has been submitted successfully.\n\n" +
+                "Venue: " + request.getVenue().getName() + "\n" +
+                "Date: " + request.getDate() + "\n" +
+                "Additional Services: " + request.getServices() + "\n\n" +
+                "You will receive further updates once the reservation is approved.\n\n" +
+                "Thank you!";
+
+        // Send the email using the EmailSender class
+        boolean emailSent = EmailSender.sendEmail(userEmail, subject, message);
+
+        // Check if the email was sent successfully
+        if (emailSent) {
+            logger.info("Reservation confirmation email sent to " + userEmail);
+        } else {
+            logger.info("Failed to send reservation confirmation email to " + userEmail);
+        }
+    }
+
+*/
 
 
 

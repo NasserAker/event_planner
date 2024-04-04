@@ -5,9 +5,7 @@ import ApplicationClasses.Logging;
 import ApplicationClasses.*;
 import com.sun.tools.javac.Main;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.*;
 
@@ -16,7 +14,6 @@ import static ApplicationClasses.Admin.getAdminByEmail;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
 import static ApplicationClasses.Event.initializeEvents;
-import static ApplicationClasses.Operations.addEvent;
 import static ApplicationClasses.Operations.viewReservationRequests;
 import static ApplicationClasses.ServiceProvider.getServiceByEmail;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
@@ -360,7 +357,7 @@ public class ProductionCode {
                     break;
 
                 case 2:
-                    Operations.reserveWedding();
+                    Operations.reserveWedding(loggedInUser);
                     break;
                 case 3:
                     loggedIn = false; // Exit the loop and log out

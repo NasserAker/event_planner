@@ -1,80 +1,123 @@
 package ApplicationClasses;
 
-import io.cucumber.java.tr.Ve;
-
 import java.util.ArrayList;
-import java.util.UUID;
+import java.util.Collections;
+
+import java.util.List;
+import ApplicationClasses.Date; // Import your custom Date class
 
 public class ReservationRequest {
     private int requestId;
-    int customerId;
-    String customer_name = "";
+    private User user;
+    private Venue venue;
+    private Date date;
+    private List<AdditionalService> services;
 
-    Venue venue;
-
-    public ReservationRequest(int id , int csut_id , String cust_name , Venue venue){
-        this.requestId = id ;
-        this.customer_name = cust_name;
-        this.customerId = csut_id;
+    public ReservationRequest(int requestId, User user, Venue venue, Date date, List<AdditionalService> services) {
+        this.requestId = requestId;
+        this.user = user;
         this.venue = venue;
-    }
-    public ReservationRequest(){
-        this.requestId = -1 ;
-        this.customer_name = "No Name";
-        this.customerId = -1;
+        this.date = date;
+        this.services = services;
     }
 
-     public static final ArrayList<ReservationRequest> RequestList = new ArrayList<ReservationRequest>();
-    public static final ArrayList<ReservationRequest> ApprovedRequests = new ArrayList<ReservationRequest>();
-    public static final ArrayList<ReservationRequest> DeniedRequests = new ArrayList<ReservationRequest>();
+    private static final List<ReservationRequest> RequestList = new ArrayList<>();
+    private static final List<ReservationRequest> ApprovedRequests = new ArrayList<>();
+    private static final List<ReservationRequest> DeniedRequests = new ArrayList<>();
 
-    public boolean IsPending(){
-        return RequestList.contains(this);
+    public static List<ReservationRequest> getAllReservationRequests() {
+        return Collections.unmodifiableList(RequestList);
     }
 
-
-    public int RequestCount(){
-        return RequestList.size();
-    }
-
-    public Integer SelectRequest(int index){
-        Integer item  =-1  ;
-        for(ReservationRequest request : RequestList ){
-            if(request.requestId == index){
-                item = RequestList.get(index).requestId;
-            }
-        }
-        return item;
-    }
-
-    public void ApproveRequest(){
+    public void approveRequest() {
         ApprovedRequests.add(this);
         RequestList.remove(this);
     }
 
-    public void DenyRequest( ){
+    public void denyRequest() {
         DeniedRequests.add(this);
         RequestList.remove(this);
     }
 
-    public boolean Confirmation(){
+    public boolean isConfirmed() {
         return ApprovedRequests.contains(this);
     }
 
-    public boolean Denial(){
+    public boolean isDenied() {
         return DeniedRequests.contains(this);
     }
 
-    public int GetRequestId(){
+    public static void addReservationRequest(ReservationRequest request) {
+        RequestList.add(request);
+    }
+
+    // Getters and setters for class fields
+// Getter and setter for requestId
+    public int getRequestId() {
         return requestId;
     }
-    public String Getname(){
-        return customer_name;
+
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
-    public int GetcustId(){
-        return customerId;
+
+    // Getter and setter for user
+    public User getUser() {
+        return user;
     }
-    public String getusername() {
-        return this.customer_name;
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    // Getter and setter for venue
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
+    // Getter and setter for date
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    // Getter and setter for services
+    public List<AdditionalService> getServices() {
+        return services;
+    }
+
+    public void setServices(List<AdditionalService> services) {
+        this.services = services;
+    }
+
+
+    public static List<ReservationRequest> getRequestList() {
+        return RequestList;
+    }
+
+    public static List<ReservationRequest> getApprovedRequests() {
+        return ApprovedRequests;
+    }
+
+    public static List<ReservationRequest> getDeniedRequests() {
+        return DeniedRequests;
+    }
+
+    @Override
+    public String toString() {
+        return "ReservationRequest{" +
+                "requestId=" + requestId +
+                ", user=" + user +
+                ", venue=" + venue +
+                ", date=" + date +
+                ", services=" + services +
+                '}';
     }
 }
