@@ -5,6 +5,7 @@ import ApplicationClasses.Logging;
 import ApplicationClasses.*;
 import com.sun.tools.javac.Main;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +15,7 @@ import static ApplicationClasses.AdditionalService.initializeAdditionalService;
 import static ApplicationClasses.Admin.getAdminByEmail;
 import static ApplicationClasses.Admin.initializeAdmin;
 import static ApplicationClasses.Date.initializeAvailableDates;
+import static ApplicationClasses.Event.initializeEvents;
 import static ApplicationClasses.Operations.*;
 import static ApplicationClasses.ServiceProvider.initializeServiceProvider;
 import static ApplicationClasses.User.*;
@@ -22,6 +24,7 @@ import static ApplicationClasses.Venue.initializeAvailableVenues;
 
 public class ProductionCode {
 
+    public static final String SEPARATOR = "------------------------------------------------------";
 
     public static final String ENTER_CHOICE= "Enter your choice : ";
     public static Scanner input = new Scanner(System.in);
@@ -61,6 +64,7 @@ public class ProductionCode {
         initializeAvailableVenues();
         initializeAvailableDates();
         initializeAdditionalService();
+        initializeEvents();
         homePage();
 
     }
@@ -187,39 +191,6 @@ public class ProductionCode {
 
 
 
-
-    public static boolean createAccountPage()
-    {
-
-        logger.info("Enter your Email:");
-        String email = input.nextLine();
-        logger.info("Enter your username:");
-        String username = input.nextLine();
-        logger.info("Enter your Gender : ");
-        String gen = input.nextLine();
-        logger.info("Enter your Phone number:");
-        String phnum = input.nextLine();
-        logger.info("Enter your Address:");
-        String address = input.nextLine();
-        logger.info("Enter your Password:");
-        String password = input.nextLine();
-
-        User r = new User(username, password, address, phnum, email, gen);
-        boolean create = Operations.addUser(r);
-        if (create) {
-            logger.info("A new account was created successfully");
-            Logging.getQ().put(email, password);
-        }
-        else
-            logger.info("This account already exists");
-
-        homePage();
-
-        return create;
-    }
-
-
-
     public static void adminActivities() {
 
         // Retrieve the logged-in user from the session
@@ -323,22 +294,22 @@ public class ProductionCode {
 
             switch (action) {
                 case 1:
-                //    addEvent();
+                   addEvent();
                     break;
                 case 2:
-                  //  listAllEvents();
+                   listAllEvents();
                     break;
                 case 3:
-                    //searchEventByName();
+                    searchEventByName();
                     break;
                 case 4:
-                    //searchEventByPrice();
+                   searchEventByPrice();
                     break;
                 case 5:
-                    //deleteEvent();
+                   deleteEvent();
                     break;
                 case 6:
-                    //editEvent();
+                    editEvent();
                     break;
                 case 7:
                     adminActivities();
@@ -348,10 +319,6 @@ public class ProductionCode {
             }
         }
     }
-
-
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////////

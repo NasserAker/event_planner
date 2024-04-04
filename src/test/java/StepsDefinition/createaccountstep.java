@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static ApplicationClasses.Operations.createAccountPage;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -25,13 +26,13 @@ public class createaccountstep {
     @When("the user enters their details")
     public void the_user_enters_their_details() {
         // Implement code to enter user details
-        ProductionCode.createAccountPage();
+        createAccountPage();
     }
 
     @Then("the user account should be created successfully")
     public void the_user_account_should_be_created_successfully() {
         // Check if the user account was created successfully
-        boolean accountCreated = ProductionCode.createAccountPage();
+        boolean accountCreated = createAccountPage();
 
         assertTrue("User account should be created successfully", accountCreated);
     }
