@@ -293,7 +293,7 @@ public class Operations {
 
 
     public static void listAllEvents() {
-        ArrayList<Event> allEvents = Event.getAllEvents();
+        List<Event> allEvents = Event.getAllEvents();
 
         if (allEvents.isEmpty()) {
             logger.info("\nNo events available.");
@@ -382,7 +382,7 @@ public class Operations {
     public static void deleteEvent() {
         // Display the list of events with their corresponding numbers
         logger.info("\nList of events:");
-        ArrayList<Event> allEvents = Event.getAllEvents();
+        List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
         }
@@ -411,7 +411,7 @@ public class Operations {
     public static void editEvent() {
         // Display the list of events with their corresponding numbers
         logger.info("\nList of events:");
-        ArrayList<Event> allEvents = Event.getAllEvents();
+        List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
         }

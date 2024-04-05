@@ -16,13 +16,13 @@ public class Logging {
 
     private boolean successfulpassword= false;
 
-
+    private String email;
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    private String email;
+
 
 
     private String password;

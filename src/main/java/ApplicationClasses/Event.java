@@ -1,6 +1,7 @@
 package ApplicationClasses;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Event {
     private String eventName;
@@ -99,7 +100,7 @@ public class Event {
         allEvents.add(event);
     }
 
-    public static ArrayList<Event> getAllEvents() {
+    public static List<Event> getAllEvents() {
         return allEvents;
     }
 
