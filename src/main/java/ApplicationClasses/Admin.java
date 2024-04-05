@@ -31,9 +31,9 @@ public class Admin {
 
     public static void initializeAdmin() {
             Admin admin1 = new Admin("s12028604@stu.najah.edu", "Raya Break", "12345");
-            Admin admin2 = new Admin("admin2@example.com", "admin2", "12345");
-            Admin admin3 = new Admin("admin3@example.com", "admin3", "12345");
-            Admin admin4 = new Admin("admin4@example.com", "admin4", "12345");
+            Admin admin2 = new Admin("admin2@example.com", "admin2", "1234");
+            Admin admin3 = new Admin("admin3@example.com", "admin3", "123");
+            Admin admin4 = new Admin("admin4@example.com", "admin4", "12");
 
             adminList.add(admin1);
             adminList.add(admin2);
