@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import ApplicationClasses.User;
+import applicationclasses.User;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

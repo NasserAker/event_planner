@@ -1,11 +1,11 @@
-package ApplicationClasses;
+package applicationclasses;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import static ApplicationClasses.Admin.adminList;
-import static ApplicationClasses.User.allUsers;
+import static applicationclasses.Admin.adminList;
+import static applicationclasses.User.allUsers;
 
 public class Logging {
 

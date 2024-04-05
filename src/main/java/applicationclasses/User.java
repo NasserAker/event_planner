@@ -1,8 +1,7 @@
-package ApplicationClasses;
+package applicationclasses;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.*;
 import java.util.logging.Logger;
 
 

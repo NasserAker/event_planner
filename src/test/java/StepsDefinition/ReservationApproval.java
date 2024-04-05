@@ -1,8 +1,8 @@
 package StepsDefinition;
 
-import ApplicationClasses.Venue;
+import applicationclasses.Venue;
 import io.cucumber.java.en.*;
-import ApplicationClasses.ReservationRequest;
+import applicationclasses.ReservationRequest;
 import org.junit.Assert;
 
 import java.util.Random;

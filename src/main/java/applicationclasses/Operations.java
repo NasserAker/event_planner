@@ -1,12 +1,12 @@
-package ApplicationClasses;
+package applicationclasses;
 
 import java.util.*;
 
 
-import static ApplicationClasses.Date.*;
+import static applicationclasses.Date.*;
 
-import static ApplicationClasses.ServiceProvider.logger;
-import static ApplicationClasses.User.*;
+import static applicationclasses.ServiceProvider.logger;
+import static applicationclasses.User.*;
 import static Main.ProductionCode.*;
 
 
