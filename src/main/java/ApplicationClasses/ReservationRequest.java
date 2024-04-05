@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import java.util.List;
+import ApplicationClasses.Date; // Import your custom Date class
 
 public class ReservationRequest {
     private int requestId;
