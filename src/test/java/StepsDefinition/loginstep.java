@@ -3,7 +3,7 @@ package StepsDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ApplicationClasses.User;
+import ApplicationClasses.user;
 import ApplicationClasses.login;
 
 import static org.junit.Assert.assertFalse;
@@ -18,9 +18,9 @@ public class loginstep {
     public loginstep(login iobj) {
         super();
         this.obj = iobj;
-        User u1= new User("hala","123","1\2\2004");
+        user u1= new user("hala","123","1\2\2004");
         obj.addUser(u1);
-        User u2= new User("magichala.koni@gmail.com","1234","6\12\2003");
+        user u2= new user("magichala.koni@gmail.com","1234","6\12\2003");
         obj.addUser(u2);
     }
     @Given("that the admin is not logged in")
@@ -93,7 +93,7 @@ public class loginstep {
 
     @When("set new username {string} and pass {string} and bd={string}")
     public void set_new_username_and_pass_and_bd(String user_name, String pass,String bd) {
-        obj.addUser(new User(user_name, pass,bd));
+        obj.addUser(new user(user_name, pass,bd));
         enteredUsername = user_name;
         enteredPassword = pass;
     }

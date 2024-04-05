@@ -1,6 +1,6 @@
 package org.example;
 
-import ApplicationClasses.User;
+import ApplicationClasses.user;
 import ApplicationClasses.event;
 import ApplicationClasses.login;
 import ApplicationClasses.reserve;
@@ -62,7 +62,7 @@ public class Main {
             logger.info("please fill your name");
         if(p.isEmpty())
             logger.info("please fill your password");
-        o.addUser(new User(u,p,bd));
+        o.addUser(new user(u,p,bd));
         logger.info("Your account created successfully");
     }
     private static void signUpProcedure(Scanner input) {
@@ -77,7 +77,7 @@ public class Main {
     public static int exf(String ku,String p)
     {
         int l=0;
-        for (User u: o.getUp())
+        for (user u: o.getUp())
         {
             if(ku.equals("-")||p.equals("-"))
                 l=3;
@@ -454,7 +454,7 @@ public class Main {
     public static int changeInfo(String g,String np)
     {
         int f=0;
-        for(User c:o.getUp())
+        for(user c:o.getUp())
         {
             if(c.getUserName().equals(g)) {
                 c.setPass(np);

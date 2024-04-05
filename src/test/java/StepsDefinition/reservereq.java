@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import ApplicationClasses.User;
+import ApplicationClasses.user;
 import ApplicationClasses.event;
 import ApplicationClasses.login;
 import ApplicationClasses.reserve;
@@ -17,7 +17,7 @@ public class reservereq {
     public reservereq(login iobj){
         super();
         this.obj = iobj;
-        User u1= new User("hala","123","4\1\2004");
+        user u1= new user("hala","123","4\1\2004");
         obj.addUser(u1);
         event c2 = new event("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c2);
