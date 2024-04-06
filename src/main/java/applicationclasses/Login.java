@@ -244,44 +244,8 @@ public class Login {
             }
         }
     }
-    public int deleteUserByUsername(String username) {
-        for (Iterator<UserPlan> iterator = up.iterator(); iterator.hasNext();) {
-            UserPlan user = iterator.next();
-            if (user.getUserName().equals(username)) {
-                iterator.remove();
-                return 1;
-            }
-        }
-        return 0;
-    }
-    public int deleteEventByName(String eventName) {
-        for (Iterator<EventPlan> iterator = ev.iterator(); iterator.hasNext();) {
-            EventPlan e = iterator.next();
-            if (e.geteventName().equals(eventName)) {
-                iterator.remove();
-                return 1; // Indicates successful deletion
-            }
-        }
-        return 0; // Indicates event not found
-    }
-    public int findEventIndexByName(String eventName) {
-        for (int i = 0; i < ev.size(); i++) {
-            if (ev.get(i).geteventName().equals(eventName)) {
-                return i; // Return the index of the event if found
-            }
-        }
-        return -1; // Return -1 if the event is not found
-    }
 
-    public void editEvent(int index, String newName, int newPrice, int newAvailability, String newDescription, String newLocation, int newTime){
-        EventPlan e = ev.get(index);
-        e.seteventName(newName);
-        e.setPrice(newPrice);
-        e.setAvailable(newAvailability);
-        e.setDescrtion(newDescription);
-        e.setlocation(newLocation);
-        e.settime(newTime);
-    }
+
     public void printCatalog(EventPlan cc){
         logger.info(cc.getDescrtion());
         String k=String.valueOf(cc.getPrice());
@@ -348,17 +312,7 @@ public class Login {
             }
         }
     }
-    int yuy=0;
-    public int yourInformationUpdatesSuccessfully(String name,String pass) {
-        for (UserPlan u : getUp()) {
-            if (name.equals(u.getUserName())) {
-                u.setPass(pass);
-                yuy=1;
-                break;
-            }
-        }
-        return yuy;
-    }
+
     public void appearInformation(String name){
         for(Reserve o : getOp()){
             if(name.equals(o.getUname())){

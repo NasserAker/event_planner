@@ -40,7 +40,7 @@ public class Admin {
             adminList.add(admin3);
             adminList.add(admin4);
 
-            // Optionally, populate the Logging queue as well
+
             Logging.getQ().put(admin1.getEmail(), admin1.getPassword());
             Logging.getQ().put(admin2.getEmail(), admin2.getPassword());
             Logging.getQ().put(admin3.getEmail(), admin3.getPassword());
@@ -58,7 +58,7 @@ public class Admin {
                 return admin;
             }
         }
-        return null; // Admin not found
+        return null;
     }
 
     public String getUsername() {

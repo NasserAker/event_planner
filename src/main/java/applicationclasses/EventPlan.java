@@ -64,8 +64,7 @@ public class EventPlan {
     public void setAvailable(int available) {
         this.availablity = available;
     }
-    public void settheme(String theme) {
-        this.theme=theme;}
+
     public void setPrice(int price) {
         this.price = price;
     }

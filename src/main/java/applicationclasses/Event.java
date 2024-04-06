@@ -14,7 +14,7 @@ public class Event {
 
     private static ArrayList<Event> allEvents = new ArrayList<>();
 
-    // Constructors
+
     public Event(String eventName, int price, int availability, String description, String location, int time){
         this.eventName = eventName;
         this.price = price;
@@ -95,7 +95,5 @@ public class Event {
         return allEvents;
     }
 
-
-    // Method to get all events
 
 }

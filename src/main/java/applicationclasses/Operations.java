@@ -49,21 +49,19 @@ public class Operations {
     }
     public static boolean addUser(User c) {
         for (User user : allUsers) {
-            // Check if email or all other attributes match with any existing user
             if (c.getEmail().equals(user.getEmail()) ||
                     (c.getUsername().equals(user.getUsername()) &&
                             c.getAddress().equals(user.getAddress()) &&
                             c.getPhone().equals(user.getPhone()))) {
-                return false; // User already exists
+                return false;
             }
         }
-        allUsers.add(c); // If no match found, add the user
-        return true; // User added successfully
+        allUsers.add(c);
+        return true;
     }
 
 
-    // Admin Menu
-    // Manage User Accounts
+
     public static void changeUserInformation() {
         logger.info("\nAll User Accounts:");
         List<User> allUsers = User.getUserList();
@@ -75,26 +73,23 @@ public class Operations {
         logger.info("Enter the number corresponding to the user you want to update (enter '0' to go back to the menu):");
         int userNumberToUpdate = input.nextInt();
 
-        // Consume the newline character
+
         input.nextLine();
 
-        // Check if the input is '0' to go back to the menu
         if (userNumberToUpdate == 0) {
             return;
         }
 
-        // Check if the entered number is valid
         if (userNumberToUpdate < 1 || userNumberToUpdate > allUsers.size()) {
             logger.info("Invalid user number. Please enter a valid number.");
             return;
         }
 
-        // Get the corresponding user based on the entered number
+
         User userToUpdate = allUsers.get(userNumberToUpdate - 1);
 
         logger.info("\nUser found. Update information:");
-        // Prompt user to enter new information and update the user object
-        // For example:
+
         logger.info("Enter new username:");
         String newUsername = input.nextLine().trim();
         userToUpdate.setUsername(newUsername);
@@ -103,7 +98,6 @@ public class Operations {
         String newPassword = input.nextLine().trim();
         userToUpdate.setPassword(newPassword);
 
-        // Update other user information as needed
         logger.info("User information updated successfully.");
     }
 
@@ -118,10 +112,9 @@ public class Operations {
             logger.info("Email:");
             String email = input.next();
 
-            // Check if the user with the given email already exists
             boolean added = addUserCheck(email);
             if (added) {
-                // If the user does not exist, proceed to add the user
+
                 logger.info("Username:");
                 String username = input.next();
 
@@ -137,7 +130,6 @@ public class Operations {
                 logger.info("Gender:");
                 String gender = input.next();
 
-                // Create a new User object and add it to the list of all users
                 User newUser = new User(username, password, address, phone, email, gender);
                 User.getUserList().add(newUser);
                 logger.info("User added successfully.");
@@ -151,12 +143,12 @@ public class Operations {
 
 
     public static boolean addUserCheck(String email) {
-        // Check if a user with the given email already exists
+
         if (getUserByEmail(email) != null) {
-            // User with the same email already exists
+
             return false;
         }
-        // User does not exist
+
         return true;
     }
 
@@ -165,14 +157,12 @@ public class Operations {
     public static void seeAllUsers() {
         logger.info("\nAll User Accounts:");
 
-        // Sort the users alphabetically by username
         Collections.sort(allUsers, Comparator.comparing(User::getUsername));
 
         for (User user : allUsers) {
             StringBuilder userDetails = new StringBuilder();
             userDetails.append("Username: ").append(user.getUsername()).append(", ");
             userDetails.append("Email: ").append(user.getEmail()).append(", ");
-            // Append other user details as needed
             logger.info(userDetails.toString());
         }
     }
@@ -189,22 +179,21 @@ public class Operations {
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
         int userNumber = input.nextInt();
 
-        // Check if the entered number is '0'
+
         if (userNumber == 0) {
             logger.info("Returning to the admin menu.");
-            return; // Exit the method
+            return;
         }
 
-        // Check if the entered number is valid
         if (userNumber < 1 || userNumber > allUsers.size()) {
             logger.info("Invalid user number. Please enter a valid number.");
-            return; // Exit the method
+            return;
         }
 
-        // Get the corresponding user based on the entered number
+
         User userToDelete = allUsers.get(userNumber - 1);
 
-        // Perform deletion
+
         boolean deleted = deleteUserByEmail(userToDelete.getEmail());
         if (deleted) {
             logger.info("User account deleted successfully.");
@@ -216,19 +205,16 @@ public class Operations {
     public static boolean deleteUserByEmail(String email) {
         User userToDelete = getUserByEmail(email);
         if (userToDelete != null) {
-            // Remove the user from the allUsers list
+
             User.getUserList().remove(userToDelete);
-            // Optionally, you might want to update other related data structures or perform additional cleanup
-            return true; // User successfully deleted
+
+            return true;
         } else {
-            return false; // User not found
+            return false;
         }
     }
 
-/////////////////////////
 
-
-    //Manage Events
     public static void addEvent() {
         Scanner scanner = new Scanner(System.in);
 
@@ -313,13 +299,11 @@ public class Operations {
 
 
     public static void searchEventByName() {
-        // Prompt the user to enter the name of the event to search for
         logger.info("\nEnter the name of the event to search for:");
         String searchName = input.next();
 
         boolean found = false;
 
-        // Iterate over each event and check if it matches the searchName
         for (Event event : Event.getAllEvents()) {
             if (event.getEventName().equalsIgnoreCase(searchName)) {
                 StringBuilder eventDetails = new StringBuilder();
@@ -334,11 +318,11 @@ public class Operations {
 
                 logger.info(eventDetails.toString());
                 found = true;
-                break; // Stop searching once the event is found
+                break;
             }
         }
 
-        // If no event with the provided name is found
+
         if (!found) {
             logger.info("No event with the name '" + searchName + "' found.");
         }
@@ -346,13 +330,13 @@ public class Operations {
 
 
     public static void searchEventByPrice() {
-        // Prompt the user to enter the price to search for
+
         logger.info("\nEnter the price of the event to search for:");
         int searchPrice = input.nextInt();
 
         boolean found = false;
 
-        // Iterate over each event and check if it matches the searchPrice
+
         for (Event event : Event.getAllEvents()) {
             if (event.getPrice() == searchPrice) {
                 StringBuilder eventDetails = new StringBuilder();
@@ -370,7 +354,6 @@ public class Operations {
             }
         }
 
-        // If no event with the provided price is found
         if (!found) {
             logger.info("No event with the price '" + searchPrice + "' found.");
         }
@@ -379,19 +362,19 @@ public class Operations {
 
 
     public static void deleteEvent() {
-        // Display the list of events with their corresponding numbers
+
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
         }
 
-        // Prompt the user to enter the number corresponding to the event to delete
+
         logger.info("Enter the number corresponding to the event you want to delete (press 0 to go back to the menu):");
         int eventNumberToDelete = input.nextInt();
 
         if (eventNumberToDelete == 0) {
-            return; // Return to the menu
+            return;
         }
 
         if (eventNumberToDelete < 1 || eventNumberToDelete > allEvents.size()) {
@@ -399,7 +382,7 @@ public class Operations {
             return;
         }
 
-        // Delete the event corresponding to the chosen number
+
         Event eventToDelete = allEvents.get(eventNumberToDelete - 1);
         allEvents.remove(eventToDelete);
         logger.info("Event '" + eventToDelete.getEventName() + "' deleted successfully.");
@@ -408,30 +391,30 @@ public class Operations {
 
 
     public static void editEvent() {
-        // Display the list of events with their corresponding numbers
+
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
         }
 
-        // Prompt the admin to enter the number corresponding to the event to edit
+
         logger.info("Enter the number corresponding to the event you want to edit:");
-        int eventNumberToEdit = scanner(); // Use your scanner method to handle exceptions
+        int eventNumberToEdit = scanner();
 
         if (eventNumberToEdit < 1 || eventNumberToEdit > allEvents.size()) {
             logger.info("Invalid event number.");
             return;
         }
 
-        // Get the event corresponding to the chosen number
+
         Event eventToEdit = allEvents.get(eventNumberToEdit - 1);
 
-        // Prompt the admin to enter the new information for the event
-        logger.info("Enter the new name of the event:");
-        String newName = input.nextLine().trim(); // Read the entire line and remove leading/trailing whitespace
 
-        // Validate and handle input for price
+        logger.info("Enter the new name of the event:");
+        String newName = input.nextLine().trim();
+
+
         int newPrice = 0;
         boolean validPrice = false;
         while (!validPrice) {
@@ -444,19 +427,15 @@ public class Operations {
             }
         }
 
-        // Similar validation and error handling for other input fields...
 
-        // Update the event with the new information
         eventToEdit.setEventName(newName);
         eventToEdit.setPrice(newPrice);
-        // Set other properties similarly...
+
 
         logger.info("Event edited successfully.");
-        // Simply return to the previous menu
+
     }
 
-
-    /////////////////////////////////////////
 
 
 
@@ -489,52 +468,48 @@ public class Operations {
     public static void reserveWedding(User loggedInUser) {
         logger.info("\nReserve Wedding:");
 
-        // Display available venues
         logger.info("Available Venues:");
         List<Venue> availableVenues = Venue.getAvailableVenues();
         for (int i = 0; i < availableVenues.size(); i++) {
             logger.info((i + 1) + ". " + availableVenues.get(i).toString());
         }
 
-        // Prompt user to choose a venue
         logger.info("Choose a venue by entering the corresponding number:");
         int venueChoice = scanner();
 
-        // Validate the venue choice
         if (venueChoice < 1 || venueChoice > availableVenues.size()) {
             logger.info("Invalid choice. Please enter a valid venue number.");
             return;
         }
 
-        // Get the selected venue
         Venue selectedVenue = availableVenues.get(venueChoice - 1);
 
-        // Display available dates for the selected venue
+
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
         List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
             logger.info((i + 1) + ". " + availableDates.get(i));
         }
 
-        // Prompt user to choose a date
+
         logger.info("Choose a date by entering the corresponding number, or enter 0 to go back to choosing a venue:");
         int dateChoice = scanner();
 
-        // Validate the date choice
+
         if (dateChoice == 0) {
-            // Go back to choosing a venue
-            reserveWedding(loggedInUser); // Recursive call to reserveWedding() to start the process again
-            return; // Exit the current invocation of reserveWedding() to avoid executing further code
+
+            reserveWedding(loggedInUser);
+            return;
         } else if (dateChoice < 1 || dateChoice > availableDates.size()) {
             logger.info("Invalid choice. Please enter a valid date number.");
             return;
         }
 
-// Get the selected date
+
         Date selectedDate = availableDates.get(dateChoice - 1);
 
 
-// Initialize additional services if not already initialized
+
         if (AdditionalService.getAvailableServices().isEmpty()) {
             AdditionalService.initializeAdditionalService();
         }
@@ -549,12 +524,11 @@ public class Operations {
         }
         logger.info("0. None");
 
-        // Prompt user to choose additional services
         logger.info("Choose additional services (enter numbers separated by commas, or 0 for none):");
         String additionalServiceChoicesStr = input.nextLine();
         String[] additionalServiceChoices = additionalServiceChoicesStr.split(",");
 
-        // Process selected additional services
+
         List<AdditionalService> selectedServices = new ArrayList<>();
         for (String choice : additionalServiceChoices) {
             int serviceChoice = Integer.parseInt(choice.trim());
@@ -575,14 +549,14 @@ public class Operations {
         } else {
             logger.info("Additional Services: None");
         }
-        // Prompt user to submit or go back to the main menu
+
         logger.info("1. Submit Reservation");
         logger.info("2. Go back to Menu");
         logger.info("Enter your choice:");
         int choice = scanner();
         switch (choice) {
             case 1:
-                // Submit reservation
+
                 submitReservation(loggedInUser, selectedVenue, selectedDate, selectedServices);
                 break;
             case 2:
@@ -599,13 +573,13 @@ public class Operations {
     private static int requestIdCounter = 1;
 
     private static int generateRequestId() {
-        // Increment the counter and return the new value as the request ID
+
         return requestIdCounter++;
     }
     public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
         ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
         ReservationRequest.addReservationRequest(request);
-        //sendReservationConfirmationEmail(request);
+
         logger.info("Reservation submitted successfully! Check your email for confirmation.");
     }
 
@@ -618,47 +592,20 @@ public class Operations {
             logger.info("Pending Reservation Requests:");
             for (int i = 0; i < requests.size(); i++) {
                 ReservationRequest request = requests.get(i);
-                // Display details of each reservation request
+
                 logger.info((i + 1) + ". Request ID: " + request.getRequestId());
                 logger.info("   Customer Name: " + request.getUser().getUsername());
                 logger.info("   Venue: " + request.getVenue());
                 logger.info("   Date: " + request.getDate());
                 logger.info("   Additional Services: " + request.getServices());
-                // Add more details as needed
+
             }
         }
     }
 
 
 
-   /* private static void sendReservationConfirmationEmail(ReservationRequest request) {
 
-        String userEmail = request.getUser().getEmail(); // Assuming User class has a method getEmail()
-
-        String subject = "Reservation Confirmation";
-        String message = "Dear " + request.getUser().getUsername() + ",\n\nYour reservation request has been submitted successfully.\n\n" +
-                "Venue: " + request.getVenue().getName() + "\n" +
-                "Date: " + request.getDate() + "\n" +
-                "Additional Services: " + request.getServices() + "\n\n" +
-                "You will receive further updates once the reservation is approved.\n\n" +
-                "Thank you!";
-
-        // Send the email using the EmailSender class
-        boolean emailSent = EmailSender.sendEmail(userEmail, subject, message);
-
-        // Check if the email was sent successfully
-        if (emailSent) {
-            logger.info("Reservation confirmation email sent to " + userEmail);
-        } else {
-            logger.info("Failed to send reservation confirmation email to " + userEmail);
-        }
-    }
-
-*/
-
-
-
-    // Helper method to get available dates for the selected venue
     private static List<Date> getAvailableDatesForVenue(int venueChoice) {
         switch (venueChoice) {
             case 1:
@@ -683,7 +630,6 @@ public class Operations {
 
 
 
-    //Service Provider Menu
 
     public static void addNewVenue() {
         String name = "";
@@ -707,7 +653,7 @@ public class Operations {
             try {
                 logger.info("PLEASE ENTER A NUMBER:");
                 capacity = Integer.parseInt(scanner.nextLine());
-                validCapacityInput = true; // If parsing succeeds, set validCapacityInput to true to exit the loop
+                validCapacityInput = true;
             } catch (NumberFormatException e) {
                 logger.info("Invalid input. Please enter a valid number for capacity.");
             }
@@ -721,7 +667,7 @@ public class Operations {
             try {
                 logger.info("PLEASE ENTER A NUMBER:");
                 cost = Double.parseDouble(scanner.nextLine());
-                validCostInput = true; // If parsing succeeds, set validCostInput to true to exit the loop
+                validCostInput = true;
             } catch (NumberFormatException e) {
                 logger.info("Invalid input. Please enter a valid number for cost.");
             }
@@ -755,7 +701,7 @@ public class Operations {
             try {
                 logger.info("PLEASE ENTER A NUMBER :");
                 price = Integer.parseInt(scanner.nextLine());
-                validInput = true; // If parsing succeeds, set validInput to true to exit the loop
+                validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("Invalid input. Please enter a valid number.");
             }

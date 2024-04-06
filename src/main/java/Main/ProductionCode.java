@@ -57,7 +57,7 @@ public class ProductionCode {
 
 
 
-        initializeAdmin(); //one admin
+        initializeAdmin();
         initializeUsers(); // multiple users
         initializeServiceProvider();
         initializeAvailableVenues();
