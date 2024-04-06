@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import applicationclasses.login;
+import applicationclasses.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -11,11 +11,11 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class notification {
-    public login obj;
+    public Login obj;
     public boolean place = false;
     public boolean update = false;
     public boolean ready = false;
-    public notification(login iobj){
+    public notification(Login iobj){
         super();
         this.obj = iobj;
     }

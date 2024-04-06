@@ -1,9 +1,9 @@
 package StepsDefinition;
 
-import applicationclasses.userplan;
-import applicationclasses.eventplan;
-import applicationclasses.login;
-import applicationclasses.reserve;
+import applicationclasses.UserPlan;
+import applicationclasses.EventPlan;
+import applicationclasses.Login;
+import applicationclasses.Reserve;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -12,14 +12,14 @@ import static org.junit.Assert.assertTrue;
 
 public class reservereq {
 
-    public login obj;
+    public Login obj;
     String uname, dateee , cname;
-    public reservereq(login iobj){
+    public reservereq(Login iobj){
         super();
         this.obj = iobj;
-        userplan u1= new userplan("hala","123","4\1\2004");
+        UserPlan u1= new UserPlan("hala","123","4\1\2004");
         obj.addUser(u1);
-        eventplan c2 = new eventplan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        EventPlan c2 = new EventPlan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c2);
         c2.setAvailable(100);
     }
@@ -43,7 +43,7 @@ public class reservereq {
     @When("submits the form")
     public void submits_the_form() {
         obj.setSubmit(true);
-        obj.addres(new reserve(uname, cname,dateee));
+        obj.addres(new Reserve(uname, cname,dateee));
     }
 
     @Then("the request should be successfully submitted if the date available")

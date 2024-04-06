@@ -1,11 +1,11 @@
 package applicationclasses;
 
-public class reserve {
+public class Reserve {
     private String uname;
     private String cname;
     private String date;
 
-    public reserve(String unamee, String cnamee, String datee){
+    public Reserve(String unamee, String cnamee, String datee){
         uname =  unamee;
         cname = cnamee;
         date = datee;

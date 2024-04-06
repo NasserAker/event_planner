@@ -3,7 +3,7 @@ package applicationclasses;
 import java.util.*;
 import java.util.logging.Logger;
 
-public class login {
+public class Login {
     private boolean isLogged;
     private boolean validation;
     private boolean available1 = false;
@@ -26,33 +26,33 @@ public class login {
         return available1;
     }
     public boolean getAvailable2(){return available2;}
-    public List<userplan> getUp() {
+    public List<UserPlan> getUp() {
         return up;
     }
-    private List<userplan> up=new ArrayList<>();
-    public void addUser(userplan user) {
+    private List<UserPlan> up=new ArrayList<>();
+    public void addUser(UserPlan user) {
         up.add(user);
     }
 
-    public void iAmNotInSystem(login obj)
+    public void iAmNotInSystem(Login obj)
     {
         obj.isLogged=false;
     }
-    public void iMTheAdmin(login obj)
+    public void iMTheAdmin(Login obj)
     {
         obj.isLogged=true;
     }
-    public void imthecustomer(login obj)
+    public void imthecustomer(Login obj)
     {
         obj.isLogged=true;
     }
-    public void imtheserverprovider(login obj)
+    public void imtheserverprovider(Login obj)
     {
         obj.isLogged=true;
     }
 
     public void setNamePass(String userName, String pass){
-        for (userplan u: up) {
+        for (UserPlan u: up) {
             if (userName.equals(u.getUserName()) && u.getPass().equals(pass)) {
                 validation = true;
                 break;
@@ -60,7 +60,7 @@ public class login {
         }
     }
 
-    private static final Logger logger = Logger.getLogger(login.class.getName());
+    private static final Logger logger = Logger.getLogger(Login.class.getName());
     public boolean getIsLogged(){
         return  isLogged;
     }
@@ -70,8 +70,8 @@ public class login {
     public boolean getValidation(){
         return validation;
     }
-    private  List<eventplan> ev = new  ArrayList<>();
-    public List<eventplan> getev() {
+    private  List<EventPlan> ev = new  ArrayList<>();
+    public List<EventPlan> getev() {
         return ev;
     }
     private  List<String>date = new  ArrayList<>();
@@ -81,14 +81,14 @@ public class login {
     public void addDate(String dates) {
         date.add(dates);
     }
-    public void addevent(eventplan event) {
+    public void addevent(EventPlan event) {
         ev.add(event);
     }
-    public login()
+    public Login()
     {
-        userplan u1= new userplan("hala","123","7\3\2004");
+        UserPlan u1= new UserPlan("hala","123","7\3\2004");
         up.add(u1);
-        userplan u2= new userplan("magichala.koni@gmail.com","1234","7\3\2004");
+        UserPlan u2= new UserPlan("magichala.koni@gmail.com","1234","7\3\2004");
         up.add(u2);
         this.isLogged = false;
         this.validation = false;
@@ -96,7 +96,7 @@ public class login {
     }
     public void setUnandpass(String name, String pass) {
 
-        for (userplan u: up) {
+        for (UserPlan u: up) {
 
             if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
                 validation = true;
@@ -109,14 +109,14 @@ public class login {
     }
     public void setInvalidUsernameAndPass(String name, String pass) {
         // Write code here that turns the phrase above into concrete actions
-        for (userplan u: up) {
+        for (UserPlan u: up) {
             if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
                 validation = true; break;
             }
         }
     }
     public void setValidUsernameAndInvalidPass(String name, String pass) {
-        for (userplan u: up) {
+        for (UserPlan u: up) {
             if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
                 validation = true; break;
             }
@@ -143,7 +143,7 @@ public class login {
     }
     public void validUserPass(String userName, String pass){
         setForget(false);
-        for (userplan u: up) {
+        for (UserPlan u: up) {
             if (userName.equals(u.getUserName()) && pass.equals("Forget")) {
                 setForget(true);
                 enteredUsername = userName;
@@ -157,12 +157,12 @@ public class login {
         return passwordUpdated;
     }
     public void takePass(String newPass){
-        for (applicationclasses.userplan user : up) {
+        for (UserPlan user : up) {
             if (user.getUserName().equals(enteredUsername)) {
                 user.setPass(newPass);
             }
         }
-        for (applicationclasses.userplan user : up) {
+        for (UserPlan user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(newPass)) {
                 passwordUpdated = true;
                 break;
@@ -173,7 +173,7 @@ public class login {
         return userCreated;
     }
     public void createAcc(String enteredUsername,String enteredPassword){
-        for (applicationclasses.userplan user : up) {
+        for (UserPlan user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(enteredPassword)) {
                 userCreated = true;
                 break;
@@ -182,14 +182,14 @@ public class login {
     }
     public void seeUser()
     {
-        for(userplan c:up)
+        for(UserPlan c:up)
         {
 
             logger.info("Gmail:- "+c.getUserName() +"\t"+"Password:- "+c.getPass()+"\t"+"BirthDate:- "+c.getB());
         }
     }
     public void event(String name, int price, int ava, String desc,String location, int time,String theme) {
-        ev.add(new eventplan(name, price, ava, desc,location,time,theme));
+        ev.add(new EventPlan(name, price, ava, desc,location,time,theme));
 
         logger.info("You have added the event successfully ");
     }
@@ -197,7 +197,7 @@ public class login {
     public void setE(){exist=1;}
     public int getE(){return exist;}
     public void addeve(String name){
-        for(eventplan c:ev)
+        for(EventPlan c:ev)
         {
             if ((c.geteventName()).equals(name)) {
                 setE();
@@ -207,7 +207,7 @@ public class login {
     }
     int y=0;
     public int update(String name,String pass) {
-        for (userplan u : getUp()) {
+        for (UserPlan u : getUp()) {
             if (name.equals(u.getUserName())) {
                 u.setPass(pass);
                 y=1;
@@ -220,7 +220,7 @@ public class login {
     public int getCheck(){return checkPrice;}
     public void setCheck(){checkPrice=1;}
     public void newPrice(String name, int newprice){
-        for(eventplan c:ev)
+        for(EventPlan c:ev)
         {
             if((c.geteventName()).equals(name)) {
                 c.setPrice(newprice);
@@ -229,7 +229,7 @@ public class login {
         }
     }
     public void searchbyname(String name) {
-        for(eventplan c: ev ){
+        for(EventPlan c: ev ){
             if(name.equals(c.geteventName())){
                 String k=String.valueOf(c.getPrice());
                 String f=String.valueOf(c.getAvailable());
@@ -246,8 +246,8 @@ public class login {
         }
     }
     public int deleteUserByUsername(String username) {
-        for (Iterator<userplan> iterator = up.iterator(); iterator.hasNext();) {
-            userplan user = iterator.next();
+        for (Iterator<UserPlan> iterator = up.iterator(); iterator.hasNext();) {
+            UserPlan user = iterator.next();
             if (user.getUserName().equals(username)) {
                 iterator.remove();
                 return 1;
@@ -256,8 +256,8 @@ public class login {
         return 0;
     }
     public int deleteEventByName(String eventName) {
-        for (Iterator<eventplan> iterator = ev.iterator(); iterator.hasNext();) {
-            eventplan e = iterator.next();
+        for (Iterator<EventPlan> iterator = ev.iterator(); iterator.hasNext();) {
+            EventPlan e = iterator.next();
             if (e.geteventName().equals(eventName)) {
                 iterator.remove();
                 return 1; // Indicates successful deletion
@@ -275,7 +275,7 @@ public class login {
     }
 
     public void editEvent(int index, String newName, int newPrice, int newAvailability, String newDescription, String newLocation, int newTime, String newTheme) {
-        eventplan e = ev.get(index);
+        EventPlan e = ev.get(index);
         e.seteventName(newName);
         e.setPrice(newPrice);
         e.setAvailable(newAvailability);
@@ -284,29 +284,29 @@ public class login {
         e.settime(newTime);
         e.settheme(newTheme);
     }
-    public void printCatalog(eventplan cc){
+    public void printCatalog(EventPlan cc){
         logger.info(cc.getDescrtion());
         String k=String.valueOf(cc.getPrice());
         logger.info(k);
         String kk=String.valueOf(cc.getAvailable());
         logger.info(kk);
     }
-    private List<eventplan> eventArrayList = new ArrayList<>();
-    public List<eventplan> geteventArrayList() {
+    private List<EventPlan> eventArrayList = new ArrayList<>();
+    public List<EventPlan> geteventArrayList() {
         return eventArrayList;
     }
     public void requestByPrice(int price){
-        for(eventplan c: getev() ){
+        for(EventPlan c: getev() ){
             if(price==c.getPrice()){
-                eventArrayList.add(new eventplan(c.geteventName(),c.getPrice(),c.getAvailable(),c.getDescrtion(),c.getlocation(),c.gettime(),c.gettheme()));
+                eventArrayList.add(new EventPlan(c.geteventName(),c.getPrice(),c.getAvailable(),c.getDescrtion(),c.getlocation(),c.gettime(),c.gettheme()));
             }
         }
     }
-    private   List<reserve> op = new  ArrayList<>();
-    public List<reserve> getOp() {
+    private   List<Reserve> op = new  ArrayList<>();
+    public List<Reserve> getOp() {
         return op;
     }
-    public void addres(reserve order) {
+    public void addres(Reserve order) {
         op.add(order);
     }
     private String dateee ;
@@ -325,7 +325,7 @@ public class login {
                 break;
             }
         }
-        for(eventplan c : ev){
+        for(EventPlan c : ev){
             if (model.equals(c.geteventName())){
                 available2 = true;
                 cname = model;
@@ -342,7 +342,7 @@ public class login {
         return appear;
     }
     public void updatesSuccessfully(String name,String pass){
-        for(userplan u: up){
+        for(UserPlan u: up){
             if(name.equals(u.getUserName())){
                 u.setPass(pass);
                 updates = true;
@@ -352,7 +352,7 @@ public class login {
     }
     int yuy=0;
     public int yourInformationUpdatesSuccessfully(String name,String pass) {
-        for (userplan u : getUp()) {
+        for (UserPlan u : getUp()) {
             if (name.equals(u.getUserName())) {
                 u.setPass(pass);
                 yuy=1;
@@ -362,7 +362,7 @@ public class login {
         return yuy;
     }
     public void appearInformation(String name){
-        for(reserve o : getOp()){
+        for(Reserve o : getOp()){
             if(name.equals(o.getUname())){
                 logger.info(o.getCname());
                 logger.info(o.getDate());
@@ -371,7 +371,7 @@ public class login {
         }
     }
     public void catagoryadd(String name, int price, int ava, String desc,String location ,int time,String theme) {
-        ev.add(new eventplan(name, price, ava, desc,location,time,theme));
+        ev.add(new EventPlan(name, price, ava, desc,location,time,theme));
 
         logger.info("You have added this event a successfully way");
     }

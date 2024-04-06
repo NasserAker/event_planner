@@ -1,11 +1,11 @@
 package applicationclasses;
 
-public class userplan {
+public class UserPlan {
     private  String userName;
     private  String pass;
     private String birthDate;
 
-    public userplan(String un, String pa, String bd) {
+    public UserPlan(String un, String pa, String bd) {
         userName =un;
         pass=pa;
         birthDate =bd;

@@ -1,6 +1,6 @@
 package StepsDefinition;
-import applicationclasses.eventplan;
-import applicationclasses.login;
+import applicationclasses.EventPlan;
+import applicationclasses.Login;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
@@ -8,14 +8,14 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class admincat {
-    public login obj;
+    public Login obj;
     public boolean added = false;
-    public eventplan cc=new eventplan();
+    public EventPlan cc=new EventPlan();
 
-    public admincat(login iobj){
+    public admincat(Login iobj){
         super();
         this.obj = iobj;
-        eventplan c1 = new eventplan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        EventPlan c1 = new EventPlan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c1);
     }
 
