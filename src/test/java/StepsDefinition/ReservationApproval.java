@@ -10,20 +10,20 @@ import java.util.Random;
 
 public class ReservationApproval {
     ReservationRequest request , request1 , request2 ,selectedRequest;
-    int requestCount;
+    Venue venue;
 
     public ReservationApproval(){
         User user = new User("hala","123","rafdia","24342","halaa","female");
         Date date = new Date(2002, 12, 12);
-        Venue venue = new Venue("name" , "location", 150  , 1500 );
+        venue = new Venue("name" , "location", 150  , 1500 );
         AdditionalService service= new AdditionalService("cake",12.0);
 
         List<AdditionalService> services = new ArrayList<>();
         services.add(service);
 
         this.request = new ReservationRequest(1, user, venue, date, services);
-//        this.request1 = new ReservationRequest(2,123,"saed" , venue);
-//        this.request2 = new ReservationRequest(3,123,"saed" ,venue);
+        this.request1 = new ReservationRequest(2, user, venue, date , services);
+        this.request2 = new ReservationRequest(3, user ,venue, date , services);
         Venue.addVenueToTheList(venue);
     }
 
@@ -47,25 +47,26 @@ public class ReservationApproval {
 
     @When("I click on the {string} button")
     public void i_click_on_the_button(String string) {
-        if(string.equals("Approve") && Venue.getAvailableVenues().contains(venue)){
-            selectedRequest.ApproveRequest();
+        List<Venue> list  = Venue.getAvailableVenues() ;
+        if(string.equals("Approve") && list.contains(venue)){
+            selectedRequest.approveRequest();
             System.out.println("Approved");
         }
         else {
-            selectedRequest.DenyRequest();
+            selectedRequest.denyRequest();
             System.out.println("Denied");
         }
     }
 
     @Then("the requester should receive a confirmation message")
     public void the_requester_should_receive_a_confirmation_message() {
-        Assert.assertTrue(selectedRequest.Confirmation());
+        Assert.assertTrue(selectedRequest.isConfirmed());
     }
 
 
     @Then("the requester should receive a notification with the denial and the reason")
     public void the_requester_should_receive_a_notification_with_the_denial_and_the_reason() {
-        Assert.assertTrue(selectedRequest.Denial());
+        Assert.assertTrue(selectedRequest.isDenied());
     }
 
 
