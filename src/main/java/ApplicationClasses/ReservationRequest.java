@@ -20,8 +20,8 @@ public class ReservationRequest {
         this.services = services;
     }
 
-    public static final List<ReservationRequest> RequestList = new ArrayList<>();
-    public static final List<ReservationRequest> ApprovedRequests = new ArrayList<>();
+    private static final List<ReservationRequest> RequestList = new ArrayList<>();
+    private static final List<ReservationRequest> ApprovedRequests = new ArrayList<>();
     private static final List<ReservationRequest> DeniedRequests = new ArrayList<>();
 
     public static List<ReservationRequest> getAllReservationRequests() {
