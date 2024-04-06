@@ -280,7 +280,7 @@ public class Operations {
         logger.info("Enter a theme for the event:");
         String theme = scanner.nextLine();
 
-        Event newEvent = new Event(name, price, availability, description, location, time, theme);
+        Event newEvent = new Event(name, price, availability, description, location, time);//, theme);
         Event.addEvent(newEvent);
 
         logger.info("Event added successfully.");
@@ -304,8 +304,8 @@ public class Operations {
                         "Availability: " + event.getAvailability() + ", " +
                         "Description: " + event.getDescription() + ", " +
                         "Location: " + event.getLocation() + ", " +
-                        "Time: " + event.getTime() + ", " +
-                        "Theme: " + event.getTheme();
+                        "Time: " + event.getTime();
+                     //   "Theme: " + event.getTheme();
                 logger.info(eventDetails);
             }
         }
@@ -330,7 +330,7 @@ public class Operations {
                 eventDetails.append("Description: ").append(event.getDescription()).append(", ");
                 eventDetails.append("Location: ").append(event.getLocation()).append(", ");
                 eventDetails.append("Time: ").append(event.getTime()).append(", ");
-                eventDetails.append("Theme: ").append(event.getTheme());
+               // eventDetails.append("Theme: ").append(event.getTheme());
 
                 logger.info(eventDetails.toString());
                 found = true;
@@ -363,7 +363,7 @@ public class Operations {
                 eventDetails.append("Description: ").append(event.getDescription()).append(", ");
                 eventDetails.append("Location: ").append(event.getLocation()).append(", ");
                 eventDetails.append("Time: ").append(event.getTime()).append(", ");
-                eventDetails.append("Theme: ").append(event.getTheme());
+               // eventDetails.append("Theme: ").append(event.getTheme());
 
                 logger.info(eventDetails.toString());
                 found = true;
