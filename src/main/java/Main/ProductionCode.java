@@ -266,6 +266,7 @@ public class ProductionCode {
                     Operations.deleteAccount();
                     break;
                 case 5:adminActivities();
+                    continueManaging = false;
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
@@ -318,6 +319,7 @@ public class ProductionCode {
                     break;
                 case 7:
                     adminActivities();
+                    continueManaging = false;
                     break;
                 default:
                     logger.info("Invalid action. Please select a valid action.");
