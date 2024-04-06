@@ -24,6 +24,7 @@ public class Operations {
     private static final String USERNAME = "Username:";
     private static final String EMAIL = "Email:";
     private static final String USER_DETAILS_FORMAT = "%d. %s";
+    private static final String LIST_OF_EVENTS = "\nList of events:";
 
     public static final String SEPARATOR = "------------------------------------------------------";
 
@@ -186,7 +187,7 @@ public class Operations {
                 StringJoiner userDetails = new StringJoiner(", ");
                 userDetails.add("Username: " + user.getUsername())
                         .add("Email: " + user.getEmail());
-                logger.info(String.format("%d. %s", (i + 1), userDetails.toString()));
+                logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), userDetails.toString()));
             }
         }
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
@@ -377,12 +378,12 @@ public class Operations {
 
     public static void deleteEvent() {
 
-        logger.info("\nList of events:");
+        logger.info(LIST_OF_EVENTS);
         List<Event> allEvents = Event.getAllEvents();
         if (!allEvents.isEmpty()) { // Check if there are events to list
-            logger.info("\nList of events:");
+            logger.info(LIST_OF_EVENTS);
             for (int i = 0; i < allEvents.size(); i++) {
-                logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
+                logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), allEvents.get(i).getEventName()));
             }
         } else {
             logger.info("No events found.");
@@ -411,7 +412,7 @@ public class Operations {
 
     public static void editEvent() {
 
-        logger.info("\nList of events:");
+        logger.info(LIST_OF_EVENTS);
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
             logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), allEvents.get(i).getEventName()));
@@ -558,8 +559,8 @@ public class Operations {
 
         }
         logger.info("Reservation Details:");
-        logger.info(String.format("Venue: %s", selectedVenue.toString()));
-        logger.info(String.format("Date: " + selectedDate));
+        logger.info(String.format("Venue:{}", selectedVenue.toString()));
+        logger.info(String.format("Date: {}" + selectedDate));
         if (!selectedServices.isEmpty()) {
             logger.info("Additional Services:");
             for (AdditionalService service : selectedServices) {
