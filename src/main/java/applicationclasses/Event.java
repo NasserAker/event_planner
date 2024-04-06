@@ -65,6 +65,13 @@ public class Event {
         return location;
     }
 
+    public void setTime(int time) {
+        this.time = time;
+    }
+    public int getTime() {
+        return time;
+    }
+
     public void setLocation(String location) {
         this.location = location;
     }
