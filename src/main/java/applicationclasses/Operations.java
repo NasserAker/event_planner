@@ -226,7 +226,13 @@ public class Operations {
     }
 
 /////////////////////////
-
+private  List<Event> ev = new  ArrayList<>();
+    public List<Event> getev() {
+        return ev;
+    }
+public void addevent(Event event) {
+    ev.add(event);
+}
 
 
     //Manage Events
