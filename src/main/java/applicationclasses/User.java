@@ -22,6 +22,7 @@ public class User {
 
     public static final List<User> allUsers = new ArrayList<>();
 
+
     public User(String username, String password, String address, String phone, String email, String gender) {
         this.username = username;
         this.password = password;
