@@ -1,6 +1,6 @@
 package applicationclasses;
 
-public class eventplan {
+public class EventPlan {
     private String eventName;
     private int price;
     private int availablity;
@@ -8,7 +8,7 @@ public class eventplan {
     private String location;
     private int time;
     private String theme;
-    public eventplan(String name, int price, int aval, String desc,String loc,int time,String theme){
+    public EventPlan(String name, int price, int aval, String desc, String loc, int time, String theme){
         eventName =name;
         this.price=price;
         availablity=aval;
@@ -17,7 +17,7 @@ public class eventplan {
         this.time=time;
         this.theme=theme;
     }
-    public eventplan(){
+    public EventPlan(){
         eventName ="";
         price=0;
         availablity=0;

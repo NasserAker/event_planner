@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import applicationclasses.login;
+import applicationclasses.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,11 +8,11 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertTrue;
 
 public class userstep {
-    public login obj;
+    public Login obj;
     public String name;
     public  String pass;
 
-    public userstep(login iobj){
+    public userstep(Login iobj){
         super();
         this.obj = iobj;
     }

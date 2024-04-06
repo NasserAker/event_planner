@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import applicationclasses.login;
+import applicationclasses.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,9 +8,9 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertTrue;
 
 public class rolestep {
-    public login obj;
+    public Login obj;
     private String userRole="";
-    public rolestep(login iobj) {
+    public rolestep(Login iobj) {
         super();
         this.obj = iobj;
     }

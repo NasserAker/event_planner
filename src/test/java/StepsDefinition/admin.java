@@ -1,6 +1,6 @@
 package StepsDefinition;
-import applicationclasses.eventplan;
-import applicationclasses.login;
+import applicationclasses.EventPlan;
+import applicationclasses.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -8,16 +8,16 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
 
 public class admin {
-    public login obj;
+    public Login obj;
     int CustList =0;
     public boolean updates =  false;
     public boolean appears = false;
     public String name;
-    public admin(login iobj)
+    public admin(Login iobj)
     {
         super();
         this.obj=iobj;
-        eventplan c1 = new eventplan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        EventPlan c1 = new EventPlan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c1);
 
     }
