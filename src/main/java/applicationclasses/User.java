@@ -65,7 +65,6 @@ public class User {
     }
 
 
-    // Getters and setters for all properties
 
     public  String getUsername() {
         return username;
@@ -122,7 +121,7 @@ public class User {
                 return user;
             }
         }
-        return null; // User not found
+        return null;
     }
     public void logging(boolean t) {
         logState=t;

@@ -50,8 +50,7 @@ public class ReservationRequest {
         RequestList.add(request);
     }
 
-    // Getters and setters for class fields
-// Getter and setter for requestId
+
     public int getRequestId() {
         return requestId;
     }
@@ -60,7 +59,6 @@ public class ReservationRequest {
         this.requestId = requestId;
     }
 
-    // Getter and setter for user
     public User getUser() {
         return user;
     }
@@ -69,7 +67,7 @@ public class ReservationRequest {
         this.user = user;
     }
 
-    // Getter and setter for venue
+
     public Venue getVenue() {
         return venue;
     }
@@ -78,7 +76,7 @@ public class ReservationRequest {
         this.venue = venue;
     }
 
-    // Getter and setter for date
+
     public Date getDate() {
         return date;
     }
@@ -87,7 +85,7 @@ public class ReservationRequest {
         this.date = date;
     }
 
-    // Getter and setter for services
+
     public List<AdditionalService> getServices() {
         return services;
     }

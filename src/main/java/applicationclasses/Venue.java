@@ -7,8 +7,7 @@ public class Venue {
     private String name;
     private String location;
     private int capacity;
-    private double cost; // New field for the cost
-
+    private double cost;
     public void setCost(double cost) {
         this.cost = cost;
     }
@@ -24,7 +23,6 @@ public class Venue {
     }
 
 
-    // ArrayList to store available venues
     private static final List<Venue> availableVenues = new ArrayList<>();
 
     // Getters and setters
@@ -64,7 +62,7 @@ public class Venue {
         availableVenues.add(new Venue("Sky", "Address 4", 120, 1800.0));
         availableVenues.add(new Venue("Space", "Address 4", 120, 1800.0));
 
-        // Add more dates as needed...
+
     }
 
     public static List<Venue> getAvailableVenues() {
@@ -76,7 +74,7 @@ public class Venue {
         availableVenues.add(venue);
     }
 
-    // toString method to print venue details
+
     @Override
     public String toString() {
         return "Name:'" + name + '\'' +

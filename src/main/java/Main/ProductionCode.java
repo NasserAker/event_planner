@@ -58,7 +58,7 @@ public class ProductionCode {
 
 
         initializeAdmin();
-        initializeUsers(); // multiple users
+        initializeUsers();
         initializeServiceProvider();
         initializeAvailableVenues();
         initializeAvailableDates();
@@ -75,13 +75,13 @@ public class ProductionCode {
         while (true) {
             try {
                 c = input.nextInt();
-                break; // Exit the loop if integer input is successfully read
+                break;
             } catch (java.util.NoSuchElementException e) {
                 logger.log(Level.SEVERE, "Invalid input. Please enter a valid integer.", e);
                 input.nextLine();
             }
         }
-        input.nextLine();// Clear the input buffer
+        input.nextLine();
         return c;
     }
 
@@ -96,13 +96,13 @@ public class ProductionCode {
         while (loggedin) {
             logger.info("\nWelcome to the Event Planning System\r\n"
                     + "Do you have an account?\r\n"
-                    + "1. Create account\r\n"//only for users
+                    + "1. Create account\r\n"
                     + "2. Log-in\r\n"
                     + "3. Exit.\r\n"
                     + ENTER_CHOICE);
 
 
-            int accountChoice = scanner(); // only integer input
+            int accountChoice = scanner();
 
 
             switch (accountChoice) {
@@ -120,7 +120,7 @@ public class ProductionCode {
                     String email = input.nextLine();
                     utype = u.searchEmail(email);
 
-                    while (utype < 0) {  // as long as the email does not match with anything
+                    while (utype < 0) {
 
                         logger.info("The email does not exist.Please enter registered email again : ");
                         email = input.nextLine();
@@ -131,7 +131,7 @@ public class ProductionCode {
                     String password = input.nextLine();
                     y = u.searchPassword(password);
 
-                    while (y == -33) { // as long as the password does not match with anything
+                    while (y == -33) {
 
                         logger.info("Invalid password. Please enter your password again : ");
                         password = input.nextLine();
@@ -139,7 +139,7 @@ public class ProductionCode {
 
                     }
 
-                    User loggedInUser = null;// Initialize the logged-in user object
+                    User loggedInUser = null;
                     Admin loggedInAdmin = null;
                     ServiceProvider loggedInServiceProvider = null;
                     switch (utype) {
@@ -165,7 +165,7 @@ public class ProductionCode {
                             serviceProviderActivities();
                             break;
                         default:
-                            // Handle unexpected value, log an error, or take appropriate action
+
                             throw new IllegalArgumentException("Unexpected value for utype: " + utype);
 
                     }
@@ -176,7 +176,7 @@ public class ProductionCode {
                     break;
 
                 default:
-                    // Handle unexpected value, log an error, or take appropriate action
+
                     throw new IllegalArgumentException("Unexpected value for accountChoice: " + accountChoice);
 
             }
@@ -184,7 +184,7 @@ public class ProductionCode {
 
         }
 
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
     }
 
@@ -193,7 +193,7 @@ public class ProductionCode {
 
     public static void adminActivities() {
 
-        // Retrieve the logged-in user from the session
+
         Admin loggedInAdmin = SessionManager.getLoggedInAdmin();
         if (loggedInAdmin == null) {
             logger.info("User not logged in.");
@@ -204,13 +204,13 @@ public class ProductionCode {
         boolean loggedIn = true;
         while (loggedIn) {
             logger.info("Admin Menu:");
-            logger.info("1. Manage User Accounts"); // Menu
-            logger.info("2. Manage Events"); // Menu
-            logger.info("3. View Reservation Requests"); // New option
+            logger.info("1. Manage User Accounts");
+            logger.info("2. Manage Events");
+            logger.info("3. View Reservation Requests");
             logger.info("4. Log Out");
             logger.info(ENTER_CHOICE);
 
-            int choice = scanner(); // Get user input
+            int choice = scanner();
 
 
             switch (choice) {
@@ -221,16 +221,16 @@ public class ProductionCode {
                     adminManageProducts();
                     break;
                 case 3:
-                    viewReservationRequests(); // New case for viewing reservation requests
+                    viewReservationRequests();
                     break;
                 case 4:
-                    loggedIn = false; // Exit the loop and log out
+                    loggedIn = false;
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
     }
 
@@ -249,8 +249,8 @@ public class ProductionCode {
                 action = input.nextInt();
             } catch (InputMismatchException e) {
                 logger.info("Invalid input. Please enter a valid integer.");
-                input.next(); // consume invalid input
-                continue; // restart the loop
+                input.next();
+                continue;
             }
             switch (action) {
                 case 1:
@@ -272,7 +272,7 @@ public class ProductionCode {
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
     }
 
@@ -291,11 +291,11 @@ public class ProductionCode {
             int action;
             try {
                 action = input.nextInt();
-                input.nextLine(); // Consume newline
+                input.nextLine();
             } catch (InputMismatchException e) {
                 logger.info("Invalid input. Please enter a valid integer.");
-                input.nextLine(); // Consume invalid input
-                continue; //// Restart the loop
+                input.nextLine();
+                continue;
             }
 
             switch (action) {
@@ -325,16 +325,16 @@ public class ProductionCode {
                     logger.info("Invalid action. Please select a valid action.");
             }
         }
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
     }
 
 
-///////////////////////////////////////////////////////////////////////////////
+
 
 
     public static void userActivities() {
-// Retrieve the logged-in user from the session
+
         User loggedInUser = SessionManager.getLoggedInUser();
         if (loggedInUser == null) {
             logger.info("User not logged in.");
@@ -351,7 +351,7 @@ public class ProductionCode {
             logger.info("3. Log Out");
             logger.info(ENTER_CHOICE);
 
-            int choice = scanner(); // Get user input
+            int choice = scanner();
 
             switch (choice) {
                 case 1:
@@ -362,20 +362,20 @@ public class ProductionCode {
                     Operations.reserveWedding(loggedInUser);
                     break;
                 case 3:
-                    loggedIn = false; // Exit the loop and log out
+                    loggedIn = false;
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
             }
         }
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
     }
 
 
     public static void serviceProviderActivities(){
 
-// Retrieve the logged-in user from the session
+
         ServiceProvider loggedInServiceProvider = SessionManager.getLoggedInServiceProvider();
         if (loggedInServiceProvider == null) {
             logger.info("Service provider not logged in.");
@@ -393,7 +393,7 @@ public class ProductionCode {
             logger.info("6. Log Out");
             logger.info(ENTER_CHOICE);
 
-            int choice = scanner(); // Get user input
+            int choice = scanner();
             switch (choice) {
                 case 1:
                     Operations.addNewVenue();
@@ -406,7 +406,7 @@ public class ProductionCode {
                     Operations.edit_info();
                     break;
                 case 6:
-                    loggedIn = false; // Exit the loop and log out
+                    loggedIn = false;
                     break;
                 default:
                     logger.info("Invalid choice. Please enter a valid option.");
@@ -414,7 +414,7 @@ public class ProductionCode {
 
 
         }
-        logger.info(SEPARATOR); // Add separator after completing adminManageProducts()
+        logger.info(SEPARATOR);
 
 
     }}
