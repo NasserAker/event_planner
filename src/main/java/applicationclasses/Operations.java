@@ -23,7 +23,7 @@ public class Operations {
     private static final String TIME = "Time:";
     private static final String USERNAME = "Username:";
     private static final String EMAIL = "Email:";
-
+    private static final String USER_DETAILS_FORMAT = "%d. %s";
 
     public static final String SEPARATOR = "------------------------------------------------------";
 
@@ -123,13 +123,13 @@ public class Operations {
         logger.info("\nEnter new user details:");
 
         try {
-            logger.info("Email:");
+            logger.info(EMAIL);
             String email = input.next();
 
             boolean added = addUserCheck(email);
             if (added) {
 
-                logger.info("Username:");
+                logger.info(USERNAME);
                 String username = input.next();
 
                 logger.info("Password:");
@@ -163,7 +163,7 @@ public class Operations {
 
 
     public static void seeAllUsers() {
-        if (!allUsers.isEmpty()) {
+        if (allUsers != null && !allUsers.isEmpty()) {
             logger.info(ALL_USER_ACCOUNTS_MESSAGE);
             Collections.sort(allUsers, Comparator.comparing(User::getUsername));
 
@@ -180,14 +180,15 @@ public class Operations {
     public static void deleteAccount() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
         List<User> allUsers = User.getUserList();
-        for (int i = 0; i < allUsers.size(); i++) {
-            User user = allUsers.get(i);
-            StringJoiner userDetails = new StringJoiner(", ");
-            userDetails.add("Username: " + user.getUsername())
-                    .add("Email: " + user.getEmail());
-            logger.info(String.format("%d. %s", (i + 1), userDetails.toString()));
+        if (allUsers != null && !allUsers.isEmpty()) {
+            for (int i = 0; i < allUsers.size(); i++) {
+                User user = allUsers.get(i);
+                StringJoiner userDetails = new StringJoiner(", ");
+                userDetails.add("Username: " + user.getUsername())
+                        .add("Email: " + user.getEmail());
+                logger.info(String.format("%d. %s", (i + 1), userDetails.toString()));
+            }
         }
-
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
         int userNumber = input.nextInt();
 
@@ -360,10 +361,10 @@ public class Operations {
                 eventDetails.append(DESCRIPTION).append(event.getDescription()).append(", ");
                 eventDetails.append(LOCATION).append(event.getLocation()).append(", ");
                 eventDetails.append(TIME).append(event.getTime()).append(", ");
-
+                found = true;
 
                 logger.info(eventDetails.toString());
-                found = true;
+
             }
         }
 
@@ -378,8 +379,13 @@ public class Operations {
 
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
-        for (int i = 0; i < allEvents.size(); i++) {
-            logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
+        if (!allEvents.isEmpty()) { // Check if there are events to list
+            logger.info("\nList of events:");
+            for (int i = 0; i < allEvents.size(); i++) {
+                logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
+            }
+        } else {
+            logger.info("No events found.");
         }
 
 
@@ -408,7 +414,7 @@ public class Operations {
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
-            logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), allEvents.get(i).getEventName()));
         }
 
 
@@ -484,7 +490,7 @@ public class Operations {
         logger.info("Available Venues:");
         List<Venue> availableVenues = Venue.getAvailableVenues();
         for (int i = 0; i < availableVenues.size(); i++) {
-            logger.info(String.format("%d. %s", (i + 1), availableVenues.get(i).toString()));
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableVenues.get(i).toString()));
         }
 
         logger.info("Choose a venue by entering the corresponding number:");
@@ -501,7 +507,7 @@ public class Operations {
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
         List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
-            logger.info(String.format("%d. %s",(i + 1) + ". " + availableDates.get(i)));
+            logger.info(String.format(USER_DETAILS_FORMAT,(i + 1) + ". " + availableDates.get(i)));
         }
 
 
