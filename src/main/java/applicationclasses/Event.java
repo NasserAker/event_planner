@@ -15,7 +15,7 @@ public class Event {
     private static ArrayList<Event> allEvents = new ArrayList<>();
 
     // Constructors
-    public Event(String eventName, int price, int availability, String description, String location, int time){//, String theme) {
+    public Event(String eventName, int price, int availability, String description, String location, int time){
         this.eventName = eventName;
         this.price = price;
         this.availability = availability;
@@ -26,7 +26,7 @@ public class Event {
     }
 
     public Event() {
-        this("", 0, 0, "", "", 0);//, "");
+        this("", 0, 0, "", "", 0);
     }
 
     // Getters and Setters
@@ -78,18 +78,10 @@ public class Event {
         this.time = time;
     }
 
-    public String getTheme() {
-        return theme;
-    }
-
-    public void setTheme(String theme) {
-        this.theme = theme;
-    }
-    // Static method to retrieve all events
 
     public static void initializeEvents() {
-        Event event1 = new Event("Event1", 100, 50, "Description 1", "Location 1", 10);//, "Theme 1");
-        Event event2 = new Event("Event2", 150, 30, "Description 2", "Location 2", 12);//, "Theme 2");
+        Event event1 = new Event("Event1", 100, 50, "Description 1", "Location 1", 10);
+        Event event2 = new Event("Event2", 150, 30, "Description 2", "Location 2", 12);
 
         allEvents.add(event1);
         allEvents.add(event2);
