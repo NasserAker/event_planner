@@ -79,8 +79,7 @@ public class Venue {
     // toString method to print venue details
     @Override
     public String toString() {
-        return
-                "Name:'" + name + '\'' +
+        return "Name:'" + name + '\'' +
                         ", Location:'" + location + '\'' +
                         ", Cost: $" + cost
                 ;

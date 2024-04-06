@@ -1,9 +1,9 @@
+
+@nasser
+
 Feature: Venue Reservation
   As a user, I want to be able to make a reservation for a venue so that I can ensure the venue is available for my event.
 
-#  Background:
-#    Given I am a registered user
-#    And I am logged in to the reservation system
 #@nasser
   Scenario: Choosing and reserving an available venue
     Given I have searched for a venue that meets my requirements
@@ -24,11 +24,13 @@ Feature: Venue Reservation
     And I should be prompted to specify the date and time
 
 
-
-
   #@nasser
   Scenario: Reserving a venue and then canceling the reservation
     Given I have successfully reserved a venue
     When I choose to cancel my reservation
     Then the reservation should be canceled
     And I should receive confirmation that the reservation has been canceled
+
+
+
+

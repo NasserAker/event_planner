@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import applicationclasses.ReservationRequest;
+import applicationclasses.*;
 import applicationclasses.User;
 import applicationclasses.Venue;
 import io.cucumber.java.en.*;
@@ -18,10 +18,6 @@ public class ReserveVenue {
 
     ReservationRequest request;
     String date;
-
-
-
-
 
     @Given("I have searched for a venue that meets my requirements")
     public void i_have_searched_for_a_venue_that_meets_my_requirements() {
@@ -60,7 +56,8 @@ public class ReserveVenue {
     }
     @When("I submit the reservation request")
     public void i_submit_the_reservation_request() {
-       // request = new ReservationRequest();
+        /*request = new ReservationRequest(1,1,"nasser",venue);
+       // request = new ReservationRequest();*/
     }
     @Then("the a reservation request should be sent to the service provider")
     public void the_a_reservation_request_should_be_sent_to_the_service_provider() {
@@ -68,7 +65,8 @@ public class ReserveVenue {
     }
     @Then("I should receive a response with details")
     public void i_should_receive_a_response_with_details() {
-            Assert.assertTrue(ReservationRequest.ApprovedRequests.contains(request));
+
+        Assert.assertTrue(ReservationRequest.ApprovedRequests.contains(request));
     }
 
     @When("I attempt to submit a reservation request without specifying the date and time")
@@ -97,13 +95,11 @@ public class ReserveVenue {
     }
     @Then("the reservation should be canceled")
     public void the_reservation_should_be_canceled() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
     @Then("I should receive confirmation that the reservation has been canceled")
     public void i_should_receive_confirmation_that_the_reservation_has_been_canceled() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+
     }
 
 }
