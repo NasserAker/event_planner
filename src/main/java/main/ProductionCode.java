@@ -405,7 +405,7 @@ public class ProductionCode {
                     Operations.addService();
                     break;
                 case 3:
-                    Operations.edit_info();
+                    Operations.editinfo();
                     break;
                 case 6:
                     loggedIn = false;

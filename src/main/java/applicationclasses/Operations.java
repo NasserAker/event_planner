@@ -21,6 +21,8 @@ public class Operations {
     private static final String DESCRIPTION = "Description:";
     private static final String LOCATION = "Location:";
     private static final String TIME = "Time:";
+    private static final String USERNAME = "Username:";
+    private static final String EMAIL = "Email:";
 
 
     public static final String SEPARATOR = "------------------------------------------------------";
@@ -161,19 +163,18 @@ public class Operations {
 
 
     public static void seeAllUsers() {
-        logger.info(ALL_USER_ACCOUNTS_MESSAGE);
-
         if (!allUsers.isEmpty()) {
+            logger.info(ALL_USER_ACCOUNTS_MESSAGE);
             Collections.sort(allUsers, Comparator.comparing(User::getUsername));
+
             for (User user : allUsers) {
                 StringBuilder userDetails = new StringBuilder();
-                userDetails.append("Username: ").append(user.getUsername()).append(", ");
-                userDetails.append("Email: ").append(user.getEmail()).append(", ");
+                userDetails.append(USERNAME).append(user.getUsername()).append(", ");
+                userDetails.append(EMAIL).append(user.getEmail()).append(", ");
                 logger.info(userDetails.toString());
             }
         }
     }
-
 
 
     public static void deleteAccount() {
@@ -367,7 +368,7 @@ public class Operations {
         }
 
         if (!found) {
-            logger.info("No event with the price '" + searchPrice + "' found.");
+            logger.info(String.format("No event with the price '%s' found.", searchPrice));
         }
     }
 
@@ -378,7 +379,7 @@ public class Operations {
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
-            logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
+            logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
         }
 
 
@@ -407,7 +408,7 @@ public class Operations {
         logger.info("\nList of events:");
         List<Event> allEvents = Event.getAllEvents();
         for (int i = 0; i < allEvents.size(); i++) {
-            logger.info((i + 1) + ". " + allEvents.get(i).getEventName());
+            logger.info(String.format("%d. %s", (i + 1), allEvents.get(i).getEventName()));
         }
 
 
@@ -467,10 +468,10 @@ public class Operations {
 
     public static void viewUserProfile(User user) {
         logger.info("User Profile:");
-        logger.info("Username: " + user.getUsername());
+        logger.info(USERNAME + user.getUsername());
         logger.info("Address: " + user.getAddress());
         logger.info("Phone: " + user.getPhone());
-        logger.info("Email: " + user.getEmail());
+        logger.info(EMAIL + user.getEmail());
         logger.info("Gender: " + user.getGender());
     }
 
@@ -483,7 +484,7 @@ public class Operations {
         logger.info("Available Venues:");
         List<Venue> availableVenues = Venue.getAvailableVenues();
         for (int i = 0; i < availableVenues.size(); i++) {
-            logger.info((i + 1) + ". " + availableVenues.get(i).toString());
+            logger.info(String.format("%d. %s", (i + 1), availableVenues.get(i).toString()));
         }
 
         logger.info("Choose a venue by entering the corresponding number:");
@@ -500,7 +501,7 @@ public class Operations {
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
         List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
-            logger.info((i + 1) + ". " + availableDates.get(i));
+            logger.info(String.format("%d. %s",(i + 1) + ". " + availableDates.get(i)));
         }
 
 
@@ -532,7 +533,7 @@ public class Operations {
 
         for (int i = 0; i < availableServices.size(); i++) {
             AdditionalService service = availableServices.get(i);
-            logger.info((i + 1) + ". " + service.getServiceName() + " - Cost: $" + service.getCost());
+            logger.info(String.format("%d. %s - Cost: $%.2f", (i + 1), service.getServiceName(), service.getCost()));
         }
         logger.info("0. None");
 
@@ -551,8 +552,8 @@ public class Operations {
 
         }
         logger.info("Reservation Details:");
-        logger.info("Venue: " + selectedVenue.toString());
-        logger.info("Date: " + selectedDate);
+        logger.info(String.format("Venue: %s", selectedVenue.toString()));
+        logger.info(String.format("Date: " + selectedDate));
         if (!selectedServices.isEmpty()) {
             logger.info("Additional Services:");
             for (AdditionalService service : selectedServices) {
@@ -605,7 +606,7 @@ public class Operations {
             for (int i = 0; i < requests.size(); i++) {
                 ReservationRequest request = requests.get(i);
 
-                logger.info((i + 1) + ". Request ID: " + request.getRequestId());
+                logger.info(String.format((i + 1) + ". Request ID: " + request.getRequestId()));
                 logger.info("   Customer Name: " + request.getUser().getUsername());
                 logger.info("   Venue: " + request.getVenue());
                 logger.info("   Date: " + request.getDate());
@@ -694,7 +695,7 @@ public class Operations {
 
     public static void addService() {
         String name = "";
-        String provider_name = "";
+        String providername = "";
         double price = 0.0;
 
         Scanner scanner = new Scanner(System.in);
@@ -703,7 +704,7 @@ public class Operations {
         name = scanner.nextLine();
 
         logger.info("Enter your name :");
-        provider_name = scanner.nextLine();
+        providername = scanner.nextLine();
 
         logger.info("Enter Service Price : ");
 
@@ -715,7 +716,7 @@ public class Operations {
                 price = Integer.parseInt(scanner.nextLine());
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("Invalid input. Please enter a valid number.");
+                logger.info("Invalid input. Please enter a valid number.");
             }
         }
 
@@ -728,7 +729,7 @@ public class Operations {
     }
 
 
-    public static void edit_info() {
+    public static void editinfo() {
         boolean cont = false;
 
         while (!cont) {

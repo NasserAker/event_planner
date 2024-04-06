@@ -2,7 +2,6 @@ package applicationclasses;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import applicationclasses.*;
 import java.util.List;
 
 public class ReservationRequest {
