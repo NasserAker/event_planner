@@ -12,6 +12,11 @@ import static main.ProductionCode.*;
 
 
 public class Operations {
+    private Operations() {
+    }
+    private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
+
+
     public static final String SEPARATOR = "------------------------------------------------------";
 
 
@@ -63,11 +68,12 @@ public class Operations {
 
 
     public static void changeUserInformation() {
-        logger.info("\nAll User Accounts:");
+        logger.info(ALL_USER_ACCOUNTS_MESSAGE);
         List<User> allUsers = User.getUserList();
         for (int i = 0; i < allUsers.size(); i++) {
             User user = allUsers.get(i);
-            logger.info((i + 1) + ". Username: " + user.getUsername() + ", Email: " + user.getEmail());
+            String message = String.format("%d. Username: %s, Email: %s", (i + 1), user.getUsername(), user.getEmail());
+            logger.info(message);
         }
 
         logger.info("Enter the number corresponding to the user you want to update (enter '0' to go back to the menu):");
@@ -155,7 +161,7 @@ public class Operations {
 
 
     public static void seeAllUsers() {
-        logger.info("\nAll User Accounts:");
+        logger.info(ALL_USER_ACCOUNTS_MESSAGE);
 
         Collections.sort(allUsers, Comparator.comparing(User::getUsername));
 
@@ -169,7 +175,7 @@ public class Operations {
 
 
     public static void deleteAccount() {
-        logger.info("\nAll User Accounts:");
+        logger.info(ALL_USER_ACCOUNTS_MESSAGE);
         List<User> allUsers = User.getUserList();
         for (int i = 0; i < allUsers.size(); i++) {
             User user = allUsers.get(i);
@@ -709,7 +715,7 @@ public class Operations {
 
 
         AdditionalService service = new AdditionalService(name, price);
-        AdditionalService.add_servicetoTheArray(service);
+        AdditionalService.addservicetoTheArray(service);
         logger.info("Service added successfully.");
 
 

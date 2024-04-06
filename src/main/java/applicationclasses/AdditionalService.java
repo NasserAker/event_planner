@@ -6,7 +6,7 @@ import java.util.List;
 public class AdditionalService {
     private String serviceName;
     private double cost;
-    public static final List<AdditionalService> availableServices = new ArrayList<>();
+    protected static final List<AdditionalService> availableServices = new ArrayList<>();
 
     public AdditionalService(String serviceName, double cost) {
         this.serviceName = serviceName;
@@ -40,7 +40,7 @@ public class AdditionalService {
     }
 
 
-    public static void add_servicetoTheArray (AdditionalService service){
+    public static void addservicetoTheArray (AdditionalService service){
         availableServices.add(service);
     }
 

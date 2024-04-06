@@ -10,10 +10,6 @@ import static applicationclasses.User.allUsers;
 public class Logging {
 
     private String emailToCheck;
-
-
-
-
     private boolean successfulpassword= false;
 
     private String email;
