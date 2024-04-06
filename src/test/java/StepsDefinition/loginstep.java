@@ -3,8 +3,8 @@ package StepsDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ApplicationClasses.user;
-import ApplicationClasses.login;
+import Application.user;
+import Application.login;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;

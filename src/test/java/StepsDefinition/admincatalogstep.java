@@ -1,7 +1,7 @@
 package StepsDefinition;
 
-import ApplicationClasses.event;
-import ApplicationClasses.login;
+import Application.event;
+import Application.login;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 

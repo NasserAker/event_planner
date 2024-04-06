@@ -1,4 +1,4 @@
-package ApplicationClasses;
+package Application;
 
 public class reserve {
     private String uname;

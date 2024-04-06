@@ -1,4 +1,4 @@
-package ApplicationClasses;
+package Application;
 
 import java.util.*;
 import java.util.logging.Logger;
@@ -157,12 +157,12 @@ public class login {
         return passwordUpdated;
     }
     public void takePass(String newPass){
-        for (ApplicationClasses.user user : up) {
+        for (Application.user user : up) {
             if (user.getUserName().equals(enteredUsername)) {
                 user.setPass(newPass);
             }
         }
-        for (ApplicationClasses.user user : up) {
+        for (Application.user user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(newPass)) {
                 passwordUpdated = true;
                 break;
@@ -173,7 +173,7 @@ public class login {
         return userCreated;
     }
     public void createAcc(String enteredUsername,String enteredPassword){
-        for (ApplicationClasses.user user : up) {
+        for (Application.user user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(enteredPassword)) {
                 userCreated = true;
                 break;

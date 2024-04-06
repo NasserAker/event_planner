@@ -3,8 +3,8 @@ package StepsDefinition;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import ApplicationClasses.event;
-import ApplicationClasses.login;
+import Application.event;
+import Application.login;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
