@@ -1,12 +1,12 @@
 package StepsDefinition;
 
-import ApplicationClasses.SessionManager;
+import applicationclasses.SessionManager;
 import Main.ProductionCode;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static ApplicationClasses.Operations.createAccountPage;
+import static applicationclasses.Operations.createAccountPage;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 

@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import ApplicationClasses.User;
+import applicationclasses.User;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -9,7 +9,7 @@ import static org.junit.Assert.assertNotNull;
 
 
 public class viewuserstep {
-    User u = new User ("username", "password", "address", "phone", "email", "gender");
+    User u = new User("username", "password", "address", "phone", "email", "gender");
     @Given("the user is logged in")
 
     public void the_user_is_logged_in() {
@@ -30,4 +30,8 @@ public class viewuserstep {
         assertNotNull(u.getGender());
 
     }
+
+
+
+    ///////////////////////////
 }
