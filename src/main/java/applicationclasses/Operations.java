@@ -15,6 +15,12 @@ public class Operations {
     private Operations() {
     }
     private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
+    private static final String event_name = "Event Name:";
+    private static final String price = "Price:";
+    private static final String Availability = "Availability:";
+    private static final String description = "Description:";
+    private static final String location = "Location:";
+    private static final String time = "Time:";
 
 
     public static final String SEPARATOR = "------------------------------------------------------";
@@ -149,13 +155,7 @@ public class Operations {
 
 
     public static boolean addUserCheck(String email) {
-
-        if (getUserByEmail(email) != null) {
-
-            return false;
-        }
-
-        return true;
+        return getUserByEmail(email) == null;
     }
 
 
@@ -163,15 +163,17 @@ public class Operations {
     public static void seeAllUsers() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
 
-        Collections.sort(allUsers, Comparator.comparing(User::getUsername));
-
-        for (User user : allUsers) {
-            StringBuilder userDetails = new StringBuilder();
-            userDetails.append("Username: ").append(user.getUsername()).append(", ");
-            userDetails.append("Email: ").append(user.getEmail()).append(", ");
-            logger.info(userDetails.toString());
+        if (!allUsers.isEmpty()) {
+            Collections.sort(allUsers, Comparator.comparing(User::getUsername));
+            for (User user : allUsers) {
+                StringBuilder userDetails = new StringBuilder();
+                userDetails.append("Username: ").append(user.getUsername()).append(", ");
+                userDetails.append("Email: ").append(user.getEmail()).append(", ");
+                logger.info(userDetails.toString());
+            }
         }
     }
+
 
 
     public static void deleteAccount() {
@@ -179,7 +181,10 @@ public class Operations {
         List<User> allUsers = User.getUserList();
         for (int i = 0; i < allUsers.size(); i++) {
             User user = allUsers.get(i);
-            logger.info((i + 1) + ". Username: " + user.getUsername() + ", Email: " + user.getEmail());
+            StringJoiner userDetails = new StringJoiner(", ");
+            userDetails.add("Username: " + user.getUsername())
+                    .add("Email: " + user.getEmail());
+            logger.info(String.format("%d. %s", (i + 1), userDetails.toString()));
         }
 
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
@@ -269,8 +274,7 @@ public class Operations {
             }
         }
 
-        logger.info("Enter a theme for the event:");
-        String theme = scanner.nextLine();
+
 
         Event newEvent = new Event(name, price, availability, description, location, time);
         Event.addEvent(newEvent);
@@ -291,12 +295,12 @@ public class Operations {
         } else {
             logger.info("\nList of all events:");
             for (Event event : allEvents) {
-                String eventDetails = "Event Name: " + event.getEventName() + ", " +
-                        "Price: " + event.getPrice() + ", " +
-                        "Availability: " + event.getAvailability() + ", " +
-                        "Description: " + event.getDescription() + ", " +
-                        "Location: " + event.getLocation() + ", " +
-                        "Time: " + event.getTime();
+                String eventDetails = event_name + event.getEventName() + ", " +
+                        price + event.getPrice() + ", " +
+                        Availability + event.getAvailability() + ", " +
+                        description + event.getDescription() + ", " +
+                        location + event.getLocation() + ", " +
+                        time + event.getTime();
 
                 logger.info(eventDetails);
             }
@@ -314,15 +318,17 @@ public class Operations {
             if (event.getEventName().equalsIgnoreCase(searchName)) {
                 StringBuilder eventDetails = new StringBuilder();
                 eventDetails.append("Event found: ");
-                eventDetails.append("Event Name: ").append(event.getEventName()).append(", ");
-                eventDetails.append("Price: ").append(event.getPrice()).append(", ");
-                eventDetails.append("Availability: ").append(event.getAvailability()).append(", ");
-                eventDetails.append("Description: ").append(event.getDescription()).append(", ");
-                eventDetails.append("Location: ").append(event.getLocation()).append(", ");
-                eventDetails.append("Time: ").append(event.getTime()).append(", ");
+                eventDetails.append(event_name).append(event.getEventName()).append(", ");
+                eventDetails.append(price).append(event.getPrice()).append(", ");
+                eventDetails.append(Availability).append(event.getAvailability()).append(", ");
+                eventDetails.append(description).append(event.getDescription()).append(", ");
+                eventDetails.append(location).append(event.getLocation()).append(", ");
+                eventDetails.append(time).append(event.getTime()).append(", ");
 
 
-                logger.info(eventDetails.toString());
+                if (eventDetails.length() > 0) {
+                    logger.info(eventDetails.toString());
+                }
                 found = true;
                 break;
             }
@@ -330,7 +336,7 @@ public class Operations {
 
 
         if (!found) {
-            logger.info("No event with the name '" + searchName + "' found.");
+            logger.info(String.format("No event with the name '%s' found.", searchName));
         }
     }
 
@@ -347,12 +353,12 @@ public class Operations {
             if (event.getPrice() == searchPrice) {
                 StringBuilder eventDetails = new StringBuilder();
                 eventDetails.append("Event found: ");
-                eventDetails.append("Event Name: ").append(event.getEventName()).append(", ");
-                eventDetails.append("Price: ").append(event.getPrice()).append(", ");
-                eventDetails.append("Availability: ").append(event.getAvailability()).append(", ");
-                eventDetails.append("Description: ").append(event.getDescription()).append(", ");
-                eventDetails.append("Location: ").append(event.getLocation()).append(", ");
-                eventDetails.append("Time: ").append(event.getTime()).append(", ");
+                eventDetails.append(event_name).append(event.getEventName()).append(", ");
+                eventDetails.append(price).append(event.getPrice()).append(", ");
+                eventDetails.append(Availability).append(event.getAvailability()).append(", ");
+                eventDetails.append(description).append(event.getDescription()).append(", ");
+                eventDetails.append(location).append(event.getLocation()).append(", ");
+                eventDetails.append(time).append(event.getTime()).append(", ");
 
 
                 logger.info(eventDetails.toString());
