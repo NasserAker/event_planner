@@ -1,4 +1,4 @@
-package Main;
+package main;
 
 
 import applicationclasses.Logging;
@@ -26,9 +26,11 @@ public class ProductionCode {
     public static final String SEPARATOR = "------------------------------------------------------";
 
     public static final String ENTER_CHOICE= "Enter your choice : ";
-    public static Scanner input = new Scanner(System.in);
+    public static final Scanner input = new Scanner(System.in);
 
     protected static Logger logger;
+    private static final String INVALID_INTEGER_MESSAGE = "Invalid input. Please enter a valid integer.";
+
 
     static {
 
@@ -77,7 +79,7 @@ public class ProductionCode {
                 c = input.nextInt();
                 break;
             } catch (java.util.NoSuchElementException e) {
-                logger.log(Level.SEVERE, "Invalid input. Please enter a valid integer.", e);
+                logger.log(Level.SEVERE, INVALID_INTEGER_MESSAGE, e);
                 input.nextLine();
             }
         }
@@ -248,7 +250,7 @@ public class ProductionCode {
             try {
                 action = input.nextInt();
             } catch (InputMismatchException e) {
-                logger.info("Invalid input. Please enter a valid integer.");
+                logger.info(INVALID_INTEGER_MESSAGE);
                 input.next();
                 continue;
             }
@@ -293,7 +295,7 @@ public class ProductionCode {
                 action = input.nextInt();
                 input.nextLine();
             } catch (InputMismatchException e) {
-                logger.info("Invalid input. Please enter a valid integer.");
+                logger.info(INVALID_INTEGER_MESSAGE);
                 input.nextLine();
                 continue;
             }
