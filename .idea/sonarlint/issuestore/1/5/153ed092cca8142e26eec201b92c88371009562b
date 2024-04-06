@@ -1,0 +1,5 @@
+
+v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Æµü²8å¥œ«ë1
+?
+java:S2386	"Make this member "protected".(î™àóÿÿÿÿÿ8ê¦œ«ë1
+o	java:S100'"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÊƒÊÉúÿÿÿÿ8É§œ«ë1

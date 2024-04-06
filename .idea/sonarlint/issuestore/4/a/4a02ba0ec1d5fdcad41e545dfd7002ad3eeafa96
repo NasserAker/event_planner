@@ -1,0 +1,18 @@
+
+g
+java:S1104"QMake input a static final constant or non-public and provide accessors if needed.(ÒÔä¸
+A
+java:S1444"+Make this "public static input" field final(ÒÔä¸
+¨
+java:S1598"ŒThis file "ProductionCode.java" should be located in "Main" directory, not in "C:\Users\Msys\IdeaProjects\event_planner\src\main\java\main".(°€Òþÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(°€Òþÿÿÿÿ
+>
+java:S2189é""Add an end condition to this loop.(µËØ‰ûÿÿÿÿ
+S
+java:S2589é"7Remove this expression which always evaluates to "true"(µËØ‰ûÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(–¼’ˆûÿÿÿÿ
+V
+java:S1854ò":Remove this useless assignment to local variable "choice".(Þ®¹‰ýÿÿÿÿ
+G
+java:S1481ò"+Remove this unused "choice" local variable.(Þ®¹‰ýÿÿÿÿ
+W	java:S125ô"<This block of commented-out lines of code should be removed.(îº–“ùÿÿÿÿ

@@ -1,0 +1,37 @@
+
+œ
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(şÎ¶8à§›«ë1J$251a4f42-2009-461f-89be-bb5bf007af4e
+¡
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(À¶´ûÿÿÿÿ8à§›«ë1J$7bcaebdd-284e-40fa-a42b-7bb109365547
+¡
+java:S2293"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÁîÌ›ÿÿÿÿÿ8à§›«ë1J$898657d6-4782-4403-898d-2a288d83f48b
+®
+java:S1319"kThe type of "RequestList" should be an interface such as "List" rather than the implementation "ArrayList".(şÎ¶8é§›«ë1J$51b47954-fb5d-48ce-bbca-1413255a5d20
+¸
+java:S1319"pThe type of "ApprovedRequests" should be an interface such as "List" rather than the implementation "ArrayList".(À¶´ûÿÿÿÿ8é§›«ë1J$90e73e03-ca5f-494a-8f48-506bb0af72a1
+¶
+java:S1319"nThe type of "DeniedRequests" should be an interface such as "List" rather than the implementation "ArrayList".(ÁîÌ›ÿÿÿÿÿ8é§›«ë1J$1f6797c6-3e81-43c9-b99c-63a3802afa4c
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş Ê³ûÿÿÿÿ8ì§›«ë1J$8c5f213f-a2f0-45f0-8479-e25e5aec696c
+˜	java:S117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ş Ê³ûÿÿÿÿ8ì§›«ë1J$d2a748fb-f92f-4407-8973-450ca0312e37
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Æµü²8õ§›«ë1J$bd720c01-fb2f-4ed4-b1ad-7d174996a2df
+Ÿ	java:S116"XRename this field "customer_name" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(«è“»ÿÿÿÿÿ8î¨›«ë1J$3903be62-5eb3-4837-b7a2-4c1f816563d2
+`
+java:S2386"Make this member "protected".(şÎ¶8ƒ©›«ë1J$52321b20-c72a-4ce2-8205-cbb347cd5a0e
+e
+java:S2386"Make this member "protected".(À¶´ûÿÿÿÿ8ƒ©›«ë1J$331b5d55-af87-4da8-9817-f093e73b4108
+e
+java:S2386"Make this member "protected".(ÁîÌ›ÿÿÿÿÿ8„©›«ë1J$d8db8002-2881-4665-aea0-a994dd57b6e8
+•	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¸ˆãŠÿÿÿÿÿ8»©›«ë1J$ed9daeb8-5357-439e-8b39-c361eb3af023
+•	java:S100$"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(·è€Şüÿÿÿÿ8È©›«ë1J$b59a912f-238c-419d-9bb6-2ac269196b11
+	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(õÂ¾û8Ê©›«ë1J$13470f8b-ea71-4c45-938c-8f8f92d84927
+•	java:S1002"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(á°å€ıÿÿÿÿ8Ó©›«ë1J$e9f09557-427a-4970-9a45-8c7707bbaa76
+•	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Šúõøøÿÿÿÿ8Ö©›«ë1J$c97e3a3d-7f69-4ec7-b794-9d5d1067c766
+	java:S100<"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(´¨ç8Ø©›«ë1J$5bd15847-bdb4-477f-af18-55f0d6c632ce
+[
+java:S2175="9A "ArrayList<ReservationRequest>" cannot contain a "int".(˜¬¸şÿÿÿÿ8Ì¢Ÿ«ë1
+o	java:S100@"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¡ò“üÿÿÿÿ8Î¢Ÿ«ë1
+[
+java:S2175A"9A "ArrayList<ReservationRequest>" cannot contain a "int".(åŒ¶ùÿÿÿÿ8Ï¢Ÿ«ë1
+	java:S100D"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÌø–8Ú©›«ë1J$1b3a1777-3e1b-4d7a-b347-a3015f7b925e
+•	java:S100G"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(°Åúñùÿÿÿÿ8Û©›«ë1J$1d1756fb-cc01-4a20-b153-8bc8f6a95df3
+•	java:S100J"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÙØ¹Éøÿÿÿÿ8Û©›«ë1J$e4b06a30-6f01-4261-b609-fb917508b7d9

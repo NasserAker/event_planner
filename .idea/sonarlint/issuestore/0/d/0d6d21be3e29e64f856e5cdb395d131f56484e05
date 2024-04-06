@@ -1,0 +1,42 @@
+
+g
+java:S1192ª"KDefine a constant instead of duplicating this literal "Username: " 3 times.(’ˆùÿÿÿÿ
+_
+java:S1192«"HDefine a constant instead of duplicating this literal "Email: " 3 times.(³ÊŞÿ
+g	java:S117¹"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÂŠŒ±
+;
+java:S2629¬"$Invoke method(s) only conditionally.(·¦Ñú
+;
+java:S2629»"$Invoke method(s) only conditionally.(ôÇó–
+;
+java:S2629Ê"$Invoke method(s) only conditionally.(§ÂÓ
+@
+java:S2629Ó"$Invoke method(s) only conditionally.(åÚÜ¹şÿÿÿÿ
+;
+java:S2629ì"$Invoke method(s) only conditionally.(§ÂÓ
+S
+java:S2629ò"7Use the built-in formatting to construct this argument.(ë¨Æéúÿÿÿÿ
+N
+java:S2629ı"7Use the built-in formatting to construct this argument.(¥¡Æˆ
+N
+java:S2629š"7Use the built-in formatting to construct this argument.(¥¡Æˆ
+s
+java:S2629æ"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ÅÔıÛ
+s
+java:S2629÷"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(Ãæºï
+S
+java:S2629—"7Use the built-in formatting to construct this argument.(——Õ‰úÿÿÿÿ
+x
+java:S2629ª"\Invoke method(s) only conditionally. Use the built-in formatting to construct this argument.(ú­¡Õÿÿÿÿÿ
+N
+java:S2629«"7Use the built-in formatting to construct this argument.(ĞÃ¶
+S
+java:S2629à"7Use the built-in formatting to construct this argument.(™¿™Òùÿÿÿÿ
+i
+java:S3776à"RRefactor this method to reduce its Cognitive Complexity from 18 to the 15 allowed.(®Â“è
+]
+java:S1854Â"ARemove this useless assignment to local variable "provider_name".(‹¨ÅÀùÿÿÿÿ
+I
+java:S1481¹"2Remove this unused "provider_name" local variable.(ÂŠŒ±
+F	java:S106Î"+Replace this use of System.out by a logger.(ª¼ÔÃÿÿÿÿÿ
+i	java:S100Û"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¼çøÚúÿÿÿÿ
