@@ -241,7 +241,6 @@ public class Login {
                 logger.info("Discribtion about it:- "+c.getDescrtion());
                 logger.info("location:- "+c.getlocation());
                 logger.info("time:- "+c.gettime());
-                logger.info("theme:- "+c.gettheme());
             }
         }
     }
@@ -274,7 +273,7 @@ public class Login {
         return -1; // Return -1 if the event is not found
     }
 
-    public void editEvent(int index, String newName, int newPrice, int newAvailability, String newDescription, String newLocation, int newTime, String newTheme) {
+    public void editEvent(int index, String newName, int newPrice, int newAvailability, String newDescription, String newLocation, int newTime){
         EventPlan e = ev.get(index);
         e.seteventName(newName);
         e.setPrice(newPrice);
@@ -282,7 +281,6 @@ public class Login {
         e.setDescrtion(newDescription);
         e.setlocation(newLocation);
         e.settime(newTime);
-        e.settheme(newTheme);
     }
     public void printCatalog(EventPlan cc){
         logger.info(cc.getDescrtion());

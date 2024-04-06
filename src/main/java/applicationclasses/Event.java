@@ -10,7 +10,7 @@ public class Event {
     private String description;
     private String location;
     private int time;
-    private String theme;
+
 
     private static ArrayList<Event> allEvents = new ArrayList<>();
 
@@ -22,7 +22,6 @@ public class Event {
         this.description = description;
         this.location = location;
         this.time = time;
-        this.theme = theme;
     }
 
     public Event() {
@@ -70,13 +69,6 @@ public class Event {
         this.location = location;
     }
 
-    public int getTime() {
-        return time;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
 
     public static void initializeEvents() {
