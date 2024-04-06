@@ -329,10 +329,7 @@ public class Operations {
                 eventDetails.append(TIME).append(event.getTime()).append(", ");
 
 
-                if (eventDetails.length() <= 0) {
-                } else {
-                    logger.info(eventDetails.toString());
-                }
+                if (eventDetails.length() > 0) logger.info(eventDetails.toString());
                 found = true;
                 break;
             }
