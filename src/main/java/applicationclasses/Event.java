@@ -29,7 +29,7 @@ public class Event {
         this("", 0, 0, "", "", 0);
     }
 
-    // Getters and Setters
+
     public String getEventName() {
         return eventName;
     }
