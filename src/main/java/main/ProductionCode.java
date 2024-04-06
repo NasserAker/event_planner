@@ -30,6 +30,7 @@ public class ProductionCode {
 
     protected static Logger logger;
     private static final String INVALID_INTEGER_MESSAGE = "Invalid input. Please enter a valid integer.";
+    private static final String INVALIDMESSAGE = "Invalid choice. Please enter a valid option.";
 
 
     static {
@@ -229,7 +230,7 @@ public class ProductionCode {
                     loggedIn = false;
                     break;
                 default:
-                    logger.info("Invalid choice. Please enter a valid option.");
+                    logger.info(INVALIDMESSAGE);
             }
         }
         logger.info(SEPARATOR);
@@ -271,7 +272,7 @@ public class ProductionCode {
                     continueManaging = false;
                     break;
                 default:
-                    logger.info("Invalid choice. Please enter a valid option.");
+                    logger.info(INVALIDMESSAGE);
             }
         }
         logger.info(SEPARATOR);
@@ -367,7 +368,7 @@ public class ProductionCode {
                     loggedIn = false;
                     break;
                 default:
-                    logger.info("Invalid choice. Please enter a valid option.");
+                    logger.info(INVALIDMESSAGE);
             }
         }
         logger.info(SEPARATOR);
@@ -411,7 +412,7 @@ public class ProductionCode {
                     loggedIn = false;
                     break;
                 default:
-                    logger.info("Invalid choice. Please enter a valid option.");
+                    logger.info(INVALIDMESSAGE);
             }
 
 

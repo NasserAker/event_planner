@@ -3,6 +3,8 @@ package applicationclasses;
 import java.util.ArrayList;
 import java.util.List;
 
+import static applicationclasses.ServiceProvider.logger;
+
 public class WeddingBudget {
     private double totalBudget;
     private double remainingBudget;
@@ -22,14 +24,14 @@ public class WeddingBudget {
 
 
     public void viewBudgetStatus() {
-        System.out.println("Wedding Budget: $" + totalBudget);
-        System.out.println("Remaining Budget: $" + remainingBudget);
+        logger.info("Wedding Budget: $" + totalBudget);
+       logger.info("Remaining Budget: $" + remainingBudget);
     }
 
 
     public void viewExpenseDetails() {
         for (int i = 0; i < expenses.size(); i++) {
-            System.out.println((i + 1) + ". " + expenses.get(i));
+            logger.info((i + 1) + ". " + expenses.get(i));
         }
     }
 

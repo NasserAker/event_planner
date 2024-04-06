@@ -6,18 +6,18 @@ import java.util.List;
 public class Service {
     String servicename ;
     double price ;
-    String servies_provider_name;
+    String serviesprovidername;
 
-    public static final List<Service> serviceslist = new ArrayList<>();
+    protected static final List<Service> serviceslist = new ArrayList<>();
 
 
-    public Service(String service_name , double price , String servies_provider_name ){
-        this.servicename = service_name;
+    public Service(String servicename , double price , String serviesprovidername ){
+        this.servicename = servicename;
         this.price = price;
-        this.servies_provider_name = servies_provider_name ;
+        this.serviesprovidername = serviesprovidername ;
     }
 
-    public static void add_service (Service service){
+    public static void addservice (Service service){
         serviceslist.add(service);
     }
 
