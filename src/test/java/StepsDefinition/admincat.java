@@ -1,21 +1,21 @@
 package StepsDefinition;
-
-import applicationclasses.Event;
-import applicationclasses.Operations;
+import applicationclasses.eventplan;
+import applicationclasses.login;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 public class admincat {
-    public Operations obj;
+    public login obj;
     public boolean added = false;
-    public Event cc=new Event();
+    public eventplan cc=new eventplan();
 
-    public admincat(Operations iobj){
+    public admincat(login iobj){
         super();
         this.obj = iobj;
-        Event c1 = new Event("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        eventplan c1 = new eventplan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c1);
     }
 
@@ -50,5 +50,4 @@ public class admincat {
     public void list_all_the_reservation_name_categories_availability_and_descriptions() {
         assertNotNull(obj.geteventArrayList());
     }
-
 }

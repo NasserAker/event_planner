@@ -1,22 +1,23 @@
 package StepsDefinition;
+import applicationclasses.eventplan;
+import applicationclasses.login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import applicationclasses.Event;
-import applicationclasses.Operations;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
+
 public class admin {
-    public Operations obj;
+    public login obj;
     int CustList =0;
     public boolean updates =  false;
     public boolean appears = false;
     public String name;
-    public admin(Operations iobj)
+    public admin(login iobj)
     {
         super();
         this.obj=iobj;
-        Event c1 = new Event("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
+        eventplan c1 = new eventplan("wedding",5000,1,"bighall","rafidia",12,"blackandwhite");
         obj.addevent(c1);
 
     }

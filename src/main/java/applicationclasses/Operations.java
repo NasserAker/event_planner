@@ -814,8 +814,34 @@ public void addevent(Event event) {
 
 
     }
+    private boolean isLogged;
+    private boolean validation;
+    private boolean available1 = false;
+    private boolean available2 = false;
+    private   boolean isreserved=false;
+    public void iAmNotInSystem(Operations obj)
+    {
+        obj.isLogged=false;
+    }
+    public void iMTheAdmin(Operations obj)
+    {
+        obj.isLogged=true;
+    }
+    public void imthecustomer(Operations obj)
+    {
+        obj.isLogged=true;
+    }
+    public void imtheserverprovider(Operations obj)
+    {
+        obj.isLogged=true;
+    }
 
 
+    public void catagoryadd(String name, int price, int ava, String desc,String location ,int time,String theme) {
+        ev.add(new Event(name, price, ava, desc,location,time,theme));
+
+        logger.info("You have added this event a successfully way");
+    }
 
 
 
