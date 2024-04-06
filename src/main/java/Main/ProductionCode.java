@@ -295,7 +295,7 @@ public class ProductionCode {
             } catch (InputMismatchException e) {
                 logger.info("Invalid input. Please enter a valid integer.");
                 input.nextLine(); // Consume invalid input
-                continue; // Restart the loop
+                continue; //// Restart the loop
             }
 
             switch (action) {
