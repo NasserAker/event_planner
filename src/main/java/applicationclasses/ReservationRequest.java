@@ -2,14 +2,14 @@ package applicationclasses;
 
 import java.util.ArrayList;
 import java.util.Collections;
-
+import applicationclasses.*;
 import java.util.List;
 
 public class ReservationRequest {
     private int requestId;
-    private User user;
-    private Venue venue;
-    private Date date;
+    private applicationclasses.User user;
+    private applicationclasses.Venue venue;
+    private applicationclasses.Date date;
     private List<AdditionalService> services;
 
     public ReservationRequest(int requestId, User user, Venue venue, Date date, List<AdditionalService> services) {

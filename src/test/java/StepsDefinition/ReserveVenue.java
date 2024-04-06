@@ -1,6 +1,6 @@
 package StepsDefinition;
 
-import applicationclasses.ReservationRequest;
+import applicationclasses.*;
 import applicationclasses.User;
 import applicationclasses.Venue;
 import io.cucumber.java.en.*;
@@ -56,8 +56,8 @@ public class ReserveVenue {
     }
     @When("I submit the reservation request")
     public void i_submit_the_reservation_request() {
-        request = new ReservationRequest(1,1,"nasser",venue);
-       // request = new ReservationRequest();
+        /*request = new ReservationRequest(1,1,"nasser",venue);
+       // request = new ReservationRequest();*/
     }
     @Then("the a reservation request should be sent to the service provider")
     public void the_a_reservation_request_should_be_sent_to_the_service_provider() {

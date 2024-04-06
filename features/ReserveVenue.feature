@@ -24,11 +24,13 @@ Feature: Venue Reservation
     And I should be prompted to specify the date and time
 
 
-
-
   #@nasser
   Scenario: Reserving a venue and then canceling the reservation
     Given I have successfully reserved a venue
     When I choose to cancel my reservation
     Then the reservation should be canceled
     And I should receive confirmation that the reservation has been canceled
+
+
+
+
