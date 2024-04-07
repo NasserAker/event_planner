@@ -36,6 +36,7 @@ public class ReservationApproval {
 
     @When("I select a pending reservation request")
     public void i_select_a_pending_reservation_request() {
+        List<ReservationRequest> list = ReservationRequest.getAllReservationRequests();
         Random random = new Random();
         // Generate a random number from {0, 1, 2}
         int randomNumber = random.nextInt(ReservationRequest.getRequestList().size());

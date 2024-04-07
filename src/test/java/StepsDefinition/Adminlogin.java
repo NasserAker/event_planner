@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class Adminlogin {
-
-
     Admin  admin =new Admin("nasseraker4@gmail.com", "Nasser", "1234");
     String username , password ,email;
 
@@ -30,8 +28,6 @@ public class Adminlogin {
         if(username.equals(temp.getUsername()) || password.equals(temp.getPassword())  || email.equals(temp.getEmail()) ){
             admin.logging(true);
         }
-
-
     }
 
     @Then("he successfully logs in")

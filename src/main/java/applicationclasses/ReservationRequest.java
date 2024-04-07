@@ -24,6 +24,7 @@ public class ReservationRequest {
     protected static final List<ReservationRequest> ApprovedRequests = new ArrayList<>();
     private static final List<ReservationRequest> DeniedRequests = new ArrayList<>();
 
+
     public static List<ReservationRequest> getAllReservationRequests() {
         return Collections.unmodifiableList(RequestList);
     }
@@ -55,9 +56,7 @@ public class ReservationRequest {
         return requestId;
     }
 
-    public void setRequestId(int requestId) {
-        this.requestId = requestId;
-    }
+
 
     public User getUser() {
         return user;
@@ -90,9 +89,7 @@ public class ReservationRequest {
         return services;
     }
 
-    public void setServices(List<AdditionalService> services) {
-        this.services = services;
-    }
+
 
 
     public static List<ReservationRequest> getRequestList() {
@@ -101,30 +98,17 @@ public class ReservationRequest {
     public static void addToRequestList(ReservationRequest request){
         RequestList.add(request);
     }
-    public static void RemoveFromRequestList(ReservationRequest request){
-        RequestList.remove(request);
-    }
+
 
     public static List<ReservationRequest> getApprovedRequests() {
         return ApprovedRequests;
-    }
-    public static void addToApprovedRequests(ReservationRequest request){
-        ApprovedRequests.add(request);
-    }
-    public static void RemoveFromApprovedRequests(ReservationRequest request){
-        ApprovedRequests.remove(request);
     }
 
 
     public static List<ReservationRequest> getDeniedRequests() {
         return DeniedRequests;
     }
-    public static void addToDeniedRequests(ReservationRequest request){
-        DeniedRequests.add(request);
-    }
-    public static void RemoveFromDeniedRequests(ReservationRequest request){
-        DeniedRequests.remove(request);
-    }
+
 
     @Override
     public String toString() {

@@ -18,6 +18,9 @@ public class ReserveVenue {
 
     ReservationRequest request;
     String date;
+    int RequestId;
+    String UserName;
+    applicationclasses.Date TestDate;
 
     public ReserveVenue(){
         this.venue = new Venue("nablus life","tounis street" ,200,4000.99 );
@@ -36,6 +39,13 @@ public class ReserveVenue {
     public void i_select_a_venue_that_is_available() {
         Random rand = new Random();
         venue = Venue.getAvailableVenues().get(rand.nextInt(Venue.getAvailableVenues().size()) );
+        User temp = request.getUser();
+        request.setUser(temp);
+
+        RequestId = request.getRequestId();
+        TestDate = request.getDate();
+        request.setDate(TestDate);
+
     }
 
 
@@ -54,6 +64,7 @@ public class ReserveVenue {
         date = futureDateString;
 
         System.out.println("Random future date:"+ futureDateString);
+        UserName = request.toString();
 
     }
 
@@ -80,6 +91,7 @@ public class ReserveVenue {
         if(new Random().nextInt(2) == 1){request.approveRequest();}
         else{request.denyRequest();}
         Assert.assertTrue(ReservationRequest.getApprovedRequests().contains(request) || ReservationRequest.getDeniedRequests().contains(request));
+
     }
 
     @And("My name is {string}")
