@@ -49,7 +49,7 @@ public class notification {
             Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator(){
                 @Override
                 protected PasswordAuthentication getPasswordAuthentication(){
-                    return new PasswordAuthentication("s12112519@stu.najah.edu\n","kbd@35376");
+                    return new PasswordAuthentication("s12112519@stu.najah.edu\n","fnul mvky vmmj ljqr");
                 }
             });
             session.setDebug(true);
