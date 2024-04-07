@@ -3,6 +3,9 @@ package applicationclasses;
 import javax.mail.*;
 import javax.mail.internet.*;
 import java.util.Properties;
+import java.util.logging.Level;
+import static applicationclasses.ServiceProvider.logger;
+
 
 public class EmailSender {
     public static boolean sendEmail(String recipientEmail, String subject, String body) {
@@ -39,14 +42,12 @@ public class EmailSender {
 
             // Send the email
             Transport.send(message);
-            System.out.println("Email sent successfully.");
+            logger.log(Level.INFO, "Email sent successfully.");
             return true;
         } catch (MessagingException e) {
-            e.printStackTrace();
-            System.out.println("Failed to send email.");
+            logger.log(Level.SEVERE, "Failed to send email.", e);
             return false;
-        }
-    }
+        }}
 
     public static void main(String[] args) {
         // Example usage
