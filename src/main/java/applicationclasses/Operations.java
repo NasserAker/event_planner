@@ -866,15 +866,12 @@ public static void approveRequest(int requestId) {
         if (request.getRequestId() == requestId) {
             request.approveRequest();
             getApprovedRequests().add(request); // Save the approved request
-            // Send email to user
+
             String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
             String body = "Your reservation request has been approved.";
 
-            // Using the EmailSender class to send the email
             EmailSender emailSender = new EmailSender();
             emailSender.email(recipientEmail, body);
-
-            // We assume email sending was attempted. No direct success/failure feedback.
             logger.info("Request approved successfully. Notification email attempted to send to user.");
 
             return;
