@@ -1,6 +1,6 @@
 package applicationclasses;
 
-import java.text.SimpleDateFormat;
+
 import java.util.*;
 
 
@@ -10,7 +10,7 @@ import static applicationclasses.ReservationRequest.*;
 import static applicationclasses.ServiceProvider.logger;
 import static applicationclasses.User.*;
 import static main.ProductionCode.*;
-import applicationclasses.EmailSender;
+
 
 
 
@@ -762,12 +762,7 @@ public class Operations {
 
         return requestIdCounter++;
     }
-//    public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
-//        ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
-//        ReservationRequest.addReservationRequest(request);
-//
-//        logger.info("Reservation submitted successfully! Check your email for confirmation.");
-//    }
+
 public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
     ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
     ReservationRequest.addReservationRequest(request);
@@ -840,41 +835,17 @@ public static void submitReservation(User loggedInUser, Venue venue, Date date, 
     }
 
 
-//    public static void approveRequest(int requestId) {
-//        for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
-//            if (request.getRequestId() == requestId) {
-//                request.approveRequest();
-//                getApprovedRequests().add(request); // Save the approved request
-//                // Send email to user
-//                String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
-//                String subject = "Reservation Request Approved";
-//                String body = "Your reservation request has been approved.";
-//                boolean sent = EmailSender.sendEmail(recipientEmail, subject, body);
-//                if (sent) {
-//                    logger.info("Request approved successfully. Email sent to user.");
-//                } else {
-//                    logger.info("Request approved successfully, but failed to send email to user.");
-//                }
-//                return;
-//            }
-//        }
-//        logger.info("Request ID not found. Please enter a valid ID.");
-//    }
-    ////////////////////////////////////////////////////////////////////////////////////////////
 public static void approveRequest(int requestId) {
     for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
         if (request.getRequestId() == requestId) {
             request.approveRequest();
             getApprovedRequests().add(request); // Save the approved request
-            // Send email to user
+
             String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
             String body = "Your reservation request has been approved.";
 
-            // Using the EmailSender class to send the email
             EmailSender emailSender = new EmailSender();
             emailSender.email(recipientEmail, body);
-
-            // We assume email sending was attempted. No direct success/failure feedback.
             logger.info("Request approved successfully. Notification email attempted to send to user.");
 
             return;
@@ -883,26 +854,7 @@ public static void approveRequest(int requestId) {
     logger.info("Request ID not found. Please enter a valid ID.");
 }
 
-//    public static void denyRequest(int requestId) {
-//        for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
-//            if (request.getRequestId() == requestId) {
-//                request.denyRequest();
-//                getDeniedRequests().add(request); // Save the denied request
-//                // Send email to user
-//                String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
-//                String subject = "Reservation Request Denied";
-//                String body = "Your reservation request has been denied.";
-//                boolean sent = EmailSender.email(recipientEmail, body);
-//                if (sent) {
-//                    logger.info("Request denied successfully. Email sent to user.");
-//                } else {
-//                    logger.info("Request denied successfully, but failed to send email to user.");
-//                }
-//                return;
-//            }
-//        }
-//        logger.info("Request ID not found. Please enter a valid ID.");
-//    }
+
 public static void denyRequest(int requestId) {
     for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
         if (request.getRequestId() == requestId) {

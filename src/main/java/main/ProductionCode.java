@@ -175,7 +175,8 @@ public class ProductionCode {
                     break;
                 }
 
-                case 3:loggedin=false;
+                case 3:
+                    loggedin=false;
                     break;
 
                 default:
@@ -228,6 +229,7 @@ public class ProductionCode {
                     break;
                 case 4:
                     loggedIn = false;
+                    homePage();
                     break;
                 default:
                     logger.info(INVALIDMESSAGE);
