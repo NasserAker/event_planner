@@ -69,16 +69,13 @@ public class Logging {
 
 
     public int searchPassword(String password) {
-        boolean successfulpassword= false;
 
         String value = q.get(emailToCheck);
 
         if (password.equals(value)) {
-            successfulpassword = true;
             logState = true;
             return y;
         } else {
-            successfulpassword = false;
             return -33;
         }
     }
