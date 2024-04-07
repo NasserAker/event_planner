@@ -40,7 +40,7 @@ public class User {
     }
 
     public static void initializeUsers() {
-        User r1 = new User("sara", "111", "QAM", "02872228", "sara@gmail.com", GENDER_FEMALE);
+        User r1 = new User("RAYA", "111", "QAM", "02872228", "s12028604@stu.najah.edu", GENDER_FEMALE);
         allUsers.add(r1);
         Logging.getQ().put(r1.getEmail(), r1.getPassword());
 
