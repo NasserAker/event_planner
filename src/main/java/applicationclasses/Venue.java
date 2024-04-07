@@ -8,9 +8,7 @@ public class Venue {
     private String location;
     private int capacity;
     private double cost;
-    public void setCost(double cost) {
-        this.cost = cost;
-    }
+
 
     public double getCost() {
         return cost;
@@ -27,25 +25,9 @@ public class Venue {
     private static final List<Venue> availableVenues = new ArrayList<>();
 
     // Getters and setters
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
-    public String getLocation() {
-        return location;
-    }
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
-    }
 
     public int getCapacity() {
         return capacity;
@@ -81,4 +63,9 @@ public class Venue {
         return STR."Name: '\{name}\{'\''}, Location: '\{location}\{'\''}, Capacity: \{capacity} people, Cost: $\{cost}";
     }
 
+    public String getName() {return name;
+    }
+
+    public String getLocation() { return location;
+    }
 }

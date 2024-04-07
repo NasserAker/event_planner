@@ -30,7 +30,13 @@ public class venuestep {
     public void iAddANewVenueNamedWithLocationCapacityAndCost$(String name, String location, int capacity, int cost) {
         // Add a new venue for testing
         newVenue = new Venue(name, location, capacity, cost);
+        newVenue.toString();
+        newVenue.getName();
+        newVenue.getLocation();
+        newVenue.getCapacity();
+        newVenue.getCost();
         Venue.addVenueToTheList(newVenue);
+
     }
 
     @Then("the new venue should be added to the list of available venues")
