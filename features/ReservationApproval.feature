@@ -1,5 +1,5 @@
 Feature: the service provider approve or deny the request to reserve a venue
-  @nasser
+
 
   Scenario: Approving a Reservation
     Given there are pending reservation requests
@@ -8,7 +8,7 @@ Feature: the service provider approve or deny the request to reserve a venue
     Then the requester should receive a confirmation message
 
 
-  @nasser
+
   Scenario: Denying a Reservation
     Given there are pending reservation requests
     When I select a pending reservation request
