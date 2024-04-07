@@ -667,6 +667,8 @@ public class Operations {
             return;
         }
 
+
+
         Venue selectedVenue = availableVenues.get(venueChoice - 1);
 
 

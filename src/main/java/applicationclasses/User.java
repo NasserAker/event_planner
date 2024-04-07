@@ -60,6 +60,8 @@ public class User {
         allUsers.add(r5);
         Logging.getQ().put(r5.getEmail(), r5.getPassword());
     }
+
+
    public User(String un, String pa, String bd) {
         this.username =un;
         this.password=pa;
@@ -67,6 +69,18 @@ public class User {
     }
 
 
+    public static boolean addUser(User newUser) {
+        // Check if the user already exists
+        for (User user : allUsers) {
+            if (user.getEmail().equals(newUser.getEmail())) {
+                return false; // User already exists
+            }
+        }
+
+        // Add the new user to the list
+        allUsers.add(newUser);
+        return true; // User added successfully
+    }
 
     public  String getUsername() {
         return username;
