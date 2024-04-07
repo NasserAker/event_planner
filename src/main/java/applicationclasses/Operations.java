@@ -168,6 +168,7 @@ public class Operations {
 
 
 
+
     public static void seeAllUsers() {
         if (allUsers != null && !allUsers.isEmpty()) {
             logger.info(ALL_USER_ACCOUNTS_MESSAGE);
@@ -179,9 +180,10 @@ public class Operations {
                 userDetails.append(EMAIL).append(user.getEmail()).append(", ");
                 logger.info(userDetails.toString());
             }
+        } else {
+            logger.info("No users found."); // or any appropriate message
         }
     }
-
 
     public static void deleteAccount() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
