@@ -49,17 +49,11 @@ public class Event {
         return availability;
     }
 
-    public void setAvailability(int availability) {
-        this.availability = availability;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     public String getLocation() {
         return location;
@@ -94,6 +88,13 @@ public class Event {
     public static List<Event> getAllEvents() {
         return allEvents;
     }
-
+    public static Event retrieveEventByName(String name) {
+        for (Event e : allEvents) {
+            if (e.getEventName().equals(name)) {
+                return e;
+            }
+        }
+        return null;
+    }
 
 }
