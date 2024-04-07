@@ -12,11 +12,6 @@ public class Logging {
     private String emailToCheck;
 
 
-    private String email;
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 
 
