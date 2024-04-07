@@ -22,7 +22,7 @@ public class Operations {
 
 
 
-    private Operations() {
+    public Operations() {
     }
     private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
     private static final String EVENT_NAME = "Event Name:";
