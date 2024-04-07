@@ -107,85 +107,87 @@ public class ProductionCode {
 
             int accountChoice = scanner();
 
+try {
+    switch (accountChoice) {
+        case 1: {
+            Operations.createAccountPage();
+            break;
+        }
 
-            switch (accountChoice) {
-                case 1: {
-                    Operations.createAccountPage();
-                    break;
-                }
+        case 2: {
+            int utype;
+            int y;
 
-                case 2: {
-                    int utype;
-                    int y;
+            Logging u = new Logging();
+            logger.info("Please enter your email : ");
+            String email = input.nextLine();
+            utype = u.searchEmail(email);
 
-                    Logging u = new Logging();
-                    logger.info("Please enter your email : ");
-                    String email = input.nextLine();
-                    utype = u.searchEmail(email);
+            while (utype < 0) {
 
-                    while (utype < 0) {
+                logger.info("The email does not exist.Please enter registered email again : ");
+                email = input.nextLine();
+                utype = u.searchEmail(email);
+            }
 
-                        logger.info("The email does not exist.Please enter registered email again : ");
-                        email = input.nextLine();
-                        utype = u.searchEmail(email);
-                    }
+            logger.info("Please enter your password : ");
+            String password = input.nextLine();
+            y = u.searchPassword(password);
 
-                    logger.info("Please enter your password : ");
-                    String password = input.nextLine();
-                    y = u.searchPassword(password);
+            while (y == -33) {
 
-                    while (y == -33) {
-
-                        logger.info("Invalid password. Please enter your password again : ");
-                        password = input.nextLine();
-                        y = u.searchPassword(password);
-
-                    }
-
-                    User loggedInUser = null;
-                    Admin loggedInAdmin = null;
-                    ServiceProvider loggedInServiceProvider = null;
-                    switch (utype) {
-
-
-                        case 0: {
-                            loggedInAdmin = getAdminByEmail(email);
-                            SessionManager.loginAdmin(loggedInAdmin);
-                            adminActivities();
-                            break;
-
-                        }
-                        case 1:
-                            loggedInUser = getUserByEmail(email);
-                            SessionManager.loginUser(loggedInUser);
-                            userActivities();
-                            break;
-
-
-                        case 2:
-                            loggedInServiceProvider = getServiceByEmail(email);
-                            SessionManager.loginServiceProvider(loggedInServiceProvider);
-                            serviceProviderActivities();
-                            break;
-                        default:
-
-                            throw new IllegalArgumentException("Unexpected value for utype: " + utype);
-
-
-                    }
-                    break;
-                }
-
-                case 3:
-                    loggedin=false;
-                    break;
-
-                default:
-
-                    throw new IllegalArgumentException("Unexpected value for accountChoice: " + accountChoice);
+                logger.info("Invalid password. Please enter your password again : ");
+                password = input.nextLine();
+                y = u.searchPassword(password);
 
             }
 
+            User loggedInUser = null;
+            Admin loggedInAdmin = null;
+            ServiceProvider loggedInServiceProvider = null;
+            switch (utype) {
+
+
+                case 0: {
+                    loggedInAdmin = getAdminByEmail(email);
+                    SessionManager.loginAdmin(loggedInAdmin);
+                    adminActivities();
+                    break;
+
+                }
+                case 1:
+                    loggedInUser = getUserByEmail(email);
+                    SessionManager.loginUser(loggedInUser);
+                    userActivities();
+                    break;
+
+
+                case 2:
+                    loggedInServiceProvider = getServiceByEmail(email);
+                    SessionManager.loginServiceProvider(loggedInServiceProvider);
+                    serviceProviderActivities();
+                    break;
+                default:
+
+                    throw new IllegalArgumentException("Unexpected value for utype: " + utype);
+
+
+            }
+            break;
+        }
+
+        case 3:
+            loggedin = false;
+            break;
+
+        default:
+
+            throw new IllegalArgumentException("Unexpected value for accountChoice: " + accountChoice);
+
+    }
+}catch (IllegalArgumentException e) {
+    logger.info(e.getMessage());
+}
 
         }
 
@@ -230,8 +232,7 @@ public class ProductionCode {
                     break;
                 case 4:
                     loggedIn = false;
-                    homePage();
-                    break;
+                   break;
                 default:
                     logger.info(INVALIDMESSAGE);
             }
@@ -271,8 +272,9 @@ public class ProductionCode {
                 case 4:
                     Operations.deleteAccount();
                     break;
-                case 5:adminActivities();
-                    continueManaging = false;
+                case 5:
+                    adminActivities();
+                   // continueManaging = false;
                     break;
                 default:
                     logger.info(INVALIDMESSAGE);
@@ -325,7 +327,7 @@ public class ProductionCode {
                     break;
                 case 7:
                     adminActivities();
-                    continueManaging = false;
+                  //  continueManaging = false;
                     break;
                 default:
                     logger.info("Invalid action. Please select a valid action.");
