@@ -29,18 +29,18 @@ public class ReservationApproval {
 
     @Given("there are pending reservation requests")
     public void there_are_pending_reservation_requests() {
-        ReservationRequest.RequestList.add(request);
-        ReservationRequest.RequestList.add(request1);
-        ReservationRequest.RequestList.add(request2);
+        ReservationRequest.addToRequestList(request);
+        ReservationRequest.addToRequestList(request1);
+        ReservationRequest.addToRequestList(request2);
     }
 
     @When("I select a pending reservation request")
     public void i_select_a_pending_reservation_request() {
         Random random = new Random();
         // Generate a random number from {0, 1, 2}
-        int randomNumber = random.nextInt(ReservationRequest.RequestList.size());
+        int randomNumber = random.nextInt(ReservationRequest.getRequestList().size());
         ReservationRequest temp ;
-        temp = ReservationRequest.RequestList.get(randomNumber);
+        temp = ReservationRequest.getRequestList().get(randomNumber);
 
         selectedRequest = temp;
     }

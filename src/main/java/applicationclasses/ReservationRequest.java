@@ -98,13 +98,32 @@ public class ReservationRequest {
     public static List<ReservationRequest> getRequestList() {
         return RequestList;
     }
+    public static void addToRequestList(ReservationRequest request){
+        RequestList.add(request);
+    }
+    public static void RemoveFromRequestList(ReservationRequest request){
+        RequestList.remove(request);
+    }
 
     public static List<ReservationRequest> getApprovedRequests() {
         return ApprovedRequests;
     }
+    public static void addToApprovedRequests(ReservationRequest request){
+        ApprovedRequests.add(request);
+    }
+    public static void RemoveFromApprovedRequests(ReservationRequest request){
+        ApprovedRequests.remove(request);
+    }
+
 
     public static List<ReservationRequest> getDeniedRequests() {
         return DeniedRequests;
+    }
+    public static void addToDeniedRequests(ReservationRequest request){
+        DeniedRequests.add(request);
+    }
+    public static void RemoveFromDeniedRequests(ReservationRequest request){
+        DeniedRequests.remove(request);
     }
 
     @Override

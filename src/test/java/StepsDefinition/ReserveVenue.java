@@ -94,6 +94,6 @@ public class ReserveVenue {
 
     @Then("the request should not be submitted if the date is not available")
     public void theRequestShouldNotBeSubmittedIfTheDateIsNotAvailable() {
-        Assert.assertTrue("the reservation request isn't submitted",true);
+       Assert.assertTrue(true);
     }
 }
