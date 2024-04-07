@@ -60,7 +60,7 @@ public class Venue {
 
     @Override
     public String toString() {
-        return STR."Name: '\{name}\{'\''}, Location: '\{location}\{'\''}, Capacity: \{capacity} people, Cost: $\{cost}";
+        return "Name: '" + name + "', Location: '" + location + "', Capacity: " + capacity + " people, Cost: $" + cost;
     }
 
     public String getName() {return name;
