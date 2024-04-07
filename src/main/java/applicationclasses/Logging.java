@@ -10,7 +10,7 @@ import static applicationclasses.User.allUsers;
 public class Logging {
 
     private String emailToCheck;
-    private boolean successfulpassword= false;
+
 
     private String email;
 
@@ -69,6 +69,7 @@ public class Logging {
 
 
     public int searchPassword(String password) {
+        boolean successfulpassword= false;
 
         String value = q.get(emailToCheck);
 
