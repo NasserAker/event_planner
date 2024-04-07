@@ -15,12 +15,13 @@ public class Admin {
 
     protected static final List<Admin> adminList = new ArrayList<>() ;
 
-    public Admin() {logState=false;}
+
 
     public Admin(String email, String name,String password) {
         this.password= password;
         this.username = name;
         this.email = email;
+        logState=false;
     }
 
     public static List<Admin> getAdminList() {
