@@ -1937,3 +1937,8 @@ H
 .src/test/java/StepsDefinition/adduserstep.java,0\5\05c3c4529a22ff7634e5e984b94dff4328c4b635
 K
 features/AdminLogin.feature,4\4\44172c48bf85212b5106a12eef46797b9bedc2b2
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+]
+-src/test/java/StepsDefinition/Adminlogin.java,a\8\a8c3c2171f41c4870d45f6730a5e0313e13d1c32

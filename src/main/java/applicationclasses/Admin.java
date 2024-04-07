@@ -50,6 +50,7 @@ public class Admin {
     }
     public String getPassword() {return password;}
     public void logging(boolean t) { logState=t; }
+    public boolean logged() { return logState;}
 
     public String getEmail(){return email;}
     public static Admin getAdminByEmail(String email) {
