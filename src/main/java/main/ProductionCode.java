@@ -175,7 +175,8 @@ public class ProductionCode {
                     break;
                 }
 
-                case 3:loggedin=false;
+                case 3:
+                    loggedin=false;
                     break;
 
                 default:
