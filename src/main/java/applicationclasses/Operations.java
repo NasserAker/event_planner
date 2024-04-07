@@ -564,7 +564,8 @@ public class Operations {
         }
         logger.info("Reservation Details:");
         logger.info(String.format("Venue:%s", selectedVenue.toString()));
-        logger.info(String.format(STR."Date: %s\{selectedDate}"));
+       // logger.info(String.format(STR."Date: %s\{selectedDate}"));
+        logger.info(String.format("Date: %s", selectedDate));
         if (!selectedServices.isEmpty()) {
             logger.info("Additional Services:");
             for (AdditionalService service : selectedServices) {
