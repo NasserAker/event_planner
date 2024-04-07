@@ -1,5 +1,6 @@
 package StepsDefinition;
 
+import applicationclasses.EmailSender;
 import applicationclasses.Login;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class notification {
+    private final EmailSender emailSender = new EmailSender();
     public Login obj;
     public boolean place = false;
     public boolean update = false;
@@ -39,29 +41,8 @@ public class notification {
 
     @Then("Send email to {string}")
     public void send_Email_To(String recipient) {
-        try {
-            Properties properties = System.getProperties();
-            properties.put("mail.smtp.host", "smtp.gmail.com");
-            properties.put("mail.smtp.port", "587");
-            properties.put("mail.smtp.auth", "true");
-            properties.put("mail.smtp.starttls.enable", "true");
-
-            Session session = Session.getDefaultInstance(properties,new javax.mail.Authenticator(){
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication(){
-                    return new PasswordAuthentication("s12112519@stu.najah.edu\n","fnul mvky vmmj ljqr");
-                }
-            });
-            session.setDebug(true);
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("s12112519@stu.najah.edu\n"));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient,false));
-            message.setSubject("Software Engineer");
-            message.setText("Event planner");
-            Transport.send(message);
-        }
-        catch (MessagingException m){
-            m.printStackTrace();
+        if (update) { // Check if updates are available before sending email
+            emailSender.email(recipient, "Your order has been confirmed.");
         }
 
     }
