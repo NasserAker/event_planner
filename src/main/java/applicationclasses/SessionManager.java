@@ -3,6 +3,12 @@ package applicationclasses;
 
 
 public class SessionManager {
+
+    // Private constructor to prevent instantiation
+    private SessionManager() {
+        // Optional: You can throw an exception here if someone tries to instantiate the class
+        throw new UnsupportedOperationException("SessionManager cannot be instantiated");
+    }
     private static User loggedInUser;
     private static Admin loggedInAdmin;
     private static ServiceProvider loggedInServiceProvider;
