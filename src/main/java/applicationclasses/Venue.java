@@ -20,6 +20,7 @@ public class Venue {
         this.name = name;
         this.location = location;
         this.capacity = capacity;
+        this.cost = cost;
     }
 
 
@@ -55,12 +56,12 @@ public class Venue {
     public static void initializeAvailableVenues() {
         // Add available dates to the Date class
 
-        availableVenues.add(new Venue("Moon", "Address 1", 100, 1500.0));
+        availableVenues.add(new Venue("Moon", "Nablus", 100, 1500.0));
 
-        availableVenues.add(new Venue("Sun", "Address 2", 150, 2000.0));
-        availableVenues.add(new Venue("Star", "Address 3", 200, 2500.0));
-        availableVenues.add(new Venue("Sky", "Address 4", 120, 1800.0));
-        availableVenues.add(new Venue("Space", "Address 4", 120, 1800.0));
+        availableVenues.add(new Venue("Sun", "Ramallah", 150, 2000.0));
+        availableVenues.add(new Venue("Star", "Jenin", 200, 2500.0));
+        availableVenues.add(new Venue("Sky", "Hebron", 120, 1800.0));
+        availableVenues.add(new Venue("Space", "Jerusalem", 120, 1800.0));
 
 
     }
@@ -77,11 +78,10 @@ public class Venue {
 
     @Override
     public String toString() {
-        return "Name:'" + name + '\'' +
-                        ", Location:'" + location + '\'' +
-                        ", Cost: $" + cost
-                ;
+        return "Name: '" + name + '\'' +
+                ", Location: '" + location + '\'' +
+                ", Capacity: " + capacity + " people" +
+                ", Cost: $" + cost;
     }
-
 
 }

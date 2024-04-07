@@ -12,6 +12,10 @@ import static main.ProductionCode.*;
 
 
 public class Operations {
+
+
+
+
     private Operations() {
     }
     private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
@@ -506,7 +510,9 @@ public class Operations {
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
         List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
-            logger.info(String.format(USER_DETAILS_FORMAT,(i + 1) + ". " + availableDates.get(i)));
+         //   logger.info(String.format(USER_DETAILS_FORMAT,(i + 1) + ". " + availableDates.get(i)));
+            logger.info(String.format("%d. %s", (i + 1), availableDates.get(i)));
+
         }
 
 
@@ -558,7 +564,7 @@ public class Operations {
         }
         logger.info("Reservation Details:");
         logger.info(String.format("Venue:%s", selectedVenue.toString()));
-        logger.info(String.format("Date: %s" + selectedDate));
+        logger.info(String.format(STR."Date: %s\{selectedDate}"));
         if (!selectedServices.isEmpty()) {
             logger.info("Additional Services:");
             for (AdditionalService service : selectedServices) {
