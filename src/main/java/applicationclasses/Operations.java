@@ -188,14 +188,23 @@ public class Operations {
     public static void deleteAccount() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
         List<User> allUsers = User.getUserList();
-        if (allUsers != null && !allUsers.isEmpty()) {
-            for (int i = 0; i < allUsers.size(); i++) {
-                User user = allUsers.get(i);
-                StringJoiner userDetails = new StringJoiner(", ");
-                userDetails.add("Username: " + user.getUsername())
-                        .add("Email: " + user.getEmail());
-                logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), userDetails.toString()));
-            }
+
+        // Check if allUsers is null
+        if (allUsers == null) {
+            throw new NullPointerException("allUsers is null.");
+        }
+
+        if (allUsers.isEmpty()) {
+            logger.info("There are no user accounts to delete.");
+            return;
+        }
+
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = allUsers.get(i);
+            StringJoiner userDetails = new StringJoiner(", ");
+            userDetails.add("Username: " + user.getUsername())
+                    .add("Email: " + user.getEmail());
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), userDetails.toString()));
         }
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
         int userNumber = input.nextInt();
