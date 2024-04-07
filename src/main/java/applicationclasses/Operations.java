@@ -563,7 +563,7 @@ public class Operations {
 
     public static void addService() {
         String name = "";
-        String providername = "";
+
         double price = 0.0;
 
         Scanner scanner = new Scanner(System.in);
@@ -572,7 +572,7 @@ public class Operations {
         name = scanner.nextLine();
 
         logger.info("Enter your name :");
-        providername = scanner.nextLine();
+
 
         logger.info("Enter Service Price : ");
 
@@ -662,8 +662,7 @@ public class Operations {
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
         List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
-            //   logger.info(String.format(USER_DETAILS_FORMAT,(i + 1) + ". " + availableDates.get(i)));
-            logger.info(String.format("%d. %s", (i + 1), availableDates.get(i)));
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableDates.get(i)));
 
         }
 
@@ -716,7 +715,6 @@ public class Operations {
         }
         logger.info("Reservation Details:");
         logger.info(String.format("Venue:%s", selectedVenue.toString()));
-        // logger.info(String.format(STR."Date: %s\{selectedDate}"));
         logger.info(String.format("Date: %s", selectedDate));
         if (!selectedServices.isEmpty()) {
             logger.info("Additional Services:");
