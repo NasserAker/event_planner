@@ -14,17 +14,10 @@ public class Adminlogin {
 
     Admin  admin =new Admin("nasseraker4@gmail.com", "Nasser", "1234");
     String username , password ,email;
-    List list = Admin.getAdminList();
-
-
-    public void AdminLogin(){
-        Admin.initializeAdmin();
-
-    }
-
 
     @Given("an admin logs in")
     public void anAdminLogsIn() {
+        Admin.initializeAdmin();
         username = admin.getUsername();
         password = admin.getPassword();
         email = admin.getEmail();
@@ -32,6 +25,7 @@ public class Adminlogin {
 
     @When("his email and passwords are correct")
     public void hisEmailAndPasswordsAreCorrect() {
+        Admin.getAdminByEmail("nasseraker4@gmail.com");
         Admin temp = admin;
         if(username.equals(temp.getUsername()) || password.equals(temp.getPassword())  || email.equals(temp.getEmail()) ){
             admin.logging(true);

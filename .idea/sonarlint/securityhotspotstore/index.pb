@@ -1942,3 +1942,7 @@ K
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ]
 -src/test/java/StepsDefinition/Adminlogin.java,a\8\a8c3c2171f41c4870d45f6730a5e0313e13d1c32
+\
+,src/test/java/StepsDefinition/venuestep.java,9\a\9ac8fb4f509e042d215169867066e82d09ee3344
+O
+features/managingvenues.feature,e\7\e713be5a476f3616bab37415b76f565f53890181
