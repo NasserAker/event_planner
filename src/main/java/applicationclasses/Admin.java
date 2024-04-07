@@ -7,7 +7,7 @@ import java.util.List;
 public class Admin {
 
 
-    boolean logState;
+    public boolean logState;
     private String password;
     private String username;
     private String email;
