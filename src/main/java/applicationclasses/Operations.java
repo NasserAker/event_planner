@@ -771,7 +771,7 @@ public class Operations {
                 int requestId = request.getRequestId();
                 requestIds.add(requestId); // Add request ID to the list
 
-                String.format("%d. Request ID: %d", (i + 1), requestId);
+                logger.info(String.format("%d. Request ID: %d", (i + 1), requestId));
                 logger.info("   Customer Name: " + request.getUser().getUsername());
                 logger.info("   Venue: " + request.getVenue());
                 logger.info("   Date: " + request.getDate());
