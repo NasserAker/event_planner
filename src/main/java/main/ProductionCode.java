@@ -228,6 +228,7 @@ public class ProductionCode {
                     break;
                 case 4:
                     loggedIn = false;
+                    homePage();
                     break;
                 default:
                     logger.info(INVALIDMESSAGE);
