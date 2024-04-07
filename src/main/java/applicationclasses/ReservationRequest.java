@@ -128,7 +128,7 @@ public class ReservationRequest {
 
     @Override
     public String toString() {
-        return STR."ReservationRequest{requestId=\{requestId}, user=\{user}, venue=\{venue}, date=\{date}, services=\{services}\{'}'}";
+        return "ReservationRequest requestId="+requestId+ "user="+ user +"venue="+ venue+ "date="+date + " services="+services;
     }
 
 }
