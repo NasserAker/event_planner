@@ -12,7 +12,6 @@ import org.junit.runner.RunWith;
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         glue = {"StepsDefinition"}
 
-
 )
 
 public final class TestRunner {

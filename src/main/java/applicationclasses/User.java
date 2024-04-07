@@ -22,7 +22,7 @@ public class User {
     public static final String GENDER_FEMALE = "Female";
     public static final String GENDER_MALE = "Male";
 
-    protected static final List<User> allUsers = new ArrayList<>();
+    public static final List<User> allUsers = new ArrayList<>();
 
 
     public User(String username, String password, String address, String phone, String email, String gender) {
@@ -62,25 +62,13 @@ public class User {
     }
 
 
-   public User(String un, String pa, String bd) {
+  /* public User(String un, String pa, String bd) {
         this.username =un;
         this.password=pa;
         this.birthDate =bd;
-    }
+    }*/
 
 
-    public static boolean addUser(User newUser) {
-        // Check if the user already exists
-        for (User user : allUsers) {
-            if (user.getEmail().equals(newUser.getEmail())) {
-                return false; // User already exists
-            }
-        }
-
-        // Add the new user to the list
-        allUsers.add(newUser);
-        return true; // User added successfully
-    }
 
     public  String getUsername() {
         return username;
@@ -94,17 +82,12 @@ public class User {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+
 
     public String getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 
     public  String getEmail() {
         return email;
@@ -118,9 +101,6 @@ public class User {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
 
 
     public  String getPassword() {
@@ -144,9 +124,6 @@ public class User {
     }
 
 
-    public String getB() {
-        return this.birthDate;
-    }
 
 
 

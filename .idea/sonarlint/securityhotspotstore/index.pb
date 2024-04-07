@@ -1946,3 +1946,9 @@ K
 ,src/test/java/StepsDefinition/venuestep.java,9\a\9ac8fb4f509e042d215169867066e82d09ee3344
 O
 features/managingvenues.feature,e\7\e713be5a476f3616bab37415b76f565f53890181
+F
+features/event.feature,f\b\fb7bc737346e878ec3552e6e3acd166cdcd3e8cb
+R
+"src/main/java/main/Operations.java,4\e\4e095e9f9d7beddb60370ff329c07ad964f2d2b8
+V
+&src/main/java/main/ProductionCode.java,4\a\4a02ba0ec1d5fdcad41e545dfd7002ad3eeafa96

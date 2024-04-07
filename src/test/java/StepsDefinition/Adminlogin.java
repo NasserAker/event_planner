@@ -1,6 +1,7 @@
 package StepsDefinition;
 
 import applicationclasses.Admin;
+import applicationclasses.Logging;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -19,6 +20,10 @@ public class Adminlogin {
         username = admin.getUsername();
         password = admin.getPassword();
         email = admin.getEmail();
+        Logging log = new Logging();
+        if(log.searchEmail("nasseraker4@gmail.com") == 0 ){
+            System.out.println("Admin");
+        }
     }
 
     @When("his email and passwords are correct")

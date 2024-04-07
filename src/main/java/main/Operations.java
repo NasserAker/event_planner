@@ -1,5 +1,8 @@
-package applicationclasses;
+package main;
 
+
+import applicationclasses.*;
+import applicationclasses.Date;
 
 import java.util.*;
 
@@ -498,7 +501,7 @@ public class Operations {
         logger.info("Gender: " + user.getGender());
     }
 
-    private static List<Date> getAvailableDatesForVenue(int venueChoice) {
+    private static List<applicationclasses.Date> getAvailableDatesForVenue(int venueChoice) {
         switch (venueChoice) {
             case 1:
                 return availableDatesV1;
@@ -673,7 +676,7 @@ public class Operations {
 
 
         logger.info("Available Dates for " + selectedVenue.getName() + ":");
-        List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
+        List<applicationclasses.Date> availableDates = getAvailableDatesForVenue(venueChoice);
         for (int i = 0; i < availableDates.size(); i++) {
             logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableDates.get(i)));
 
@@ -694,7 +697,7 @@ public class Operations {
         }
 
 
-        Date selectedDate = availableDates.get(dateChoice - 1);
+        applicationclasses.Date selectedDate = availableDates.get(dateChoice - 1);
 
 
 
