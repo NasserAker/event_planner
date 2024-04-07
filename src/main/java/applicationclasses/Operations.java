@@ -771,7 +771,7 @@ public class Operations {
                 int requestId = request.getRequestId();
                 requestIds.add(requestId); // Add request ID to the list
 
-                logger.info(String.format((i + 1) + ". Request ID: " + requestId));
+                String.format("%d. Request ID: %d", (i + 1), requestId);
                 logger.info("   Customer Name: " + request.getUser().getUsername());
                 logger.info("   Venue: " + request.getVenue());
                 logger.info("   Date: " + request.getDate());
@@ -784,7 +784,7 @@ public class Operations {
 
             // Check if the chosen request ID is valid
             if (requestIds.contains(chosenRequestId)) {
-                logger.info("Request ID " + chosenRequestId + " selected.");
+                logger.info(String.format("Request ID %d selected.", chosenRequestId));
                 logger.info("Choose an action for the reservation request:");
                 logger.info("1. Approve request");
                 logger.info("2. Reject request");
