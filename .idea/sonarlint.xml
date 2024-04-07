@@ -3,6 +3,6 @@
   <component name="SonarLintProjectSettings">
     <option name="bindingEnabled" value="true" />
     <option name="projectKey" value="SoftwareOrgEventPlanner_event_planner" />
-    <option name="serverId" value="softproject" />
+    <option name="serverId" value="project" />
   </component>
 </project>
