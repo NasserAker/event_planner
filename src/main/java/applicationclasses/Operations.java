@@ -762,12 +762,7 @@ public class Operations {
 
         return requestIdCounter++;
     }
-//    public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
-//        ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
-//        ReservationRequest.addReservationRequest(request);
-//
-//        logger.info("Reservation submitted successfully! Check your email for confirmation.");
-//    }
+
 public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
     ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
     ReservationRequest.addReservationRequest(request);
