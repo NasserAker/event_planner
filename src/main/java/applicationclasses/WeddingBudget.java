@@ -24,14 +24,14 @@ public class WeddingBudget {
 
 
     public void viewBudgetStatus() {
-        logger.info("Wedding Budget: $" + totalBudget);
-       logger.info("Remaining Budget: $" + remainingBudget);
+        logger.info(STR."Wedding Budget: $\{totalBudget}");
+       logger.info(STR."Remaining Budget: $\{remainingBudget}");
     }
 
 
     public void viewExpenseDetails() {
         for (int i = 0; i < expenses.size(); i++) {
-            logger.info((i + 1) + ". " + expenses.get(i));
+            logger.info(STR."\{i + 1}. \{expenses.get(i)}");
         }
     }
 

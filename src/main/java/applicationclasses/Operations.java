@@ -5,6 +5,7 @@ import java.util.*;
 
 import static applicationclasses.Date.*;
 
+import static applicationclasses.ReservationRequest.*;
 import static applicationclasses.ServiceProvider.logger;
 import static applicationclasses.User.*;
 import static main.ProductionCode.*;
@@ -12,6 +13,10 @@ import static main.ProductionCode.*;
 
 
 public class Operations {
+
+
+
+
     private Operations() {
     }
     private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
@@ -163,6 +168,7 @@ public class Operations {
 
 
 
+
     public static void seeAllUsers() {
         if (allUsers != null && !allUsers.isEmpty()) {
             logger.info(ALL_USER_ACCOUNTS_MESSAGE);
@@ -174,21 +180,31 @@ public class Operations {
                 userDetails.append(EMAIL).append(user.getEmail()).append(", ");
                 logger.info(userDetails.toString());
             }
+        } else {
+            logger.info("No users found."); // or any appropriate message
         }
     }
-
 
     public static void deleteAccount() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
         List<User> allUsers = User.getUserList();
-        if (allUsers != null && !allUsers.isEmpty()) {
-            for (int i = 0; i < allUsers.size(); i++) {
-                User user = allUsers.get(i);
-                StringJoiner userDetails = new StringJoiner(", ");
-                userDetails.add("Username: " + user.getUsername())
-                        .add("Email: " + user.getEmail());
-                logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), userDetails.toString()));
-            }
+
+        // Check if allUsers is null
+        if (allUsers == null) {
+            throw new NullPointerException("allUsers is null.");
+        }
+
+        if (allUsers.isEmpty()) {
+            logger.info("There are no user accounts to delete.");
+            return;
+        }
+
+        for (int i = 0; i < allUsers.size(); i++) {
+            User user = allUsers.get(i);
+            StringJoiner userDetails = new StringJoiner(", ");
+            userDetails.add("Username: " + user.getUsername())
+                    .add("Email: " + user.getEmail());
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), userDetails.toString()));
         }
         logger.info("Enter the number of the user you want to delete, or enter '0' to go back to the menu:");
         int userNumber = input.nextInt();
@@ -329,9 +345,7 @@ public class Operations {
                 eventDetails.append(TIME).append(event.getTime()).append(", ");
 
 
-                if (eventDetails.length() > 0) {
-                    logger.info(eventDetails.toString());
-                }
+                if (eventDetails.length() > 0) logger.info(eventDetails.toString());
                 found = true;
                 break;
             }
@@ -482,150 +496,6 @@ public class Operations {
         logger.info("Gender: " + user.getGender());
     }
 
-
-
-
-    public static void reserveWedding(User loggedInUser) {
-        logger.info("\nReserve Wedding:");
-
-        logger.info("Available Venues:");
-        List<Venue> availableVenues = Venue.getAvailableVenues();
-        for (int i = 0; i < availableVenues.size(); i++) {
-            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableVenues.get(i).toString()));
-        }
-
-        logger.info("Choose a venue by entering the corresponding number:");
-        int venueChoice = scanner();
-
-        if (venueChoice < 1 || venueChoice > availableVenues.size()) {
-            logger.info("Invalid choice. Please enter a valid venue number.");
-            return;
-        }
-
-        Venue selectedVenue = availableVenues.get(venueChoice - 1);
-
-
-        logger.info("Available Dates for " + selectedVenue.getName() + ":");
-        List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
-        for (int i = 0; i < availableDates.size(); i++) {
-            logger.info(String.format(USER_DETAILS_FORMAT,(i + 1) + ". " + availableDates.get(i)));
-        }
-
-
-        logger.info("Choose a date by entering the corresponding number, or enter 0 to go back to choosing a venue:");
-        int dateChoice = scanner();
-
-
-        if (dateChoice == 0) {
-
-            reserveWedding(loggedInUser);
-            return;
-        } else if (dateChoice < 1 || dateChoice > availableDates.size()) {
-            logger.info("Invalid choice. Please enter a valid date number.");
-            return;
-        }
-
-
-        Date selectedDate = availableDates.get(dateChoice - 1);
-
-
-
-        if (AdditionalService.getAvailableServices().isEmpty()) {
-            AdditionalService.initializeAdditionalService();
-        }
-
-        logger.info("Available Additional Services:");
-        List<AdditionalService> availableServices = AdditionalService.getAvailableServices();
-
-
-        for (int i = 0; i < availableServices.size(); i++) {
-            AdditionalService service = availableServices.get(i);
-            logger.info(String.format("%d. %s - Cost: $%.2f", (i + 1), service.getServiceName(), service.getCost()));
-        }
-        logger.info("0. None");
-
-        logger.info("Choose additional services (enter numbers separated by commas, or 0 for none):");
-        String additionalServiceChoicesStr = input.nextLine();
-        String[] additionalServiceChoices = additionalServiceChoicesStr.split(",");
-
-
-        List<AdditionalService> selectedServices = new ArrayList<>();
-        for (String choice : additionalServiceChoices) {
-            int serviceChoice = Integer.parseInt(choice.trim());
-            if (serviceChoice > 0 && serviceChoice <= availableServices.size()) {
-                selectedServices.add(availableServices.get(serviceChoice - 1));
-            }
-
-
-        }
-        logger.info("Reservation Details:");
-        logger.info(String.format("Venue:%s", selectedVenue.toString()));
-        logger.info(String.format("Date: %s" + selectedDate));
-        if (!selectedServices.isEmpty()) {
-            logger.info("Additional Services:");
-            for (AdditionalService service : selectedServices) {
-                logger.info("- " + service.getServiceName() + " - Cost: $" + service.getCost());
-            }
-        } else {
-            logger.info("Additional Services: None");
-        }
-
-        logger.info("1. Submit Reservation");
-        logger.info("2. Go back to Menu");
-        logger.info("Enter your choice:");
-        int choice = scanner();
-        switch (choice) {
-            case 1:
-
-                submitReservation(loggedInUser, selectedVenue, selectedDate, selectedServices);
-                break;
-            case 2:
-                userActivities();
-                break;
-            default:
-                logger.info("Invalid choice. Returning to the main menu.");
-                break;
-        }
-
-
-    }
-
-    private static int requestIdCounter = 1;
-
-    private static int generateRequestId() {
-
-        return requestIdCounter++;
-    }
-    public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
-        ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
-        ReservationRequest.addReservationRequest(request);
-
-        logger.info("Reservation submitted successfully! Check your email for confirmation.");
-    }
-
-    public static void viewReservationRequests() {
-        List<ReservationRequest> requests = ReservationRequest.getAllReservationRequests();
-
-        if (requests.isEmpty()) {
-            logger.info("There are no pending reservation requests.");
-        } else {
-            logger.info("Pending Reservation Requests:");
-            for (int i = 0; i < requests.size(); i++) {
-                ReservationRequest request = requests.get(i);
-
-                logger.info(String.format((i + 1) + ". Request ID: " + request.getRequestId()));
-                logger.info("   Customer Name: " + request.getUser().getUsername());
-                logger.info("   Venue: " + request.getVenue());
-                logger.info("   Date: " + request.getDate());
-                logger.info("   Additional Services: " + request.getServices());
-
-            }
-        }
-    }
-
-
-
-
     private static List<Date> getAvailableDatesForVenue(int venueChoice) {
         switch (venueChoice) {
             case 1:
@@ -702,7 +572,7 @@ public class Operations {
 
     public static void addService() {
         String name = "";
-        String providername = "";
+
         double price = 0.0;
 
         Scanner scanner = new Scanner(System.in);
@@ -711,7 +581,7 @@ public class Operations {
         name = scanner.nextLine();
 
         logger.info("Enter your name :");
-        providername = scanner.nextLine();
+
 
         logger.info("Enter Service Price : ");
 
@@ -773,6 +643,233 @@ public class Operations {
 
 
     }
+
+
+
+
+// reservation logic
+    public static void reserveWedding(User loggedInUser) {
+        logger.info("\nReserve Wedding:");
+
+        logger.info("Available Venues:");
+        List<Venue> availableVenues = Venue.getAvailableVenues();
+        for (int i = 0; i < availableVenues.size(); i++) {
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableVenues.get(i).toString()));
+        }
+
+        logger.info("Choose a venue by entering the corresponding number:");
+        int venueChoice = scanner();
+
+        if (venueChoice < 1 || venueChoice > availableVenues.size()) {
+            logger.info("Invalid choice. Please enter a valid venue number.");
+            return;
+        }
+
+        Venue selectedVenue = availableVenues.get(venueChoice - 1);
+
+
+        logger.info("Available Dates for " + selectedVenue.getName() + ":");
+        List<Date> availableDates = getAvailableDatesForVenue(venueChoice);
+        for (int i = 0; i < availableDates.size(); i++) {
+            logger.info(String.format(USER_DETAILS_FORMAT, (i + 1), availableDates.get(i)));
+
+        }
+
+
+        logger.info("Choose a date by entering the corresponding number, or enter 0 to go back to choosing a venue:");
+        int dateChoice = scanner();
+
+
+        if (dateChoice == 0) {
+
+            reserveWedding(loggedInUser);
+            return;
+        } else if (dateChoice < 1 || dateChoice > availableDates.size()) {
+            logger.info("Invalid choice. Please enter a valid date number.");
+            return;
+        }
+
+
+        Date selectedDate = availableDates.get(dateChoice - 1);
+
+
+
+        if (AdditionalService.getAvailableServices().isEmpty()) {
+            AdditionalService.initializeAdditionalService();
+        }
+
+        logger.info("Available Additional Services:");
+        List<AdditionalService> availableServices = AdditionalService.getAvailableServices();
+
+
+        for (int i = 0; i < availableServices.size(); i++) {
+            AdditionalService service = availableServices.get(i);
+            logger.info(String.format("%d. %s - Cost: $%.2f", (i + 1), service.getServiceName(), service.getCost()));
+        }
+        logger.info("0. None");
+
+        logger.info("Choose additional services (enter numbers separated by commas, or 0 for none):");
+        String additionalServiceChoicesStr = input.nextLine();
+        String[] additionalServiceChoices = additionalServiceChoicesStr.split(",");
+
+
+        List<AdditionalService> selectedServices = new ArrayList<>();
+        for (String choice : additionalServiceChoices) {
+            int serviceChoice = Integer.parseInt(choice.trim());
+            if (serviceChoice > 0 && serviceChoice <= availableServices.size()) {
+                selectedServices.add(availableServices.get(serviceChoice - 1));
+            }
+
+
+        }
+        logger.info("Reservation Details:");
+        logger.info(String.format("Venue:%s", selectedVenue.toString()));
+        logger.info(String.format("Date: %s", selectedDate));
+        if (!selectedServices.isEmpty()) {
+            logger.info("Additional Services:");
+            for (AdditionalService service : selectedServices) {
+                logger.info("- " + service.getServiceName() + " - Cost: $" + service.getCost());
+            }
+        } else {
+            logger.info("Additional Services: None");
+        }
+
+        logger.info("1. Submit Reservation");
+        logger.info("2. Go back to Menu");
+        logger.info("Enter your choice:");
+        int choice = scanner();
+        switch (choice) {
+            case 1:
+
+                submitReservation(loggedInUser, selectedVenue, selectedDate, selectedServices);
+                break;
+            case 2:
+                userActivities();
+                break;
+            default:
+                logger.info("Invalid choice. Returning to the main menu.");
+                break;
+        }
+
+
+    }
+
+    private static int requestIdCounter = 1;
+
+    private static int generateRequestId() {
+
+        return requestIdCounter++;
+    }
+    public static void submitReservation(User loggedInUser, Venue venue, Date date, List<AdditionalService> services) {
+        ReservationRequest request = new ReservationRequest(generateRequestId(), loggedInUser, venue, date, services);
+        ReservationRequest.addReservationRequest(request);
+
+        logger.info("Reservation submitted successfully! Check your email for confirmation.");
+    }
+
+    public static void viewReservationRequests() {
+        List<ReservationRequest> requests = ReservationRequest.getAllReservationRequests();
+
+        if (requests.isEmpty()) {
+            logger.info("There are no pending reservation requests.");
+        } else {
+            logger.info("Pending Reservation Requests:");
+            List<Integer> requestIds = new ArrayList<>(); // List to store request IDs
+            for (int i = 0; i < requests.size(); i++) {
+                ReservationRequest request = requests.get(i);
+                int requestId = request.getRequestId();
+                requestIds.add(requestId); // Add request ID to the list
+
+                logger.info(String.format("%d. Request ID: %d", (i + 1), requestId));
+                logger.info("   Customer Name: " + request.getUser().getUsername());
+                logger.info("   Venue: " + request.getVenue());
+                logger.info("   Date: " + request.getDate());
+                logger.info("   Additional Services: " + request.getServices());
+            }
+
+            // After displaying the requests, prompt for action
+            logger.info("Choose a request by entering its corresponding ID:");
+            int chosenRequestId = scanner(); // Assuming you have a scanner object for user input
+
+            // Check if the chosen request ID is valid
+            if (requestIds.contains(chosenRequestId)) {
+                logger.info(String.format("Request ID %d selected.", chosenRequestId));
+                logger.info("Choose an action for the reservation request:");
+                logger.info("1. Approve request");
+                logger.info("2. Reject request");
+                logger.info("3. Return to main menu");
+
+                int choice = scanner(); // Assuming you have a scanner object for user input
+
+                switch (choice) {
+                    case 1:
+                        approveRequest(chosenRequestId); // Pass chosen request ID to approveRequest method
+                        break;
+                    case 2:
+                        denyRequest(chosenRequestId); // Pass chosen request ID to denyRequest method
+                        break;
+                    case 3:
+                        adminActivities();
+                        break;
+                    default:
+                        logger.info("Invalid choice. Please enter a valid option.");
+                        break;
+                }
+            } else {
+                logger.info("Invalid request ID. Please enter a valid request ID.");
+            }
+        }
+    }
+
+
+    public static void approveRequest(int requestId) {
+        for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
+            if (request.getRequestId() == requestId) {
+                request.approveRequest();
+                getApprovedRequests().add(request); // Save the approved request
+                // Send email to user
+                String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
+                String subject = "Reservation Request Approved";
+                String body = "Your reservation request has been approved.";
+                boolean sent = EmailSender.sendEmail(recipientEmail, subject, body);
+                if (sent) {
+                    logger.info("Request approved successfully. Email sent to user.");
+                } else {
+                    logger.info("Request approved successfully, but failed to send email to user.");
+                }
+                return;
+            }
+        }
+        logger.info("Request ID not found. Please enter a valid ID.");
+    }
+
+    public static void denyRequest(int requestId) {
+        for (ReservationRequest request : ReservationRequest.getAllReservationRequests()) {
+            if (request.getRequestId() == requestId) {
+                request.denyRequest();
+                getDeniedRequests().add(request); // Save the denied request
+                // Send email to user
+                String recipientEmail = request.getUser().getEmail(); // Assuming you have a method to get the user's email
+                String subject = "Reservation Request Denied";
+                String body = "Your reservation request has been denied.";
+                boolean sent = EmailSender.sendEmail(recipientEmail, subject, body);
+                if (sent) {
+                    logger.info("Request denied successfully. Email sent to user.");
+                } else {
+                    logger.info("Request denied successfully, but failed to send email to user.");
+                }
+                return;
+            }
+        }
+        logger.info("Request ID not found. Please enter a valid ID.");
+    }
+
+
+
+
+
+
+
 
 
 

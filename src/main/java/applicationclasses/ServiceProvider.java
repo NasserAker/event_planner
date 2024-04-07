@@ -31,7 +31,6 @@ public class ServiceProvider {
 
 
     protected static final List<ServiceProvider> ServiceProv_LIST = new ArrayList<>();
-   // private final Map<User, String> reservaedDates = new HashMap<>();
 
 
     static final Logger logger = Logger.getLogger(ServiceProvider.class.getName());

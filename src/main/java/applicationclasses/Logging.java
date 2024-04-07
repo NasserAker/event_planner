@@ -10,13 +10,8 @@ import static applicationclasses.User.allUsers;
 public class Logging {
 
     private String emailToCheck;
-    private boolean successfulpassword= false;
 
-    private String email;
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
 
 
@@ -73,11 +68,9 @@ public class Logging {
         String value = q.get(emailToCheck);
 
         if (password.equals(value)) {
-            successfulpassword = true;
             logState = true;
             return y;
         } else {
-            successfulpassword = false;
             return -33;
         }
     }
@@ -139,8 +132,6 @@ public class Logging {
         return -1;
     }
 }
-
-
 
 
 
