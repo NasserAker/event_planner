@@ -4,7 +4,6 @@ public class Reserve {
     private String uname;
     private String cname;
     private String date;
-
     public Reserve(String unamee, String cnamee, String datee){
         uname =  unamee;
         cname = cnamee;
