@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 
 public class User {
-    private static final Logger logger = Logger.getLogger(User.class.getName());
+
 
     boolean logState;
     private  String username;

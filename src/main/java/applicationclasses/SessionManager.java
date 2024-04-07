@@ -3,7 +3,6 @@ package applicationclasses;
 
 
 public class SessionManager {
-    public SessionManager(){}
     private static User loggedInUser;
     private static Admin loggedInAdmin;
     private static ServiceProvider loggedInServiceProvider;
