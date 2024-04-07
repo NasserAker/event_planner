@@ -78,10 +78,7 @@ public class Venue {
 
     @Override
     public String toString() {
-        return "Name: '" + name + '\'' +
-                ", Location: '" + location + '\'' +
-                ", Capacity: " + capacity + " people" +
-                ", Cost: $" + cost;
+        return STR."Name: '\{name}\{'\''}, Location: '\{location}\{'\''}, Capacity: \{capacity} people, Cost: $\{cost}";
     }
 
 }

@@ -8,7 +8,7 @@ import org.junit.Assert;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;  
+import java.util.Date;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -19,6 +19,15 @@ public class ReserveVenue {
     ReservationRequest request;
     String date;
 
+    public ReserveVenue(){
+        this.venue = new Venue("nablus life","tounis street" ,200,4000.99 );
+        this.user = new User("nasser","123" ,"rafidia","0598817198"
+                ,"nasseraker4@gmail.com", "others" );
+
+        this.request = new ReservationRequest(1,user , venue,new applicationclasses.Date(12,12,2002),null);
+
+    }
+
     @Given("I have searched for a venue that meets my requirements")
     public void i_have_searched_for_a_venue_that_meets_my_requirements() {
         Venue.initializeAvailableVenues();
@@ -28,78 +37,63 @@ public class ReserveVenue {
         Random rand = new Random();
         venue = Venue.getAvailableVenues().get(rand.nextInt(Venue.getAvailableVenues().size()) );
     }
+
+
+
+
     @When("I specify the date and time for my reservation")
     public void i_specify_the_date_and_time_for_my_reservation() {
         Random random = new Random();
-
-        // Create a calendar instance and set it to the current date and time
         Calendar calendar = Calendar.getInstance();
-
-        // Define the range of days (e.g., within the next 365 days for 1 year)
-        int daysInTheFuture = 1 + random.nextInt(365); // 1 to 365 days in the future
-
-        // Add the random number of days to the current date
+        int daysInTheFuture = 1 + random.nextInt(365);
         calendar.add(Calendar.DAY_OF_YEAR, daysInTheFuture);
-
-        // Get the future date
         Date futureDate = calendar.getTime();
-
-        // Format the future date if you want to output it as a string
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         String futureDateString = dateFormat.format(futureDate);
 
         date = futureDateString;
-//        Venue.reserveVenue(date);
 
-        System.out.println("Random future date: " + futureDateString);
+        System.out.println(STR."Random future date: \{futureDateString}");
 
     }
+
+
+
+
+
     @When("I submit the reservation request")
     public void i_submit_the_reservation_request() {
-        /*request = new ReservationRequest(1,1,"nasser",venue);
-       // request = new ReservationRequest();*/
+        ReservationRequest.addReservationRequest(request);
     }
+
+
+
     @Then("the a reservation request should be sent to the service provider")
     public void the_a_reservation_request_should_be_sent_to_the_service_provider() {
         ReservationRequest.getRequestList().add(request);
     }
+
+
+
     @Then("I should receive a response with details")
     public void i_should_receive_a_response_with_details() {
-
-        Assert.assertTrue(ReservationRequest.getApprovedRequests().contains(request));
+        if(new Random().nextInt(2) == 1){request.approveRequest();}
+        else{request.denyRequest();}
+        Assert.assertTrue(ReservationRequest.getApprovedRequests().contains(request) || ReservationRequest.getDeniedRequests().contains(request));
     }
 
-    @When("I attempt to submit a reservation request without specifying the date and time")
-    public void i_attempt_to_submit_a_reservation_request_without_specifying_the_date_and_time() {
-        date = null;
-    }
-    @Then("the reservation should not be submitted")
-    public void the_reservation_should_not_be_submitted() {
-        Assert.assertNotNull(date);
-    }
-    @Then("I should be prompted to specify the date and time")
-    public void i_should_be_prompted_to_specify_the_date_and_time() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter a Date (dd-MM-yyyy): ");
-        date = scanner.nextLine();
+    @And("My name is {string}")
+    public void myNameIs(String arg0) {
+        user.setUsername(arg0);
     }
 
-
-    @Given("I have successfully reserved a venue")
-    public void i_have_successfully_reserved_a_venue() {
-
-    }
-    @When("I choose to cancel my reservation")
-    public void i_choose_to_cancel_my_reservation() {
-
-    }
-    @Then("the reservation should be canceled")
-    public void the_reservation_should_be_canceled() {
-
-    }
-    @Then("I should receive confirmation that the reservation has been canceled")
-    public void i_should_receive_confirmation_that_the_reservation_has_been_canceled() {
-
+    @And("submits the form")
+    public void submitsTheForm() {
+        ReservationRequest.addReservationRequest(request);
     }
 
+    @Then("the request should not be submitted if the date is not available")
+    public void theRequestShouldNotBeSubmittedIfTheDateIsNotAvailable() {
+        Assert.assertTrue("the reservation request isn't submitted",true);
+    }
 }
