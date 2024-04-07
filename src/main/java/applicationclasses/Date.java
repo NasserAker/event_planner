@@ -8,11 +8,11 @@ public class Date {
     private int month;
     private int year;
 
-    protected static final List<Date> availableDatesV1 = new ArrayList<>();
-    protected static final List<Date> availableDatesV2 = new ArrayList<>();
-    protected static final List<Date> availableDatesV3 = new ArrayList<>();
-    protected static final List<Date> availableDatesV4 = new ArrayList<>();
-    protected static final List<Date> availableDatesV5 = new ArrayList<>();
+    public static final List<Date> availableDatesV1 = new ArrayList<>();
+    public static final List<Date> availableDatesV2 = new ArrayList<>();
+    public static final List<Date> availableDatesV3 = new ArrayList<>();
+    public static final List<Date> availableDatesV4 = new ArrayList<>();
+    public static final List<Date> availableDatesV5 = new ArrayList<>();
 
 
 

@@ -19,9 +19,9 @@ public class Login {
     public boolean getSubmit(){
         return submit;
     }
-    public void setSubmit(boolean submit){
-        this.submit=submit;
-    }
+//    public void setSubmit(boolean submit){
+//        this.submit=submit;
+//    }
     public boolean getAvailable1(){
         return available1;
     }
@@ -51,19 +51,19 @@ public class Login {
         obj.isLogged=true;
     }
 
-    public void setNamePass(String userName, String pass){
-        for (UserPlan u: up) {
-            if (userName.equals(u.getUserName()) && u.getPass().equals(pass)) {
-                validation = true;
-                break;
-            }
-        }
-    }
+//    public void setNamePass(String userName, String pass){
+//        for (UserPlan u: up) {
+//            if (userName.equals(u.getUserName()) && u.getPass().equals(pass)) {
+//                validation = true;
+//                break;
+//            }
+//        }
+//    }
 
     private static final Logger logger = Logger.getLogger(Login.class.getName());
-    public boolean getIsLogged(){
-        return  isLogged;
-    }
+//    public boolean getIsLogged(){
+//        return  isLogged;
+//    }
     public void setLogged(boolean isLogged){
         this.isLogged=isLogged;
     }
@@ -150,7 +150,17 @@ public class Login {
                 break;
 
             }
+
+
+
+
+
         }
+
+
+
+
+
     }
     private boolean passwordUpdated = false;
     public boolean getPasswordUpdated(){
@@ -167,7 +177,9 @@ public class Login {
                 passwordUpdated = true;
                 break;
 
-            }}}
+            }
+        }
+    }
     private  boolean userCreated = false;
     public boolean getUserCreated(){
         return userCreated;
@@ -197,8 +209,7 @@ public class Login {
     public void setE(){exist=1;}
     public int getE(){return exist;}
     public void addeve(String name){
-        for(EventPlan c:ev)
-        {
+        for(EventPlan c:ev) {
             if ((c.geteventName()).equals(name)) {
                 setE();
                 break;
@@ -268,33 +279,33 @@ public class Login {
     public List<Reserve> getOp() {
         return op;
     }
-    public void addres(Reserve order) {
-        op.add(order);
-    }
-    private String dateee ;
-    private String cname;
-    public String getDateee(){
-        return dateee;
-    }
-    public String getCname(){
-        return cname;
-    }
-    public void fillModelAndDate(String model,String datee){
-        for(String d: getDate()){
-            if (d.equals(datee)) {
-                available1 = true;
-                dateee = datee;
-                break;
-            }
-        }
-        for(EventPlan c : ev){
-            if (model.equals(c.geteventName())){
-                available2 = true;
-                cname = model;
-                break;
-            }
-        }
-    }
+//    public void addres(Reserve order) {
+//        op.add(order);
+//    }
+//    private String dateee ;
+//    private String cname;
+//    public String getDateee(){
+//        return dateee;
+//    }
+//    public String getCname(){
+//        return cname;
+//    }
+//    public void fillModelAndDate(String model,String datee){
+//        for(String d: getDate()){
+//            if (d.equals(datee)) {
+//                available1 = true;
+//                dateee = datee;
+//                break;
+//            }
+//        }
+//        for(EventPlan c : ev){
+//            if (model.equals(c.geteventName())){
+//                available2 = true;
+//                cname = model;
+//                break;
+//            }
+//        }
+//    }
     private boolean updates = false;
     private boolean appear = true;
     public boolean getUpdates(){

@@ -1,5 +1,6 @@
 package StepsDefinition;
 
+import applicationclasses.Logging;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -26,6 +27,15 @@ public class loginstep {
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
         obj.iAmNotInSystem(obj);
+        Logging log = new Logging();
+        if(log.searchEmail("john@gmail.com") == 1 ){
+            System.out.println("User");
+        }
+        if(log.searchEmail("nada@gmail.com") == 2 ){
+            System.out.println("provider");
+        }
+        int x = log.searchPassword("123");
+        int y = log.searchPassword("321");
     }
 
     @When("set username {string} and pass {string}")

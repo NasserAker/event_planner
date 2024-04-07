@@ -14,7 +14,7 @@ import static applicationclasses.Admin.getAdminByEmail;
 import static applicationclasses.Admin.initializeAdmin;
 import static applicationclasses.Date.initializeAvailableDates;
 import static applicationclasses.Event.initializeEvents;
-import static applicationclasses.Operations.viewReservationRequests;
+import static main.Operations.viewReservationRequests;
 import static applicationclasses.ServiceProvider.getServiceByEmail;
 import static applicationclasses.ServiceProvider.initializeServiceProvider;
 import static applicationclasses.User.*;

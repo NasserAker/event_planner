@@ -33,7 +33,7 @@ public class ServiceProvider {
     protected static final List<ServiceProvider> ServiceProv_LIST = new ArrayList<>();
 
 
-    static final Logger logger = Logger.getLogger(ServiceProvider.class.getName());
+    public static final Logger logger = Logger.getLogger(ServiceProvider.class.getName());
 
     public static void initializeServiceProvider() {
         ServiceProvider s1 = new ServiceProvider("nada@gmail.com", "woroud", "123123", "RAM", "0599852446", "122", true);
