@@ -1931,3 +1931,9 @@ w
 G.idea/sonarlint/issuestore/4/7/4710e0be9f54dc853ce52317ca8d10f7d70112c9,c\a\ca4530dc521e891e2cdfff710ed276c12763b464
 w
 G.idea/sonarlint/issuestore/4/7/476f51bbdbe4ff3530764b3753e3f405330989ff,e\c\ec13f830dc48f33c005ca53b33a7b8f0ea83993a
+H
+features/adduser.feature,1\9\19abcb18ebfc5e33a0f6ff4667fe6c37c7c245e2
+^
+.src/test/java/StepsDefinition/adduserstep.java,0\5\05c3c4529a22ff7634e5e984b94dff4328c4b635
+K
+features/AdminLogin.feature,4\4\44172c48bf85212b5106a12eef46797b9bedc2b2
