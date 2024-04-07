@@ -53,7 +53,7 @@ public class ReserveVenue {
 
         date = futureDateString;
 
-        System.out.println(STR."Random future date: \{futureDateString}");
+        System.out.println("Random future date:"+ futureDateString);
 
     }
 

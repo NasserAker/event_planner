@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         monochrome = true,
         snippets = CucumberOptions.SnippetType.CAMELCASE,
         glue = {"StepsDefinition"}
-        ,tags = " @nasser or @hala "
+//        ,tags = " @nasser or @hala "
 
 )
 
