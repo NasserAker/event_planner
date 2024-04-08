@@ -22,7 +22,7 @@ public class Operations {
 
 
 
-    public Operations() {
+    private Operations() {
     }
     private static final String ALL_USER_ACCOUNTS_MESSAGE = "\nAll User Accounts:";
     private static final String EVENT_NAME = "Event Name:";
@@ -178,17 +178,19 @@ public class Operations {
         if (allUsers != null && !allUsers.isEmpty()) {
             logger.info(ALL_USER_ACCOUNTS_MESSAGE);
             Collections.sort(allUsers, Comparator.comparing(User::getUsername));
-
             for (User user : allUsers) {
                 StringBuilder userDetails = new StringBuilder();
                 userDetails.append(USERNAME).append(user.getUsername()).append(", ");
                 userDetails.append(EMAIL).append(user.getEmail()).append(", ");
-                logger.info(userDetails.toString());
+                if (user.getUsername().startsWith("A")) { // Define your condition here
+                    logger.info(userDetails.toString());
+                }
             }
         } else {
             logger.info("No users found."); // or any appropriate message
         }
     }
+
 
     public static void deleteAccount() {
         logger.info(ALL_USER_ACCOUNTS_MESSAGE);
