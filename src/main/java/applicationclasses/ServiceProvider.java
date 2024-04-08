@@ -11,7 +11,6 @@ public class ServiceProvider {
 
     private String name;
     private String email;
-    private String address;
     private String phone;
 
     public static List<ServiceProvider> getServiceProviderList() {
@@ -67,7 +66,6 @@ public class ServiceProvider {
         super();
         this.pass = password;
         this.name = name;
-        this.address = address;
         this.phone = phone;
         this.idd = iD;
         this.available = available;

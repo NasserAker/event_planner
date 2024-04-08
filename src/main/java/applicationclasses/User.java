@@ -18,7 +18,6 @@ public class User {
     private  String gender;
 
     private  String password;
-    private String birthDate;
     public static final String GENDER_FEMALE = "Female";
     public static final String GENDER_MALE = "Male";
 
