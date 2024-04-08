@@ -274,7 +274,7 @@ try {
                     break;
                 case 5:
                     adminActivities();
-                   // continueManaging = false;
+                    continueManaging = false;
                     break;
                 default:
                     logger.info(INVALIDMESSAGE);
@@ -327,7 +327,7 @@ try {
                     break;
                 case 7:
                     adminActivities();
-                  //  continueManaging = false;
+                    continueManaging = false;
                     break;
                 default:
                     logger.info("Invalid action. Please select a valid action.");
