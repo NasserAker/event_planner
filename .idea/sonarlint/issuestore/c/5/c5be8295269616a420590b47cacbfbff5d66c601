@@ -1,11 +1,11 @@
 
 Ÿ
-java:S1450"WRemove the "logState" field and declare it as a local variable in the relevant methods.(ˆıÒüÿÿÿÿ8ÑÆáÖë1J$8b2e5a08-77df-473c-9274-391ec57e38c7
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(ùÇô‘şÿÿÿÿ8ìËâÖë1J$f5cccee1-7260-4d1a-b784-e09bf4810a66
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(îŸÏıÿÿÿÿ8‹óâÖë1J$f19b756c-379d-46ea-86d0-8bcbcac331fb
-ƒ	java:S125"<This block of commented-out lines of code should be removed.(•ùôıÿÿÿÿ8¯ãÖë1J$e6d28f3a-14b3-44ec-993f-61ef1c51ae33
-ƒ	java:S125E"<This block of commented-out lines of code should be removed.(öËê†şÿÿÿÿ8İÆáÖë1J$793a7e4f-8055-4b65-ba84-cfbd70f5e033
+java:S1450"WRemove the "logState" field and declare it as a local variable in the relevant methods.(ˆıÒüÿÿÿÿ8ÑÆáÖë1J$9d951ba5-0385-4e11-93d4-4c2d5c2632e7
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(ùÇô‘şÿÿÿÿ8ìËâÖë1J$f00de9c2-3507-4456-a85f-bdfa9373d4db
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(îŸÏıÿÿÿÿ8‹óâÖë1J$079791fc-6033-4e2f-bc0c-79ccddb06426
+ƒ	java:S125"<This block of commented-out lines of code should be removed.(•ùôıÿÿÿÿ8¯ãÖë1J$a058cf8f-90ce-4b33-8432-08650fb89843
+ƒ	java:S125E"<This block of commented-out lines of code should be removed.(öËê†şÿÿÿÿ8İÆáÖë1J$7e9c268a-037d-4207-b674-8a658411ab07
 x
-java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8¹ãÖë1J$31e4896e-0b76-4eb4-9f9a-0f86f1f25c36
+java:S1128"5Remove this unused import 'java.util.logging.Logger'.(ƒ¥óš8¹ãÖë1J$7896a9ed-127c-4b8d-b741-50c0bfcf5476
 t
-java:S1068",Remove this unused "logState" private field.(ˆıÒüÿÿÿÿ8âÆáÖë1J$8250fc2a-2cc2-4127-8dd4-4cd4534b5a53
+java:S1068",Remove this unused "logState" private field.(ˆıÒüÿÿÿÿ8âÆáÖë1J$8c50ee13-c8d4-44d7-8066-f0ede2c8df7f

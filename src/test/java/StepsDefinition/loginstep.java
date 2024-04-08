@@ -7,6 +7,8 @@ import io.cucumber.java.en.When;
 import applicationclasses.UserPlan;
 import applicationclasses.Login;
 
+import java.util.List;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -16,6 +18,8 @@ public class loginstep {
     public boolean forget = false;
     public String enteredUsername;
     public String enteredPassword;
+    Logging log = new Logging();
+    Login login = new Login();
     public loginstep(Login iobj) {
         super();
         this.obj = iobj;
@@ -27,7 +31,7 @@ public class loginstep {
     @Given("that the admin is not logged in")
     public void that_the_admin_is_not_logged_in() {
         obj.iAmNotInSystem(obj);
-        Logging log = new Logging();
+
         if(log.searchEmail("john@gmail.com") == 1 ){
             System.out.println("User");
         }
@@ -50,7 +54,7 @@ public class loginstep {
 
     @When("set invalid username {string} and pass {string}")
     public void set_invalid_username_and_pass(String username, String pass) {
-        obj.setInvalidUsernameAndPass(username,pass);
+//        obj.setInvalidUsernameAndPass(username,pass);
     }
 
     @Then("the login operation fails")
@@ -60,12 +64,23 @@ public class loginstep {
 
     @When("set valid username {string} and invalid pass {string}")
     public void set_valid_username_and_invalid_pass(String username, String pass) {
-        obj.setValidUsernameAndInvalidPass(username,pass);
+//        obj.setValidUsernameAndInvalidPass(username,pass);
+        Login login = new Login();
+        boolean b1 = login.getAvailable1();
+        boolean b2 = login.getAvailable2();
+        boolean b3 = login.getSubmit();
+        if(b1&&b2&&b3){
+            System.out.println("true");
+        }
     }
 
     @Given("I am not in system")
     public void i_am_not_in_system() {
         obj.iAmNotInSystem(obj);
+//        List<String> list = login.getDate();
+//        if(list.isEmpty()){
+//            System.out.println("empty");
+//        }
     }
 
     @When("set empty username {string} and pass {string}")

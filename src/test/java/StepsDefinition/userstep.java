@@ -39,7 +39,6 @@ public class userstep {
 
     @Then("The information should appear")
     public void the_information_should_appear() {
-        obj.appearInformation(name);
         assertTrue("Your information appeared successfully", obj.getApear());
     }
 

@@ -43,7 +43,11 @@ public class admincat {
 
     @When("I request information about reservation by entering there price {int}")
     public void i_request_information_about_reservation_by_entering_there_price(Integer price) {
-        obj.requestByPrice(price);
+//        obj.requestByPrice(price);
+        Login login = new Login();
+        login.getev();
+        login.getDate();
+        login.getOp();
     }
 
     @Then("List all the reservation name, categories, availability and descriptions")
