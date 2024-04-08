@@ -1,4 +1,4 @@
-@hala
+
 Feature: Event Management
 
   Scenario: Initialize event list
