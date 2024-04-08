@@ -21,7 +21,6 @@ public class ServiceProvider {
 
     private String idd;
     boolean available;
-    @SuppressWarnings("unused")
 
     boolean logState;
     String pass;
