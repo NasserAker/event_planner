@@ -44,12 +44,10 @@ public class Logging {
     }
 
     public int searchPassword(String password) {
-         boolean logState = false;
 
         String value = q.get(emailToCheck);
 
         if (password.equals(value)) {
-            logState = true;
             return y;
         } else {
             return -33;
