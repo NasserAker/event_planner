@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.logging.Logger;
 
 public class Login {
-    private boolean isLogged;
+    public boolean isLogged;
     private boolean validation;
     private boolean available1 = false;
     private boolean available2 = false;
@@ -139,7 +139,7 @@ public class Login {
         for (UserPlan user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(newPass)) {
                 passwordUpdated = true;
-//                break;
+
 
             }
         }
@@ -152,7 +152,7 @@ public class Login {
         for (UserPlan user : up) {
             if (user.getUserName().equals(enteredUsername) && user.getPass().equals(enteredPassword)) {
                 userCreated = true;
-//                break;
+
             }
         }
     }
