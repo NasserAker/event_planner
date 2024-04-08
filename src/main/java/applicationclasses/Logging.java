@@ -2,7 +2,6 @@ package applicationclasses;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import static applicationclasses.Admin.adminList;
 import static applicationclasses.User.allUsers;
@@ -11,7 +10,6 @@ public class Logging {
 
     private String emailToCheck;
 
-    private boolean logState = false;
 
 
 
@@ -46,6 +44,7 @@ public class Logging {
     }
 
     public int searchPassword(String password) {
+         boolean logState = false;
 
         String value = q.get(emailToCheck);
 
