@@ -62,11 +62,7 @@ public class User {
     }
 
 
-  /* public User(String un, String pa, String bd) {
-        this.username =un;
-        this.password=pa;
-        this.birthDate =bd;
-    }*/
+
 
 
 
