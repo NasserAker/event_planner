@@ -12,9 +12,9 @@ public class Login {
     public boolean getreservation(){
         return isreserved;
     }
-    public void setreserve(boolean res){
-        this.isreserved=res;
-    }
+//    public void setreserve(boolean res){
+//        this.isreserved=res;
+//    }
     private boolean submit = false;
     public boolean getSubmit(){
         return submit;
