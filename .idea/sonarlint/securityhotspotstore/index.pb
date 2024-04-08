@@ -1954,3 +1954,13 @@ V
 &src/main/java/main/ProductionCode.java,4\a\4a02ba0ec1d5fdcad41e545dfd7002ad3eeafa96
 b
 2src/test/java/StepsDefinition/serviceprovider.java,5\c\5cf67a142a298287c141297a112ab45bd8b7d5f8
+E
+features/date.feature,b\5\b52ce0c0c150d333c6eb5ac3d6c2f9ce7bcca09c
+J
+features/eventplan.feature,3\0\30e8f6d6307581e5a4ec51265b8d8c143b62a2c0
+R
+"features/reservemanagement.feature,d\2\d2fa4d39592b6b297e2772a62cf2d47f9f43e497
+P
+ features/serviceprovider.feature,4\b\4bcc78d1010cdf4671c6b7ff91f69b3b6ee1f5d0
+Q
+!features/userregistration.feature,9\f\9fff1d16112b1e627903f32cdc26f17d883eb330
