@@ -1,9 +1,14 @@
 package StepsDefinition;
 
+import applicationclasses.AdditionalService;
 import applicationclasses.ServiceProvider;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -54,4 +59,6 @@ public class serviceprovider {
     public void the_addition_should_fail_with_an_email_already_exists_message() {
         assertTrue(true);
     }
+
+
 }

@@ -18,9 +18,7 @@ public class ServiceProvider {
         return ServiceProv_LIST;
     }
 
-   // public String getIdd() {
-     //   return idd;
-   // }
+
 
     private String idd;
     boolean available;
@@ -86,14 +84,7 @@ public class ServiceProvider {
     public String getEmail() {
         return email;
     }
-//
-//    public void logging(boolean t) {
-//        logState = t;
-//    }
-//
-//    public boolean getLogState() {
-//        return logState;
-//    }
+
 
     public String getName() {
         return name;
@@ -102,22 +93,6 @@ public class ServiceProvider {
     public void setName(String name) {
         this.name = name;
     }
-//
-//    public String getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(String address) {
-//        this.address = address;
-//    }
-//
-//    public String getPhone() {
-//        return phone;
-//    }
-//
-//    public void setPhone(String phone) {
-//        this.phone = phone;
-//    }
 
     public static ServiceProvider getServiceByEmail(String email) {
         for (ServiceProvider serviceProvider : ServiceProv_LIST) {
