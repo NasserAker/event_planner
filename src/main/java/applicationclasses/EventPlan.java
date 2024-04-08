@@ -26,9 +26,6 @@ public class EventPlan {
         time=0;
         theme="";
     }
-    //public int getPrice() {
-      //  return price;
-    //}
 
     public int getAvailable() {
         return availablity;
@@ -54,9 +51,7 @@ public class EventPlan {
         return time;
     }
 
-    //public void setAvailable(int available) {
-      //  this.availablity = available;
-    //}
+
 
     public void setPrice(int price) {
         this.price = price;
