@@ -89,28 +89,12 @@ public class Login {
                 validation = true;
 
                 logger.info("hi");
-//                break;
+
 
             }
         }
     }
-//    public void setInvalidUsernameAndPass(String name, String pass) {
-//        // Write code here that turns the phrase above into concrete actions
-//        for (UserPlan u: up) {
-//            if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
-//                validation = true;
-////                break;
-//            }
-//        }
-//    }
-//    public void setValidUsernameAndInvalidPass(String name, String pass) {
-//        for (UserPlan u: up) {
-//            if (name.equals(u.getUserName()) && u.getPass().equals(pass)) {
-//                validation = true;
-////                break;
-//            }
-//        }
-//    }
+
     public void setEmptyUsernameAndPass(String name, String pass) {
         if (name.isEmpty() && !pass.isEmpty())
             validation = false;
@@ -136,7 +120,7 @@ public class Login {
             if (userName.equals(u.getUserName()) && pass.equals("Forget")) {
                 setForget(true);
                 enteredUsername = userName;
-//                break;
+
 
             }
         }
@@ -192,7 +176,7 @@ public class Login {
         for(EventPlan c:ev) {
             if ((c.geteventName()).equals(name)) {
                 setE();
-//                break;
+
             }
         }
     }
@@ -202,7 +186,7 @@ public class Login {
             if (name.equals(u.getUserName())) {
                 u.setPass(pass);
                 y=1;
-//                break;
+
             }
         }
         return y;
@@ -248,13 +232,7 @@ public class Login {
     public List<EventPlan> geteventArrayList() {
         return eventArrayList;
     }
-//    public void requestByPrice(int price){
-//        for(EventPlan c: getev() ){
-//            if(price == c.getPrice()){
-//                eventArrayList.add(new EventPlan(c.geteventName(),c.getPrice(),c.getAvailable(),c.getDescrtion(),c.getlocation(),c.gettime(),c.gettheme()));
-//            }
-//        }
-//    }
+
     private   List<Reserve> op = new  ArrayList<>();
     public List<Reserve> getOp() {
         return op;
@@ -273,7 +251,7 @@ public class Login {
             if(name.equals(u.getUserName())){
                 u.setPass(pass);
                 updates = true;
-//                break;
+
             }
         }
     }

@@ -10,19 +10,17 @@ import static applicationclasses.User.allUsers;
 public class Logging {
 
     private String emailToCheck;
-//    private String password;
+
     private boolean logState = false;
 
 
 
 
     private static int y;
-//    int type = -3;
 
     protected static Map<String,String> q= new HashMap<>();
 
 
-//    final Logger logger = Logger.getLogger(Logging.class.getName());
 
 
     public int searchEmail(String email) {
@@ -63,58 +61,6 @@ public class Logging {
         return q;
 
     }
-
-
-
-//    public void logState(boolean t) {
-//
-//        logState=t;
-//    }
-//
-//    public boolean login(String password) {
-//
-//        if(this.password.equals(password)) {
-//            logger.info("successfully logged in");
-//            logState=true;
-//            return true;
-//
-//        }
-//        else {
-//            logger.info("wrong password");
-//            return false;
-//        }
-//    }
-//
-//    public void setLogState(boolean t) {
-//
-//        logState=t;
-//    }
-//    public boolean getLogState() {
-//        return logState;
-//    }
-//    public void logout() {
-//
-//        logState = false;
-//    }
-//
-//    public int searchUser(String email, String password) {
-//
-//        int userType = searchEmail(email);
-//
-//        if (userType >= 0) {
-//
-//            int passwordCheck = searchPassword(password);
-//            if (passwordCheck == -33) {
-//
-//                return userType;
-//            }
-//        }
-//
-//
-//        return -1;
-//    }
-
-
 
 
 
