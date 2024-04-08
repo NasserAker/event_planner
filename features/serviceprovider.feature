@@ -1,4 +1,4 @@
-@hala
+
 Feature: Adding a new Service Provider
 
   In order to manage service providers efficiently
@@ -14,3 +14,4 @@ Feature: Adding a new Service Provider
     Given I have the details of a new service provider with an existing email
     When I attempt to add the service provider to the system
     Then the addition should fail with an email already exists message
+
