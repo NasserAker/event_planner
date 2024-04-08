@@ -26,9 +26,9 @@ public class EventPlan {
         time=0;
         theme="";
     }
-    public int getPrice() {
-        return price;
-    }
+    //public int getPrice() {
+      //  return price;
+    //}
 
     public int getAvailable() {
         return availablity;
@@ -37,14 +37,9 @@ public class EventPlan {
     public String geteventName() {
         return eventName;
     }
-    public void seteventName(String name) {
-        eventName=name;
-    }
-    public void setDescrtion(String describtion) {
-        this.describtion=describtion;}
 
-    public void setlocation(String location) {
-        this.location=location;}
+
+
     public String getDescrtion() {
         return describtion;
     }
@@ -58,15 +53,16 @@ public class EventPlan {
     public int gettime() {
         return time;
     }
-    public void settime(int time) {
-        this.time=time;}
 
-    public void setAvailable(int available) {
-        this.availablity = available;
-    }
+    //public void setAvailable(int available) {
+      //  this.availablity = available;
+    //}
 
     public void setPrice(int price) {
         this.price = price;
     }
 
+    public int getPrice() {
+        return price;
+    }
 }
