@@ -167,24 +167,24 @@ try {
                     SessionManager.loginServiceProvider(loggedInServiceProvider);
                     serviceProviderActivities();
                     break;
+
                 default:
 
                     throw new IllegalArgumentException("Unexpected value for utype: " + utype);
 
-
             }
-            break;
+              break;
         }
 
         case 3:
-            loggedin = false;
+            loggedin = false; // Exit the loop
+            logger.info("Exiting program");
             break;
-
         default:
-
             throw new IllegalArgumentException("Unexpected value for accountChoice: " + accountChoice);
 
     }
+
 }catch (IllegalArgumentException e) {
     logger.info(e.getMessage());
 }
@@ -231,6 +231,7 @@ try {
                     viewReservationRequests();
                     break;
                 case 4:
+                    homePage();
                     loggedIn = false;
                    break;
                 default:
