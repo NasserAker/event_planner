@@ -8,7 +8,6 @@ import static applicationclasses.ServiceProvider.logger;
 
 public class EmailSender {
 
-//
     public void email(String recipient,String s) {
 
 
