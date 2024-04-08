@@ -19,7 +19,6 @@ public class ServiceProvider {
 
 
 
-    private String idd;
     boolean available;
 
     boolean logState;
@@ -66,7 +65,6 @@ public class ServiceProvider {
         this.pass = password;
         this.name = name;
         this.phone = phone;
-        this.idd = iD;
         this.available = available;
 
         this.email = email;
